@@ -1,0 +1,18 @@
+{
+	"pid": 103503,
+	"port": 8082,
+	"url": "http://localhost:8082",
+	"urls": {
+		"local": [
+			"http://localhost:8082/"
+		],
+		"network": [
+			"http://192.168.18.182:8082/"
+		],
+		"networkInterfaceNames": [
+			"eth0"
+		]
+	},
+	"background": false,
+	"startedAt": "2026-09-05T04:37:26.754Z"
+}
