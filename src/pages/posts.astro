@@ -3,9 +3,16 @@ import { tools } from '../lib/data.mjs';
 
 const posts = [
   {
+    title: "Best Jump Starter for Your Car: I Tested 5 So You Don't Have To",
+    url: "/posts/best-jump-starter-review",
+    desc: "My battery died in a parking lot at 10pm. That night I ordered 3 jump starters. Here is what I learned.",
+    date: "2026-09-05",
+    cat: "Guides"
+  },
+  {
     title: "Best OBD2 Scanner for Home Mechanics: What I Learned After Buying 3 Wrong Ones",
     url: "/posts/best-obd2-scanner-review",
-    desc: "I bought 3 OBD2 scanners before finding the right one. Heres what I learned about what actually matters for DIY car repair.",
+    desc: "I bought 3 OBD2 scanners before finding the right one. Here is what I learned about what actually matters for DIY car repair.",
     date: "2026-09-05",
     cat: "Reviews"
   },
@@ -25,8 +32,8 @@ const catSlugs = Object.keys(tools);
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Garage Tools DB — Compare & Find the Right Tool for Your DIY Car Project</title>
-  <meta name="description" content="Honest tool comparisons and guides for DIY mechanics. OBD2 scanners, floor jacks, socket sets, torque wrenches, jump starters. Real specs, real prices." />
+  <title>Articles — Garage Tools DB</title>
+  <meta name="description" content="Honest reviews and guides for DIY car repair tools. Learn from mistakes so you do not have to make your own." />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="stylesheet" href="/styles/global.css" />
 </head>
@@ -53,46 +60,25 @@ const catSlugs = Object.keys(tools);
   </header>
 
   <main class="container">
-    <section class="hero">
-      <h1>Find the right tool. Skip the trial and error.</h1>
-      <p>Every DIY mechanic has bought the wrong tool once. We are here to make sure it does not happen twice. Side-by-side comparisons of the tools that matter for home car repair, plus honest guides from someone who learned the hard way.</p>
-    </section>
+    <div style="margin-bottom:32px;">
+      <h1>All Articles</h1>
+      <p style="color:var(--muted);">Honest reviews and DIY guides from someone who bought the wrong tool so you do not have to.</p>
+    </div>
 
-    <section>
-      <h2>Compare Tools</h2>
-      <div class="category-grid">
-        {catSlugs.map(slug => {
-          const t = tools[slug];
-          return (
-            <a href={`/tools/${t.slug}`} class="category-card">
-              <h3>{t.name}</h3>
-              <p>{t.desc}</p>
-            </a>
-          );
-        })}
-      </div>
-    </section>
-
-    <section class="recent-section">
-      <div class="section-title">
-        <h2>Latest Guides</h2>
-        <a href="/posts" style="font-size:0.85rem;color:var(--accent);text-decoration:none;">View all →</a>
-      </div>
-      {posts.map(p => (
-        <a href={p.url} class="preview-card">
-          <div class="preview-body">
-            <div style="color:var(--muted);font-size:0.78rem;margin-bottom:4px;">{p.cat} · {p.date}</div>
-            <h3>{p.title}</h3>
-            <p class="preview-desc">{p.desc}</p>
-          </div>
-        </a>
-      ))}
-    </section>
+    {posts.map(p => (
+      <a href={p.url} class="preview-card" style="display:block;text-decoration:none;color:inherit;">
+        <div class="preview-body">
+          <div style="color:var(--muted);font-size:0.78rem;margin-bottom:4px;">{p.cat} · {p.date}</div>
+          <h3>{p.title}</h3>
+          <p class="preview-desc">{p.desc}</p>
+        </div>
+      </a>
+    ))}
   </main>
 
   <footer>
     <div class="container">
-      <p>© 2026 Garage Tools DB. As an Amazon Associate I earn from qualifying purchases. Prices may vary.</p>
+      <p>© 2026 Garage Tools DB. As an Amazon Associate I earn from qualifying purchases.</p>
     </div>
   </footer>
 </body>

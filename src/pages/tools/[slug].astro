@@ -1,0 +1,211 @@
+---
+import { tools } from '../../lib/data.mjs';
+
+export async function getStaticPaths() {
+  return Object.keys(tools).map(slug => ({
+    params: { slug },
+    props: { category: tools[slug] }
+  }));
+}
+
+const { category } = Astro.props;
+const t = category;
+const top = t.products[0];
+const catSlugs = Object.keys(tools);
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Best {t.name} for DIY Mechanics — Garage Tools DB</title>
+  <meta name="description" content="{t.desc}" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="stylesheet" href="/styles/global.css" />
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="/" class="logo">🔧 GarageToolsDB</a>
+      <button class="burger" id="burger" onclick="toggleNav()">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="nav">
+        <a href="/">Home</a>
+        <a href="/posts">Blog</a>
+        <div class="nav-item" onclick="if(window.innerWidth<=640)this.classList.toggle('open')">
+          <span class="nav-trigger">Tools</span>
+          <div class="dropdown">
+            {Object.keys(tools).map(slug => (
+              <a href={`/tools/${tools[slug].slug}`}>{tools[slug].short}</a>
+            ))}
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="cat-header">
+      <div>
+        <h1>Best {t.name}</h1>
+        <p class="cat-desc">{t.desc}</p>
+      </div>
+      <div class="count">{t.products.length} tools compared</div>
+    </div>
+
+    <section class="top-pick-card">
+      <div class="top-pick-badge">Top Pick</div>
+      <div class="top-pick-content">
+        <img src={top.img} alt={top.name} class="top-pick-img" />
+        <div class="top-pick-info">
+          <h2>{top.name}</h2>
+          <div class="price">{top.price}</div>
+          <div class="stars">{"★".repeat(Math.round(parseFloat(top.rating)))} ({top.rating}) {top.reviews} reviews</div>
+          <p class="pros-text">{top.pros}</p>
+          <div class="specs-list">
+            {top.specs.map(s => <span class="spec-tag">{s}</span>)}
+          </div>
+          <a href={`https://www.amazon.com/s?k=${encodeURIComponent(top.name + ' ' + t.name)}&tag=tabletopharve-20`} target="_blank" rel="nofollow sponsored" class="btn">Check Price on Amazon</a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title" style="flex-direction:column;align-items:stretch;gap:12px;">
+        <h2>All {t.name} Compared</h2>
+        <div class="filter-bar">
+          <select id="sortSelect" onchange="sortProducts()">
+            <option value="featured">Sort: Featured</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+            <option value="rating">Rating: Highest</option>
+          </select>
+          <div class="badge-filters" id="badgeFilters">
+            <button class="filter-btn active" data-filter="all" onclick="filterProducts('all')">All</button>
+            <button class="filter-btn" data-filter="top" onclick="filterProducts('top')">Top Pick</button>
+            <button class="filter-btn" data-filter="best" onclick="filterProducts('best')">Best</button>
+            <button class="filter-btn" data-filter="value" onclick="filterProducts('value')">Value</button>
+            <button class="filter-btn" data-filter="budget" onclick="filterProducts('budget')">Budget</button>
+          </div>
+        </div>
+      </div>
+      <div class="product-grid" id="productGrid">
+        {t.products.map(p => (
+          <div class="product-card" data-badge={p.badge} data-price={parseFloat(p.price.replace(/[^0-9.]/g,''))} data-rating={parseFloat(p.rating)}>
+            <img src={p.img} alt={p.name} class="product-img" />
+            <div class="product-body">
+              <div class={`badge badge-${p.badge}`}>{p.label}</div>
+              <h3>{p.name}</h3>
+              <div class="price">{p.price}</div>
+              <div class="stars-small">{p.rating} ★ ({p.reviews})</div>
+              <div class="specs">
+                {p.specs.map(s => <span>{s}</span>)}
+              </div>
+              <p class="pros-small">{p.pros}</p>
+              <a href={`https://www.amazon.com/s?k=${encodeURIComponent(p.name + ' ' + t.name)}&tag=tabletopharve-20`} target="_blank" rel="nofollow sponsored" class="btn">Check Price</a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Garage Tools DB. As an Amazon Associate I earn from qualifying purchases. Prices may vary.</p>
+    </div>
+  </footer>
+</body>
+</html>
+
+<script is:inline>
+  let currentFilter = 'all';
+
+  function toggleNav() {
+    document.getElementById('nav').classList.toggle('open');
+    document.getElementById('burger').classList.toggle('open');
+  }
+
+  function filterProducts(badge) {
+    currentFilter = badge;
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    document.querySelector(`.filter-btn[data-filter="${badge}"]`).classList.add('active');
+    applySort();
+  }
+
+  function sortProducts() {
+    applySort();
+  }
+
+  function applySort() {
+    const grid = document.getElementById('productGrid');
+    const cards = Array.from(grid.querySelectorAll('.product-card'));
+    const sort = document.getElementById('sortSelect').value;
+
+    cards.forEach(c => {
+      const badge = c.getAttribute('data-badge');
+      c.style.display = (currentFilter === 'all' || badge === currentFilter) ? '' : 'none';
+    });
+
+    const visible = cards.filter(c => c.style.display !== 'none');
+    visible.sort((a, b) => {
+      if (sort === 'price-low') return parseFloat(a.dataset.price) - parseFloat(b.dataset.price);
+      if (sort === 'price-high') return parseFloat(b.dataset.price) - parseFloat(a.dataset.price);
+      if (sort === 'rating') return parseFloat(b.dataset.rating) - parseFloat(a.dataset.rating);
+      return 0;
+    });
+    visible.forEach(c => grid.appendChild(c));
+  }
+
+  document.addEventListener('click', function(e) {
+    const link = e.target.closest('a');
+    if (link && link.hostname !== location.hostname && link.hostname !== '') {
+      link.target = '_blank';
+      link.rel = 'noopener';
+    }
+  });
+</script>
+
+<style>
+  .top-pick-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 28px; margin: 24px 0 36px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .top-pick-badge { display: inline-block; background: var(--accent); color: white; padding: 4px 14px; border-radius: 4px; font-size: 0.78rem; font-weight: 600; margin-bottom: 16px; }
+  .top-pick-content { display: flex; gap: 28px; align-items: flex-start; }
+  .top-pick-img { width: 200px; height: 200px; object-fit: contain; flex-shrink: 0; background: #f1f3f5; border-radius: 8px; padding: 12px; }
+  .top-pick-info { flex: 1; }
+  .top-pick-info h2 { margin-bottom: 4px; font-size: 1.3rem; }
+  .top-pick-info .price { font-size: 1.5rem; color: var(--green); font-weight: 700; margin-bottom: 4px; }
+  .stars { color: var(--orange); font-size: 0.85rem; margin-bottom: 12px; }
+  .pros-text { color: var(--text); font-size: 0.95rem; line-height: 1.5; margin-bottom: 12px; }
+  .specs-list { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+  .spec-tag { background: #f1f3f5; color: var(--text); padding: 4px 10px; border-radius: 4px; font-size: 0.78rem; }
+  .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; margin-bottom: 16px; }
+  .product-card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; transition: box-shadow 0.2s; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .product-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+  .product-img { width: 100%; height: 180px; object-fit: contain; background: #f1f3f5; padding: 20px; border-bottom: 1px solid var(--border); }
+  .product-body { padding: 16px 20px 20px; }
+  .product-body h3 { font-size: 0.95rem; margin-bottom: 2px; color: var(--navy); }
+  .product-body .price { color: var(--green); font-weight: 700; font-size: 1.1rem; margin-bottom: 2px; }
+  .stars-small { color: var(--orange); font-size: 0.8rem; margin-bottom: 8px; }
+  .specs { display: grid; grid-template-columns: 1fr 1fr; gap: 3px 8px; font-size: 0.78rem; color: var(--muted); margin: 10px 0; }
+  .pros-small { color: var(--muted); font-size: 0.8rem; margin: 8px 0 14px; line-height: 1.4; padding-top: 8px; border-top: 1px solid var(--border-light); }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 4px; font-size: 0.7rem; font-weight: 600; margin-bottom: 8px; text-transform: uppercase; }
+  .badge-top { background: #fff3e0; color: #e65100; }
+  .badge-best { background: #e8f5e9; color: #2b8a3e; }
+  .badge-value { background: #fff8e1; color: #e67700; }
+  .badge-budget { background: #fce4ec; color: #c62828; }
+  .filter-bar { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .filter-bar select { background: var(--surface); color: var(--text); border: 1px solid var(--border); border-radius: 4px; padding: 8px 14px; font-size: 0.82rem; cursor: pointer; }
+  .filter-bar select:focus { outline: none; border-color: var(--accent); }
+  .badge-filters { display: flex; gap: 4px; flex-wrap: wrap; }
+  .filter-btn { background: var(--surface); color: var(--muted); border: 1px solid var(--border); border-radius: 4px; padding: 6px 14px; font-size: 0.78rem; cursor: pointer; transition: all 0.15s; }
+  .filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .filter-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
+  @media (max-width: 640px) {
+    .top-pick-content { flex-direction: column; }
+    .top-pick-img { width: 100%; height: 200px; }
+    .filter-bar { flex-direction: column; align-items: flex-start; }
+    .product-grid { grid-template-columns: 1fr; }
+  }
+</style>

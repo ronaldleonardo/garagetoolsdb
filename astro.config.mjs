@@ -13,5 +13,10 @@ export default defineConfig({
     port: 8082
   },
   devToolbar: { enabled: false },
-  allowedHosts: ['garagetoolsdb.com', 'www.garagetoolsdb.com']
+  allowedHosts: ['garagetoolsdb.com', 'www.garagetoolsdb.com'],
+  vite: {
+    server: {
+      allowedHosts: ['garagetoolsdb.com', 'www.garagetoolsdb.com']
+    }
+  }
 });
