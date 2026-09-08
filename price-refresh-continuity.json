@@ -1,0 +1,20 @@
+{
+  "cycle": 1,
+  "date": "2026-09-07",
+  "products_checked": [
+    "obd2-scanner/BlueDriver Pro OBD2",
+    "obd2-scanner/ANCEL AD310",
+    "obd2-scanner/Innova 5610",
+    "obd2-scanner/LAUNCH CRP123",
+    "obd2-scanner/FOXWELL NT301"
+  ],
+  "schedule": {
+    "day1_2026-09-07": "obd2-scanner (5 products)",
+    "day2_2026-09-08": "floor-jack (5 products)",
+    "day3_2026-09-09": "socket-set (5 products)",
+    "day4_2026-09-10": "torque-wrench (5 products)",
+    "day5_2026-09-11": "jump-starter (5 products)",
+    "day6_2026-09-12": "impact-wrench (5 products)",
+    "day7_2026-09-13": "ratchet-set (5 products)"
+  }
+}
