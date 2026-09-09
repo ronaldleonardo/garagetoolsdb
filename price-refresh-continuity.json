@@ -1,16 +1,20 @@
 {
   "cycle": 1,
-  "date": "2026-09-07",
+  "date": "2026-09-08",
   "products_checked": [
-    "obd2-scanner/BlueDriver Pro OBD2",
-    "obd2-scanner/ANCEL AD310",
-    "obd2-scanner/Innova 5610",
-    "obd2-scanner/LAUNCH CRP123",
-    "obd2-scanner/FOXWELL NT301"
+    "floor-jack/Daytona 3 Ton (B01N57DPH7)",
+    "floor-jack/Pittsburgh 1.5 Ton (B000COC6R4)",
+    "floor-jack/Torin Big Red 2 Ton (B00413C5VY)",
+    "floor-jack/JEGS 2 Ton Aluminum (B0012TQ3J8)",
+    "floor-jack/ARCAN 3 Ton (B0042AMGIMU)"
   ],
+  "issues": {
+    "dead_asins": ["B01N57DPH7", "B000COC6R4", "B00413C5VY", "B0012TQ3J8", "B0042AMGIMU"],
+    "note": "ALL 5 floor-jack ASINs are dead (Amazon 404). Product replacements needed, not just price updates."
+  },
   "schedule": {
     "day1_2026-09-07": "obd2-scanner (5 products)",
-    "day2_2026-09-08": "floor-jack (5 products)",
+    "day2_2026-09-08": "floor-jack (5 products) — ALL ASINs DEAD",
     "day3_2026-09-09": "socket-set (5 products)",
     "day4_2026-09-10": "torque-wrench (5 products)",
     "day5_2026-09-11": "jump-starter (5 products)",

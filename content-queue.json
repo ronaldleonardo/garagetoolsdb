@@ -1,6 +1,6 @@
 [
   {"tool": "obd2-scanner", "status": "pending", "products": ["OBD2 scanner", "code reader", "diagnostic tool"], "notes": "Comparison article. High affiliate value ($20-150)"},
-  {"tool": "socket-set", "status": "pending", "products": ["socket set", "ratchet set", "tool kit"], "notes": "Staple product. Best entry-level, mid-range, pro"},
+  {"tool": "socket-set", "status": "done", "products": ["socket set", "ratchet set", "tool kit"], "notes": "Staple product. Best entry-level, mid-range, pro. Published Sep 9, 2026."},
   {"tool": "floor-jack", "status": "pending", "products": ["floor jack", "jack stands", "low profile jack"], "notes": "Safety angle. Good long-tail potential"},
   {"tool": "torque-wrench", "status": "done", "products": ["torque wrench", "beam wrench", "click wrench"], "notes": "Precision tool. Good for Reddit distribution. Published Sep 7, 2026."},
   {"tool": "jump-starter", "status": "pending", "products": ["jump starter", "portable battery", "car battery charger"], "notes": "High demand, easy comparison"},
