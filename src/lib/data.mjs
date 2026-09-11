@@ -345,11 +345,11 @@ export const tools = {
     desc: "Remove stubborn bolts and lug nuts with ease. From cordless to pneumatic.",
     slug: "impact-wrench",
     products: [
-      { name: "Milwaukee M18 1/2-inch", price: "$249.00", rating: "4.7", reviews: "6,800", img: "/images/placeholder.jpg", asin: "B0B9PMBKVZ", specs: ["1/2-inch drive", "1400 ft-lbs", "Brushless", "Friction ring"], badge: "top", label: "Best Overall", pros: "The standard for cordless impacts." },
-      { name: "DEWALT DCF899B", price: "$219.00", rating: "4.6", reviews: "4,200", img: "/images/placeholder.jpg", asin: "B01H5W8P6E", specs: ["1/2-inch drive", "1200 ft-lbs", "Brushless", "3 speed"], badge: "value", label: "Best Value", pros: "Almost as powerful for $30 less." },
-      { name: "Astro Nano 1/2-inch", price: "$89.99", rating: "4.5", reviews: "3,100", img: "/images/placeholder.jpg", asin: "B07W6L8J3X", specs: ["1/2-inch drive", "450 ft-lbs", "Pneumatic", "Lightweight"], badge: "budget", label: "Best Budget", pros: "Tiny but mighty. Fits in tight spaces." },
-      { name: "Ryobi P262 1/2-inch", price: "$99.00", rating: "4.4", reviews: "5,500", img: "/images/placeholder.jpg", asin: "B07Q3B6Q1F", specs: ["1/2-inch drive", "600 ft-lbs", "Brushless", "LED light"], badge: "value", label: "Best for Ryobi Owners", pros: "Best impact in the Ryobi lineup." },
-      { name: "Ingersoll Rand 1/2-inch", price: "$159.99", rating: "4.6", reviews: "2,900", img: "/images/placeholder.jpg", asin: "B003NSH0EI", specs: ["1/2-inch drive", "780 ft-lbs", "Pneumatic", "Twin hammer"], badge: "best", label: "Pro Air Tool", pros: "Professional pneumatic. Runs forever." }
+      { name: "Milwaukee M18 1/2-inch", price: "$249.00", rating: "4.7", reviews: "6,800", img: "/images/milwaukee-impact.jpg", asin: "B0B9PMBKVZ", specs: ["1/2-inch drive", "1400 ft-lbs breakaway", "Brushless", "Friction ring anvil", "LED light", "6.4 lb"], badge: "top", label: "Best Overall", pros: "The standard for cordless impacts. Handles any bolt on any car." },
+      { name: "DEWALT DCF899B", price: "$219.00", rating: "4.6", reviews: "4,200", img: "/images/dewalt-impact.jpg", asin: "B01H5W8P6E", specs: ["1/2-inch drive", "1200 ft-lbs breakaway", "Brushless", "3 speed settings", "Hog ring anvil"], badge: "value", label: "Best Value", pros: "Almost as powerful for $30 less." },
+      { name: "Astro Nano 1/2-inch", price: "$89.99", rating: "4.5", reviews: "3,100", img: "/images/astro-nano.jpg", asin: "B07W6L8J3X", specs: ["1/2-inch drive", "450 ft-lbs", "Pneumatic", "Titanium hammer case", "3.5 lb"], badge: "budget", label: "Best Mini", pros: "Tiny but mighty. Fits in tight spaces." },
+      { name: "Ryobi P262 1/2-inch", price: "$99.00", rating: "4.4", reviews: "5,500", img: "/images/ryobi-impact.jpg", asin: "B07Q3B6Q1F", specs: ["1/2-inch drive", "600 ft-lbs", "Brushless", "LED spotlight", "Detent pin anvil", "5.2 lb"], badge: "value", label: "Best Budget", pros: "Best impact in the Ryobi lineup. Covers 80% of jobs." },
+      { name: "Ingersoll Rand 2235TiMAX", price: "$159.99", rating: "4.6", reviews: "2,900", img: "/images/ingersoll-impact.jpg", asin: "B00LV9Y1FE", specs: ["1/2-inch drive", "1350 ft-lbs", "Pneumatic", "Titanium housing", "4.5 lb"], badge: "best", label: "Pro Air Tool", pros: "Professional pneumatic. Runs forever." }
     ]
   },
   "ratchet-set": {

@@ -1,6 +1,6 @@
 {
   "cycle": 1,
-  "date": "2026-09-09",
+  "date": "2026-09-10",
   "products_checked": [
     "floor-jack/Daytona 3 Ton (B01N57DPH7)",
     "floor-jack/Pittsburgh 1.5 Ton (B000COC6R4)",
@@ -11,33 +11,32 @@
     "socket-set/DEWALT 102PC Set (B0BVMKKTZ1)",
     "socket-set/TEKTON 3/8 Drive (B07Q35CQ2V)",
     "socket-set/Sunex 2598 Master (B00A1W3G8E)",
-    "socket-set/QUINN 132PC Kit (B0B5WBHK4B)"
+    "socket-set/QUINN 132PC Kit (B0B5WBHK4B)",
+    "torque-wrench/TEKTON 1/2 Drive (B07C9B7Z8W)",
+    "torque-wrench/CDI 1503MFRPH (B0002SRH5G)",
+    "torque-wrench/Pittsburgh 1/2 (B0002NYWQ2)",
+    "torque-wrench/ACDelco ARM601 (B00LIKPBPU)",
+    "torque-wrench/Precision Instruments PREC3FR250 (B0006O3HZM)"
   ],
   "issues": {
-    "dead_asins": ["B01N57DPH7", "B000COC6R4", "B00413C5VY", "B0012TQ3J8", "B0042AMGIMU", "B000VDXSV6", "B0BVMKKTZ1", "B07Q35CQ2V", "B00A1W3G8E", "B0B5WBHK4B"],
-    "note": "Day2: ALL 5 floor-jack ASINs dead. Day3: ALL 5 socket-set ASINs dead (verified HTTP 404). 2 of 7 categories fully dead so far. Replacements found but all differ in specs/piece count/SAE-Metric coverage, so content review required, not price swap.",
+    "dead_asins": ["B01N57DPH7", "B000COC6R4", "B00413C5VY", "B0012TQ3J8", "B0042AMGIMU", "B000VDXSV6", "B0BVMKKTZ1", "B07Q35CQ2V", "B00A1W3G8E", "B0B5WBHK4B", "B07C9B7Z8W", "B0002NYWQ2", "B00LIKPBPU", "B0006O3HZM"],
+    "wrong_asin": ["B0002SRH5G (redirects to UView coolant tool, not CDI torque wrench)"],
+    "note": "Day4: 4 of 5 torque-wrench ASINs dead, 1 wrong product. 3 of 7 categories now fully dead (floor-jack, socket-set, torque-wrench). 15 of 35 products dead. All replacements found but every one differs in specs/features/price tier. Need full content review, not price swap.",
     "replacements": {
-      "socket-set": {
-        "GEARWRENCH 124PC": "B000V5CVO2 118pc $160.02 (or B0G6Q3Q1BP 232pc $164.46)",
-        "DEWALT 102PC": "B00U0P0GHM 108pc SAE-only $79.97 (old was SAE+Metric, coverage differs); B0DBW2VL4S 142pc SAE+Metric $109.00; B0767PMCD8 247pc $177.85",
-        "TEKTON 3/8 Drive": "B07QQ3L6BC SHD91102 12pc 8-19mm $30.60 (closest tier match); B07P6RJXJ9 46pc $115.00",
-        "Sunex 2598 Master": "B00MPQ88RY 2569 43pc $145.42; B00LNH7728 80pc $237.96 (258pc old — nothing close)",
-        "QUINN 132PC": "Harbor Freight brand, thin on Amazon: B07Y473M68 66pc $74.99 only real Quinn option"
-      },
-      "floor-jack": {
-        "Daytona 3 Ton": "B096L5HS5W DaytonGHD3T $219.99",
-        "Torin Big Red 2 Ton": "B002E1AYAY $54.99",
-        "JEGS 2 Ton Aluminum": "B078WHZ4B8 $235.00",
-        "ARCAN 3 Ton": "B07VL52X2S A20003 $173.00",
-        "Pittsburgh 1.5 Ton": "Harbor Freight only, not on Amazon"
+      "torque-wrench": {
+        "TEKTON 1/2 Drive": "B0FYH7PFZ2 TRQ52402 40-200 ft-lb $125.00 (old was 10-150 ft-lb $54.99, completely different model/range)",
+        "CDI 1503MFRPH": "B00461ATL4 same CDI 1503MFRPH ~$147-$151 (old was $118.75, same product higher price)",
+        "Pittsburgh 1/2": "B01LZRZXCE Pittsburgh Pro (old was basic Pittsburgh $19.99, HF brand still sold at harbor freight directly)",
+        "ACDelco ARM601": "B0081AQDIY ARM601-4 1/2\" digital ~$99.95 (old was ARM601 at $74.99, updated model number)",
+        "Precision Instruments PREC3FR250": "B002XMSFIM PREC3FR250F with flex head ~$203+ (old was $164.99, newer version with flex head)"
       }
     }
   },
   "schedule": {
     "day1_2026-09-07": "obd2-scanner (5 products) — UPDATED, 2 flagged (Innova 5610, LAUNCH CRP123 tier shift)",
-    "day2_2026-09-08": "floor-jack (5 products) — ALL ASINs DEAD",
-    "day3_2026-09-09": "socket-set (5 products) — ALL ASINs DEAD",
-    "day4_2026-09-10": "torque-wrench (5 products)",
+    "day2_2026-09-08": "floor-jack (5 products) — ALL 5 ASINs DEAD",
+    "day3_2026-09-09": "socket-set (5 products) — ALL 5 ASINs DEAD",
+    "day4_2026-09-10": "torque-wrench (5 products) — ALL DEAD (4 dead, 1 wrong product)",
     "day5_2026-09-11": "jump-starter (5 products)",
     "day6_2026-09-12": "impact-wrench (5 products)",
     "day7_2026-09-13": "ratchet-set (5 products)"
