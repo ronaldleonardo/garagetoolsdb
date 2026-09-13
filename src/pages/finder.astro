@@ -96,7 +96,7 @@ const toolData = JSON.stringify(Object.entries(tools).map(([slug, cat]) => ({
     count.textContent = items.length + ' tool' + (items.length > 1 ? 's' : '') + ' match';
     results.innerHTML = items.map(p => `
       <div style="display:flex;gap:12px;align-items:center;background:var(--surface);border:2px solid var(--border);border-radius:10px;padding:12px">
-        <img src="${p.img}" alt="${p.name}" style="width:60px;height:60px;object-fit:contain;border-radius:6px;background:#f8f9fa;flex-shrink:0" />
+        <img src="${p.images[0]}" alt="${p.name}" style="width:60px;height:60px;object-fit:contain;border-radius:6px;background:#f8f9fa;flex-shrink:0" />
         <div style="flex:1;min-width:0">
           <strong style="font-size:0.9rem">${p.name}</strong>
           <div style="font-size:0.78rem;color:var(--muted)">${p.catName} &middot; ★ ${p.rating}</div>

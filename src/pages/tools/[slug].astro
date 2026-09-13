@@ -12,6 +12,7 @@ const { category } = Astro.props;
 const t = category;
 const top = t.products[0];
 const catSlugs = Object.keys(tools);
+const gtdbProductData = JSON.stringify(t.products.map(p => ({name: p.name, images: p.images})));
 ---
 
 <!DOCTYPE html>
@@ -60,7 +61,8 @@ const catSlugs = Object.keys(tools);
     <section class="top-pick-card">
       <div class="top-pick-badge">Top Pick</div>
       <div class="top-pick-content">
-        <img src={top.img} alt={top.name} class="top-pick-img" />
+        {top.images.length > 1 && <div class="badge-count">{top.images.length} photos</div>}
+        <img src={top.images[0]} alt={top.name} class="top-pick-img" onclick="openLightbox(0)" style="cursor:pointer" />
         <div class="top-pick-info">
           <h2>{top.name}</h2>
           <div class="price">{top.price}</div>
@@ -94,9 +96,12 @@ const catSlugs = Object.keys(tools);
         </div>
       </div>
       <div class="product-grid" id="productGrid">
-        {t.products.map(p => (
+        {t.products.map((p, i) => (
           <div class="product-card" data-badge={p.badge} data-price={parseFloat(p.price.replace(/[^0-9.]/g,''))} data-rating={parseFloat(p.rating)}>
-            <img src={p.img} alt={p.name} class="product-img" />
+            <div style="position:relative">
+              <img src={p.images[0]} alt={p.name} class="product-img" onclick={`openLightbox(${i})`} style="cursor:pointer" />
+              {p.images.length > 1 && <div class="badge-count" style="position:absolute;bottom:8px;left:8px">{p.images.length} photos</div>}
+            </div>
             <div class="product-body">
               <div class={`badge badge-${p.badge}`}>{p.label}</div>
               <h3>{p.name}</h3>
@@ -119,12 +124,74 @@ const catSlugs = Object.keys(tools);
       <p>© 2026 Garage Tools DB. As an Amazon Associate I earn from qualifying purchases. Prices may vary.</p>
     </div>
   </footer>
+  
+  <!-- Lightbox Modal -->
+  <div id="lightbox" class="lightbox" onclick="if(event.target===this)closeLightbox()">
+    <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+    <button class="lightbox-prev" onclick="prevLightbox()">&lsaquo;</button>
+    <button class="lightbox-next" onclick="nextLightbox()">&rsaquo;</button>
+    <div class="lightbox-content">
+      <img id="lightbox-img" src="" alt="" />
+      <div class="lightbox-thumbs" id="lightboxThumbs"></div>
+    </div>
+  </div>
+<div id="gtdb-data" hidden data-products={gtdbProductData}></div>
 </body>
 </html>
 
 <script is:inline>
   let currentFilter = 'all';
+  const productData = JSON.parse(document.getElementById('gtdb-data').dataset.products);
+  const lightboxEl = document.getElementById('lightbox');
+  let touchStartX = 0;
+  
+  let lightboxIndex = 0;
+  let lightboxImages = [];
+  
+  function openLightbox(idx) {
+    const data = productData[parseInt(idx)];
+    if (!data || !data.images.length) return;
+    lightboxImages = data.images;
+    lightboxIndex = 0;
+    showLightbox();
+  }
+  
+  function showLightbox() {
+    document.getElementById('lightbox').classList.add('visible');
+    updateLightbox();
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('visible');
+  }
+  function prevLightbox() {
+    if (lightboxIndex > 0) { lightboxIndex--; updateLightbox(); }
+  }
+  function nextLightbox() {
+    if (lightboxIndex < lightboxImages.length - 1) { lightboxIndex++; updateLightbox(); }
+  }
+  function updateLightbox() {
+    const img = document.getElementById('lightbox-img');
+    img.src = lightboxImages[lightboxIndex];
+    const thumbs = document.getElementById('lightboxThumbs');
+    thumbs.innerHTML = lightboxImages.map((url, i) =>
+      `<img src="${url}" class="lightbox-thumb${i === lightboxIndex ? ' active' : ''}" onclick="lightboxIndex=${i};updateLightbox()" />`
+    ).join('');
+  }
+  document.addEventListener('keydown', function(e) {
+    if (!document.getElementById('lightbox').classList.contains('visible')) return;
+    if (e.key === 'ArrowRight') nextLightbox();
+    if (e.key === 'ArrowLeft') prevLightbox();
+    if (e.key === 'Escape') closeLightbox();
+  });
 
+  // Touch swipe
+  let touchStartX = 0;
+  document.getElementById('lightbox').addEventListener('touchstart', function(e) { touchStartX = e.changedTouches[0].screenX; }, {passive: true});
+  document.getElementById('lightbox').addEventListener('touchend', function(e) {
+    var diff = touchStartX - e.changedTouches[0].screenX;
+    if (Math.abs(diff) > 50) { diff > 0 ? nextLightbox() : prevLightbox(); }
+  }, {passive: true});
+  
   function toggleNav() {
     document.getElementById('nav').classList.toggle('open');
     document.getElementById('burger').classList.toggle('open');
@@ -210,4 +277,20 @@ const catSlugs = Object.keys(tools);
     .filter-bar { flex-direction: column; align-items: flex-start; }
     .product-grid { grid-template-columns: 1fr; }
   }
+  
+  /* Lightbox */
+  .lightbox { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.88); z-index: 999; justify-content: center; align-items: center; backdrop-filter: blur(6px); }
+  .lightbox.visible { display: flex; }
+  .lightbox-close { position: absolute; top: 16px; right: 20px; font-size: 2.2rem; color: white; background: none; border: none; cursor: pointer; z-index: 1000; }
+  .lightbox-close:hover { opacity: 0.7; }
+  .lightbox-prev, .lightbox-next { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.1); color: white; border: none; font-size: 2.5rem; padding: 8px 18px; cursor: pointer; border-radius: 8px; z-index: 10; }
+  .lightbox-prev:hover, .lightbox-next:hover { background: rgba(255,255,255,0.25); }
+  .lightbox-prev { left: 12px; }
+  .lightbox-next { right: 12px; }
+  .lightbox-content { display: flex; flex-direction: column; align-items: center; max-width: 85vw; max-height: 85vh; }
+  .lightbox-content img { max-width: 85vw; max-height: 60vh; object-fit: contain; border-radius: 8px; box-shadow: 0 8px 40px rgba(0,0,0,0.5); }
+  .lightbox-thumbs { display: flex; gap: 6px; margin-top: 12px; flex-wrap: wrap; justify-content: center; }
+  .lightbox-thumb { width: 48px; height: 48px; object-fit: cover; border-radius: 4px; border: 2px solid transparent; cursor: pointer; opacity: 0.4; transition: all 0.15s; }
+  .lightbox-thumb:hover, .lightbox-thumb.active { opacity: 1; border-color: var(--accent); }
+  .badge-count { position: absolute; bottom: 8px; left: 8px; background: rgba(0,0,0,0.7); color: white; font-size: 0.7rem; padding: 2px 8px; border-radius: 10px; z-index: 2; }
 </style>
