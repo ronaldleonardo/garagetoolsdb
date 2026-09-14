@@ -358,11 +358,12 @@ export const tools = {
     desc: "The tool you reach for most. From compact 1/4 drive to heavy-duty 1/2 inch.",
     slug: "ratchet-set",
     products: [
-      { name: "TEKTON 3/8-inch Flex Head", price: "$34.99", rating: "4.6", reviews: "4,800", images: ["/images/placeholder.jpg"], asin: "B07C9B7Z8W", specs: ["3/8-inch drive", "Flex head", "72 tooth", "Cr-V steel"], badge: "top", label: "Best Overall", pros: "Flex head at a price that beats everyone." },
-      { name: "Snap-on F80 3/8-inch", price: "$149.00", rating: "4.8", reviews: "2,400", images: ["/images/placeholder.jpg"], asin: "B0002SRJ5G", specs: ["3/8-inch drive", "Dual 80 tooth", "Chrome", "Quick release"], badge: "best", label: "Pro Choice", pros: "The gold standard. 80 tooth mechanism." },
-      { name: "GEARWRENCH 120XP", price: "$59.99", rating: "4.6", reviews: "3,600", images: ["/images/placeholder.jpg"], asin: "B000VDXSV6", specs: ["3/8-inch drive", "120 tooth", "Sealed head", "Chrome"], badge: "value", label: "Best Value", pros: "120 tooth ratchet. Best value." },
-      { name: "Pittsburgh 1/4-inch Set", price: "$12.99", rating: "4.4", reviews: "9,200", images: ["/images/placeholder.jpg"], asin: "B000COC6R4", specs: ["1/4-inch drive", "72 tooth", "Chrome", "Comfort grip"], badge: "budget", label: "Best Budget", pros: "Cheap enough to buy a backup." },
-      { name: "MAC Tools 1/2-inch", price: "$129.99", rating: "4.7", reviews: "1,100", images: ["/images/placeholder.jpg"], asin: "B0002SRJ5G", specs: ["1/2-inch drive", "Sealed head", "18-inch", "Quick release"], badge: "best", label: "Pro Flex Head", pros: "Long handle gives extra leverage." }
+      { name: "TEKTON 3/8-inch Flex Head", price: "$34.99", rating: "4.6", reviews: "4,800", images: ["/images/tekton-ratchet.jpg"], asin: "B07C9B7Z8W", specs: ["3/8-inch drive", "Flex head", "72 tooth", "Cr-V steel"], badge: "top", label: "Best Overall", pros: "Flex head at a price that beats everyone." },
+      { name: "Snap-on F80 3/8-inch", price: "$149.00", rating: "4.8", reviews: "2,400", images: ["/images/snapon-ratchet.jpg"], asin: "B0002SRJ5G", specs: ["3/8-inch drive", "Dual 80 tooth", "Chrome", "Quick release"], badge: "best", label: "Pro Choice", pros: "The gold standard. 80 tooth mechanism." },
+      { name: "GEARWRENCH 120XP", price: "$59.99", rating: "4.6", reviews: "3,600", images: ["/images/gearwrench-ratchet.jpg"], asin: "B000VDXSV6", specs: ["3/8-inch drive", "120 tooth", "Sealed head", "Chrome"], badge: "value", label: "Best Value", pros: "120 tooth ratchet. Best value." },
+      { name: "Pittsburgh 1/4-inch Set", price: "$12.99", rating: "4.4", reviews: "9,200", images: ["/images/pittsburgh-ratchet.jpg"], asin: "B000COC6R4", specs: ["1/4-inch drive", "72 tooth", "Chrome", "Comfort grip"], badge: "budget", label: "Best Budget", pros: "Cheap enough to buy a backup." },
+      { name: "MAC Tools 1/2-inch", price: "$129.99", rating: "4.7", reviews: "1,100", images: ["/images/mactools-ratchet.jpg"], asin: "B002IY936S", specs: ["1/2-inch drive", "Sealed head", "18-inch", "Quick release"], badge: "best", label: "Pro Flex Head", pros: "Long handle gives extra torque." },
+      { name: "Capri Tools 3/8-inch Flex Head", price: "$49.99", rating: "4.5", reviews: "2,300", images: ["/images/capri-ratchet.jpg"], asin: "B07D3M64K5", specs: ["3/8-inch drive", "Flex head", "90 tooth", "Cr-Mo steel", "Quick release"], badge: "value", label: "Mid-Range Flex", pros: "More teeth than TEKTON at a fair price upfront." }
     ]
   }
 };
