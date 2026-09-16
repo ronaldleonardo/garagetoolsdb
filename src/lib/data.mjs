@@ -365,5 +365,18 @@ export const tools = {
       { name: "MAC Tools 1/2-inch", price: "$129.99", rating: "4.7", reviews: "1,100", images: ["/images/mactools-ratchet.jpg"], asin: "B002IY936S", specs: ["1/2-inch drive", "Sealed head", "18-inch", "Quick release"], badge: "best", label: "Pro Flex Head", pros: "Long handle gives extra torque." },
       { name: "Capri Tools 3/8-inch Flex Head", price: "$49.99", rating: "4.5", reviews: "2,300", images: ["/images/capri-ratchet.jpg"], asin: "B07D3M64K5", specs: ["3/8-inch drive", "Flex head", "90 tooth", "Cr-Mo steel", "Quick release"], badge: "value", label: "Mid-Range Flex", pros: "More teeth than TEKTON at a fair price upfront." }
     ]
+  },
+  "breaker-bar": {
+    name: "Breaker Bars",
+    short: "Bars",
+    desc: "The leverage tool for seized bolts. Longer handle, solid steel, no moving parts. The tool you grab when a ratchet won't budge it.",
+    slug: "breaker-bar",
+    products: [
+      { name: "TEKTON 1/2-inch Breaker Bar", price: "$29.99", rating: "4.6", reviews: "7,300", images: ["/images/tekton-breaker.jpg"], asin: "B07C9B7Z8W", specs: ["1/2-inch drive", "25-inch length", "Cr-V steel", "Knurled grip", "Hole for leverage"], badge: "top", label: "Best Overall", pros: "Best balance of length, strength, and price for home mechanics." },
+      { name: "GEARWRENCH 1/2-inch", price: "$39.99", rating: "4.7", reviews: "4,200", images: ["/images/gearwrench-breaker.jpg"], asin: "B000VDXSV6", specs: ["1/2-inch drive", "18-inch length", "Cr-Mo steel", "Comfort grip", "USA made"], badge: "value", label: "Best Value", pros: "Premium steel and USA made at a price that surprises everyone." },
+      { name: "Capri Tools 3/8-inch", price: "$18.99", rating: "4.5", reviews: "5,600", images: ["/images/capri-breaker.jpg"], asin: "B07D3M64K5", specs: ["3/8-inch drive", "12-inch length", "Cr-V steel", "Chrome finish"], badge: "budget", label: "Best Budget", pros: "Cheap enough to keep one in every tool bag." },
+      { name: "Sunex 1/2-inch Impact Rated", price: "$34.99", rating: "4.6", reviews: "3,100", images: ["/images/sunex-breaker.jpg"], asin: "B00A1W3G8E", specs: ["1/2-inch drive", "24-inch length", "Cr-Mo steel", "Impact rated", "Pin retention"], badge: "best", label: "Tough Pick", pros: "Impact rated Cr-Mo steel. This thing does not bend." },
+      { name: "SK Hand Tool 3/4-inch", price: "$89.99", rating: "4.8", reviews: "1,200", images: ["/images/sk-breaker.jpg"], asin: "B0002NYWQ2", specs: ["3/4-inch drive", "36-inch length", "Cr-Mo steel", "Made in USA", "Lifetime warranty"], badge: "best", label: "Heavy Duty", pros: "For the massive bolts you hope to never encounter." }
+    ]
   }
 };
