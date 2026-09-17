@@ -19,7 +19,7 @@ export const tools = {
       },
       {
         name: "ANCEL AD310",
-        price: "$23.99",
+        price: "$29.99",
         rating: "4.5",
         reviews: "28,000",
         images: ["/images/ancel-ad310.jpg"],
@@ -43,7 +43,7 @@ export const tools = {
       },
       {
         name: "LAUNCH CRP123",
-        price: "$124.00",
+        price: "$106.98",
         rating: "4.5",
         reviews: "5,200",
         images: ["/images/launch-crp123.jpg"],
