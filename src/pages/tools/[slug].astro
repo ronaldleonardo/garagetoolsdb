@@ -23,8 +23,9 @@ const gtdbProductData = JSON.stringify(t.products.map(p => ({name: p.name, image
   <title>Best {t.name} for DIY Mechanics | Garage Tools DB</title>
   <meta name="description" content="{t.desc}" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="stylesheet" href="/styles/global.css" />
-  <!-- Analytics -->
+    <link rel="stylesheet" href="/styles/global.css">
+    <link rel="canonical" href={`https://garagetoolsdb.com${Astro.url.pathname.replace(/\.html$/, '')}`} />
+      <!-- Analytics -->
   <script>(function(){var p=window.location.pathname;var r=document.referrer||'';(new Image()).src='http://localhost:8085/track?s=garagetoolsdb&p='+encodeURIComponent(p)+'&r='+encodeURIComponent(r)})();</script>
 </head>
 <body>

@@ -1,44 +1,39 @@
 {
   "cycle": 2,
-  "date": "2026-09-16",
+  "date": "2026-09-17",
   "products_checked": [
-    "obd2-scanner/BlueDriver Pro OBD2 (B0GL9RL3XS)",
-    "obd2-scanner/ANCEL AD310 (B01G5EA74I)",
-    "obd2-scanner/Innova 5610 (B07Z481NJM)",
-    "obd2-scanner/LAUNCH CRP123 (B073GW5MTS)",
-    "obd2-scanner/FOXWELL NT301 (B00UJV3E12)"
+    "floor-jack/SATA 3 Ton (B0FVF7KT56)",
+    "floor-jack/AV Steel 2.5 Ton (B0D2J99MFG)",
+    "floor-jack/Maxority 3 Ton (B0DP7QCCMX)",
+    "floor-jack/Jack Boss 3 Ton (B099JPWCPC)",
+    "floor-jack/AV Steel 3 Ton (B0DJMM1Q7S)"
   ],
   "issues": {
-    "dead_asins": [],
-    "impact_wrench_concerns": {
-      "Milwaukee M18": "B0B9PMBKVZ not found in SerpAPI search — ASIN may be dead",
-      "DEWALT DCF899B": "B01H5W8P6E not found in SerpAPI search — ASIN may be dead",
-      "Astro Nano 1/2-inch": "B07W6L8J3X not found — old model replaced by ONYX 1822 (B00VTQIURE, $111.99)",
-      "Ryobi P262": "B07Q3B6Q1F not found — Ryobi rebranded to ONEAND HP",
-      "Ingersoll Rand 2235TiMAX": "B00LV9Y1FE found at $294.99 (data.mjs: $159.99). Variant B08LK12GCS at $174.49"
+    "dead_asins_verified": {
+      "B01N57DPH7": "Daytona 3 Ton - SerpAPI empty",
+      "B000COC6R4": "Pittsburgh 1.5 Ton - SerpAPI empty (Harbor Freight brand, not Amazon)",
+      "B00413C5VY": "Torin Big Red 2 Ton - SerpAPI empty",
+      "B0012TQ3J8": "JEGS 2 Ton Aluminum - SerpAPI empty",
+      "B0042AMGIMU": "ARCAN 3 Ton - SerpAPI empty"
     },
-    "prices_updated": [
-      "ANCEL AD310: $23.99 -> $29.99 (+$6.00)",
-      "LAUNCH CRP123: $124.00 -> $106.98 (-$17.02)"
+    "products_replaced": [
+      "Daytona 3 Ton -> SATA 3 Ton ($159.99 -> $165.99)",
+      "Pittsburgh 1.5 Ton -> AV Steel 2.5 Ton ($64.99 -> $62.99)",
+      "Torin Big Red 2 Ton -> Maxority 3 Ton ($89.99 -> $137.99)",
+      "JEGS 2 Ton Aluminum -> Jack Boss 3 Ton ($139.99 -> $169.99)",
+      "ARCAN 3 Ton -> AV Steel 3 Ton ($115.99 -> $169.99)"
     ],
-    "prices_unchanged": [
-      "BlueDriver Pro OBD2: $94.95 (matching)",
-      "Innova 5610: $349.99 (matching)",
-      "FOXWELL NT301: $55.95 (matching)"
-    ],
-    "overhaul_needed": {
-      "floor-jack": "All 5 ASINs dead — need replacement products",
-      "socket-set": "All 5 ASINs dead — need replacement products",
-      "torque-wrench": "All 5 ASINs dead — need replacement products (CDI ASIN redirects to coolant tool)",
-      "jump-starter": "4 of 5 ASINs dead, 1 OOS — partial replacements identified in cycle 1 notes",
-      "ratchet-set": "All 6 ASINs dead or duplicated — 4 duplicate ASINs from other categories need unique correct ASINs",
-      "breaker-bar": "5 products never checked — all reuse dead ASINs from other categories",
-      "impact-wrench": "0 of 5 ASINs confirmed alive — Milwaukee, DEWALT, Astro, Ryobi all dead/dead-letter, Ingersoll found at different price"
-    },
-    "note": "Cycle 2 started Sep 16. Checked 5 OBD2 scanners. 2 prices updated. Impact wrench products appear mostly dead now too—need full content overhaul before continuing Cycle 2."
+    "overhaul_still_needed": {
+      "socket-set": "All 5 ASINs dead - needs replacement",
+      "torque-wrench": "All 5 ASINs dead - needs replacement",
+      "jump-starter": "4 of 5 ASINs dead",
+      "impact-wrench": "0 of 5 ASINs confirmed alive",
+      "ratchet-set": "All 6 ASINs dead or duplicated",
+      "breaker-bar": "5 products never checked - all reuse dead ASINs"
+    }
   },
   "schedule": {
-    "day1_2026-09-16": "obd2-scanner (5 products) — 2 updated (ANCEL +$6, LAUNCH -$17), 3 unchanged"
+    "day2_2026-09-17": "floor-jack (5 products) — all 5 replaced with verified Amazon products, photos need creating"
   },
   "cycle_complete": false
 }

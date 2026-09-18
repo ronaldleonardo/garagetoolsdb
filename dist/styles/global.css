@@ -297,6 +297,40 @@ h3 { font-size: 1.05rem; margin-bottom: 6px; }
 
 footer { background: var(--navy); color: rgba(255,255,255,0.6); padding: 15px 0; border-top: 1px solid var(--border); font-size: 0.83rem; text-align: center; }
 
+/* ── Tables in Content ── */
+main.container figure { margin: 1.5rem 0; max-width: 100%; }
+main.container table, .post table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+main.container thead th, .post thead th {
+  background: var(--accent) !important;
+  color: white !important;
+  font-weight: 600;
+  padding: 0.65rem 0.85rem !important;
+  text-align: left;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+main.container thead th:first-child, .post thead th:first-child { border-radius: 6px 0 0 0; }
+main.container thead th:last-child, .post thead th:last-child { border-radius: 0 6px 0 0; }
+main.container tbody td, .post tbody td {
+  padding: 0.65rem 0.85rem !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+main.container tbody tr:nth-child(even) td, .post tbody tr:nth-child(even) td { background: #f8f9fa !important; }
+main.container tbody td:first-child, .post tbody td:first-child { font-weight: 600 !important; }
+main.container tbody tr:last-child td, .post tbody tr:last-child td {
+  font-weight: 700 !important;
+  background: #e8f5e9 !important;
+  border-bottom: 2px solid var(--accent) !important;
+  color: #1b5e20 !important;
+}
+main.container tbody tr:hover td, .post tbody tr:hover td { background: #e9ecef !important; }
+
 @media (max-width: 640px) {
   header .container { flex-direction: row; }
   nav { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: white; padding: 12px; border-bottom: 1px solid var(--border); gap: 2px; box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
