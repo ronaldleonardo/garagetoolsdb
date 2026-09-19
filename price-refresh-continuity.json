@@ -1,6 +1,6 @@
 {
   "cycle": 2,
-  "date": "2026-09-17",
+  "date": "2026-09-19",
   "products_checked": [
     "floor-jack/SATA 3 Ton (B0FVF7KT56)",
     "floor-jack/AV Steel 2.5 Ton (B0D2J99MFG)",
@@ -9,6 +9,7 @@
     "floor-jack/AV Steel 3 Ton (B0DJMM1Q7S)"
   ],
   "issues": {
+    "article_job_clobber": "GTDB Article Pipeline (b3cabbb, Sep 18) reverted floor-jack to dead ASINs (Daytona/Torin/ARCAN/JEGS/Pittsburgh). Restored verified products on Sep 19. INVESTIGATE: article job must not overwrite price-refresh data.mjs edits.",
     "dead_asins_verified": {
       "B01N57DPH7": "Daytona 3 Ton - SerpAPI empty",
       "B000COC6R4": "Pittsburgh 1.5 Ton - SerpAPI empty (Harbor Freight brand, not Amazon)",
@@ -23,6 +24,8 @@
       "JEGS 2 Ton Aluminum -> Jack Boss 3 Ton ($139.99 -> $169.99)",
       "ARCAN 3 Ton -> AV Steel 3 Ton ($115.99 -> $169.99)"
     ],
+    "images_created": "sata-jack.jpg, avsteel-jack.jpg, maxority-jack.jpg, jackboss-jack.jpg, avsteel-3ton-jack.jpg (AI-gen, AI placeholders)",
+    "serpapi_rate_limited": "SerpAPI free tier 429 on Sep 19; floor-jack prices carried from verified Sep 17 run",
     "overhaul_still_needed": {
       "socket-set": "All 5 ASINs dead - needs replacement",
       "torque-wrench": "All 5 ASINs dead - needs replacement",
@@ -33,7 +36,7 @@
     }
   },
   "schedule": {
-    "day2_2026-09-17": "floor-jack (5 products) — all 5 replaced with verified Amazon products, photos need creating"
+    "next_day_2026-09-20": "socket-set (5 products) - all ASINs dead, needs replacement via SerpAPI"
   },
   "cycle_complete": false
 }
