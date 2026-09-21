@@ -1,42 +1,29 @@
 {
   "cycle": 2,
-  "date": "2026-09-19",
+  "date": "2026-09-20",
   "products_checked": [
-    "floor-jack/SATA 3 Ton (B0FVF7KT56)",
-    "floor-jack/AV Steel 2.5 Ton (B0D2J99MFG)",
-    "floor-jack/Maxority 3 Ton (B0DP7QCCMX)",
-    "floor-jack/Jack Boss 3 Ton (B099JPWCPC)",
-    "floor-jack/AV Steel 3 Ton (B0DJMM1Q7S)"
+    "socket-set/GEARWRENCH 124PC (B000VDXSV6) DEAD",
+    "socket-set/DEWALT 102PC Set (B0BVMKKTZ1) DEAD",
+    "socket-set/TEKTON 3/8 Drive (B07Q35CQ2V) DEAD",
+    "socket-set/Sunex 2598 Master (B00A1W3G8E) DEAD",
+    "socket-set/QUINN 132PC Kit (B0B5WBHK4B) DEAD"
   ],
   "issues": {
-    "article_job_clobber": "GTDB Article Pipeline (b3cabbb, Sep 18) reverted floor-jack to dead ASINs (Daytona/Torin/ARCAN/JEGS/Pittsburgh). Restored verified products on Sep 19. INVESTIGATE: article job must not overwrite price-refresh data.mjs edits.",
-    "dead_asins_verified": {
-      "B01N57DPH7": "Daytona 3 Ton - SerpAPI empty",
-      "B000COC6R4": "Pittsburgh 1.5 Ton - SerpAPI empty (Harbor Freight brand, not Amazon)",
-      "B00413C5VY": "Torin Big Red 2 Ton - SerpAPI empty",
-      "B0012TQ3J8": "JEGS 2 Ton Aluminum - SerpAPI empty",
-      "B0042AMGIMU": "ARCAN 3 Ton - SerpAPI empty"
+    "serpapi_down": "SerpAPI free tier 429 on all 5 queries 2026-09-20 (exhausted Sep-2026). Cannot use task's primary method.",
+    "scraper_fixed": "Workaround built: headless chromium on :9222 + CDP scripts (found by installing websocket-client into /root/.gscvenv). Amazon serves USD after injecting lc-main=en_US + i18n-prefs=USD cookies and setting delivery to ZIP 10118. cdp_search.py / cdp_products.py confirm live products + prices.",
+    "socket_set_all_dead_CONFIRMED": "All 5 socket-set ASINs return Amazon Page Not Found via live browser. NOT price-refreshable - requires product replacement.",
+    "replacement_candidates_found": {
+      "GEARWRENCH (Best Overall slot)": "B009PJPH28 = GEARWRENCH 56 Pc 3/8 120XP SAE/Metric Mechanics Set 80550P @ $90.97; or B0G6Q3Q1BP = 232pc GW72LLCBMTS @ $164.46",
+      "DEWALT (Best Value slot)": "B01BHJE0J4 = DEWALT 192pc DWMT75049 @ $164.99; or B00U0P0GHM = 108pc DWMT73801 @ $79.97",
+      "TEKTON (Best Budget slot)": "B07P6RJXJ9 = TEKTON 46pc 3/8 SKT15301 @ $115.00; B0CJK26SQC = 38pc hex SHB91316 @ $105.00",
+      "Sunex (Pro Choice slot)": "B00LNH7728 = Sunex 80pc 3/8 master impact @ $237.96 (no live 2598/258pc found)",
+      "QUINN (Good Starter slot)": "QUINN is Harbor Freight store-brand - NOT sold on Amazon, no live ASIN possible. Needs brand swap (budget all-metric set, e.g. DEWALT B00WLVV4O2 25pc @ $42.99)"
     },
-    "products_replaced": [
-      "Daytona 3 Ton -> SATA 3 Ton ($159.99 -> $165.99)",
-      "Pittsburgh 1.5 Ton -> AV Steel 2.5 Ton ($64.99 -> $62.99)",
-      "Torin Big Red 2 Ton -> Maxority 3 Ton ($89.99 -> $137.99)",
-      "JEGS 2 Ton Aluminum -> Jack Boss 3 Ton ($139.99 -> $169.99)",
-      "ARCAN 3 Ton -> AV Steel 3 Ton ($115.99 -> $169.99)"
-    ],
-    "images_created": "sata-jack.jpg, avsteel-jack.jpg, maxority-jack.jpg, jackboss-jack.jpg, avsteel-3ton-jack.jpg (AI-gen, AI placeholders)",
-    "serpapi_rate_limited": "SerpAPI free tier 429 on Sep 19; floor-jack prices carried from verified Sep 17 run",
-    "overhaul_still_needed": {
-      "socket-set": "All 5 ASINs dead - needs replacement",
-      "torque-wrench": "All 5 ASINs dead - needs replacement",
-      "jump-starter": "4 of 5 ASINs dead",
-      "impact-wrench": "0 of 5 ASINs confirmed alive",
-      "ratchet-set": "All 6 ASINs dead or duplicated",
-      "breaker-bar": "5 products never checked - all reuse dead ASINs"
-    }
+    "no_replacement_applied": "Did NOT rewrite socket-set products this run. Replacing 5 products (names/specs/pros/badges) is a content overhaul, not a price refresh - belongs to GTDB Article Pipeline (Mon/Wed/Fri), which runs AFTER price cron and would clobber edits. Avoid conflicting.",
+    "article_job_clobber": "Known issue (Sep 18): GTDB Article Pipeline reverted price-refresh data.mjs edits. Replaced products must be coordinated with article pipeline or data.mjs gets reverted."
   },
   "schedule": {
-    "next_day_2026-09-20": "socket-set (5 products) - all ASINs dead, needs replacement via SerpAPI"
+    "next_day_2026-09-21": "toggle-wrench or torque-wrench (5 products) - verify live status via CDP. Avoid socket-set until a replacement overhaul is scheduled."
   },
   "cycle_complete": false
 }
