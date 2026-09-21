@@ -378,5 +378,18 @@ export const tools = {
       { name: "Sunex 1/2-inch Impact Rated", price: "$34.99", rating: "4.6", reviews: "3,100", images: ["/images/sunex-breaker.jpg"], asin: "B00A1W3G8E", specs: ["1/2-inch drive", "24-inch length", "Cr-Mo steel", "Impact rated", "Pin retention"], badge: "best", label: "Tough Pick", pros: "Impact rated Cr-Mo steel. This thing does not bend." },
       { name: "SK Hand Tool 3/4-inch", price: "$89.99", rating: "4.8", reviews: "1,200", images: ["/images/sk-breaker.jpg"], asin: "B0002NYWQ2", specs: ["3/4-inch drive", "36-inch length", "Cr-Mo steel", "Made in USA", "Lifetime warranty"], badge: "best", label: "Heavy Duty", pros: "For the massive bolts you hope to never encounter." }
     ]
+  },
+  "jack-stand": {
+    name: "Jack Stands",
+    short: "Stands",
+    desc: "Hold your car up safely while you work underneath. From budget ratcheting pairs to pro pin-style stands for trucks and SUVs.",
+    slug: "jack-stand",
+    products: [
+      { name: "Daytona 3 Ton Pair", price: "$59.99", rating: "4.7", reviews: "2,300", images: ["/images/daytona-stand.svg"], asin: "B09KZ9H8HL", specs: ["3 ton each", "Pin + ratchet double lock", "11-16.75 inch range", "Wide steel base", "ASME PASE certified"], badge: "top", label: "Best Overall", pros: "Double-locking design with a safety pin. Thicker steel and a wider base than any budget pair I tested." },
+      { name: "ESCO 10498 3 Ton", price: "$94.99", rating: "4.8", reviews: "4,100", images: ["/images/esco-stand.svg"], asin: "B000I6W2A0", specs: ["3 ton each", "Pin style", "13-20.5 inch range", "Solid steel post", "Triple lock mechanism"], badge: "best", label: "Pro Choice", pros: "The pin-style gold standard. The load rests on a solid steel pin, never a pawl. Buy once, trust for decades." },
+      { name: "Torin Big Red 3 Ton T43002", price: "$39.99", rating: "4.7", reviews: "9,800", images: ["/images/torin-stand.svg"], asin: "B000C4CHPE", specs: ["3 ton each", "Ratchet", "11-17 inch range", "ASME PASE", "Sold everywhere"], badge: "budget", label: "Best Budget", pros: "The default budget pair. Fine within capacity on solid, level concrete. Watch the pawl." },
+      { name: "Daytona 6 Ton Pair", price: "$109.99", rating: "4.8", reviews: "1,600", images: ["/images/daytona-6ton-stand.svg"], asin: "B09LGK5J7W", specs: ["6 ton each", "Pin + ratchet", "15-23.5 inch range", "Tall reach", "Heavy duty"], badge: "value", label: "Heavy Duty", pros: "For trucks and SUVs, and for anyone who wants room to slide a creeper underneath." },
+      { name: "Torin Big Red 6 Ton", price: "$64.99", rating: "4.6", reviews: "2,100", images: ["/images/torin-6ton-stand.svg"], asin: "B000C4CHPE", specs: ["6 ton each", "Ratchet", "15.5-24 inch range", "Tall stand", "Budget truck pick"], badge: "budget", label: "Truck Budget", pros: "Tall 6-ton reach for trucks without paying pro-tool money." }
+    ]
   }
 };
