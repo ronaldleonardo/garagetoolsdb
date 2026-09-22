@@ -1,32 +1,24 @@
 {
   "cycle": 2,
-  "date": "2026-09-21",
+  "date": "2026-09-22",
   "products_checked": [
-    "jack-stand/Daytona 3 Ton Pair (B09KZ9H8HL) DEAD",
-    "jack-stand/ESCO 10498 3 Ton (B000I6W2A0) DEAD",
-    "jack-stand/Torin Big Red 3 Ton T43002 (B000C4CHPE) DEAD",
-    "jack-stand/Daytona 6 Ton Pair (B09LGK5J7W) DEAD",
-    "jack-stand/Torin Big Red 6 Ton (B000C4CHPE dup) DEAD"
+    "breaker-bar/TEKTON 1/2 B07C9B7Z8W DEAD",
+    "breaker-bar/GEARWRENCH 1/2 B000VDXSV6 DEAD",
+    "breaker-bar/Capri Tools 3/8 B07D3M64K5 DEAD",
+    "breaker-bar/Sunex 1/2 B00A1W3G8E DEAD",
+    "breaker-bar/SK Hand Tool 3/4 B0002NYWQ2 DEAD"
   ],
   "issues": {
-    "serpapi_down": "SerpAPI free tier still 429 (exhausted Sep-2026). CDP workaround used.",
-    "chromium_flag": "Chromium on :9222 NEEDS --remote-allow-origins=* to accept websocket + WS handshake 403; else cdp scripts fail. Relaunch command confirmed working.",
-    "jack_stand_all_dead_CONFIRMED": "All 5 jack-stand ASINs return Amazon Page Not Found via live browser. Daytona/Torin are Harbor Freight store-brand pairs not sold on Amazon. Catch: 2 Torin ASINs (B000C4CHPE) duplicated across 3 products. NOT price-refreshable - requires replacement.",
-    "impact_wrench_partial": "Re-verified 5 impact-wrench: 4 DEAD (Milwaukee B0B9PMBKVZ, DEWALT DCF899B B01H5W8P6E, Astro Nano B07W6L8J3X, Ryobi P262 B07Q3B6Q1F). Only Ingersoll Rand 2235TiMAX B00LV9Y1FE live @ $293.85 (DB lists $159.99 - price GREW >10%; NOT auto-applied this run pending confirmation of buybox, likely 3rd-party/seasonal read).",
-    "obd2_CLEAN": "All 5 OBD2 ASINs live and correctly titled; prices match DB (ANCEL $29.99, LAUNCH $106.98). NO drift. This is the only fully-clean category.",
-    "replacement_candidates_jack_stand": {
-      "ESCO 10498 (Pro Choice slot)": "B01EAW6E8A = ESCO (title 'ESCO', ASIN resolves) - verify product page for exact 10498 SKU/price",
-      "Torin Big Red T43002 (Best Budget slot)": "B00026Z3E0 = BIG RED T43002A Torin Double Locking 3 Ton @ $32.39 (LIVE, exact product)",
-      "Torin Double-Locking alt": "B0B5M23BRV = Big RED Torin 3 Ton Double Locking Pins pair @ $44.84",
-      "Daytona-style double-lock (Best Overall slot)": "B09TPXRHF8 = Pro-LifT PL3300 3 Ton double pins pair @ $39.74; or Jack Boss B0FDK13BM5 @ $77.99",
-      "6-ton heavy slot": "B09KN15PB8 = BESTOOL 4 Ton 2-pack @ $119.97 (closest live heavy pair found)"
-    },
-    "no_replacement_applied": "Did NOT rewrite jack-stand or impact-wrench this run. Replacing products (names/specs/pros/badges) is a content overhaul for the GTDB Article Pipeline (Mon/Wed/Fri), not a price refresh. Article job runs AFTER price cron and reverts data.mjs edits.",
-    "article_job_clobber": "Acknowledged: allocating dead-product replacement to the article pipeline is the only durable path. Price cron should keep verifying only."
+    "serpapi_down": "SerpAPI free tier still 429 (exhausted Sep-2026). CDP/browser path used.",
+    "control_test_pass": "Browser verified against known-live OBD2 products (ANCEL + LAUNCH load with correct prices). Confirms the 5 breaker-bar 'Page Not Found' results are GENUINE dead ASINs, not bot-wall artifacts.",
+    "breaker_bar_all_dead_CONFIRMED": "All 5 breaker-bar ASINs return Amazon Page Not Found via live browser (realistic Win Chrome UA, click-through bot wall). B000VDXSV6/B07C9B7Z8W/B00A1W3G8E reused from socket/ratchet sets. NOT price-refreshable - replacement is article-pipeline work.",
+    "ancel_price_drop_APPLIED": "Cross-category incidental: ANCEL AD310 (B01G5EA74I) verified stable at $23.99 across 3 live reads (DB was $29.99, -20%). APPLIED to data.mjs, rebuilt, restarted, confirmed live on /tools/obd2-scanner.html. <-20% >10% rule.",
+    "no_breaker_replacement_applied": "Did NOT rewrite breaker-bar products. Dead-product replacement is content overhaul for GTDB Article Pipeline (runs after price cron and reverts data.mjs edits). Price cron verifies only."
   },
   "schedule": {
-    "next_day_2026-09-22": "breaker-bar (5 products) - verify live status via CDP. Expect dead ASINs (many re-used from socket/torque/ratchet). No price refresh possible if dead.",
-    "live_categories_only": "Only OBD2 (all 5) is confirmed fully clean + priced. Impact-wrench needs 4 replacements. All replacement work belongs to article pipeline."
+    "next_day_2026-09-23": "socket-set (5 products). Expect dead ASINs (B000VDXSV6 GEARWRENCH, B00A1W3G8E Sunex, B07C9B7Z8W TEKTON already confirmed dead this/earlier runs). Verify live status only.",
+    "known_dead_cross_ref": "Dead ASINs confirmed so far in cycle 2: all jack-stands, 4/5 impact-wrench, all breaker-bars, GEARWRENCH B000VDXSV6, TEKTON B07C9B7Z8W, Sunex B00A1W3G8E.",
+    "live_categories_only": "Only obd2-scanner (all 5) fully clean + priced. ANCEL price updated this run; LAUNCH $106.98 unchanged."
   },
   "cycle_complete": false
 }

@@ -19,7 +19,7 @@ export const tools = {
       },
       {
         name: "ANCEL AD310",
-        price: "$29.99",
+        price: "$23.99",
         rating: "4.5",
         reviews: "28,000",
         images: ["/images/ancel-ad310.jpg"],
