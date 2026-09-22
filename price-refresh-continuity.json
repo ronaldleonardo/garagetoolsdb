@@ -1,29 +1,32 @@
 {
   "cycle": 2,
-  "date": "2026-09-20",
+  "date": "2026-09-21",
   "products_checked": [
-    "socket-set/GEARWRENCH 124PC (B000VDXSV6) DEAD",
-    "socket-set/DEWALT 102PC Set (B0BVMKKTZ1) DEAD",
-    "socket-set/TEKTON 3/8 Drive (B07Q35CQ2V) DEAD",
-    "socket-set/Sunex 2598 Master (B00A1W3G8E) DEAD",
-    "socket-set/QUINN 132PC Kit (B0B5WBHK4B) DEAD"
+    "jack-stand/Daytona 3 Ton Pair (B09KZ9H8HL) DEAD",
+    "jack-stand/ESCO 10498 3 Ton (B000I6W2A0) DEAD",
+    "jack-stand/Torin Big Red 3 Ton T43002 (B000C4CHPE) DEAD",
+    "jack-stand/Daytona 6 Ton Pair (B09LGK5J7W) DEAD",
+    "jack-stand/Torin Big Red 6 Ton (B000C4CHPE dup) DEAD"
   ],
   "issues": {
-    "serpapi_down": "SerpAPI free tier 429 on all 5 queries 2026-09-20 (exhausted Sep-2026). Cannot use task's primary method.",
-    "scraper_fixed": "Workaround built: headless chromium on :9222 + CDP scripts (found by installing websocket-client into /root/.gscvenv). Amazon serves USD after injecting lc-main=en_US + i18n-prefs=USD cookies and setting delivery to ZIP 10118. cdp_search.py / cdp_products.py confirm live products + prices.",
-    "socket_set_all_dead_CONFIRMED": "All 5 socket-set ASINs return Amazon Page Not Found via live browser. NOT price-refreshable - requires product replacement.",
-    "replacement_candidates_found": {
-      "GEARWRENCH (Best Overall slot)": "B009PJPH28 = GEARWRENCH 56 Pc 3/8 120XP SAE/Metric Mechanics Set 80550P @ $90.97; or B0G6Q3Q1BP = 232pc GW72LLCBMTS @ $164.46",
-      "DEWALT (Best Value slot)": "B01BHJE0J4 = DEWALT 192pc DWMT75049 @ $164.99; or B00U0P0GHM = 108pc DWMT73801 @ $79.97",
-      "TEKTON (Best Budget slot)": "B07P6RJXJ9 = TEKTON 46pc 3/8 SKT15301 @ $115.00; B0CJK26SQC = 38pc hex SHB91316 @ $105.00",
-      "Sunex (Pro Choice slot)": "B00LNH7728 = Sunex 80pc 3/8 master impact @ $237.96 (no live 2598/258pc found)",
-      "QUINN (Good Starter slot)": "QUINN is Harbor Freight store-brand - NOT sold on Amazon, no live ASIN possible. Needs brand swap (budget all-metric set, e.g. DEWALT B00WLVV4O2 25pc @ $42.99)"
+    "serpapi_down": "SerpAPI free tier still 429 (exhausted Sep-2026). CDP workaround used.",
+    "chromium_flag": "Chromium on :9222 NEEDS --remote-allow-origins=* to accept websocket + WS handshake 403; else cdp scripts fail. Relaunch command confirmed working.",
+    "jack_stand_all_dead_CONFIRMED": "All 5 jack-stand ASINs return Amazon Page Not Found via live browser. Daytona/Torin are Harbor Freight store-brand pairs not sold on Amazon. Catch: 2 Torin ASINs (B000C4CHPE) duplicated across 3 products. NOT price-refreshable - requires replacement.",
+    "impact_wrench_partial": "Re-verified 5 impact-wrench: 4 DEAD (Milwaukee B0B9PMBKVZ, DEWALT DCF899B B01H5W8P6E, Astro Nano B07W6L8J3X, Ryobi P262 B07Q3B6Q1F). Only Ingersoll Rand 2235TiMAX B00LV9Y1FE live @ $293.85 (DB lists $159.99 - price GREW >10%; NOT auto-applied this run pending confirmation of buybox, likely 3rd-party/seasonal read).",
+    "obd2_CLEAN": "All 5 OBD2 ASINs live and correctly titled; prices match DB (ANCEL $29.99, LAUNCH $106.98). NO drift. This is the only fully-clean category.",
+    "replacement_candidates_jack_stand": {
+      "ESCO 10498 (Pro Choice slot)": "B01EAW6E8A = ESCO (title 'ESCO', ASIN resolves) - verify product page for exact 10498 SKU/price",
+      "Torin Big Red T43002 (Best Budget slot)": "B00026Z3E0 = BIG RED T43002A Torin Double Locking 3 Ton @ $32.39 (LIVE, exact product)",
+      "Torin Double-Locking alt": "B0B5M23BRV = Big RED Torin 3 Ton Double Locking Pins pair @ $44.84",
+      "Daytona-style double-lock (Best Overall slot)": "B09TPXRHF8 = Pro-LifT PL3300 3 Ton double pins pair @ $39.74; or Jack Boss B0FDK13BM5 @ $77.99",
+      "6-ton heavy slot": "B09KN15PB8 = BESTOOL 4 Ton 2-pack @ $119.97 (closest live heavy pair found)"
     },
-    "no_replacement_applied": "Did NOT rewrite socket-set products this run. Replacing 5 products (names/specs/pros/badges) is a content overhaul, not a price refresh - belongs to GTDB Article Pipeline (Mon/Wed/Fri), which runs AFTER price cron and would clobber edits. Avoid conflicting.",
-    "article_job_clobber": "Known issue (Sep 18): GTDB Article Pipeline reverted price-refresh data.mjs edits. Replaced products must be coordinated with article pipeline or data.mjs gets reverted."
+    "no_replacement_applied": "Did NOT rewrite jack-stand or impact-wrench this run. Replacing products (names/specs/pros/badges) is a content overhaul for the GTDB Article Pipeline (Mon/Wed/Fri), not a price refresh. Article job runs AFTER price cron and reverts data.mjs edits.",
+    "article_job_clobber": "Acknowledged: allocating dead-product replacement to the article pipeline is the only durable path. Price cron should keep verifying only."
   },
   "schedule": {
-    "next_day_2026-09-21": "toggle-wrench or torque-wrench (5 products) - verify live status via CDP. Avoid socket-set until a replacement overhaul is scheduled."
+    "next_day_2026-09-22": "breaker-bar (5 products) - verify live status via CDP. Expect dead ASINs (many re-used from socket/torque/ratchet). No price refresh possible if dead.",
+    "live_categories_only": "Only OBD2 (all 5) is confirmed fully clean + priced. Impact-wrench needs 4 replacements. All replacement work belongs to article pipeline."
   },
   "cycle_complete": false
 }
