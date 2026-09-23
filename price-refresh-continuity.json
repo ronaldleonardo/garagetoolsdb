@@ -1,24 +1,24 @@
 {
   "cycle": 2,
-  "date": "2026-09-22",
+  "date": "2026-09-23",
   "products_checked": [
-    "breaker-bar/TEKTON 1/2 B07C9B7Z8W DEAD",
-    "breaker-bar/GEARWRENCH 1/2 B000VDXSV6 DEAD",
-    "breaker-bar/Capri Tools 3/8 B07D3M64K5 DEAD",
-    "breaker-bar/Sunex 1/2 B00A1W3G8E DEAD",
-    "breaker-bar/SK Hand Tool 3/4 B0002NYWQ2 DEAD"
+    "socket-set/GEARWRENCH 124PC B000VDXSV6 DEAD",
+    "socket-set/DEWALT 102PC B0BVMKKTZ1 DEAD",
+    "socket-set/TEKTON 3/8 B07Q35CQ2V DEAD",
+    "socket-set/Sunex 2598 B00A1W3G8E DEAD",
+    "socket-set/QUINN 132PC B0B5WBHK4B DEAD"
   ],
   "issues": {
     "serpapi_down": "SerpAPI free tier still 429 (exhausted Sep-2026). CDP/browser path used.",
-    "control_test_pass": "Browser verified against known-live OBD2 products (ANCEL + LAUNCH load with correct prices). Confirms the 5 breaker-bar 'Page Not Found' results are GENUINE dead ASINs, not bot-wall artifacts.",
-    "breaker_bar_all_dead_CONFIRMED": "All 5 breaker-bar ASINs return Amazon Page Not Found via live browser (realistic Win Chrome UA, click-through bot wall). B000VDXSV6/B07C9B7Z8W/B00A1W3G8E reused from socket/ratchet sets. NOT price-refreshable - replacement is article-pipeline work.",
-    "ancel_price_drop_APPLIED": "Cross-category incidental: ANCEL AD310 (B01G5EA74I) verified stable at $23.99 across 3 live reads (DB was $29.99, -20%). APPLIED to data.mjs, rebuilt, restarted, confirmed live on /tools/obd2-scanner.html. <-20% >10% rule.",
-    "no_breaker_replacement_applied": "Did NOT rewrite breaker-bar products. Dead-product replacement is content overhaul for GTDB Article Pipeline (runs after price cron and reverts data.mjs edits). Price cron verifies only."
+    "control_test_pass": "Control ANCEL AD310 (B01G5EA74I) loaded at $23.99 after bot-wall click-through. Confirms 5 socket-set 'Page Not Found' are GENUINE dead ASINs, not bot-wall artifacts.",
+    "socket_set_all_dead_CONFIRMED": "All 5 socket-set ASINs DEAD via live Chromium CDP (click-through bot wall). GEARWRENCH B000VDXSV6, Sunex B00A1W3G8E flagged dead in earlier breaker-bar run; DEWALT B0BVMKKTZ1, TEKTON B07Q35CQ2V, QUINN B0B5WBHK4B newly confirmed dead. NOT price-refreshable - replacement is article-pipeline work.",
+    "no_socket_replacement_applied": "Did NOT rewrite socket-set products. Dead-product replacement is content overhaul for GTDB Article Pipeline (runs after price cron and reverts data.mjs edits). Price cron verifies only."
   },
   "schedule": {
-    "next_day_2026-09-23": "socket-set (5 products). Expect dead ASINs (B000VDXSV6 GEARWRENCH, B00A1W3G8E Sunex, B07C9B7Z8W TEKTON already confirmed dead this/earlier runs). Verify live status only.",
-    "known_dead_cross_ref": "Dead ASINs confirmed so far in cycle 2: all jack-stands, 4/5 impact-wrench, all breaker-bars, GEARWRENCH B000VDXSV6, TEKTON B07C9B7Z8W, Sunex B00A1W3G8E.",
-    "live_categories_only": "Only obd2-scanner (all 5) fully clean + priced. ANCEL price updated this run; LAUNCH $106.98 unchanged."
+    "next_day_2026-09-24": "torque-wrench (5 products: B07C9B7Z8W TEKTON, B0002SRH5G CDI, B0002NYWQ2 Pittsburgh, B00LIKPBPU ACDelco, B0006O3HZM Precision). Expect dead ASINs (B0002NYWQ2 confirmed dead as breaker-bar SK hand tool). Verify live status only.",
+    "known_dead_cross_ref": "Dead ASINs confirmed cycle 2: all jack-stands, 4/5 impact-wrench, all breaker-bars, all socket-sets, GEARWRENCH B000VDXSV6, TEKTON B07C9B7Z8W, Sunex B00A1W3G8E.",
+    "note_B07C9B7Z8W_shared": "TEKTON B07C9B7Z8W used in BOTH torque-wrench AND ratchet-set (skip-as-dead in both if still 404).",
+    "live_categories_only": "Only obd2-scanner (all 5) fully clean + priced. ANCEL $23.99 verified live again this run."
   },
   "cycle_complete": false
 }
