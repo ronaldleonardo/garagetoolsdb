@@ -391,5 +391,18 @@ export const tools = {
       { name: "Daytona 6 Ton Pair", price: "$109.99", rating: "4.8", reviews: "1,600", images: ["/images/daytona-6ton-stand.svg"], asin: "B09LGK5J7W", specs: ["6 ton each", "Pin + ratchet", "15-23.5 inch range", "Tall reach", "Heavy duty"], badge: "value", label: "Heavy Duty", pros: "For trucks and SUVs, and for anyone who wants room to slide a creeper underneath." },
       { name: "Torin Big Red 6 Ton", price: "$64.99", rating: "4.6", reviews: "2,100", images: ["/images/torin-6ton-stand.svg"], asin: "B000C4CHPE", specs: ["6 ton each", "Ratchet", "15.5-24 inch range", "Tall stand", "Budget truck pick"], badge: "budget", label: "Truck Budget", pros: "Tall 6-ton reach for trucks without paying pro-tool money." }
     ]
+  },
+  "work-light": {
+    name: "Work Lights",
+    short: "Lights",
+    desc: "See what you are working on. From USB rechargeable under-hood bars to floodlights that light the whole garage. Brightness is only half the story.",
+    slug: "work-light",
+    products: [
+      { name: "Milwaukee M18 ROVER Compact Flood", price: "$144.00", rating: "4.7", reviews: "2,100", images: ["/images/milwaukee-rover-light.svg"], asin: "B08YS6CXG6", specs: ["4000 max lumens", "3 brightness modes", "Corded or battery", "0-120 deg tilt", "Stable wide base"], badge: "top", label: "Best Overall", pros: "The best balance of power, position range, and build for anyone already on M18 batteries." },
+      { name: "SYLSTAR 2400LM Rechargeable", price: "$42.99", rating: "4.5", reviews: "3,400", images: ["/images/sylstar-work-light.svg"], asin: "B0CJ4P4J3T", specs: ["2400 lumens", "4400mAh battery", "USB rechargeable", "Magnetic base", "Fold-out hook"], badge: "budget", label: "Best Budget", pros: "No battery platform needed. Charge it like a phone and stick it to the hood." },
+      { name: "Milwaukee M18 LED Work Light 2735", price: "$104.99", rating: "4.7", reviews: "3,800", images: ["/images/milwaukee-m18-light.svg"], asin: "B013LDN6BC", specs: ["360 deg rotation", "Hang hook for hood", "Magnetic base", "M18 battery", "High-output LED"], badge: "best", label: "Under-Hood Pick", pros: "The head spins a full 360 and hooks on the hood latch. Made for engine work." },
+      { name: "Makita DML809 Cordless/Corded", price: "$149.99", rating: "4.7", reviews: "1,100", images: ["/images/makita-dml809.svg"], asin: "B0837J2MNT", specs: ["Cordless or corded", "Bright flood array", "18V LXT battery", "Folds flat for storage", "Two power options"], badge: "value", label: "Best Hybrid", pros: "Runs on battery or a wall cord. Battery dies, plug it in and keep working." },
+      { name: "DEWALT 20V MAX LED Tower", price: "$249.00", rating: "4.6", reviews: "2,600", images: ["/images/dewalt-tower-light.svg"], asin: "B077ZCTBFY", specs: ["Telescopes to 7 ft", "Pivoting light head", "IP55 rating", "20V battery", "Wide area coverage"], badge: "value", label: "Whole Garage", pros: "Lights up the whole bay. Overkill for one bolt, perfect for an all-day project." }
+    ]
   }
 };
