@@ -1,24 +1,24 @@
 {
   "cycle": 2,
-  "date": "2026-09-23",
+  "date": "2026-09-24",
   "products_checked": [
-    "socket-set/GEARWRENCH 124PC B000VDXSV6 DEAD",
-    "socket-set/DEWALT 102PC B0BVMKKTZ1 DEAD",
-    "socket-set/TEKTON 3/8 B07Q35CQ2V DEAD",
-    "socket-set/Sunex 2598 B00A1W3G8E DEAD",
-    "socket-set/QUINN 132PC B0B5WBHK4B DEAD"
+    "torque-wrench/TEKTON B07C9B7Z8W DEAD",
+    "torque-wrench/Precision B0006O3HZM DEAD",
+    "torque-wrench/Pittsburgh B0002NYWQ2 DEAD",
+    "torque-wrench/ACDelco B00LIKPBPU DEAD",
+    "torque-wrench/CDI B0002SRH5G WRONG-PRODUCT"
   ],
   "issues": {
     "serpapi_down": "SerpAPI free tier still 429 (exhausted Sep-2026). CDP/browser path used.",
-    "control_test_pass": "Control ANCEL AD310 (B01G5EA74I) loaded at $23.99 after bot-wall click-through. Confirms 5 socket-set 'Page Not Found' are GENUINE dead ASINs, not bot-wall artifacts.",
-    "socket_set_all_dead_CONFIRMED": "All 5 socket-set ASINs DEAD via live Chromium CDP (click-through bot wall). GEARWRENCH B000VDXSV6, Sunex B00A1W3G8E flagged dead in earlier breaker-bar run; DEWALT B0BVMKKTZ1, TEKTON B07Q35CQ2V, QUINN B0B5WBHK4B newly confirmed dead. NOT price-refreshable - replacement is article-pipeline work.",
-    "no_socket_replacement_applied": "Did NOT rewrite socket-set products. Dead-product replacement is content overhaul for GTDB Article Pipeline (runs after price cron and reverts data.mjs edits). Price cron verifies only."
+    "torque_wrench_ALL_BROKEN": "All 5 torque-wrench products unusable. 4 dead ASINs (Page Not Found via CDP click-through: TEKTON B07C9B7Z8W, Pittsburgh B0002NYWQ2, Precision B0006O3HZM, ACDelco B00LIKPBPU). Nothing price-refreshable.",
+    "CDI_wrong_product": "B0002SRH5G is LIVE but now resolves to 'UView 550000 Airlift Cooling System Leak Checker' ($152.99) - NOT a CDI 1503MFRPH torque wrench. Do NOT update price to 152.99 (wrong product). ASIN reuse/repurposed. Article-pipeline replacement needed.",
+    "no_build_needed": "Zero live price updates this run (all broken). No data.mjs edit, no astro build/restart.",
+    "deployment": "chromium --headless needs --remote-allow-origins=* for CDP ws from Python (403 otherwise). Chrome 152."
   },
   "schedule": {
-    "next_day_2026-09-24": "torque-wrench (5 products: B07C9B7Z8W TEKTON, B0002SRH5G CDI, B0002NYWQ2 Pittsburgh, B00LIKPBPU ACDelco, B0006O3HZM Precision). Expect dead ASINs (B0002NYWQ2 confirmed dead as breaker-bar SK hand tool). Verify live status only.",
-    "known_dead_cross_ref": "Dead ASINs confirmed cycle 2: all jack-stands, 4/5 impact-wrench, all breaker-bars, all socket-sets, GEARWRENCH B000VDXSV6, TEKTON B07C9B7Z8W, Sunex B00A1W3G8E.",
-    "note_B07C9B7Z8W_shared": "TEKTON B07C9B7Z8W used in BOTH torque-wrench AND ratchet-set (skip-as-dead in both if still 404).",
-    "live_categories_only": "Only obd2-scanner (all 5) fully clean + priced. ANCEL $23.99 verified live again this run."
+    "next_day_2026-09-25": "jump-starter (5 products: B015TKUPIC NOCO GB40, B08R9B7S3T NOCO GBX45, B0B7C6XHGM GOOLOO GP4000, B07W9G6F7G NEXPOW 2000A, B07J6F6VH6 TACKLIFE T8 Pro). Verify live only.",
+    "known_dead_cross_ref": "Dead ASINs confirmed cycle 2: all jack-stands, 4/5 impact-wrench, all breaker-bars, all socket-sets, all torque-wrench, GEARWRENCH B000VDXSV6, Sunex B00A1W3G8E.",
+    "live_categories_only": "Only obd2-scanner (all 5) fully clean + priced. ANCEL $23.99 verified live cycle 2."
   },
   "cycle_complete": false
 }
