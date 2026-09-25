@@ -404,5 +404,18 @@ export const tools = {
       { name: "Makita DML809 Cordless/Corded", price: "$149.99", rating: "4.7", reviews: "1,100", images: ["/images/makita-dml809.svg"], asin: "B0837J2MNT", specs: ["Cordless or corded", "Bright flood array", "18V LXT battery", "Folds flat for storage", "Two power options"], badge: "value", label: "Best Hybrid", pros: "Runs on battery or a wall cord. Battery dies, plug it in and keep working." },
       { name: "DEWALT 20V MAX LED Tower", price: "$249.00", rating: "4.6", reviews: "2,600", images: ["/images/dewalt-tower-light.svg"], asin: "B077ZCTBFY", specs: ["Telescopes to 7 ft", "Pivoting light head", "IP55 rating", "20V battery", "Wide area coverage"], badge: "value", label: "Whole Garage", pros: "Lights up the whole bay. Overkill for one bolt, perfect for an all-day project." }
     ]
+  },
+  "multimeter": {
+    name: "Multimeters",
+    short: "Meters",
+    desc: "Find the short, the draw, and the dead battery. From a $16 auto-ranging meter that does the job to a True RMS meter for electronics work.",
+    slug: "multimeter",
+    products: [
+      { name: "Klein Tools MM400", price: "$54.97", rating: "4.7", reviews: "13,600", images: ["/images/klein-mm400.svg"], asin: "B00KQ0FAZ0", specs: ["Auto-ranging", "600V AC/DC", "Capacitance & freq", "Diode & continuity", "Temperature probe", "CAT III 600V"], badge: "top", label: "Best Overall", pros: "The meter I reach for. Auto-ranging, rugged, trusted by electricians." },
+      { name: "KAIWEETS HT118A", price: "$42.99", rating: "4.7", reviews: "11,400", images: ["/images/kaiweets-ht118a.svg"], asin: "B07J83SMVZ", specs: ["True RMS", "6000 count", "Non-contact voltage", "Autoranging", "Flashlight", "CAT III 1000V"], badge: "value", label: "Best True RMS Value", pros: "True RMS accuracy at a price that beats the pro brands." },
+      { name: "Fluke 117", price: "$199.99", rating: "4.8", reviews: "21,900", images: ["/images/fluke-117.svg"], asin: "B0006Z64Q0", specs: ["True RMS", "Auto-ranging", "Non-contact voltage", "Low input impedance", "CAT III 600V", "Made in USA"], badge: "best", label: "Pro Choice", pros: "The flagship hand on every pro bench. Buy once, keep forever." },
+      { name: "AstroAI AM33D", price: "$16.99", rating: "4.6", reviews: "9,500", images: ["/images/astroai-am33d.svg"], asin: "B01ISAMUA6", specs: ["2000 count", "Manual range", "AC/DC & resistance", "Diode & continuity", "Backlight"], badge: "budget", label: "Best Budget", pros: "Perfect first meter at a price that is easy to justify." },
+      { name: "Innova 3320", price: "$27.99", rating: "4.5", reviews: "5,200", images: ["/images/innova-3320.svg"], asin: "B000EVYGZA", specs: ["Auto-ranging", "Car battery test", "Alternator test", "DC to 20V", "Continuity", "For 12V systems"], badge: "value", label: "Best for Car Work", pros: "Made for 12V car systems right out of the box." }
+    ]
   }
 };

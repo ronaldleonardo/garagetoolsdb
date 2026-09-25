@@ -1,12 +1,102 @@
 [
-  {"tool": "obd2-scanner", "status": "done", "products": ["OBD2 scanner", "code reader", "diagnostic tool"], "notes": "Comparison article. Published Sep 5, 2026. BlueDriver top pick."},
-  {"tool": "socket-set", "status": "done", "products": ["socket set", "ratchet set", "tool kit"], "notes": "Staple product. Best entry-level, mid-range, pro. Published Sep 9, 2026."},
-  {"tool": "ratchet-set", "status": "done", "products": ["ratchet set", "mechanic ratchet", "socket wrench"], "notes": "Ratchets. Flex head vs fixed head. Published Sep 14, 2026."},
-  {"tool": "floor-jack", "status": "done", "products": ["floor jack", "jack stands", "low profile jack"], "notes": "Safety angle. Review published Sep 18, 2026. Uses Daytona/ARCAN/Torin/JEGS/Pittsburgh data set."},
-  {"tool": "torque-wrench", "status": "done", "products": ["torque wrench", "beam wrench", "click wrench"], "notes": "Precision tool. Good for Reddit distribution. Published Sep 7, 2026."},
-  {"tool": "jump-starter", "status": "done", "products": ["jump starter", "portable battery", "car battery charger"], "notes": "High demand. Published Sep 5, 2026. NOCO GB40 top pick."},
-  {"tool": "breaker-bar", "status": "done", "products": ["breaker bar", "snap bar", "leverage tool"], "notes": "Leverage tool. Published Sep 16, 2026. TEKTON top pick."},
-  {"tool": "jack-stand", "status": "done", "products": ["jack stands", "jack stand pair", "safety stands"], "notes": "Safety companion to floor-jack. Published Sep 21, 2026. Daytona 3 Ton top pick."},
-  {"tool": "multimeter", "status": "pending", "products": ["digital multimeter", "voltage tester", "electrical tester"], "notes": "Electrical diagnostics. Good overlap with OBD2. DIY price $15-60."},
-  {"tool": "air-compressor", "status": "pending", "products": ["air compressor", "tire inflator", "portable compressor"], "notes": "High search volume. Impact wrench + pneumatic angle."}
+  {
+    "tool": "obd2-scanner",
+    "status": "done",
+    "products": [
+      "OBD2 scanner",
+      "code reader",
+      "diagnostic tool"
+    ],
+    "notes": "Comparison article. Published Sep 5, 2026. BlueDriver top pick."
+  },
+  {
+    "tool": "socket-set",
+    "status": "done",
+    "products": [
+      "socket set",
+      "ratchet set",
+      "tool kit"
+    ],
+    "notes": "Staple product. Best entry-level, mid-range, pro. Published Sep 9, 2026."
+  },
+  {
+    "tool": "ratchet-set",
+    "status": "done",
+    "products": [
+      "ratchet set",
+      "mechanic ratchet",
+      "socket wrench"
+    ],
+    "notes": "Ratchets. Flex head vs fixed head. Published Sep 14, 2026."
+  },
+  {
+    "tool": "floor-jack",
+    "status": "done",
+    "products": [
+      "floor jack",
+      "jack stands",
+      "low profile jack"
+    ],
+    "notes": "Safety angle. Review published Sep 18, 2026. Uses Daytona/ARCAN/Torin/JEGS/Pittsburgh data set."
+  },
+  {
+    "tool": "torque-wrench",
+    "status": "done",
+    "products": [
+      "torque wrench",
+      "beam wrench",
+      "click wrench"
+    ],
+    "notes": "Precision tool. Good for Reddit distribution. Published Sep 7, 2026."
+  },
+  {
+    "tool": "jump-starter",
+    "status": "done",
+    "products": [
+      "jump starter",
+      "portable battery",
+      "car battery charger"
+    ],
+    "notes": "High demand. Published Sep 5, 2026. NOCO GB40 top pick."
+  },
+  {
+    "tool": "breaker-bar",
+    "status": "done",
+    "products": [
+      "breaker bar",
+      "snap bar",
+      "leverage tool"
+    ],
+    "notes": "Leverage tool. Published Sep 16, 2026. TEKTON top pick."
+  },
+  {
+    "tool": "jack-stand",
+    "status": "done",
+    "products": [
+      "jack stands",
+      "jack stand pair",
+      "safety stands"
+    ],
+    "notes": "Safety companion to floor-jack. Published Sep 21, 2026. Daytona 3 Ton top pick."
+  },
+  {
+    "tool": "multimeter",
+    "status": "done",
+    "products": [
+      "digital multimeter",
+      "voltage tester",
+      "electrical tester"
+    ],
+    "notes": "Reviews. Published Sep 25, 2026. Klein MM400 top pick. Angle: bought 3, first one lied on low DC volts."
+  },
+  {
+    "tool": "air-compressor",
+    "status": "pending",
+    "products": [
+      "air compressor",
+      "tire inflator",
+      "portable compressor"
+    ],
+    "notes": "High search volume. Impact wrench + pneumatic angle."
+  }
 ]
