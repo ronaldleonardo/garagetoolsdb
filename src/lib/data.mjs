@@ -279,7 +279,7 @@ export const tools = {
     products: [
       {
         name: "NOCO Boost Plus GB40",
-        price: "$79.95",
+        price: "$99.95",
         rating: "4.6",
         reviews: "68,000",
         images: ["/images/noco-gb40.jpg"],
