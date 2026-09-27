@@ -1,23 +1,24 @@
 {
   "cycle": 2,
-  "date": "2026-09-25",
+  "date": "2026-09-27",
   "products_checked": [
-    "jump-starter/NOCO GB40 B015TKUPIC LIVE -> $99.95 (was $79.95, +25% official NOCO)",
-    "jump-starter/NOCO GBX45 B08R9B7S3T DEAD (current ASIN B0924V8SPC)",
-    "jump-starter/GOOLOO GP4000 B0B7C6XHGM DEAD (current ASIN B09HJH1S41, $89.99 official)",
-    "jump-starter/NEXPOW 2000A B07W9G6F7G DEAD",
-    "jump-starter/TACKLIFE T8 B07J6F6VH6 DEAD (real 404 both paths)"
+    "ratchet-set/TEKTON flex head OLD ASIN B07C9B7Z8W DEAD -> FIXED to SRH31108 B07J2NHZLH (live), price $49.99 (was placeholder $34.99, matches Aircraft Spruce US distributor $50)",
+    "ratchet-set/Snap-on F80 OLD ASIN B0002SRJ5G DEAD -> FIXED to B005FI6542 (live sealed-head Dual80), price $149.00 (MSRP confirmed, keep)",
+    "ratchet-set/GEARWRENCH 120XP OLD ASIN B000VDXSV6 DEAD -> FIXED to 81211XP B0CYMQ5XGC (live), price $49.99 (was $59.99, AutoZone $50)",
+    "ratchet-set/Capri 3/8 flex OLD ASIN B07D3M64K5 DEAD -> FIXED to CP12300FX B07Z2YWZZP (live), price $32.99 (was placeholder $49.99; Amazon US ~$32, Walmart ~$30)",
+    "ratchet-set/Pittsburgh 1/4 B000COC6R4 DEAD - no real Amazon ASIN (Harbor Freight store brand); keep placeholder",
+    "ratchet-set/MAC 1/2 B002IY936S DEAD - no real Amazon ASIN (truck-brand exclusive); keep placeholder"
   ],
   "issues": {
-    "serpapi_down": "SerpAPI free tier still 429 (exhausted Sep-2026). CDP/browser path used.",
-    "amazon_geo_idr": "Datacenter IP geolocates Amazon to Indonesia -> prices scraped in IDR/corrupted ($11.99 GB40, $5999 GOOLOO). Do NOT trust CDP prices; use manufacturer/official prices.",
-    "gooloo_asin_moved": "DB ASIN B0B7C6XHGM dead; live ASIN B09HJH1S41 (title confirmed NOCO... GOOLOO GP4000). Price $89.99 on us.gooloo.com.",
-    "gbx45_asin_moved": "DB ASIN B08R9B7S3T dead; current ASIN B0924V8SPC."
+    "serpapi_down": "SerpAPI still out of searches (429/empty). CDP browser path used with US UA.",
+    "amazon_geo_idr": "Amazon via datacenter IP still geolocates to Indonesia -> prices in IDR. Used converted reference + US distributor (Aircraft Spruce $50, AutoZone $50) not raw IDR.",
+    "maker_retail_botwall": "TEKTON.com, CapriTools, Home Depot, Lowe's, Acme, Harbor Freight, Walmart all bot-wall/Cloudflare. Aircraft Spruce + AutoZone + carolinaabbey accessible.",
+    "placeholder_asins": "ROOT CAUSE: many tool categories carry DUPLICATED placeholder ASINs (B07C9B7Z8W, B000VDXSV6, B07D3M64K5, B00A1W3G8E, B0002NYWQ2 reused across socket/breaker/torque/ratchet). These need replacing with real live ASINs; this run fixed 4 of 6 in ratchet-set."
   },
   "schedule": {
-    "next_day_2026-09-26": "ratchet-set (6 products: TEKTON B07C9B7Z8W, Snap-on B0002SRJ5G, GEARWRENCH B000VDXSV6, Pittsburgh B000COC6R4, MAC B002IY936S, Capri B07D3M64K5). Verify live only.",
-    "known_dead_cross_ref": "Dead ASINs confirmed cycle 2: all jack-stands, 4/5 impact-wrench, all breaker-bars, all socket-sets, all torque-wrench, all jump-starter (GBX45/GOOLOO/NEXPOW/TACKLIFE), GEARWRENCH B000VDXSV6, Sunex B00A1W3G8E.",
-    "live_categories_only": "obd2-scanner (all 5) + NOCO GB40 (jump-starter) live. GB40 updated $79.95->$99.95 09-25."
+    "next_day_2026-09-28": "socket-set fresh re-verify NOT needed (all 5 dead confirmed cycle 2). Next category not yet refreshed: impact-wrench (0 alive) OR work-light (never checked). Recommend: work-light (5 new products added 09-23, ASINs never verified).",
+    "known_dead_cross_ref": "Dead ASINs confirmed: all jack-stands, all impact-wrench, all breaker-bars, all socket-sets, all torque-wrench, jump-starter GBX45/GOOLOO/NEXPOW/TACKLIFE, GEARWRENCH B000VDXSV6, Sunex B00A1W3G8E.",
+    "live_categories_only": "obd2-scanner (all 5) + NOCO GB40 + ANCEL AD310 live. Ratchet-set now 4/6 live (TEKTON, Snap-on, GearWrench, Capri)."
   },
   "cycle_complete": false
 }
