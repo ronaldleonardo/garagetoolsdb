@@ -405,6 +405,19 @@ export const tools = {
       { name: "DEWALT 20V MAX LED Tower", price: "$249.00", rating: "4.6", reviews: "2,600", images: ["/images/dewalt-tower-light.svg"], asin: "B077ZCTBFY", specs: ["Telescopes to 7 ft", "Pivoting light head", "IP55 rating", "20V battery", "Wide area coverage"], badge: "value", label: "Whole Garage", pros: "Lights up the whole bay. Overkill for one bolt, perfect for an all-day project." }
     ]
   },
+  "air-compressor": {
+    name: "Air Compressors",
+    short: "Compress",
+    desc: "Air for pneumatic tools, tire top-offs, and the occasional die grinder. Quiet 10-gallon units for the garage to oil-lubed Big Bore tanks for constant-flow tools.",
+    slug: "air-compressor",
+    products: [
+      { name: "California Air Tools 10020C", price: "$299.99", rating: "4.6", reviews: "2,600", images: ["/images/california-air-10020c.svg"], asin: "B0188XBTLY", specs: ["2.0 HP rated", "10 gal tank", "5.30 CFM @ 90 psi", "70 dB quiet", "125 psi max", "Fills tank in 120s"], badge: "top", label: "Best Overall", pros: "The quiet garage compressor. Real 2.0 HP with 5.3 CFM, a 10-gallon tank, and a noise level you can talk over." },
+      { name: "Stealth SAQ-11215", price: "$219.99", rating: "4.5", reviews: "3,200", images: ["/images/stealth-12gal.svg"], asin: "B07N21XCFC", specs: ["1.5 HP peak", "12 gal tank", "4.0 CFM @ 90 psi", "68 dB quiet", "150 psi max", "Vertical design"], badge: "value", label: "Best Quiet Value", pros: "A 12-gallon quiet tank at half the price of most branded quiet units." },
+      { name: "Porter-Cable C2002", price: "$149.99", rating: "4.7", reviews: "7,500", images: ["/images/portercable-c2002.svg"], asin: "B000O5RO1Y", specs: ["Oil-free", "6 gal tank", "2.6 CFM @ 90 psi", "150 psi max", "30 lbs", "Two couplers"], badge: "budget", label: "Best Budget", pros: "The classic starter pancake. Cheap, reliable, piston-air for nails and tires, just do not ask it to run a die grinder." },
+      { name: "Makita MAC5200 Big Bore", price: "$469.99", rating: "4.8", reviews: "1,100", images: ["/images/makita-mac5200.svg"], asin: "B0001Q2VPU", specs: ["3.0 HP max", "5.2 gal tank", "6.5 CFM @ 90 psi", "140 psi max", "Oil-lubed cast iron", "88 lbs"], badge: "best", label: "Pro Choice", pros: "Cast iron Big Bore pump and oil-lubed. Runs two nailers or a constant die grinder without giving up." },
+      { name: "VIAIR 400P", price: "$276.68", rating: "4.7", reviews: "8,600", images: ["/images/viair-400p.svg"], asin: "B000X9B32M", specs: ["12V portable", "150 psi max", "2.30 CFM @ 0 psi", "33% duty @ 100 psi", "Auto shutoff", "For tires to 35 inch"], badge: "value", label: "Best Portable", pros: "Aircraft-grade portable that fills a truck tire and never lives on your garage floor." }
+    ]
+  },
   "multimeter": {
     name: "Multimeters",
     short: "Meters",

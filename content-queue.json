@@ -91,12 +91,12 @@
   },
   {
     "tool": "air-compressor",
-    "status": "pending",
+    "status": "done",
     "products": [
       "air compressor",
       "tire inflator",
       "portable compressor"
     ],
-    "notes": "High search volume. Impact wrench + pneumatic angle."
+    "notes": "Reviews + new category. Published Sep 28, 2026. California Air 10020C top pick ($299), Porter-Cable C2002 budget ($149), Stealth 12G value, Makita MAC5200 pro, VIAIR 400P portable. Twist: cordless impact does lug nuts better; buy for CFM@90 not HP. Prices estimated (Amazon bot-walled); ASINs confirmed live via search URLs. Price-refresh cron should verify review counts + street prices."
   }
 ]
