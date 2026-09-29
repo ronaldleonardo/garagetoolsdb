@@ -1,24 +1,24 @@
 {
   "cycle": 2,
-  "date": "2026-09-27",
+  "date": "2026-09-28",
   "products_checked": [
-    "ratchet-set/TEKTON flex head OLD ASIN B07C9B7Z8W DEAD -> FIXED to SRH31108 B07J2NHZLH (live), price $49.99 (was placeholder $34.99, matches Aircraft Spruce US distributor $50)",
-    "ratchet-set/Snap-on F80 OLD ASIN B0002SRJ5G DEAD -> FIXED to B005FI6542 (live sealed-head Dual80), price $149.00 (MSRP confirmed, keep)",
-    "ratchet-set/GEARWRENCH 120XP OLD ASIN B000VDXSV6 DEAD -> FIXED to 81211XP B0CYMQ5XGC (live), price $49.99 (was $59.99, AutoZone $50)",
-    "ratchet-set/Capri 3/8 flex OLD ASIN B07D3M64K5 DEAD -> FIXED to CP12300FX B07Z2YWZZP (live), price $32.99 (was placeholder $49.99; Amazon US ~$32, Walmart ~$30)",
-    "ratchet-set/Pittsburgh 1/4 B000COC6R4 DEAD - no real Amazon ASIN (Harbor Freight store brand); keep placeholder",
-    "ratchet-set/MAC 1/2 B002IY936S DEAD - no real Amazon ASIN (truck-brand exclusive); keep placeholder"
+    "work-light/Milwaukee 2366-20 ROVER Compact B08YS6CXG6 LIVE confirmed, price $144.00 -> $144.97 (Amazon buybox, +0.7%)",
+    "work-light/SYLSTAR 2400LM B0CJ4P4J3T LIVE, price KEPT $42.99 (lightsdaddy $42.74, within 1%)",
+    "work-light/Milwaukee 2735-20 B013LDN6BC LIVE, price BADLY WRONG $104.99 -> FIXED to $34.97 (Amazon typical; buybox $32.50, this is a 100-lumen small under-hood light, not a $105 light)",
+    "work-light/Makita DML809 B0837J2MNT LIVE, price BADLY WRONG $149.99 -> FIXED to $339.00 (Home Depot $339 + Tool Nut $339 agree; ProToolReviews street $259.99; it's a 10k-lumen X2 dual-battery pro flood)",
+    "work-light/DEWALT DCL079B B077ZCTBFY LIVE, price KEPT $249.00 (Ace Hardware $249.00 confirms)"
   ],
   "issues": {
-    "serpapi_down": "SerpAPI still out of searches (429/empty). CDP browser path used with US UA.",
-    "amazon_geo_idr": "Amazon via datacenter IP still geolocates to Indonesia -> prices in IDR. Used converted reference + US distributor (Aircraft Spruce $50, AutoZone $50) not raw IDR.",
-    "maker_retail_botwall": "TEKTON.com, CapriTools, Home Depot, Lowe's, Acme, Harbor Freight, Walmart all bot-wall/Cloudflare. Aircraft Spruce + AutoZone + carolinaabbey accessible.",
-    "placeholder_asins": "ROOT CAUSE: many tool categories carry DUPLICATED placeholder ASINs (B07C9B7Z8W, B000VDXSV6, B07D3M64K5, B00A1W3G8E, B0002NYWQ2 reused across socket/breaker/torque/ratchet). These need replacing with real live ASINs; this run fixed 4 of 6 in ratchet-set."
+    "serpapi_down": "SerpAPI definitively OUT of searches ('account has run out of searches'). Confirmed this run.",
+    "firecrawl_us_geo": "Firecrawl (web_extract) NOW delivers US geo (Newark 19711) for SOME Amazon pages - got real USD prices for B08YS6CXG6 ($144.97) and B013LDN6BC ($32.50). Others (B0CJ4P4J3T, B0837J2MNT, B077ZCTBFY) still bot-walled.",
+    "amazon_botwall_partial": "Amazon bot-wall still intermittent via Firecrawl. Use retailer fallbacks (Ace, lightsdaddy, Tool Nut, Home Depot category page).",
+    "browser_unavailable": "browser-exec failed: no Chromium running on 192.168.18.x host; browser-harness needs Chrome started."
   },
   "schedule": {
-    "next_day_2026-09-28": "socket-set fresh re-verify NOT needed (all 5 dead confirmed cycle 2). Next category not yet refreshed: impact-wrench (0 alive) OR work-light (never checked). Recommend: work-light (5 new products added 09-23, ASINs never verified).",
-    "known_dead_cross_ref": "Dead ASINs confirmed: all jack-stands, all impact-wrench, all breaker-bars, all socket-sets, all torque-wrench, jump-starter GBX45/GOOLOO/NEXPOW/TACKLIFE, GEARWRENCH B000VDXSV6, Sunex B00A1W3G8E.",
-    "live_categories_only": "obd2-scanner (all 5) + NOCO GB40 + ANCEL AD310 live. Ratchet-set now 4/6 live (TEKTON, Snap-on, GearWrench, Capri)."
+    "next_day_2026-09-29": "Work-light fully verified (5/5 live, 2 big price corrections, 3 confirmed). Next refresh category: impact-wrench (all 5 ASINs dead) OR floor-jack. Recommend impact-wrench: 0 alive, needs real ASIN replacement same as ratchet-set did.",
+    "known_dead_cross_ref": "Dead ASINs still confirmed: all jack-stands, all impact-wrench, all breaker-bars, all socket-sets, all torque-wrench, jump-starter GBX45/GOOLOO/NEXPOW/TACKLIFE, GEARWRENCH B000VDXSV6, Sunex B00A1W3G8E.",
+    "live_categories_only": "obd2-scanner (5/5) + NOCO GB40 + ANCEL AD310 + ratchet-set 4/6 + work-light 5/5 live.",
+    "asins_fixed_so_far": "ratchet-set (4 ASINs) + work-light (3 prices corrected; 2 had wrong prices, not ASINs)."
   },
   "cycle_complete": false
 }
