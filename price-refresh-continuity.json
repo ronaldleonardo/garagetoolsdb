@@ -1,25 +1,22 @@
 {
-  "cycle": 2,
-  "date": "2026-09-29",
+  "cycle": 3,
+  "date": "2026-09-30",
   "products_checked": [
-    "impact-wrench/Milwaukee 2767-20: OLD ASIN B0B9PMBKVZ DEAD (Page Not Found). FIXED ASIN -> B08P4NX77N (real 2767-20 listing, live buybox $277.89). Price $249.00 -> $277.89 (+11.6%).",
-    "impact-wrench/DEWALT DCF899B: OLD ASIN B01H5W8P6E (bot-walled, flagged dead but likely wrong). FIXED to canonical B00WJA1J68 (confirmed live 4.8/5.7K across sources). Price $219.00 -> $239.99.",
-    "impact-wrench/Astro Nano 1/2-inch: OLD ASIN B07W6L8J3X DEAD (Page Not Found). FIXED ASIN -> B00VTQIURE (1822 ONYX 1/2 Nano v2, 500 ft-lb). Price $89.99 -> $119.99 (bundle B0CWR457F4=$128.12; bare ~$110-120).",
-    "impact-wrench/Ryobi P262: ASIN B07Q3B6Q1F kept (bot-walled, not confirmable dead). Price KEPT $99.00 (DTO recond $63-140, HD $179, eBay new $119-130).",
-    "impact-wrench/Ingersoll Rand 2235TiMAX: ASIN B00LV9Y1FE LIVE confirmed (4.7/2.7K, 200+/mo). Price BADLY WRONG $159.99 -> FIXED to $279.99 (+75%)."
+    "floor-jack/SATA 3 Ton: ASIN B0FVF7KT56 LIVE (4.8/60, Amazon's Choice). Live $163.99 vs $165.99 = -1.2% SKIP (under 10%).",
+    "floor-jack/AV Steel 2.5 Ton: ASIN B0D2J99MFG LIVE (4.4/493, 100+/wk). Price $62.99 -> $69.99 (+11.1%) UPDATED.",
+    "floor-jack/Maxority 3 Ton: ASIN B0DP7QCCMX LIVE (4.6/664, 100+/wk). $137.99 = $137.99 no change.",
+    "floor-jack/Jack Boss 3 Ton: ASIN B099JPWCPC LIVE (4.5/819, 200+/wk). $169.99 = $169.99 no change.",
+    "floor-jack/AV Steel 3 Ton: ASIN B0DJMM1Q7S LIVE (4.6/236, 50+/wk). $169.99 = $169.99 no change."
   ],
   "issues": {
-    "serpapi_down": "SerpAPI definitively OUT of searches ('account has run out of searches'). Confirmed this run.",
-    "firecrawl_us_geo": "Firecrawl delivers US geo for SOME pages. amazon/dp full product pages bot-walled; amazon/clp/<ASIN> pages RENDER real buybox prices ($277.89 Milwaukee, $279.99 IR) - use clp/ ASIN route.",
-    "amazon_botwall_partial": "Amazon /dp/ product pages still bot-walled via Firecrawl. Use /clp/<ASIN> or retailer fallbacks.",
-    "browser_unavailable": "browser-exec failed: no Chromium running on 192.168.18.x host; browser-harness needs Chrome started.",
-    "impact_wrench_was_not_all_dead": "Previous continuity claimed all 5 impact-wrench ASINs dead - WRONG. Only Milwaukee + Astro truly dead (Page Not Found). IR live, DEWALT wrong ASIN, Ryobi unconfirmable."
+    "serpapi_down": "SerpAPI out of searches. Using Firecrawl /clp/<ASIN> route (delivers real US buybox prices).",
+    "amazon_dp_botwall": "Amazon /dp/ product pages still bot-walled. /clp/<ASIN> renders real buybox prices - USE THIS ROUTE.",
+    "browser_unavailable": "No Chromium on host; Firecrawl /clp/ route is the fallback."
   },
   "schedule": {
-    "next_day_2026-09-30": "Impact-wrench now fully verified (5/5: 4 corrected ASINs/prices, 1 price fix, 1 kept). Next refresh category: floor-jack OR torque-wrench. Recommend floor-jack (matches breaker-bar continuity path). Verify ASINs via /clp/<ASIN> route.",
-    "known_dead_cross_ref": "Still to verify: all jack-stands, all floor-jack, all torque-wrench, all socket-sets, jump-starter GBX45/GOOLOO/NEXPOW/TACKLIFE, GEARWRENCH B000VDXSV6, Sunex B00A1W3G8E, breaker-bars (SK B0002NYWQ2 dead).",
-    "live_categories_only": "obd2-scanner (5/5) + NOCO GB40 + ANCEL AD310 + ratchet-set 4/6 + work-light 5/5 + impact-wrench 5/5 live.",
-    "asins_fixed_so_far": "ratchet-set (4 ASINs) + work-light (3 prices) + impact-wrench (4 products: 2 new ASINs, 2 price fixes, 1 ASIN swap)."
+    "next_category_recommend": "torque-wrench (all 5 ASINs BROKEN per 09-24 run) OR socket-set (all 5 DEAD per 09-23). jack-stand also unverified this cycle.",
+    "verified_this_cycle": "obd2-scanner 5/5, ratchet-set 4/6, work-light 5/5, impact-wrench 5/5, NOCO GB40, floor-jack 5/5 (all ASINs live).",
+    "still_unverified_this_cycle": "torque-wrench, socket-set, jump-starter (GBX45/GOOLOO/NEXPOW/TACKLIFE), breaker-bar, jack-stand, car-ramps, air-compressor, multimeter, GEARWRENCH B000VDXSV6, Sunex B00A1W3G8E."
   },
   "cycle_complete": false
 }

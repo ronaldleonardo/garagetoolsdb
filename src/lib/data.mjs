@@ -87,7 +87,7 @@ export const tools = {
       },
       {
         name: "AV Steel 2.5 Ton",
-        price: "$62.99",
+        price: "$69.99",
         rating: "4.4",
         reviews: "488",
         images: ["/images/avsteel-jack.jpg"],
