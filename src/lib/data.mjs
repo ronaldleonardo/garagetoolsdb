@@ -345,11 +345,11 @@ export const tools = {
     desc: "Remove stubborn bolts and lug nuts with ease. From cordless to pneumatic.",
     slug: "impact-wrench",
     products: [
-      { name: "Milwaukee M18 1/2-inch", price: "$249.00", rating: "4.7", reviews: "6,800", images: ["/images/milwaukee-impact.jpg"], asin: "B0B9PMBKVZ", specs: ["1/2-inch drive", "1400 ft-lbs breakaway", "Brushless", "Friction ring anvil", "LED light", "6.4 lb"], badge: "top", label: "Best Overall", pros: "The standard for cordless impacts. Handles any bolt on any car." },
-      { name: "DEWALT DCF899B", price: "$219.00", rating: "4.6", reviews: "4,200", images: ["/images/dewalt-impact.jpg"], asin: "B01H5W8P6E", specs: ["1/2-inch drive", "1200 ft-lbs breakaway", "Brushless", "3 speed settings", "Hog ring anvil"], badge: "value", label: "Best Value", pros: "Almost as powerful for $30 less." },
-      { name: "Astro Nano 1/2-inch", price: "$89.99", rating: "4.5", reviews: "3,100", images: ["/images/astro-nano.jpg"], asin: "B07W6L8J3X", specs: ["1/2-inch drive", "450 ft-lbs", "Pneumatic", "Titanium hammer case", "3.5 lb"], badge: "budget", label: "Best Mini", pros: "Tiny but mighty. Fits in tight spaces." },
+      { name: "Milwaukee M18 1/2-inch", price: "$277.89", rating: "4.7", reviews: "6,800", images: ["/images/milwaukee-impact.jpg"], asin: "B08P4NX77N", specs: ["1/2-inch drive", "1400 ft-lbs breakaway", "Brushless", "Friction ring anvil", "LED light", "6.4 lb"], badge: "top", label: "Best Overall", pros: "The standard for cordless impacts. Handles any bolt on any car." },
+      { name: "DEWALT DCF899B", price: "$239.99", rating: "4.6", reviews: "5,700", images: ["/images/dewalt-impact.jpg"], asin: "B00WJA1J68", specs: ["1/2-inch drive", "1200 ft-lbs breakaway", "Brushless", "3 speed settings", "Hog ring anvil"], badge: "value", label: "Best Value", pros: "Almost as powerful for $30 less." },
+      { name: "Astro Nano 1/2-inch", price: "$119.99", rating: "4.5", reviews: "3,100", images: ["/images/astro-nano.jpg"], asin: "B00VTQIURE", specs: ["1/2-inch drive", "500 ft-lbs", "Pneumatic", "Titanium hammer case", "3.5 lb"], badge: "budget", label: "Best Mini", pros: "Tiny but mighty. Fits in tight spaces." },
       { name: "Ryobi P262 1/2-inch", price: "$99.00", rating: "4.4", reviews: "5,500", images: ["/images/ryobi-impact.jpg"], asin: "B07Q3B6Q1F", specs: ["1/2-inch drive", "600 ft-lbs", "Brushless", "LED spotlight", "Detent pin anvil", "5.2 lb"], badge: "value", label: "Best Budget", pros: "Best impact in the Ryobi lineup. Covers 80% of jobs." },
-      { name: "Ingersoll Rand 2235TiMAX", price: "$159.99", rating: "4.6", reviews: "2,900", images: ["/images/ingersoll-impact.jpg"], asin: "B00LV9Y1FE", specs: ["1/2-inch drive", "1350 ft-lbs", "Pneumatic", "Titanium housing", "4.5 lb"], badge: "best", label: "Pro Air Tool", pros: "Professional pneumatic. Runs forever." }
+      { name: "Ingersoll Rand 2235TiMAX", price: "$279.99", rating: "4.7", reviews: "2,700", images: ["/images/ingersoll-impact.jpg"], asin: "B00LV9Y1FE", specs: ["1/2-inch drive", "1350 ft-lbs", "Pneumatic", "Titanium housing", "4.5 lb"], badge: "best", label: "Pro Air Tool", pros: "Professional pneumatic. Runs forever." }
     ]
   },
   "ratchet-set": {
@@ -390,6 +390,19 @@ export const tools = {
       { name: "Torin Big Red 3 Ton T43002", price: "$39.99", rating: "4.7", reviews: "9,800", images: ["/images/torin-stand.svg"], asin: "B000C4CHPE", specs: ["3 ton each", "Ratchet", "11-17 inch range", "ASME PASE", "Sold everywhere"], badge: "budget", label: "Best Budget", pros: "The default budget pair. Fine within capacity on solid, level concrete. Watch the pawl." },
       { name: "Daytona 6 Ton Pair", price: "$109.99", rating: "4.8", reviews: "1,600", images: ["/images/daytona-6ton-stand.svg"], asin: "B09LGK5J7W", specs: ["6 ton each", "Pin + ratchet", "15-23.5 inch range", "Tall reach", "Heavy duty"], badge: "value", label: "Heavy Duty", pros: "For trucks and SUVs, and for anyone who wants room to slide a creeper underneath." },
       { name: "Torin Big Red 6 Ton", price: "$64.99", rating: "4.6", reviews: "2,100", images: ["/images/torin-6ton-stand.svg"], asin: "B000C4CHPE", specs: ["6 ton each", "Ratchet", "15.5-24 inch range", "Tall stand", "Budget truck pick"], badge: "budget", label: "Truck Budget", pros: "Tall 6-ton reach for trucks without paying pro-tool money." }
+    ]
+  },
+  "car-ramps": {
+    name: "Car Ramps",
+    short: "Ramps",
+    desc: "Drive up, get under, change the oil. No pump, no stands, no deflate. A stable set of plastic or foam ramps beats a jack for most under-car jobs.",
+    slug: "car-ramps",
+    products: [
+      { name: "RhinoGear RhinoRamps 11909", price: "$64.99", rating: "4.7", reviews: "9,800", images: ["/images/rhinoramps-11909.svg"], asin: "B0117EETEK", specs: ["12,000 lb GVW pair", "Resin plastic", "17 degree incline", "Rubber front grip", "Nest for storage"], badge: "top", label: "Best Overall", pros: "The default I send everyone to. Cheap, light, stable, and swallows a sedan to a half-ton truck." },
+      { name: "FloTool RhinoRamps MAX 11912", price: "$79.99", rating: "4.7", reviews: "6,100", images: ["/images/rhinoramps-max-11912.svg"], asin: "B0117EESNC", specs: ["16,000 lb GVW pair", "Patented polymer deck", "17 degree incline", "Wide 13 inch base", "Truck rated"], badge: "value", label: "For Trucks", pros: "The RhinoRamps that shrug off a full-size truck without drama." },
+      { name: "Black Widow PSR295 Plastic", price: "$109.99", rating: "4.5", reviews: "2,300", images: ["/images/black-widow-psr295.svg"], asin: "B01N308YYO", specs: ["10,000 lb GVW pair", "6.25 inch lift", "Low incline", "Drain-through design", "Rubber feet"], badge: "value", label: "Best Value", pros: "Low climb for a sedan plus a real lift at a price that does not sting." },
+      { name: "MaxxHaul 50709", price: "$104.99", rating: "4.5", reviews: "1,400", images: ["/images/maxxhaul-50709.svg"], asin: "B0BP5C3749", specs: ["6,500 lb GVW pair", "Detachable center", "Low incline", "Wide platform", "For lowered cars"], badge: "best", label: "Best for Low Cars", pros: "Gentle slope and a pop-out center for room to reach the drain plug." },
+      { name: "Race Ramps RR-56", price: "$184.99", rating: "4.8", reviews: "1,600", images: ["/images/race-ramps-rr56.svg"], asin: "B003WSZH9G", specs: ["3,000 lb GVW pair", "10.8 degree incline", "Foam core", "Anti-slip coating", "56 inch length"], badge: "best", label: "Low-Profile Pro", pros: "The 10.8 degree whisper ramp for lowered and stanced cars. Nothing else this gentle." }
     ]
   },
   "work-light": {

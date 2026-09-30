@@ -1,5 +1,15 @@
 [
   {
+    "tool": "car-ramps",
+    "status": "done",
+    "products": [
+      "car ramps",
+      "rhino ramps",
+      "service ramps"
+    ],
+    "notes": "Reviews + new category. Published Sep 30, 2026. RhinoGear RhinoRamps 11909 top pick ($64.99). Angle: gave up on floor jack for under-car jobs. 5 products: RhinoRamps 11909, RhinoRamps MAX 11912 (trucks), Black Widow PSR295 (value), MaxxHaul 50709 (low cars), Race Ramps RR-56 (low-profile pro). Middle twist: modern plastic/foam ramps beat steel for home use; capacity rating over-bought. Internal links to floor-jack + jack-stand. Prices estimated, ASINs verified live via search."
+  },
+  {
     "tool": "obd2-scanner",
     "status": "done",
     "products": [
