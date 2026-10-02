@@ -1,5 +1,15 @@
 [
   {
+    "tool": "battery-charger",
+    "status": "done",
+    "products": [
+      "battery charger",
+      "battery maintainer",
+      "smart charger"
+    ],
+    "notes": "Reviews + new category, published Oct 2, 2026. NOCO GENIUS5 top pick ($62.99). Angle: kept jump-starting wife's car, problem was a charging/maintenance gap not a bad battery. Twist: biggest amp number is the wrong number; 2-5A smart maintainer beats a 100A brute for a car that sits. 5 products: NOCO GENIUS5 (top), Schumacher SC1281 (value, 100A engine start), Battery Tender Plus 021-0128 (maintainer), CTEK MXS 5.0 (pro), NOCO GENIUS2 (budget). Internal links to jump-starter + multimeter. All 5 ASINs verified live via search (GENIUS5 B07W8KJH44, SC1281 B07BLLRM8R, 021-0128 B00068XCQU, CTEK MXS5 B00CD44RQO, GENIUS2 B07W6B987F). Prices ESTIMATED (Amazon bot-walled) pending price-refresh cron. Push to GitHub BLOCKED: /root/.github-token expired (HTTP 401). Commit 2cb98be local only."
+  },
+  {
     "tool": "car-ramps",
     "status": "done",
     "products": [
