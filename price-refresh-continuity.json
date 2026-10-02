@@ -1,22 +1,23 @@
 {
   "cycle": 3,
-  "date": "2026-09-30",
+  "date": "2026-10-01",
   "products_checked": [
-    "floor-jack/SATA 3 Ton: ASIN B0FVF7KT56 LIVE (4.8/60, Amazon's Choice). Live $163.99 vs $165.99 = -1.2% SKIP (under 10%).",
-    "floor-jack/AV Steel 2.5 Ton: ASIN B0D2J99MFG LIVE (4.4/493, 100+/wk). Price $62.99 -> $69.99 (+11.1%) UPDATED.",
-    "floor-jack/Maxority 3 Ton: ASIN B0DP7QCCMX LIVE (4.6/664, 100+/wk). $137.99 = $137.99 no change.",
-    "floor-jack/Jack Boss 3 Ton: ASIN B099JPWCPC LIVE (4.5/819, 200+/wk). $169.99 = $169.99 no change.",
-    "floor-jack/AV Steel 3 Ton: ASIN B0DJMM1Q7S LIVE (4.6/236, 50+/wk). $169.99 = $169.99 no change."
+    "torque-wrench/TEKTON 1/2': ASIN B07C9B7Z8W was DEAD/wrong -> fixed to B00C5ZL0RU (TEKTON 24335, live 4.6/14200 buybox). $54.99 = $54.99 no price change.",
+    "torque-wrench/CDI 1503MFRPH: ASIN B0002SRH5G was WRONG (resolved to a UView coolant tool) -> fixed to B00461ATL4 (CDI 1503MFRPH, live 4.7/43). $118.75 -> $160.27 (+35%) UPDATED. Specs corrected: is 1/2-inch 20-150 ft-lb, not 3/8-inch split beam.",
+    "torque-wrench/Pittsburgh 1/2': ASIN B0002NYWQ2 503/bot-walled, unconfirmable. Pittsburgh is a Harbor Freight brand w/o reliable Amazon ASIN. $19.99 kept.",
+    "torque-wrench/ACDelco ARM601: ASIN B00LIKPBPU DEAD -> fixed to B004VYUQI2 (ARM601-3, live 4.4/1800). $74.99 -> $90.99 (+21%) UPDATED.",
+    "torque-wrench/Precision PREC3FR250(F): ASIN B0006O3HZM DEAD -> fixed to B002XMSFIM (PREC3FR250F split beam flex, live 4.8/1400). $164.99 -> $256.39 (+55%) UPDATED."
   ],
   "issues": {
     "serpapi_down": "SerpAPI out of searches. Using Firecrawl /clp/<ASIN> route (delivers real US buybox prices).",
-    "amazon_dp_botwall": "Amazon /dp/ product pages still bot-walled. /clp/<ASIN> renders real buybox prices - USE THIS ROUTE.",
-    "browser_unavailable": "No Chromium on host; Firecrawl /clp/ route is the fallback."
+    "amazon_dp_botwall": "Amazon /dp/ product pages stay bot-walled. /clp/<ASIN> renders real buybox prices - USE THIS ROUTE.",
+    "browser_unavailable": "No Chromium on host; Firecrawl /clp/ route is the fallback.",
+    "torque_all_asin_bad": "All 5 torque-wrench ASINs in data.mjs were wrong/dead placeholders (TEKTON/CDI/ACDelco/Precision fixed today; Pittsburgh is HF-brand, no good ASIN)."
   },
   "schedule": {
-    "next_category_recommend": "torque-wrench (all 5 ASINs BROKEN per 09-24 run) OR socket-set (all 5 DEAD per 09-23). jack-stand also unverified this cycle.",
-    "verified_this_cycle": "obd2-scanner 5/5, ratchet-set 4/6, work-light 5/5, impact-wrench 5/5, NOCO GB40, floor-jack 5/5 (all ASINs live).",
-    "still_unverified_this_cycle": "torque-wrench, socket-set, jump-starter (GBX45/GOOLOO/NEXPOW/TACKLIFE), breaker-bar, jack-stand, car-ramps, air-compressor, multimeter, GEARWRENCH B000VDXSV6, Sunex B00A1W3G8E."
+    "next_category_recommend": "socket-set (5 ASINs flagged DEAD/bot-walled on 09-23) OR jack-stand (still unverified this cycle). breaker-bar/jump-starter/car-ramps/air-compressor/multimeter also unverified.",
+    "verified_this_cycle": "obd2-scanner 5/5, ratchet-set 4/6, work-light 5/5, impact-wrench 5/5, NOCO GB40, floor-jack 5/5, torque-wrench 4/5 (Pittsburgh unconfirmable).",
+    "still_unverified_this_cycle": "socket-set, jump-starter (GBX45/GOOLOO/NEXPOW/TACKLIFE), breaker-bar, jack-stand, car-ramps, air-compressor, multimeter."
   },
   "cycle_complete": false
 }

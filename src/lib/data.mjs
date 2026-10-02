@@ -213,9 +213,9 @@ export const tools = {
         name: "TEKTON 1/2' Drive",
         price: "$54.99",
         rating: "4.6",
-        reviews: "9,500",
+        reviews: "14,200",
         images: ["/images/tekton-torque.jpg"],
-        asin: "B07C9B7Z8W",
+        asin: "B00C5ZL0RU",
         specs: ["1/2-inch drive", "10-150 ft-lb", "Click type", "Dual range", "Steel case"],
         badge: "top",
         label: "Best Overall",
@@ -223,12 +223,12 @@ export const tools = {
       },
       {
         name: "CDI 1503MFRPH",
-        price: "$118.75",
+        price: "$160.27",
         rating: "4.7",
-        reviews: "4,200",
+        reviews: "43",
         images: ["/images/cdi-torque.jpg"],
-        asin: "B0002SRH5G",
-        specs: ["3/8-inch drive", "30-150 in-lb", "Split beam", "Made in USA", "Certified accurate"],
+        asin: "B00461ATL4",
+        specs: ["1/2-inch drive", "20-150 ft-lb", "Micrometer", "Comfort grip", "NIST calibration"],
         badge: "best",
         label: "Pro Choice",
         pros: "Snap-on quality without the Snap-on price. Made in the USA."
@@ -247,23 +247,23 @@ export const tools = {
       },
       {
         name: "ACDelco ARM601",
-        price: "$74.99",
-        rating: "4.5",
-        reviews: "3,600",
+        price: "$90.99",
+        rating: "4.4",
+        reviews: "1,800",
         images: ["/images/acdelco-torque.jpg"],
-        asin: "B00LIKPBPU",
-        specs: ["3/8-inch drive", "Digital", "Bidirectional", "Hold peak", "Memory recall"],
+        asin: "B004VYUQI2",
+        specs: ["3/8-inch drive", "Digital", "3.7-37 ft-lb", "LED & buzzer", "ISO 6789"],
         badge: "value",
         label: "Best Digital",
         pros: "Digital readout makes it easy to read in tight spaces."
       },
       {
-        name: "Precision Instruments PREC3FR250",
-        price: "$164.99",
+        name: "Precision Instruments PREC3FR250F",
+        price: "$256.39",
         rating: "4.8",
-        reviews: "1,200",
+        reviews: "1,400",
         images: ["/images/precision-torque.jpg"],
-        asin: "B0006O3HZM",
+        asin: "B002XMSFIM",
         specs: ["1/2-inch drive", "0-250 ft-lb", "Split beam", "Flex head", "Made in USA"],
         badge: "best",
         label: "Best Split Beam",
@@ -442,6 +442,19 @@ export const tools = {
       { name: "Fluke 117", price: "$249.99", rating: "4.8", reviews: "21,900", images: ["/images/fluke-117.svg"], asin: "B0006Z64Q0", specs: ["True RMS", "Auto-ranging", "Non-contact voltage", "Low input impedance", "CAT III 600V", "Made in USA"], badge: "best", label: "Pro Choice", pros: "The flagship hand on every pro bench. Buy once, keep forever." },
       { name: "AstroAI AM33D", price: "$18.99", rating: "4.6", reviews: "9,500", images: ["/images/astroai-am33d.svg"], asin: "B01ISAMUA6", specs: ["2000 count", "Manual range", "AC/DC & resistance", "Diode & continuity", "Backlight"], badge: "budget", label: "Best Budget", pros: "Perfect first meter at a price that is easy to justify." },
       { name: "Innova 3320", price: "$27.99", rating: "4.5", reviews: "5,200", images: ["/images/innova-3320.svg"], asin: "B000EVYGZA", specs: ["Auto-ranging", "Car battery test", "Alternator test", "DC to 20V", "Continuity", "For 12V systems"], badge: "value", label: "Best for Car Work", pros: "Made for 12V car systems right out of the box." }
+    ]
+  },
+  "battery-charger": {
+    name: "Battery Chargers",
+    short: "Chargers",
+    desc: "Charge a dead battery and keep a car alive through the winter. From $30 smart maintainers that float a battery for months to 100A engine-start units that crank a dead truck.",
+    slug: "battery-charger",
+    products: [
+      { name: "NOCO GENIUS5", price: "$62.99", rating: "4.7", reviews: "13,500", images: ["/images/noco-genius5.svg"], asin: "B07W8KJH44", specs: ["5A charge", "6V & 12V", "Auto maintain", "Desulfation", "Temperature comp", "LiFePO4 support"], badge: "top", label: "Best Overall", pros: "The smart charger I plug in and forget. 5A, auto voltage, handles lead-acid and lithium." },
+      { name: "Schumacher SC1281", price: "$79.99", rating: "4.6", reviews: "9,800", images: ["/images/schumacher-sc1281.svg"], asin: "B07BLLRM8R", specs: ["6A charge", "6V & 12V", "100A engine start", "12A boost", "Auto voltage", "Desulfation"], badge: "value", label: "Best Value", pros: "Charges AND jump starts a dead battery. Two tools for the price of one." },
+      { name: "Battery Tender Plus 021-0128", price: "$45.95", rating: "4.8", reviews: "21,000", images: ["/images/battery-tender-0210128.svg"], asin: "B00068XCQU", specs: ["1.25A float", "12V only", "Smarter than trickle", "Overcharge protection", "For stored vehicles"], badge: "budget", label: "Best Maintainer", pros: "The classic for a stored car or motorcycle. Floats your battery all winter and never cooks it." },
+      { name: "CTEK MXS 5.0", price: "$89.00", rating: "4.7", reviews: "4,400", images: ["/images/ctek-mxs5.svg"], asin: "B00CD44RQO", specs: ["4.3A charge", "8-step program", "12V", "Spark protected", "Reverse polarity", "Swedish made"], badge: "best", label: "Pro Choice", pros: "The 8-step program charger collectors trust. Premium build, gentle on delicate batteries." },
+      { name: "NOCO GENIUS2", price: "$29.95", rating: "4.7", reviews: "11,200", images: ["/images/noco-genius2.svg"], asin: "B07W6B987F", specs: ["2A charge", "6V & 12V", "Auto maintain", "Desulfation", "Temperature comp", "LiFePO4 support"], badge: "budget", label: "Best Budget", pros: "The GENIUS5 for half the price. Same smarts, half the amps, perfect for a motorcycle or small car." }
     ]
   }
 };
