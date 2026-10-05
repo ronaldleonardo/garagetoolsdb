@@ -1,5 +1,15 @@
 [
   {
+    "tool": "oil-filter-wrench",
+    "status": "done",
+    "products": [
+      "oil filter wrench",
+      "oil filter cap wrench",
+      "oil filter pliers"
+    ],
+    "notes": "Reviews + new category, published Oct 5, 2026. ARES 17pc cap set top pick ($27.99). Angle: rounded an oil filter with a one-wrench-fits-all 'universal' claw, spent a Saturday fighting the can off. Twist (contradiction): the tool that fits everything is the trap, it slips on an oily stuck filter; the car-specific cap that mechanically grabs the flutes is the reliable one. Hidden door: never install a filter with a wrench (hand-tighten 3/4 turn), over-tightened filters are why anyone needs this tool. 5 products: ARES cap set (top), Astro 6070 pliers (pro), Lisle 63600 (value), ABN 3-jaw (universal), Performance Tool band (budget). Internal links to oil-filter-wrench/car-ramps/socket-set/breaker-bar. 5 SVG images. Prices ESTIMATED (Amazon bot-walled); ASINs unverified, set empty pending price-refresh cron."
+  },
+  {
     "tool": "battery-charger",
     "status": "done",
     "products": [

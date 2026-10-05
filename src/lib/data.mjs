@@ -456,5 +456,18 @@ export const tools = {
       { name: "CTEK MXS 5.0", price: "$89.00", rating: "4.7", reviews: "4,400", images: ["/images/ctek-mxs5.svg"], asin: "B00CD44RQO", specs: ["4.3A charge", "8-step program", "12V", "Spark protected", "Reverse polarity", "Swedish made"], badge: "best", label: "Pro Choice", pros: "The 8-step program charger collectors trust. Premium build, gentle on delicate batteries." },
       { name: "NOCO GENIUS2", price: "$29.95", rating: "4.7", reviews: "11,200", images: ["/images/noco-genius2.svg"], asin: "B07W6B987F", specs: ["2A charge", "6V & 12V", "Auto maintain", "Desulfation", "Temperature comp", "LiFePO4 support"], badge: "budget", label: "Best Budget", pros: "The GENIUS5 for half the price. Same smarts, half the amps, perfect for a motorcycle or small car." }
     ]
+  },
+  "oil-filter-wrench": {
+    name: "Oil Filter Wrenches",
+    short: "Filters",
+    desc: "Get a stuck or rounded oil filter off without shredding the can or cussing at your car. Cap wrenches that grab the filter's flutes, pliers for tight bays, and the universal tools that fit everything but grip nothing.",
+    slug: "oil-filter-wrench",
+    products: [
+      { name: "ARES 17-Piece Cap Set", price: "$27.99", rating: "4.6", reviews: "3,100", images: ["/images/ares-oilcap-set.svg"], asin: "", specs: ["17 cap sizes", "Covers 12-21 flute", "1/2 & 3/8 drive", "Cast aluminum", "Fit your filter exactly"], badge: "top", label: "Best Overall", pros: "The cap that grabs your filter's exact flutes does not slip on an oily can. Buy the set, then pick the one your car needs. Prices estimated, ASIN pending verification." },
+      { name: "Astro 6070 Adjustable Pliers", price: "$30.99", rating: "4.6", reviews: "2,700", images: ["/images/astro-6070-pliers.svg"], asin: "", specs: ["Adjustable jaw", "Long handle leverage", "Oil resistant grip", "2-3/8 to 3-3/4 in", "Iron body"], badge: "best", label: "Pro Choice", pros: "Pliers reach the filter nobody else can. Real lever force, just do not squeeze a stuck one until it grenades. Prices estimated." },
+      { name: "Lisle 63600 3/8 Drive", price: "$13.49", rating: "4.7", reviews: "9,600", images: ["/images/lisle-63600.svg"], asin: "", specs: ["3/8 inch drive", "Band style", "2-1/2 to 3-1/8 in", "Square drive", "Use with ratchet"], badge: "budget", label: "Best Value", pros: "The square-drive band wrench r/Tools and mechanic forums actually recommend. Cheap, tough, and just works. Prices estimated." },
+      { name: "ABN Universal 3-Jaw", price: "$16.99", rating: "4.3", reviews: "4,500", images: ["/images/abn-3jaw.svg"], asin: "", specs: ["3 self-tightening jaws", "Universal fit range", "Ratchet drive", "For hard-to-reach", "One size for many cars"], badge: "value", label: "Best Universal", pros: "The claw that fits anything. Great backup for an odd filter, just keep a spare filter handy when it slips. Prices estimated." },
+      { name: "Performance Tool Band", price: "$9.99", rating: "4.2", reviews: "1,200", images: ["/images/performance-tool-band.svg"], asin: "", specs: ["Steel band", "2-piece set", "Wooden handle", "Wide size range", "Dead simple"], badge: "budget", label: "Budget Strap", pros: "A $10 band works when there is room to swing it. Buy it as a spare, not your main plan. Prices estimated." }
+    ]
   }
 };
