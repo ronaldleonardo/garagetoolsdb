@@ -1,23 +1,31 @@
 {
-  "cycle": 4,
-  "date": "2026-10-03",
+  "cycle": 5,
+  "date": "2026-10-05",
+  "category_done": "jump-starter (5/5)",
   "products_checked": [
-    "air-compressor/California Air Tools 10020C: ASIN B0188XBTLY live (CLP buybox $412.50, up from $299.99, +37.5%). Updated price/rating(4.4)/reviews(1.5K). Big swing, third-party sellers spiking the quiet-compressor niche.",
-    "breaker-bar/TEKTON 1/2-inch: ASIN B07C9B7Z8W DEAD (404). Replaced with TEKTON SBH00224 1/2x24in (B07GH97P36, live 4.7). $29.99 -> $55.00. Spec updated 25in->24in (TEKTON discontinued the 25in).",
-    "multimeter/Klein MM400: ASIN B00KQ0FAZ0 DEAD (404). Replaced with live B018EXZO8M (4.6/4.1K). Price left $54.97 (current buybox would not render on /clp/; flagged).",
-    "jack-stand/Daytona 3 Ton Pair: ASIN B09KZ9H8HL fabricated. Daytona = Harbor Freight brand, NOT on Amazon (search shows only 'fits/compatible' 3rd-party items). asin cleared to ''; price $59.99 flagged as non-verifiable HF estimate.",
-    "car-ramps/RhinoGear RhinoRamps 11909: ASIN B0117EETEK live (4.6/14.1K), buybox ~$65.79 vs stored $64.99 (+1.2%). No >10% change, price left."
+    "jump-starter/NOCO Boost Plus GB40 (B015TKUPIC): ASIN correct. Amazon US shows 'Currently unavailable' (no buybox). Maker price no.co/gb40 = $99.95, unchanged. Reviews 68,000 -> 129,700 (Amazon card 4.6).",
+    "jump-starter/NOCO Boost X GBX45: stored ASIN B08R9B7S3T was WRONG (resolved to a board game). Fixed to B0924V8SPC (4.5/15.5K). Amazon US 'Currently unavailable'. Maker no.co/gbx45 = $124.95 -> price $109.95 -> $124.95 (+13.6%). Spec fixed 1500A -> 1250A.",
+    "jump-starter/GOOLOO GP4000: stored ASIN B0B7C6XHGM was WRONG (board game). Fixed to B09HJH1S41 (4.6/8.9K). IN STOCK Amazon $79.96 (-33% deal, list $119.99) -> price $49.99 -> $79.96 (+60%). Rating 4.5->4.6, reviews 21,000->8,900.",
+    "jump-starter/NEXPOW 2000A: stored ASIN B07W9G6F7G was WRONG (board game). Fixed to B07T9S3Q5N (4.6/8.7K). Amazon US 'Currently unavailable'. Maker nexpow.com G17 DTC 'from $79.99'. Price LEFT at $35.99, unverified (DTC price not a street price). Rating 4.4->4.6, reviews 14,000->8,700.",
+    "jump-starter/TACKLIFE T8 Pro: stored ASIN B07J6F6VH6 INVALID (bot wall / resolves to Mysterium board game). Tacklife T8 Pro no longer sold new on Amazon US (only adapters/cases/used). asin cleared to ''. Price $67.99 left, flagged."
   ],
   "issues": {
-    "clp_route": "Firecrawl /clp/<ASIN> delivers real US buybox prices. /dp/ stays bot-walled (raw /v2/scrape html=3074 bytes). Search URLs (/s?k=) 503 via firecrawl. Some ASINs intermittently time out on first /clp/ scrape; retry via raw curl /v2/scrape with waitFor 2500.",
-    "clp_price_omission": "The CLP 'Your pick' overview sometimes omits the main product's buybox price in markdown (Klein, RhinoRamps) but raw /v2/scrape html can expose it in the own-card a-offscreen. Parse price inside dp/<ASIN> card, not first a-offscreen in page (hits related items).",
-    "hf_brand_no_asin": "Additional Harbor Freight-only brands confirmed NOT on Amazon this cycle: Daytona (jack stands). Same policy as QUINN/Pittsburgh: clear asin, flag price as estimate.",
-    "execute_code_blocked": "execute_code BLOCKED in cron (approvals.cron_mode). Use terminal curl -> Firecrawl /v2/scrape (worked well) + web_extract + web_search."
+    "asin_contamination": "ROOT CAUSE FOUND: jump-starter ASINs were copied from boardgamesdb (B0B7C6XHGM=Patchwork, B07W9G6F7G=Lost Cities, B07J6F6VH6=Mysterium, B01N3A4070=Kingdomino). Assume other categories may have the same cross-contamination; verify ASINs category by category.",
+    "solution_jina": "BREAKTHROUGH: r.jina.ai works from this LXC for Amazon US pages (its egress IP is US, 'Delivering to The Dalles 97058'), returns the real buybox price. Extract with regex: 'Join Prime]\\([^)]*\\) (\\$[\\d,]+\\.\\d{2})\\$' or 'Quantity: Quantity:1 \\$\\$(...)'. Also works for amazon.com/s?k= search pages, so ASIN discovery + price in one step. Firecrawl /clp/<ASIN> still works but only renders a price when the item is buyable, and never for OOS items.",
+    "amazon_oos": "SECOND FINDING: NOCO GB40, NOCO GBX45, NEXPOW 2000A and NOCO GENIUS5 all show 'Currently unavailable. We don't know when or if this item will be back in stock.' on Amazon US today. Verified with controls (GEARWRENCH B07H5H1J3X, DEWALT B077ZCTBFY, Klein B018EXZO8M = 0 occurrences of that string). Site shows these as buyable picks; worth an editorial decision on the Amazon links for OOS items.",
+    "serpapi": "SerpAPI key still returns 'Your account has run out of searches.' Do not retry as primary.",
+    "firecrawl": "/clp/ route still works but is intermittent (503 on first hit, succeeds on retry). /dp/, /s?k= and /gp/offer-listing are bot-walled (3074-byte 'Continue shopping' page).",
+    "execute_code_blocked": "execute_code BLOCKED in cron (approvals.cron_mode). Use terminal curl + web_extract + web_search."
+  },
+  "edits": {
+    "data.mjs": "jump-starter: GB40 reviews 129,700; GBX45 asin B0924V8SPC / $124.95 / 4.5 / 15,500 / 1250A; GOOLOO asin B09HJH1S41 / $79.96 / 4.6 / 8,900 / pros reworded; NEXPOW asin B07T9S3Q5N / 4.6 / 8,700; TACKLIFE asin cleared.",
+    "post": "best-jump-starter-review.astro: 'surprisingly good for $50' -> 'surprisingly good for the money' (GOOLOO no longer $50).",
+    "build": "rm -rf dist && npx astro build (34 pages) && systemctl restart garagetoolsdb :8082 OK"
   },
   "schedule": {
-    "next_category_recommend": "jump-starter (GBX45/GOOLOO/NEXPOW/TACKLIFE all still unverified; only GB40 checked) OR battery-charger (5 ASINs verified live but prices still ESTIMATED pending this refresh cron).",
-    "verified_this_cycle": "obd2-scanner 5/5, ratchet-set 4/6, work-light 5/5, impact-wrench 5/5, NOCO GB40, floor-jack 5/5, torque-wrench 4/5, socket-set 4/5, jack-stand 1/5 (Daytona HF=no ASIN), breaker-bar 1/5 (TEKTON fixed), car-ramps 1/5 (RhinoRamps live), air-compressor 1/5 (10020C updated), multimeter 1/5 (Klein ASIN fixed).",
-    "still_unverified_this_cycle": "jump-starter (GBX45/GOOLOO/NEXPOW/TACKLIFE), battery-charger (all prices estimated), plus remaining 4 products each in jack-stand/breaker-bar/car-ramps/air-compressor/multimeter."
+    "next_category_recommend": "TACKLIFE T8 Pro needs a REPLACEMENT product (discontinued on Amazon). Then battery-charger (all 5 prices still ESTIMATED, ASINs verified 10-02) OR oil-filter-wrench (5 ASINs empty, prices estimated) OR verify other categories' ASINs for boardgamesdb contamination.",
+    "verified_this_cycle": "jump-starter 5/5 (3 ASINs fixed, 1 cleared, 1 confirmed; ratings/reviews refreshed on all 5).",
+    "still_unverified_this_cycle": "NEXPOW 2000A price (Amazon OOS, maker DTC $79.99); TACKLIFE T8 Pro price + replacement."
   },
   "cycle_complete": false
 }
