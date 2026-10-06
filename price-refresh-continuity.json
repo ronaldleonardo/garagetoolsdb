@@ -1,31 +1,27 @@
 {
-  "cycle": 5,
-  "date": "2026-10-05",
-  "category_done": "jump-starter (5/5)",
+  "cycle": 6,
+  "date": "2026-10-06",
+  "category_done": "battery-charger (5/5)",
   "products_checked": [
-    "jump-starter/NOCO Boost Plus GB40 (B015TKUPIC): ASIN correct. Amazon US shows 'Currently unavailable' (no buybox). Maker price no.co/gb40 = $99.95, unchanged. Reviews 68,000 -> 129,700 (Amazon card 4.6).",
-    "jump-starter/NOCO Boost X GBX45: stored ASIN B08R9B7S3T was WRONG (resolved to a board game). Fixed to B0924V8SPC (4.5/15.5K). Amazon US 'Currently unavailable'. Maker no.co/gbx45 = $124.95 -> price $109.95 -> $124.95 (+13.6%). Spec fixed 1500A -> 1250A.",
-    "jump-starter/GOOLOO GP4000: stored ASIN B0B7C6XHGM was WRONG (board game). Fixed to B09HJH1S41 (4.6/8.9K). IN STOCK Amazon $79.96 (-33% deal, list $119.99) -> price $49.99 -> $79.96 (+60%). Rating 4.5->4.6, reviews 21,000->8,900.",
-    "jump-starter/NEXPOW 2000A: stored ASIN B07W9G6F7G was WRONG (board game). Fixed to B07T9S3Q5N (4.6/8.7K). Amazon US 'Currently unavailable'. Maker nexpow.com G17 DTC 'from $79.99'. Price LEFT at $35.99, unverified (DTC price not a street price). Rating 4.4->4.6, reviews 14,000->8,700.",
-    "jump-starter/TACKLIFE T8 Pro: stored ASIN B07J6F6VH6 INVALID (bot wall / resolves to Mysterium board game). Tacklife T8 Pro no longer sold new on Amazon US (only adapters/cases/used). asin cleared to ''. Price $67.99 left, flagged."
+    "battery-charger/NOCO GENIUS5 (B07W8KJH44): buybox live $69.87 (was est $62.99, +10.9%). Price updated.",
+    "battery-charger/Schumacher SC1281 (B07BLLRM8R): buybox live $89.99 (was est $79.99, +12.5%).",
+    "battery-charger/Battery Tender Plus 021-0128 (B00068XCQU): buybox live $58.95 (was est $45.95, +28.3%).",
+    "battery-charger/CTEK MXS 5.0 (B00CD44RQO): $95.99 (was est $89.00). NOTE: buybox is 3P seller 'Parts Harbor' w/ protection-plan offers; Amazon-fulfilled price not shown this pull.",
+    "battery-charger/NOCO GENIUS2 (B07W6B987F): buybox live $49.95 (was est $29.95, +66.8%). 'Currently unavailable' only on a '(Pack of 6)' sub-variant; main listing buyable."
   ],
   "issues": {
-    "asin_contamination": "ROOT CAUSE FOUND: jump-starter ASINs were copied from boardgamesdb (B0B7C6XHGM=Patchwork, B07W9G6F7G=Lost Cities, B07J6F6VH6=Mysterium, B01N3A4070=Kingdomino). Assume other categories may have the same cross-contamination; verify ASINs category by category.",
-    "solution_jina": "BREAKTHROUGH: r.jina.ai works from this LXC for Amazon US pages (its egress IP is US, 'Delivering to The Dalles 97058'), returns the real buybox price. Extract with regex: 'Join Prime]\\([^)]*\\) (\\$[\\d,]+\\.\\d{2})\\$' or 'Quantity: Quantity:1 \\$\\$(...)'. Also works for amazon.com/s?k= search pages, so ASIN discovery + price in one step. Firecrawl /clp/<ASIN> still works but only renders a price when the item is buyable, and never for OOS items.",
-    "amazon_oos": "SECOND FINDING: NOCO GB40, NOCO GBX45, NEXPOW 2000A and NOCO GENIUS5 all show 'Currently unavailable. We don't know when or if this item will be back in stock.' on Amazon US today. Verified with controls (GEARWRENCH B07H5H1J3X, DEWALT B077ZCTBFY, Klein B018EXZO8M = 0 occurrences of that string). Site shows these as buyable picks; worth an editorial decision on the Amazon links for OOS items.",
-    "serpapi": "SerpAPI key still returns 'Your account has run out of searches.' Do not retry as primary.",
-    "firecrawl": "/clp/ route still works but is intermittent (503 on first hit, succeeds on retry). /dp/, /s?k= and /gp/offer-listing are bot-walled (3074-byte 'Continue shopping' page).",
-    "execute_code_blocked": "execute_code BLOCKED in cron (approvals.cron_mode). Use terminal curl + web_extract + web_search."
+    "serpapi": "SerpAPI key still exhausted. r.jina.ai/https://www.amazon.com/dp/<ASIN> remains the working primary route; filter to the 'Price / Subtotal' $$ block for the true buybox (recommendation strips inject $4.99-$16.99 noise).",
+    "firecrawl": "Not used; jina primary succeeded 5/5."
   },
   "edits": {
-    "data.mjs": "jump-starter: GB40 reviews 129,700; GBX45 asin B0924V8SPC / $124.95 / 4.5 / 15,500 / 1250A; GOOLOO asin B09HJH1S41 / $79.96 / 4.6 / 8,900 / pros reworded; NEXPOW asin B07T9S3Q5N / 4.6 / 8,700; TACKLIFE asin cleared.",
-    "post": "best-jump-starter-review.astro: 'surprisingly good for $50' -> 'surprisingly good for the money' (GOOLOO no longer $50).",
-    "build": "rm -rf dist && npx astro build (34 pages) && systemctl restart garagetoolsdb :8082 OK"
+    "data.mjs": "battery-charger 5 prices updated to live buybox: GENIUS5 $69.87, SC1281 $89.99, BT $58.95, CTEK $95.99, GENIUS2 $49.95. GENIUS2 pros reworded ('for half the price' -> 'brains for less'; it is no longer ~half of GENIUS5).",
+    "post": "best-battery-charger-review.astro: Battery Tender $45.95 -> $58.95; GENIUS2 $29.95 -> $49.95.",
+    "build": "rm -rf dist && npx astro build && systemctl restart garagetoolsdb :8082"
   },
   "schedule": {
-    "next_category_recommend": "TACKLIFE T8 Pro needs a REPLACEMENT product (discontinued on Amazon). Then battery-charger (all 5 prices still ESTIMATED, ASINs verified 10-02) OR oil-filter-wrench (5 ASINs empty, prices estimated) OR verify other categories' ASINs for boardgamesdb contamination.",
-    "verified_this_cycle": "jump-starter 5/5 (3 ASINs fixed, 1 cleared, 1 confirmed; ratings/reviews refreshed on all 5).",
-    "still_unverified_this_cycle": "NEXPOW 2000A price (Amazon OOS, maker DTC $79.99); TACKLIFE T8 Pro price + replacement."
+    "next_category_recommend": "oil-filter-wrench (all 5 ASINs EMPTY + prices estimated, 10-05) OR socket-set (QUINN asin empty; others need contamination check). Also verify other tool categories' ASINs for boardgamesdb contamination (root cause found 10-05 on jump-starter). battery-charger now fully priced.",
+    "verified_this_cycle": "battery-charger 5/5, all real buybox prices replacing estimates.",
+    "still_unverified_this_cycle": "oil-filter-wrench 5 ASINs; socket-set QUINN asin empty; boardgamesdb ASIN contamination check across remaining categories."
   },
-  "cycle_complete": false
+  "cycle_complete": true
 }
