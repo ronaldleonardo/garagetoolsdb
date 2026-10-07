@@ -1,5 +1,15 @@
 [
   {
+    "tool": "brake-caliper-tool",
+    "status": "done",
+    "products": [
+      "brake caliper tool",
+      "brake caliper compression tool",
+      "brake caliper wind back tool"
+    ],
+    "notes": "Reviews + new category, published Oct 7, 2026. Orion Motor Tech 24pc Caliper Tool Set top pick ($23.08, 4.7/21,137). Angle: pushed a rear caliper piston with a C-clamp and killed the caliper ($180), turned a $20 pad job into a repair. Middle twist (contradiction): the tool every forum recommends (C-clamp + old pad) is correct on a floating front caliper and destroys a rear caliper with the parking brake inside, because that piston is threaded and must be ROTATED back, not pushed. Hidden door: electric parking brakes on newer cars will not retract for any hand tool until rear brake service mode is set with a scan tool (links to OBD2 post). All 5 prices are LIVE buybox pulls via r.jina.ai/<dp> (not estimates): OMT 24pc $23.08 (B01FW3U26G), Lisle 29100 Quick Quad $58.78 (B005GLQCKA), 8MILELAKE 24pc wind back $22.79 (B0122Q83T4), Lisle 25750 $46.78 (B0002SQUTU), Lisle 28600 cube $17.55 (B0002SQUFY). 5 local SVG images (site convention for new categories). Internal links to brake-caliper-tool/torque-wrench/breaker-bar/jack-stand/car-ramps + obd2 post. 5 affiliate links in /s?k= search format."
+  },
+  {
     "tool": "oil-filter-wrench",
     "status": "done",
     "products": [

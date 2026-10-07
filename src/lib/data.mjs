@@ -469,5 +469,18 @@ export const tools = {
       { name: "ABN Universal 3-Jaw", price: "$16.99", rating: "4.3", reviews: "4,500", images: ["/images/abn-3jaw.svg"], asin: "", specs: ["3 self-tightening jaws", "Universal fit range", "Ratchet drive", "For hard-to-reach", "One size for many cars"], badge: "value", label: "Best Universal", pros: "The claw that fits anything. Great backup for an odd filter, just keep a spare filter handy when it slips. Prices estimated." },
       { name: "Performance Tool Band", price: "$9.99", rating: "4.2", reviews: "1,200", images: ["/images/performance-tool-band.svg"], asin: "", specs: ["Steel band", "2-piece set", "Wooden handle", "Wide size range", "Dead simple"], badge: "budget", label: "Budget Strap", pros: "A $10 band works when there is room to swing it. Buy it as a spare, not your main plan. Prices estimated." }
     ]
+  },
+  "brake-caliper-tool": {
+    name: "Brake Caliper Tools",
+    short: "Calipers",
+    desc: "Get a brake caliper piston back so new pads fit. Floating front calipers push straight in, rear calipers with the parking brake inside have to be rotated. Push tools, wind-back kits, and the single-purpose spreaders for fixed multi-piston calipers.",
+    slug: "brake-caliper-tool",
+    products: [
+      { name: "Orion Motor Tech 24pc Caliper Tool Set", price: "$23.08", rating: "4.7", reviews: "21,137", images: ["/images/omt-caliper-24pc.svg"], asin: "B01FW3U26G", specs: ["24 pieces", "Push and wind back", "Reversible thrust bolts", "17 disc adapters", "Calipers hangers included"], badge: "top", label: "Best Overall", pros: "The cheap kit that pushes AND rotates the piston. Handles sliding front calipers and rear park-brake calipers out of one case." },
+      { name: "Lisle 29100 Quick Quad Pad Spreader", price: "$58.78", rating: "4.5", reviews: "1,400", images: ["/images/lisle-29100.svg"], asin: "B005GLQCKA", specs: ["Quad spreader", "For fixed multi-piston", "Aluminum body", "One-hand lever", "Fits 4 and 6 piston"], badge: "best", label: "Pro Choice", pros: "Pushes all four pistons on a fixed caliper at once, so you swing the pads out without pulling the caliper off the rotor." },
+      { name: "8MILELAKE 24pc Wind Back Kit", price: "$22.79", rating: "4.7", reviews: "14,971", images: ["/images/8milelake-windback.svg"], asin: "B0122Q83T4", specs: ["24 pieces", "Rear caliper wind back", "Left and right threads", "Magnetic adapters", "Hard case"], badge: "value", label: "Best for Rear Calipers", pros: "The dedicated rotate-the-piston kit for rear calipers. Left and right hand adapters cover most European and Japanese parking-brake calipers." },
+      { name: "Lisle 25750 Dual Piston Spreader", price: "$46.78", rating: "4.7", reviews: "3,220", images: ["/images/lisle-25750.svg"], asin: "B0002SQUTU", specs: ["Dual piston spreader", "Screw type", "Steel body", "For floating calipers", "No ratchet needed"], badge: "value", label: "Best Dual Piston", pros: "Screw-type spreader that pushes two pistons back from the outside in one turn. Made in the USA steel." },
+      { name: "Lisle 28600 Disc Brake Piston Tool", price: "$17.55", rating: "4.5", reviews: "2,693", images: ["/images/lisle-28600.svg"], asin: "B0002SQUFY", specs: ["3/8 inch drive", "Cube style", "Six working faces", "Rotates piston in", "Fits most import calipers"], badge: "budget", label: "Best Budget", pros: "A $17 cube you drive with a ratchet extension. The cheapest way to rotate a stuck piston back on an older car." }
+    ]
   }
 };
