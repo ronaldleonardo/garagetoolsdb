@@ -1,27 +1,29 @@
 {
-  "cycle": 6,
-  "date": "2026-10-06",
-  "category_done": "battery-charger (5/5)",
+  "cycle": 7,
+  "date": "2026-10-07",
+  "category_done": "oil-filter-wrench (5/5)",
   "products_checked": [
-    "battery-charger/NOCO GENIUS5 (B07W8KJH44): buybox live $69.87 (was est $62.99, +10.9%). Price updated.",
-    "battery-charger/Schumacher SC1281 (B07BLLRM8R): buybox live $89.99 (was est $79.99, +12.5%).",
-    "battery-charger/Battery Tender Plus 021-0128 (B00068XCQU): buybox live $58.95 (was est $45.95, +28.3%).",
-    "battery-charger/CTEK MXS 5.0 (B00CD44RQO): $95.99 (was est $89.00). NOTE: buybox is 3P seller 'Parts Harbor' w/ protection-plan offers; Amazon-fulfilled price not shown this pull.",
-    "battery-charger/NOCO GENIUS2 (B07W6B987F): buybox live $49.95 (was est $29.95, +66.8%). 'Currently unavailable' only on a '(Pack of 6)' sub-variant; main listing buyable."
+    "oil-filter-wrench/OMT 10-Piece Oil Filter Socket Set (B0BJK5FSNR): live buybox $25.49, 4.4/1,119. NEW top pick (replaced fabricated 'ARES 17-Piece Cap Set').",
+    "oil-filter-wrench/Lisle 50750 Oil Filter Pliers (B0002SR562): live buybox $29.20, 4.8/201. NEW pro pick (replaced fabricated 'Astro 6070').",
+    "oil-filter-wrench/Lisle 63600 3/8 Drive (B0002SR4Q8): live buybox $12.99, 4.5/4,271 (was est $13.49). ASIN now attached.",
+    "oil-filter-wrench/GEARWRENCH 3288D 3-Jaw (B0002SR53A): live buybox $13.49, 4.6/839. NEW universal pick (replaced fabricated 'ABN 3-Jaw').",
+    "oil-filter-wrench/GEARWRENCH 3149 Strap Wrench (B0002SR4MM): live buybox $10.68, 4.6/1,356. NEW budget pick (Performance Tool W173C B000N35K86 is real but has NO Amazon US buybox: unavailable)."
   ],
   "issues": {
-    "serpapi": "SerpAPI key still exhausted. r.jina.ai/https://www.amazon.com/dp/<ASIN> remains the working primary route; filter to the 'Price / Subtotal' $$ block for the true buybox (recommendation strips inject $4.99-$16.99 noise).",
-    "firecrawl": "Not used; jina primary succeeded 5/5."
+    "serpapi": "Still exhausted. r.jina.ai routes used end to end: /s?k= for ASIN discovery, /dp/<ASIN> for the live buybox (parse desktop_buybox_group_1 displayPrice, fallback 'Price/Subtotal $$<amt>'). 5/5 succeeded.",
+    "root_cause_found": "The oil-filter-wrench category (published 10-05) shipped with 3 FABRICATED products: 'ARES 17-Piece Cap Set' (ARES makes no oil filter cap wrench; 70030 does not exist), 'Astro 6070 Adjustable Pliers' (Astro Pneumatic makes no oil filter pliers), 'ABN Universal 3-Jaw' (no ABN-branded 3-jaw on Amazon). Only Lisle 63600 and Performance Tool W173C were real. All 5 ASINs were empty + prices estimated.",
+    "lesson": "Content-generated 'brand+model' product names MUST be verified against a real Amazon listing before publish. A plausible-sounding brand+model number is not evidence the product exists."
   },
   "edits": {
-    "data.mjs": "battery-charger 5 prices updated to live buybox: GENIUS5 $69.87, SC1281 $89.99, BT $58.95, CTEK $95.99, GENIUS2 $49.95. GENIUS2 pros reworded ('for half the price' -> 'brains for less'; it is no longer ~half of GENIUS5).",
-    "post": "best-battery-charger-review.astro: Battery Tender $45.95 -> $58.95; GENIUS2 $29.95 -> $49.95.",
-    "build": "rm -rf dist && npx astro build && systemctl restart garagetoolsdb :8082"
+    "data.mjs": "oil-filter-wrench 5 products now all REAL with live ASINs + buybox prices: OMT 10pc $25.49 (B0BJK5FSNR), Lisle 50750 $29.20 (B0002SR562), Lisle 63600 $12.99 (B0002SR4Q8), GearWrench 3288D $13.49 (B0002SR53A), GearWrench 3149 $10.68 (B0002SR4MM). Removed all 'Prices estimated, ASIN pending verification' pros notes.",
+    "post": "best-oil-filter-wrench-review.astro: headings, prices, 5 /s?k= affiliate links, and the Test + Winner paragraphs updated to the real products (ARES->OMT cap set, Astro->Lisle 50750, ABN->GearWrench claw, Perf Tool Band->GearWrench 3149).",
+    "images": "Updated SVG text in ares-oilcap-set.svg, astro-6070-pliers.svg, abn-3jaw.svg, performance-tool-band.svg to the new product names (paths kept so nothing 404s).",
+    "build": "rm -rf dist && npx astro build && systemctl restart garagetoolsdb :8082. Verified live: /tools/oil-filter-wrench and post both 200, all 5 new names+prices rendered."
   },
   "schedule": {
-    "next_category_recommend": "oil-filter-wrench (all 5 ASINs EMPTY + prices estimated, 10-05) OR socket-set (QUINN asin empty; others need contamination check). Also verify other tool categories' ASINs for boardgamesdb contamination (root cause found 10-05 on jump-starter). battery-charger now fully priced.",
-    "verified_this_cycle": "battery-charger 5/5, all real buybox prices replacing estimates.",
-    "still_unverified_this_cycle": "oil-filter-wrench 5 ASINs; socket-set QUINN asin empty; boardgamesdb ASIN contamination check across remaining categories."
+    "next_category_recommend": "socket-set (QUINN 132PC asin EMPTY; 4 others ASINs present but never live-priced in this cron) OR torque-wrench / ratchet-set (several shared/duplicate ASINs need a contamination pass). Also spot-check remaining categories for boardgamesdb ASIN contamination (root cause found 10-05 on jump-starter).",
+    "verified_this_cycle": "oil-filter-wrench 5/5, all real buybox prices, 3 fabricated products replaced with real listings.",
+    "still_unverified_this_cycle": "socket-set QUINN asin; torque-wrench + jack-stand + ratchet-set duplicate-ASIN contamination (Pittsburgh/SK share B0002NYWQ2; Torin 3T/6T share B000C4CHPE)."
   },
   "cycle_complete": true
 }
