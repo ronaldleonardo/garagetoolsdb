@@ -155,7 +155,7 @@ export const tools = {
       },
       {
         name: "DEWALT 192PC Set",
-        price: "$175.04",
+        price: "$180.29",
         rating: "4.8",
         reviews: "8,000",
         images: ["/images/dewalt-set.jpg"],
@@ -179,7 +179,7 @@ export const tools = {
       },
       {
         name: "Sunex 2569 Master",
-        price: "$145.42",
+        price: "$144.79",
         rating: "4.8",
         reviews: "1,400",
         images: ["/images/sunex-set.jpg"],
