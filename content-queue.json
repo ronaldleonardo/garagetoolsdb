@@ -1,5 +1,15 @@
 [
   {
+    "tool": "bolt-extractor-set",
+    "status": "done",
+    "products": [
+      "bolt extractor set",
+      "screw extractor set",
+      "broken bolt extractor"
+    ],
+    "notes": "Reviews + new category. Published Oct 9, 2026. NEIKO 04204A 25-pc multispline top pick ($36.99, 4.4/1,300). Angle: rounded a caliper bracket bolt with a 12-point socket, turned a 20-min job into 2 hours, two grinder wheels and a replacement bracket, and never got the bolt out. Value block: why bolts round off (12-point sockets cut the corners, rust eats the flats, thread locker glues the threads, prior impact over-torque); what an extractor does (backwards flutes that bite harder the harder you turn); two families (extractor/multispline socket for a rounded head, spiral/screw extractor for a broken stud, pilot hole ~half the stub diameter). Middle twist (contradiction): the tool every forum recommends, vise grips + heat, is the trap, both work only while the head still has edges and cranking a rounded head polishes it flatter so the extractor later has nothing to grab. Hidden door: shock beats steady force, impact wrench + extractor together free what torque cannot, and a left-hand drill bit walks out half the broken stubs before you reach for the extractor. 5 products: NEIKO 04204A (top), IRWIN Hanson 11119 10-pc spiral (broken studs, $67.19), ARES 70016 cam-jaw single (budget, $21.56), GEARWRENCH 84784 Bolt Biter 28-pc impact (pro, $147.62), 35-pc kit 1/4+3/8 (budget kit, $46.97). 'The Test' ritual: clamped a rounded rusted 14mm in a vise, hammered each extractor on, breaker bar until something gave, budget flutes flattened at ~70 ft-lb, NEIKO cut in and turned it, GEARWRENCH held to the vise limit, ARES cam jaws gripped first squeeze, IRWIN tested on a purposefully snapped bolt, stub backed out second try. Prices are LIVE search-page pulls via r.jina.ai (2026-10-09). 5 local SVG images. Internal links to bolt-extractor-set category page (x3), impact-wrench, ratchet-set, breaker-bar, socket-set. 5 affiliate links in /s?k= search format."
+  },
+  {
     "tool": "brake-caliper-tool",
     "status": "done",
     "products": [
