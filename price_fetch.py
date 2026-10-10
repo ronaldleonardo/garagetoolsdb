@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Fetch live Amazon US buybox prices for a list of ASINs.
 
-Route that works from this LXC (verified 2026-10-11):
+Route that works from this LXC (verified 2026-10-10):
   Firecrawl LAN (192.168.18.4:3002) POST /v1/scrape on
   https://www.amazon.com/gp/aw/d/<ASIN>   <- mobile "aw" PDP, not bot-walled
 

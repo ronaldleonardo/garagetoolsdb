@@ -436,3 +436,5 @@ main.post img { max-width: 100%; height: auto; border-radius: 12px; }
   main.post h2 { font-size: 1.3rem; }
   main.post h1 { font-size: 1.5rem; }
 }
+
+.img-credit { font-family: var(--font-sans); font-size: 0.7rem; line-height: 1.55; letter-spacing: 0.01em; color: var(--muted); margin-top: 2.5rem; }
