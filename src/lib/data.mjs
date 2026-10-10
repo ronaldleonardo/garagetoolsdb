@@ -223,7 +223,7 @@ export const tools = {
       },
       {
         name: "CDI 1503MFRPH",
-        price: "$160.27",
+        price: "$156.12",
         rating: "4.7",
         reviews: "43",
         images: ["/images/cdi-torque.jpg"],
@@ -259,7 +259,7 @@ export const tools = {
       },
       {
         name: "Precision Instruments PREC3FR250F",
-        price: "$256.39",
+        price: "$251.68",
         rating: "4.8",
         reviews: "1,400",
         images: ["/images/precision-torque.jpg"],

@@ -1,0 +1,10 @@
+Title: Amazon.com
+
+URL Source: https://www.amazon.com/dp/B0002NYWQ2
+
+Markdown Content:
+#### Click the button below to continue shopping
+
+[Conditions of Use](https://www.amazon.com/gp/help/customer/display.html/ref=footer_cou?ie=UTF8&nodeId=508088)[Privacy Policy](https://www.amazon.com/gp/help/customer/display.html/ref=footer_privacy?ie=UTF8&nodeId=468496)
+
+© 1996-2025, Amazon.com, Inc. or its affiliates

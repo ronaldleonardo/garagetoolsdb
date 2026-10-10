@@ -1,28 +1,29 @@
 {
-  "cycle": 8,
-  "date": "2026-10-08",
-  "category_done": "socket-set (5/5)",
+  "cycle": 9,
+  "date": "2026-10-09",
+  "category_done": "torque-wrench (5/5 checked: 2 updated, 1 verified-unchanged, 2 flagged no-edit)",
   "products_checked": [
-    "socket-set/GEARWRENCH 110PC (B07H5H1J3X): live buybox $115.58, 4.7/356. UNCHANGED. Title + model 89058 confirmed on page.",
-    "socket-set/DEWALT 192PC (B01BHJE0J4): live buybox $180.29 (was $175.04, +3.0%), 4.8/8,031. List Price $289.99 confirmed, model DWMT75049 present on page.",
-    "socket-set/TEKTON 1/2 Drive (B07QSCTG8Y): live buybox $54.00, 4.8/607. UNCHANGED. Model SHD92102 confirmed.",
-    "socket-set/Sunex 2569 Master (B00MPQ88RY): live $144.79 (Regular Price / One-time purchase; was $145.42 which is Amazon's 90-day 'Typical price', -0.4%), 4.8/1,414. Page ALSO shows a Prime-exclusive deal at $116.34 (requires Prime) - not stored, store the non-Prime buybox.",
-    "socket-set/QUINN 132PC Kit (asin empty): re-confirmed NOT on Amazon. r.jina.ai /s?k=QUINN+132+piece+socket+set returned 109 results with ZERO QUINN-branded items (only third-party 'Compatible with QUINN' sets + unrelated brands). Kept as-is per HF-house-brand precedent (Daytona, Pittsburgh kept with ASIN cleared)."
+    "torque-wrench/CDI 1503MFRPH (B00461ATL4): live buybox $156.12, In Stock, title matches. UPDATED $160.27 -> $156.12 (-2.6%).",
+    "torque-wrench/Precision Instruments PREC3FR250F (B002XMSFIM): live buybox $251.68, In Stock, title matches (1/2 in split beam flex head). UPDATED $256.39 -> $251.68 (-1.8%).",
+    "torque-wrench/ACDelco ARM601 (B004VYUQI2): live buybox $90.99, title matches (ARM601-3 3/8 in digital). UNCHANGED.",
+    "torque-wrench/TEKTON 1/2' Drive (B00C5ZL0RU): ASIN MISMATCH - live page is TEKTON 24350 3/4-Inch Drive Micrometer (50-300 ft-lb) at buybox $99.00, but stored name/specs say 1/2-inch drive 10-150 ft-lb click ($54.99). NO EDIT (identity conflict, needs decision).",
+    "torque-wrench/Pittsburgh 1/2' (B0002NYWQ2): could NOT fetch - r.jina.ai dp returned 409-504 byte bot wall on 4 tries; /gp/aw/d returned 'Page Not Found'; Firecrawl /clp returned 503; bing gave zero results for the ASIN. NO EDIT (no data). Also duplicate ASIN shared with breaker-bar/SK 3/4-inch."
   ],
   "issues": {
-    "serpapi": "Still exhausted. r.jina.ai dp route used: 4/4 ASINs returned a live price (the 5th product has no ASIN). No ASIN contamination found: all 4 titles match the stored product names.",
-    "known_cosmetic_defect": "The tools page builds its 'Check Price' link from the product NAME, not the ASIN, so QUINN's button goes to an Amazon search that returns non-QUINN results. Same applies to Daytona/Pittsburgh jack-stand entries. Not fixed this cycle (would need a per-product url field).",
-    "sunex_price_note": "Sunex B00MPQ88RY regular buybox is $144.79; the $116.34 figure is a Prime-exclusive deal and $145.42 is Amazon's 'Typical price' (90-day median). Stored $144.79."
+    "serpapi": "Still dead/exhausted. Method used this cycle: r.jina.ai/https://www.amazon.com/dp/<ASIN> (worked for 4/5; buybox via 'desktop_buybox_group_1 displayPrice' block or 'Buy New' line). Firecrawl /clp fallback now returns 503.",
+    "tekton_asin_defect": "B00C5ZL0RU resolves to a 1/2-inch-drive?? NO - it resolves to TEKTON 24350 3/4-inch drive micrometer torque wrench, $99.00. Stored entry name='TEKTON 1/2\\' Drive', specs 1/2-inch drive 10-150 ft-lb, price $54.99 (classic 24335 1/2-inch click wrench profile). Decide: either rename entry to the 3/4-inch 24350 and set $99.00, or repoint ASIN to a current TEKTON 1/2-inch click wrench. Classic TEKTON 24335 did not surface in Amazon search (likely discontinued).",
+    "pittsburgh_defect": "ASIN B0002NYWQ2 is shared by torque-wrench/Pittsburgh 1/2' and breaker-bar/SK Hand Tool 3/4-inch. Pittsburgh is a Harbor Freight house brand (like QUINN/DAYTONA), typically not sold on Amazon. Same class of defect as jack-stand Torin 3T/6T sharing B000C4CHPE.",
+    "cosmetic_defect_still_open": "Check Price button is built from product NAME, not ASIN, so HF house brands (Pittsburgh, QUINN, Daytona) link to a loose Amazon search. Needs a per-product url field."
   },
   "edits": {
-    "data.mjs": "socket-set DEWALT 192PC $175.04 -> $180.29; Sunex 2569 $145.42 -> $144.79. GEARWRENCH $115.58 and TEKTON $54.00 verified unchanged.",
-    "post": "best-socket-set-review.astro: DEWALT price $175.04 -> $180.29 and '(40% off a $289.99 list)' -> '(38% off a $289.99 list)'; Sunex $145.42 -> $144.79.",
-    "build": "rm -rf dist && npx astro build && systemctl restart garagetoolsdb :8082. Verified live: /tools/socket-set and /posts/best-socket-set-review both 200; new $180.29 and $144.79 render, GEARWRENCH $115.58 / TEKTON $54.00 / QUINN $99.99 intact."
+    "data.mjs": "torque-wrench CDI $160.27 -> $156.12; Precision Instruments $256.39 -> $251.68. TEKTON/Pittsburgh/ACDelco untouched.",
+    "post": "best-torque-wrench-review.astro: CDI $160.27 -> $156.12.",
+    "build": "rm -rf dist && npx astro build (38 pages) && systemctl restart garagetoolsdb :8082. Verified live: /tools/torque-wrench and /posts/best-torque-wrench-review both 200; $156.12 and $251.68 render, $54.99/$19.99/$90.99 intact, no stale $160.27/$256.39. No em dashes introduced."
   },
   "schedule": {
-    "next_category_recommend": "torque-wrench (Pittsburgh/SK share B0002NYWQ2 and Torin 3T/6T share B000C4CHPE per earlier audit - verify or the same ASIN also sits on breaker-bar SK 3/4-inch). Then ratchet-set to clear its duplicate-ASIN list.",
-    "verified_this_cycle": "socket-set 5/5 (4 live Amazon buyboxes + QUINN confirmed non-Amazon), no ASIN contamination.",
-    "still_unverified_this_cycle": "torque-wrench, breaker-bar, ratchet-set, jack-stand, impact-wrench, car-ramps, work-light, air-compressor, multimeter, obd2-scanner ASIN/price pairs (only floor-jack, jump-starter, battery-charger, oil-filter-wrench, brake-caliper-tool and now socket-set are live-priced)."
+    "next_category_recommend": "breaker-bar (to resolve the B0002NYWQ2 duplicate with Pittsburgh and re-audit ASIN/price pairs), then ratchet-set (has a duplicate-ASIN list to clear).",
+    "verified_this_cycle": "torque-wrench: 3 of 5 live-confirmed (2 updated, 1 unchanged), 2 flagged.",
+    "still_unverified": "torque-wrench Pittsburgh; and ASIN/price pairs for ratchet-set, jack-stand, impact-wrench, car-ramps, work-light, air-compressor, multimeter, obd2-scanner."
   },
   "cycle_complete": true
 }
