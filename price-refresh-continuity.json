@@ -1,27 +1,30 @@
 {
-  "cycle": 11,
-  "date": "2026-10-10",
-  "category_done": "brake-caliper-tool (5/5 verified LIVE via the new aw/d route, all in stock, 0 price edits because every delta was under the 10% threshold)",
+  "cycle": 12,
+  "date": "2026-10-12",
+  "category_done": "ratchet-set (6/6 attempted: 3 live-verified with buybox, 2 DEAD ASINs, 1 no-buybox/unshippable. 2 price edits, both >=10%)",
   "products_checked": [
-    "brake-caliper-tool/Orion Motor Tech 24pc Caliper Tool Set (B01FW3U26G): LIVE buybox $24.69, In Stock, r=4.7 (21,137 ratings). Stored $23.08. Delta +6.98% -> below 10% threshold, NO EDIT.",
-    "brake-caliper-tool/Lisle 29100 Quick Quad Pad Spreader (B005GLQCKA): LIVE buybox $58.78, In Stock, r=4.5 (1,400 ratings). Stored $58.78. Delta +0.00% -> below 10% threshold, NO EDIT.",
-    "brake-caliper-tool/8MILELAKE 24pc Wind Back Kit (B0122Q83T4): LIVE buybox $23.99, In Stock, r=4.7 (14,971 ratings). Stored $22.79. Delta +5.27% -> below 10% threshold, NO EDIT.",
-    "brake-caliper-tool/Lisle 25750 Dual Piston Spreader (B0002SQUTU): LIVE buybox $46.78, In Stock, r=4.7 (3,220 ratings). Stored $46.78. Delta +0.00% -> below 10% threshold, NO EDIT.",
-    "brake-caliper-tool/Lisle 28600 Disc Brake Piston Tool (B0002SQUFY): LIVE buybox $18.88, In Stock, r=4.5 (2,693 ratings). Stored $17.55. Delta +7.58% -> below 10% threshold, NO EDIT."
+    "ratchet-set/TEKTON 3/8-inch Flex Head (B07J2NHZLH): LIVE buybox $41.27, In Stock, r=4.7. Page title 'TEKTON 3/8 Inch Drive x 8 Inch Flex Head Ratchet | SRH31108', asin_confirmed true. Stored $49.99. Delta -17.44% -> EDIT APPLIED.",
+    "ratchet-set/GEARWRENCH 120XP (B0CYMQ5XGC): LIVE buybox $40.43, In Stock, r=4.6. Page title 'GEARWRENCH 3/8 inch Drive 120XP Full Polish Chrome Teardrop Ratchet | 81211XP', asin_confirmed true. Stored $49.99. Delta -19.12% -> EDIT APPLIED.",
+    "ratchet-set/Capri Tools 3/8-inch Flex Head (B07Z2YWZZP): LIVE buybox $34.99, In Stock, r=4.5. Page title 'Capri Tools 3/8-Inch Drive Low Profile Flex-Head Ratchet (CP12300FX)', asin_confirmed true. Stored $32.99. Delta +6.06% -> below 10% threshold, NO EDIT.",
+    "ratchet-set/Snap-on F80 3/8-inch (B005FI6542): PDP resolves to the real product (title 'Snap-on 3/8 inch Ratchet, Sealed Head, Dual 80 Technology', brand table says Snap-on) BUT there is NO buybox and the page says 'This item cannot be shipped to your selected delivery location.' No purchasable price, asin_confirmed false (unavailable pages omit the lp_asin marker). NOT EDITED -> flagged for a re-ASIN / availability decision.",
+    "ratchet-set/Pittsburgh 1/4-inch Set (B000COC6R4): DEAD ASIN. 5 attempts across two rounds all return Amazon's 'Sorry! We couldn't find that page' (md length 440). Stored $12.99 left untouched -> flagged for a re-ASIN decision (Pittsburgh is a Harbor Freight house brand, so the honest fix may be an empty ASIN like QUINN/TACKLIFE/Daytona).",
+    "ratchet-set/MAC Tools 1/2-inch (B002IY936S): DEAD ASIN, same 'we couldn't find that page' result on 5 attempts. Stored $129.99 left untouched -> flagged for a re-ASIN decision."
   ],
   "issues": {
-    "ROUTE_FIXED": "The blocker is resolved. New working route, verified this cycle and built into a reusable script: Firecrawl LAN 192.168.18.4:3002 POST /v1/scrape on https://www.amazon.com/gp/aw/d/<ASIN> (the mobile PDP, which is not bot-walled). Price parsed from the escaped mobile_buybox_group_1 JSON blob. Script: /root/garagetoolsdb/price_fetch.py. It accepts --json '{\"ASIN\": stored_price}' and prints live price, percent delta, and the action.",
-    "DEAD_ROUTES": "Confirmed dead, do not retry: SerpAPI (key exhausted), r.jina.ai on /dp (Continue shopping wall), r.jina.ai on /s?k= search (intermittent, now mostly walled), Firecrawl /clp (404, route removed), camelcamelcamel via proxy (security verification), Firecrawl proxy=stealth (SCRAPE_RETRY_LIMIT 500).",
-    "cron": "Job bb2533cda611 prompt rewritten to call price_fetch.py instead of SerpAPI."
+    "DEAD_ASINS_FOUND": "B000COC6R4 (ratchet-set Pittsburgh 1/4-inch) and B002IY936S (ratchet-set MAC Tools 1/2-inch) are dead on Amazon. Both prices were left as stored, nothing invented. Next run (or the evening review) should re-ASIN or clear them.",
+    "SNAPON_NO_BUYBOX": "B005FI6542 (Snap-on F80) still resolves to the right product but has no buybox and cannot ship to the US location. Snap-on is largely not sold through Amazon buybox, so the $149.00 entry likely needs a different listing or an honest 'not on Amazon' note.",
+    "DUPLICATE_ASINS_SITE_WIDE": "Found while inventorying all 18 categories (91 products): B0002NYWQ2 is used twice (torque-wrench 'Pittsburgh 1/2 inch' and breaker-bar 'SK Hand Tool 3/4-inch'), and B000C4CHPE is used twice (jack-stand 'Torin Big Red 3 Ton T43002' and 'Torin Big Red 6 Ton'). Both pairs need a re-ASIN decision before those categories are refreshed.",
+    "ROUTE_HEALTH": "Firecrawl LAN 192.168.18.4:3002 POST /v1/scrape on https://www.amazon.com/gp/aw/d/<ASIN> still works. No rate-limit failures this run: the two 'FETCH FAILED' products turned out to be dead ASINs (Amazon not-found page), not blocked fetches.",
+    "DEAD_ROUTES": "Still dead, do not retry: SerpAPI (key exhausted), r.jina.ai on /dp, r.jina.ai on /s?k=, Firecrawl /clp (404), camelcamelcamel via proxy."
   },
   "edits": {
-    "data.mjs": "NONE. No delta reached 10%. Nothing fabricated, nothing rounded.",
-    "post": "best-brake-caliper-tool-review.astro UNTOUCHED (its 5 inline prices match data.mjs and remain within range).",
-    "build": "SKIPPED. No data.mjs change, so no rebuild or restart was needed."
+    "data.mjs": "TWO price edits, both >=10%: TEKTON 3/8-inch Flex Head $49.99 -> $41.27 (-17.44%); GEARWRENCH 120XP $49.99 -> $40.43 (-19.12%). Ratings/reviews left alone (no cosmetic edits).",
+    "post": "best-ratchet-set-review.astro synced to the verified live prices: intro claim $34.99 -> $41.27, review paragraph $34.99 -> $41.27, narrative '$35 TEKTON' -> '$41 TEKTON', GEARWRENCH '$59.99' -> '$40.43', closing line rebased to $41.27 with the buy-under-$40 trigger, and the wrong 'about $60 total' for the two ratchets corrected to 'about $54' (41.27 + 12.99). Snap-on $149 / MAC $129.99 / Pittsburgh $12.99 left alone because they could not be verified live.",
+    "build": "DONE: rm -rf dist && npx astro build (40 pages) && systemctl restart garagetoolsdb. Verified live on :8082/tools/ratchet-set, which now serves $41.27 and $40.43."
   },
   "schedule": {
-    "next_category_recommend": "ratchet-set (has a duplicate-ASIN list to clear).",
-    "verified_this_cycle": "brake-caliper-tool: 5 of 5 live-verified, 0 edits."
+    "next_category_recommend": "work-light (its 5 ASINs have never been verified live; it was already the pending recommendation after the 09-27 ratchet-set cycle).",
+    "verified_this_cycle": "ratchet-set: 6 attempted, 3 live buybox verified, 2 dead ASINs, 1 unshippable/no-buybox, 2 edits."
   },
   "cycle_complete": true
 }
