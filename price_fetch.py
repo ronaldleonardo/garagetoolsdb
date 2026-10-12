@@ -53,8 +53,8 @@ def parse(md, asin):
 
     # 1. buybox JSON blob, backslashes are markdown escaping. Most reliable.
     m = re.search(
-        r'mobile\\?_buybox\\?_group\\?_1\\?"?:\\?\[\\?\{\\?"displayPrice\\?":\\?"\$([\d,]+\.\d\d)\\?",'
-        r'\\?"priceAmount\\?":([\d.]+)', md)
+        r'mobile\\*_buybox\\*_group\\*_1\\*"?:\\*\[\\*\{\\*"displayPrice\\*":\\*"\$([\d,]+\.\d\d)\\*",'
+        r'\\*"priceAmount\\*":([\d.]+)', md)
     if m:
         out["price"] = float(m.group(2))
         out["price_src"] = "buybox_json"
