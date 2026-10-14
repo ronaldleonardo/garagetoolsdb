@@ -1,28 +1,33 @@
 {
-  "cycle": 13,
-  "date": "2026-10-13",
-  "category_done": "work-light (5/5 attempted: 1 live buybox verified + EDITED, 1 price-confirmed no change, 1 unchanged, 2 no-buybox/unverified)",
+  "cycle": 14,
+  "date": "2026-10-14",
+  "category_done": "air-compressor (5/5 attempted: 3 live buybox verified, 1 EDITED at +90.9%, 2 no-buybox/unverified)",
   "products_checked": [
-    "work-light/SYLSTAR 2400LM Rechargeable (B0CJ4P4J3T): LIVE buybox $30.58, In Stock, r=4.4 (was 4.5 in db, left alone - no cosmetic edits), list $35.99. asin_confirmed true. Stored $42.99. Delta -28.87% -> EDIT APPLIED to $30.58.",
-    "work-light/Milwaukee M18 LED Work Light 2735 (B013LDN6BC): LIVE $35.00 across a second fetch, but asin_confirmed false (no buybox_json marker on that parse, 'not in stock' flagged). Stored $34.97. Delta +0.09%, far under 10% either way -> NO EDIT.",
-    "work-light/Makita DML809 Cordless/Corded (B0837J2MNT): LIVE buybox $339.00 exactly equals stored $339.00, asin_confirmed true on second fetch. 0.00% -> NO EDIT.",
-    "work-light/Milwaukee M18 ROVER Compact Flood (B08YS6CXG6): NO confirmed buybox across two rounds. Page title resolves but the rendered markdown shows NO main-product price and NO buybox blob; only 'Other sellers on Amazon, Compare New (2) from $175.00 + $7.49 shipping'. asin_confirmed false. Main listing appears to have no active buybox (likely out of stock / only 3P sellers). Stored $144.97 left untouched -> flagged for availability/re-ASIN decision.",
-    "work-light/DEWALT 20V MAX LED Tower (B077ZCTBFY): Page resolves to correct product (title 'DEWALT 20V MAX LED Work Light with Stand, Tripod Light, 3000 Lumens, Tool Only DCL079B', r=4.8) but NO price and NO buybox render in the markdown across multiple attempts (degraded/skeleton scrape or currently unavailable listing). asin_confirmed true but no price -> treated as UNVERIFIED, stored $249.00 left untouched."
+    "air-compressor/California Air Tools 10020C (B0188XBTLY): LIVE buybox $400.50 via jina fallback route, In Stock, sold by third-party Jacks Small Engines with a $28.50 Amazon discount. Stored $412.50. Delta -2.91% -> NO EDIT.",
+    "air-compressor/Stealth SAQ-11215 (B07N21XCFC): LIVE buybox $419.99, In Stock, ships from JND Clean Direct (3P), 'Only 11 left in stock (more on the way)', page offers a newer 20-gal model at $486.99. Confirmed twice on two independent jina fetches. Stored $219.99. Delta +90.91% -> EDIT APPLIED to $419.99.",
+    "air-compressor/Porter-Cable C2002 (B000O5RO1Y): NO buybox on either route. Firecrawl page carries the delivery-location ship block; jina page renders only 'See All Buying Options' and no 'New from $X' floor. asin_confirmed true. Stored $149.99 left untouched -> flagged unverified/availability decision.",
+    "air-compressor/Makita MAC5200 Big Bore (B0001Q2VPU): same as Porter-Cable, NO buybox and no offer floor on either route. Stored $469.99 left untouched -> flagged unverified/availability decision.",
+    "air-compressor/VIAIR 400P (B000X9B32M): LIVE buybox $260.74 via Firecrawl route 1 (no fallback needed), In Stock, asin_confirmed true. Stored $276.68. Delta -5.76% -> NO EDIT."
   ],
   "issues": {
-    "ROVER_NO_BUYBOX": "B08YS6CXG6 (Milwaukee M18 ROVER): page shows no main buybox price, only third-party 'New from $175' floor. Cannot confirm a live buybox price. ROVER is the 'Best Overall' lead pick in the post, so this one matters for the evening review: either re-scrape on a later day (Amazon may just be out of buybox stock right now) or re-ASIN to a listing that is actually sellable.",
-    "DEWALT_NO_PRICE_RENDERED": "B077ZCTBFY (DEWALT tower): Firecrawl returned a skeleton page (title/images/Choice, no price, no availability). Could be a flaky render or a temporarily unavailable listing. Re-verify next time the work-light category cycles; do not take $249 as confirmed.",
-    "NO_RATE_LIMIT": "This run had no rate-limit blocks. The 'no price parsed' results came back with full 10KB+ pages (not bot walls), meaning those two products genuinely expose no buybox price to the scraper right now, not that fetches were blocked.",
-    "DEAD_ROUTES": "Still dead, do not retry: SerpAPI (key exhausted), r.jina.ai on /dp, r.jina.ai on /s?k=, Firecrawl /clp (404), camelcamelcamel via proxy."
+    "FIRECRAWL_BULKY_DEGRADED": "Route 1 (Firecrawl /v1/scrape on /gp/aw/d) now returns a degraded page for BULKY items such as air compressors: the buybox markup contains outOfStockBuyBox_feature_div and the availability line reads 'This item cannot be shipped to your selected delivery location', so no displayPrice renders. That egress has no usable US delivery ZIP for heavy freight items. Light items (VIAIR, and yesterday's work lights) still scrape fine on route 1.",
+    "JINA_FALLBACK_ADDED": "Fix shipped today in price_fetch.py: when route 1 yields no price, the script now retries the same mobile PDP through r.jina.ai and parses desktop_buybox_group_1 (route 1 renders mobile_buybox_group_1). Jina's fetch resolves to a real US delivery ZIP ('Delivering to The Dalles 97058') and renders the full buybox. Anonymous, no key, ~6s between calls is polite. This recovered 2 of the 5 prices today.",
+    "ROUTES_STILL_DEAD": "Do not retry: r.jina.ai on /dp (wall), Firecrawl on /dp (wall, UA header does not help), Firecrawl proxy=stealth (500 on this server), /gp/aod/ajax + /gp/offer-listing + /gp/aw/ol (344-720 byte stubs on both routes), Firecrawl /clp (404), SerpAPI (key exhausted), camelcamelcamel (security check).",
+    "STEALTH_POSITIONING_NEEDS_DECISION": "The Stealth pick is badged and headed 'Best Quiet Value' and the whole pitch was that it is cheap quiet. At $419.99 it now sits ABOVE the live California Air price ($400.50), so the badge and the heading no longer fit. Left the badge/label and post heading in place (that is an editorial call, not a price refresh). Ron to decide: re-label, re-ASIN to a cheaper quiet unit, or wait for the price to fall before re-editing.",
+    "CA_PROSE_STALE": "Pre-existing inconsistency, not caused by today's refresh: the air-compressor post prose says $299.99 for the California Air 10020C (intro 'about $300', the 'at $300 it is double a budget pancake' line, and the 'around $299.99' closing) while data.mjs and the live page say $412.50/$400.50. Left alone today because the stored-vs-live delta was -2.91%. Needs an editorial pass.",
+    "PORTER_CABLE_AND_MAKITA_NO_BUYBOX": "B000O5RO1Y and B0001Q2VPU expose no main buybox on either route right now (only third-party buying options behind 'See All Buying Options', no floor price rendered). Both listings are alive and popular, so this is likely Amazon-not-selling-right-now rather than a dead ASIN. Re-verify when this category cycles again; if they still show no buybox, decide between keeping the stored number or re-ASIN.",
+    "SELF_CONTINUITY": "Previous run (cycle 13, work-light) reported 2 no-buybox items (ROVER B08YS6CXG6, DEWALT tower B077ZCTBFY) plus the SYLSTAR edit. Nothing new on work-light today, batch it into the next work-light cycle."
   },
   "edits": {
-    "data.mjs": "ONE price edit, >=10%: SYLSTAR 2400LM $42.99 -> $30.58 (-28.87%). Ratings/reviews left alone (no cosmetic edits).",
-    "post": "best-work-light-review.astro synced SYLSTAR live price: intro '$42' -> '$31', section header '$42. This is the light' -> '$31', 'it earns its $42' -> '$31', closing 'SYLSTAR at $42' -> '$31', 'more than the $42 it would have been cheaper' -> '$31'. ROVER $144 left as-is (unverified this run); DEWALT $249 / M18 2735 / Makita $339 left as verified-unchanged.",
-    "build": "DONE: rm -rf dist && npx astro build (40 pages) && systemctl restart garagetoolsdb. Verified live on :8082/tools/work-light, which now serves $30.58."
+    "data.mjs": "ONE price edit, >=10%: Stealth SAQ-11215 $219.99 -> $419.99 (+90.91%). Also fixed the now-false pros line on that product ('at half the price of most branded quiet units' -> 'the price has climbed above most branded quiet units, so wait for a sale'). No other product touched, no cosmetic edits, ratings/reviews left alone.",
+    "post": "best-air-compressor-review.astro synced: Stealth section '$219.99. This is the budget quiet option' -> '$419.99. This is the quiet 12 gallon option'; the now-false 'a price the big names beat by $150' clause replaced with 'the price has climbed since I first recommended it, so it now lists above the California Air unit'. California Air / Porter-Cable / Makita / VIAIR prose left as-is.",
+    "script": "price_fetch.py upgraded: jina fallback on the mobile PDP, accepts both mobile_buybox_group_1 and desktop_buybox_group_1 blobs, added a ship_block flag, header comment rewritten with the 2026-10-14 route findings. Re-tested end to end on all 5 air-compressor ASINs.",
+    "build": "DONE: rm -rf dist && npx astro build (42 pages) && systemctl restart garagetoolsdb. Verified live on :8082/tools/air-compressor (Stealth card now $419.99, no $219.99 anywhere, California Air still $412.50) and on /posts/best-air-compressor-review."
   },
   "schedule": {
-    "next_category_recommend": "air-compressor (its 6 ASINs have never been verified live; work-light is now done).",
-    "verified_this_cycle": "work-light: 5 attempted, 1 live buybox verified + edited, 1 confirmed unchanged (Makita $339), 1 equal-to-stored (M18 2735 $34.97 vs $35.00, no edit), 2 no-buybox/unverified (ROVER, DEWALT)."
+    "next_category_recommend": "multimeter (5 ASINs: B018EXZO8M, B07J83SMVZ, B0006Z64Q0, B01ISAMUA6, B000EVYGZA) - never verified live, no cycle has covered it yet.",
+    "remaining_categories_unverified_or_due": "multimeter, jack-stand (5), ramps (5), bolt-extractor-set (5), screwdriver-set (5), impact-socket-set (5, new 10-14), impact-wrench, ratchet-set (done 10-12), plus work-light follow-ups (ROVER, DEWALT).",
+    "verified_this_cycle": "air-compressor: 5 attempted, 3 live buybox prices (1 edited), 2 no-buybox/unverified."
   },
   "cycle_complete": true
 }
