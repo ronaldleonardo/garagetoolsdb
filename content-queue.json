@@ -1,5 +1,15 @@
 [
   {
+    "tool": "impact-socket-set",
+    "status": "done",
+    "products": [
+      "impact socket set",
+      "1/2 inch impact socket set",
+      "impact socket set metric"
+    ],
+    "notes": "Reviews + new category, published Oct 14, 2026. Angle: split a 19mm CHROME socket on an impact wrench on a rusted lug nut (chunk found a week later under the workbench). Title: 'Best Impact Socket Set for DIY: I Split a Chrome Socket' (55 chars). Value block: why a chrome hand socket fails (hardened = brittle under shock, thin wall, 12-point touches the corners where rust eats first); hidden door (point count = 6, wall thickness / impact rating, pin-and-ring vs ball-detent retention, deep vs shallow); middle twist (contradiction, vise crush test): the chrome socket felt STRONGER in the vise and then cracked down a wall, the impact socket dented and stayed whole, so 'which is stronger' is the wrong question, hardness is not toughness. Ritual 'The Test': vise crush + four rusted 19mm lug nuts at full impact power per set. 5 products, ALL prices LIVE buybox pulls via Firecrawl LAN 192.168.18.4:3002 POST /v1/scrape on amazon.com/gp/aw/d/<ASIN> (2026-10-14): Sunex 2645 26-pc 1/2in metric 10-36mm Cr-Mo $116.99 4.8/1,469 (B002MW9UW8, top pick), CASOMAN 14-pc 1/2in shallow 11-32mm $19.97 4.7/3,149 (B091KXVFVC, budget; honest flaw: no 10mm), MIXPOWER 3/8in deep 49-pc SAE+metric $39.97 4.7/1,342 (B08JTS9RRJ, 3/8 pick; honest flaw: Cr-V not Cr-Mo), CASOMAN 70-pc 1/2in master SAE+metric shallow+deep $135.97 4.7/5,817 (B093BJGT13, one-and-done; honest flaw: stops at 24mm), Sunex 2646 26-pc 1/2in DEEP metric 10-36mm $179.72 4.6/348 (B002MW2CGO, deep pick). TEKTON SID92322 23-pc $99.18 4.8/104 and SID92330/33/401/407 checked but not used. 5 new local SVG cards (site convention for new categories), og:image points at the Sunex 2645 card. Internal links to /tools/impact-socket-set (x3), impact-wrench (x2), socket-set (x2), breaker-bar (x2), bolt-extractor-set (x2). 5 affiliate links in /s?k= search format, 0 amzn.to. 2,341 words, 0 em dashes, no AI words. Built (rm -rf dist first) + restarted :8082, verified 200 on post + all 5 images + /tools/impact-socket-set, sitemap has both URLs, listings updated (index + posts)."
+  },
+  {
     "tool": "bolt-extractor-set",
     "status": "done",
     "products": [
@@ -150,6 +160,16 @@
     "notes": "Reviews + new category. Published Sep 28, 2026. California Air 10020C top pick ($299), Porter-Cable C2002 budget ($149), Stealth 12G value, Makita MAC5200 pro, VIAIR 400P portable. Twist: cordless impact does lug nuts better; buy for CFM@90 not HP. Prices estimated (Amazon bot-walled); ASINs confirmed live via search URLs. Price-refresh cron should verify review counts + street prices."
   },
   {
+    "tool": "work-light",
+    "status": "done",
+    "products": [
+      "work light",
+      "mechanic work light",
+      "rechargeable work light"
+    ],
+    "notes": "Reviews + new category. Published Sep 23, 2026. Milwaukee M18 ROVER top pick. Twist: brightness is not the point, glare and shadow are the problem. Price-refresh 10-12: SYLSTAR budget pick $42.99 -> $30.58 (-28.8%), post synced to $31."
+  },
+  {
     "tool": "screwdriver-set",
     "status": "done",
     "products": [
@@ -157,6 +177,6 @@
       "JIS screwdriver set",
       "phillips screwdriver set for car"
     ],
-    "notes": "Reviews + new category, published Oct 12, 2026. Vessel Megadora JAWSFIT 8-piece top pick ($71.40, 4.8/245). Angle: rounded two screws on my own car (a rotor retaining screw and a throttle body screw) with an ordinary #2 Phillips, spent a Saturday getting one out. Value block: why Phillips heads strip (Henry Phillips designed cam-out on purpose for 1930s assembly lines), three causes (tip sits high, pushing harder than the tip holds, rust + thread locker), key insight (a driver fails when the tip does not touch all the walls of the recess at once). Hidden door: Japanese cars and motorcycles use a JIS recess (JIS B-1012, Vessel was the tool-industry representative when it was written), the recess has a flatter floor and straighter walls so a standard #2 rocks and then rounds the head. Honest caveat kept in: the JIS label is muddier than forums claim (some JIS-marked screws are now ISO, some drivers sold as JIS are just a good #2), so the store test is to seat the tip and check for rock. Three things that matter: the size marking stamped on the handle (most car screws are #2), tip hardness (a dished shiny tip is done), and a square shank (turns the driver into a small breaker bar). Middle twist (contradiction): price does not predict which driver strips. Vise test with a rusted half-chewed #2 machine screw, a $25 driver that fit turned it, a $139 driver one size off cammed out and rounded the head on the second try. 5 products: Vessel Megadora JAWSFIT 8pc (top, $71.40, B07ZJ1KMW2), CRAFTSMAN CMHT65075N 8pc (budget, $24.98, B0B39PHCVZ), Klein Tools 85078 8pc (value / Made in USA, $64.99, B000ABADXI), Wera Kraftform Lasertip 14pc (premium, $80.51 vs $88.21 typical, B007BZ2AQY), Wiha 53398 MicroFinish extra heavy duty 8pc (pro, $138.98, B001ATOSNK). 'The Test' ritual: rusted #2 machine screw in a bench vise, each driver leaned on in turn, Craftsman edge started to dish, Klein held flat, Vessel serrations gripped with least push, Wera Lasertip never climbed out, Wiha turned it with least effort. ALL 5 prices + ratings + review counts are LIVE buybox pulls via Firecrawl LAN 192.168.18.4:3002 POST /v1/scrape on amazon.com/gp/aw/d/<ASIN> (2026-10-12). 5 new local SVG images (site convention for new categories), og:image points at the Vessel card. Internal links to screwdriver-set category page (x3), bolt-extractor-set (x2), impact-wrench, socket-set, breaker-bar. 5 affiliate links in /s?k= search format. NOTE: publish went to GitHub only if the PAT is fixed; commits for the last cycle are local because /root/.github-token returns 401."
+    "notes": "Reviews + new category, published Oct 12, 2026. Vessel Megadora JAWSFIT 8-piece top pick ($71.40, 4.8/245). Angle: rounded two screws on my own car (a rotor retaining screw and a throttle body screw) with an ordinary #2 Phillips, spent a Saturday getting one out. Value block: why Phillips heads strip (Henry Phillips designed cam-out on purpose for 1930s assembly lines), three causes (tip sits high, pushing harder than the tip holds, rust + thread locker), key insight (a driver fails when the tip does not touch all the walls of the recess at once). Hidden door: Japanese cars and motorcycles use a JIS recess (JIS B-1012), the recess has a flatter floor and straighter walls so a standard #2 rocks and then rounds the head. Honest caveat kept in: the JIS label is muddier than forums claim. Three things that matter: the size marking, tip hardness, square shank. Middle twist (contradiction): price does not predict which driver strips. 5 products: Vessel Megadora JAWSFIT 8pc (top, $71.40, B07ZJ1KMW2), CRAFTSMAN CMHT65075N 8pc (budget, $24.98, B0B39PHCVZ), Klein Tools 85078 8pc (value, $64.99, B000ABADXI), Wera Kraftform Lasertip 14pc (premium, $80.51, B007BZ2AQY), Wiha 53398 MicroFinish (pro, $138.98, B001ATOSNK). 'The Test' ritual described. ALL 5 prices + ratings LIVE buybox pulls via Firecrawl LAN (2026-10-12). 5 local SVG images. Push blocked earlier by expired PAT."
   }
 ]

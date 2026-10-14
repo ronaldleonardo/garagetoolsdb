@@ -1,30 +1,28 @@
 {
-  "cycle": 12,
-  "date": "2026-10-12",
-  "category_done": "ratchet-set (6/6 attempted: 3 live-verified with buybox, 2 DEAD ASINs, 1 no-buybox/unshippable. 2 price edits, both >=10%)",
+  "cycle": 13,
+  "date": "2026-10-13",
+  "category_done": "work-light (5/5 attempted: 1 live buybox verified + EDITED, 1 price-confirmed no change, 1 unchanged, 2 no-buybox/unverified)",
   "products_checked": [
-    "ratchet-set/TEKTON 3/8-inch Flex Head (B07J2NHZLH): LIVE buybox $41.27, In Stock, r=4.7. Page title 'TEKTON 3/8 Inch Drive x 8 Inch Flex Head Ratchet | SRH31108', asin_confirmed true. Stored $49.99. Delta -17.44% -> EDIT APPLIED.",
-    "ratchet-set/GEARWRENCH 120XP (B0CYMQ5XGC): LIVE buybox $40.43, In Stock, r=4.6. Page title 'GEARWRENCH 3/8 inch Drive 120XP Full Polish Chrome Teardrop Ratchet | 81211XP', asin_confirmed true. Stored $49.99. Delta -19.12% -> EDIT APPLIED.",
-    "ratchet-set/Capri Tools 3/8-inch Flex Head (B07Z2YWZZP): LIVE buybox $34.99, In Stock, r=4.5. Page title 'Capri Tools 3/8-Inch Drive Low Profile Flex-Head Ratchet (CP12300FX)', asin_confirmed true. Stored $32.99. Delta +6.06% -> below 10% threshold, NO EDIT.",
-    "ratchet-set/Snap-on F80 3/8-inch (B005FI6542): PDP resolves to the real product (title 'Snap-on 3/8 inch Ratchet, Sealed Head, Dual 80 Technology', brand table says Snap-on) BUT there is NO buybox and the page says 'This item cannot be shipped to your selected delivery location.' No purchasable price, asin_confirmed false (unavailable pages omit the lp_asin marker). NOT EDITED -> flagged for a re-ASIN / availability decision.",
-    "ratchet-set/Pittsburgh 1/4-inch Set (B000COC6R4): DEAD ASIN. 5 attempts across two rounds all return Amazon's 'Sorry! We couldn't find that page' (md length 440). Stored $12.99 left untouched -> flagged for a re-ASIN decision (Pittsburgh is a Harbor Freight house brand, so the honest fix may be an empty ASIN like QUINN/TACKLIFE/Daytona).",
-    "ratchet-set/MAC Tools 1/2-inch (B002IY936S): DEAD ASIN, same 'we couldn't find that page' result on 5 attempts. Stored $129.99 left untouched -> flagged for a re-ASIN decision."
+    "work-light/SYLSTAR 2400LM Rechargeable (B0CJ4P4J3T): LIVE buybox $30.58, In Stock, r=4.4 (was 4.5 in db, left alone - no cosmetic edits), list $35.99. asin_confirmed true. Stored $42.99. Delta -28.87% -> EDIT APPLIED to $30.58.",
+    "work-light/Milwaukee M18 LED Work Light 2735 (B013LDN6BC): LIVE $35.00 across a second fetch, but asin_confirmed false (no buybox_json marker on that parse, 'not in stock' flagged). Stored $34.97. Delta +0.09%, far under 10% either way -> NO EDIT.",
+    "work-light/Makita DML809 Cordless/Corded (B0837J2MNT): LIVE buybox $339.00 exactly equals stored $339.00, asin_confirmed true on second fetch. 0.00% -> NO EDIT.",
+    "work-light/Milwaukee M18 ROVER Compact Flood (B08YS6CXG6): NO confirmed buybox across two rounds. Page title resolves but the rendered markdown shows NO main-product price and NO buybox blob; only 'Other sellers on Amazon, Compare New (2) from $175.00 + $7.49 shipping'. asin_confirmed false. Main listing appears to have no active buybox (likely out of stock / only 3P sellers). Stored $144.97 left untouched -> flagged for availability/re-ASIN decision.",
+    "work-light/DEWALT 20V MAX LED Tower (B077ZCTBFY): Page resolves to correct product (title 'DEWALT 20V MAX LED Work Light with Stand, Tripod Light, 3000 Lumens, Tool Only DCL079B', r=4.8) but NO price and NO buybox render in the markdown across multiple attempts (degraded/skeleton scrape or currently unavailable listing). asin_confirmed true but no price -> treated as UNVERIFIED, stored $249.00 left untouched."
   ],
   "issues": {
-    "DEAD_ASINS_FOUND": "B000COC6R4 (ratchet-set Pittsburgh 1/4-inch) and B002IY936S (ratchet-set MAC Tools 1/2-inch) are dead on Amazon. Both prices were left as stored, nothing invented. Next run (or the evening review) should re-ASIN or clear them.",
-    "SNAPON_NO_BUYBOX": "B005FI6542 (Snap-on F80) still resolves to the right product but has no buybox and cannot ship to the US location. Snap-on is largely not sold through Amazon buybox, so the $149.00 entry likely needs a different listing or an honest 'not on Amazon' note.",
-    "DUPLICATE_ASINS_SITE_WIDE": "Found while inventorying all 18 categories (91 products): B0002NYWQ2 is used twice (torque-wrench 'Pittsburgh 1/2 inch' and breaker-bar 'SK Hand Tool 3/4-inch'), and B000C4CHPE is used twice (jack-stand 'Torin Big Red 3 Ton T43002' and 'Torin Big Red 6 Ton'). Both pairs need a re-ASIN decision before those categories are refreshed.",
-    "ROUTE_HEALTH": "Firecrawl LAN 192.168.18.4:3002 POST /v1/scrape on https://www.amazon.com/gp/aw/d/<ASIN> still works. No rate-limit failures this run: the two 'FETCH FAILED' products turned out to be dead ASINs (Amazon not-found page), not blocked fetches.",
+    "ROVER_NO_BUYBOX": "B08YS6CXG6 (Milwaukee M18 ROVER): page shows no main buybox price, only third-party 'New from $175' floor. Cannot confirm a live buybox price. ROVER is the 'Best Overall' lead pick in the post, so this one matters for the evening review: either re-scrape on a later day (Amazon may just be out of buybox stock right now) or re-ASIN to a listing that is actually sellable.",
+    "DEWALT_NO_PRICE_RENDERED": "B077ZCTBFY (DEWALT tower): Firecrawl returned a skeleton page (title/images/Choice, no price, no availability). Could be a flaky render or a temporarily unavailable listing. Re-verify next time the work-light category cycles; do not take $249 as confirmed.",
+    "NO_RATE_LIMIT": "This run had no rate-limit blocks. The 'no price parsed' results came back with full 10KB+ pages (not bot walls), meaning those two products genuinely expose no buybox price to the scraper right now, not that fetches were blocked.",
     "DEAD_ROUTES": "Still dead, do not retry: SerpAPI (key exhausted), r.jina.ai on /dp, r.jina.ai on /s?k=, Firecrawl /clp (404), camelcamelcamel via proxy."
   },
   "edits": {
-    "data.mjs": "TWO price edits, both >=10%: TEKTON 3/8-inch Flex Head $49.99 -> $41.27 (-17.44%); GEARWRENCH 120XP $49.99 -> $40.43 (-19.12%). Ratings/reviews left alone (no cosmetic edits).",
-    "post": "best-ratchet-set-review.astro synced to the verified live prices: intro claim $34.99 -> $41.27, review paragraph $34.99 -> $41.27, narrative '$35 TEKTON' -> '$41 TEKTON', GEARWRENCH '$59.99' -> '$40.43', closing line rebased to $41.27 with the buy-under-$40 trigger, and the wrong 'about $60 total' for the two ratchets corrected to 'about $54' (41.27 + 12.99). Snap-on $149 / MAC $129.99 / Pittsburgh $12.99 left alone because they could not be verified live.",
-    "build": "DONE: rm -rf dist && npx astro build (40 pages) && systemctl restart garagetoolsdb. Verified live on :8082/tools/ratchet-set, which now serves $41.27 and $40.43."
+    "data.mjs": "ONE price edit, >=10%: SYLSTAR 2400LM $42.99 -> $30.58 (-28.87%). Ratings/reviews left alone (no cosmetic edits).",
+    "post": "best-work-light-review.astro synced SYLSTAR live price: intro '$42' -> '$31', section header '$42. This is the light' -> '$31', 'it earns its $42' -> '$31', closing 'SYLSTAR at $42' -> '$31', 'more than the $42 it would have been cheaper' -> '$31'. ROVER $144 left as-is (unverified this run); DEWALT $249 / M18 2735 / Makita $339 left as verified-unchanged.",
+    "build": "DONE: rm -rf dist && npx astro build (40 pages) && systemctl restart garagetoolsdb. Verified live on :8082/tools/work-light, which now serves $30.58."
   },
   "schedule": {
-    "next_category_recommend": "work-light (its 5 ASINs have never been verified live; it was already the pending recommendation after the 09-27 ratchet-set cycle).",
-    "verified_this_cycle": "ratchet-set: 6 attempted, 3 live buybox verified, 2 dead ASINs, 1 unshippable/no-buybox, 2 edits."
+    "next_category_recommend": "air-compressor (its 6 ASINs have never been verified live; work-light is now done).",
+    "verified_this_cycle": "work-light: 5 attempted, 1 live buybox verified + edited, 1 confirmed unchanged (Makita $339), 1 equal-to-stored (M18 2735 $34.97 vs $35.00, no edit), 2 no-buybox/unverified (ROVER, DEWALT)."
   },
   "cycle_complete": true
 }
