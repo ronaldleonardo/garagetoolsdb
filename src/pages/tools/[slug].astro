@@ -13,6 +13,45 @@ const t = category;
 const top = t.products[0];
 const catSlugs = Object.keys(tools);
 const gtdbProductData = JSON.stringify(t.products.map(p => ({name: p.name, images: p.images})));
+
+const amazonUrl = (p) => `https://www.amazon.com/s?k=${encodeURIComponent(p.name + ' ' + t.name)}&tag=tabletopharve-20`;
+const productsJson = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": `Best ${t.name} for DIY Mechanics`,
+  "itemListElement": t.products.map((p, i) => ({
+    "@type": "ListItem",
+    "position": i + 1,
+    "item": {
+      "@type": "Product",
+      "name": p.name,
+      "image": "https://garagetoolsdb.com" + p.images[0],
+      "brand": { "@type": "Brand", "name": String(p.name).split(' ')[0] },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": String(p.rating),
+        "reviewCount": String(p.reviews).replace(/[^0-9]/g, '')
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": String(p.price).replace(/[^0-9.]/g, ''),
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": amazonUrl(p),
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+        },
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "US" },
+          "shippingRate": { "@type": "MonetaryAmount", "value": "0", "currency": "USD" }
+        }
+      }
+    }
+  }))
+};
+const ogImage = "https://garagetoolsdb.com" + top.images[0];
 ---
 
 <!DOCTYPE html>
@@ -25,8 +64,16 @@ const gtdbProductData = JSON.stringify(t.products.map(p => ({name: p.name, image
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="stylesheet" href="/styles/global.css">
     <link rel="canonical" href={`https://garagetoolsdb.com${Astro.url.pathname.replace(/\.html$/, '')}`} />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={`Best ${t.name} for DIY Mechanics | Garage Tools DB`} />
+  <meta property="og:description" content={t.desc} />
+  <meta property="og:image" content={ogImage} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script type="application/ld+json" set:html={JSON.stringify(productsJson)} />
       <!-- Analytics -->
   <script>(function(){var p=window.location.pathname;var r=document.referrer||'';(new Image()).src='http://localhost:8085/track?s=garagetoolsdb&p='+encodeURIComponent(p)+'&r='+encodeURIComponent(r)})();</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Garage Tools DB","alternateName":"GarageToolsDB","url":"https://garagetoolsdb.com/"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Garage Tools DB","url":"https://garagetoolsdb.com/","logo":"https://garagetoolsdb.com/favicon.svg"}</script>
 </head>
 <body>
   <header>
