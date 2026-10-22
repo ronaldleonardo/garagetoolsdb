@@ -1,30 +1,29 @@
 {
-  "cycle": 18,
-  "date": "2026-10-20",
-  "category_done": "bolt-extractor-set (5/5 verified on route 1/2, ZERO edits - no price moved 10% or more)",
+  "cycle": 19,
+  "date": "2026-10-21",
+  "category_done": "screwdriver-set (5/5 verified on route 1 firecrawl, ZERO edits - no price moved 10% or more)",
   "products_checked": [
-    "bolt-extractor-set/NEIKO 04204A 25-Pc Multispline (B01KN9YVWA): VERIFIED $36.99 (firecrawl buybox_json, In Stock, asin_confirmed TRUE) vs stored $36.99 = 0.00% -> NO EDIT.",
-    "bolt-extractor-set/IRWIN Hanson 11119 10-Pc Screw Extractor (B0002NYBH8): VERIFIED $67.19 (jina buybox_json, In Stock, page Title = 'Irwin Tools IRWIN Screw Extractor/Drill Bit Set, 10-Piece (11119)', URL Source = .../gp/aw/d/B0002NYBH8) vs stored $67.19 = 0.00% -> NO EDIT. Two parser warnings, both FALSE NEGATIVES: (a) asin_confirmed FALSE because the listing has no lp_asin brand-store link even though title+URL+ASIN all match; (b) ship_block TRUE came from the firecrawl mobile page only - jina shows In Stock with a real buybox. NOTE: buybox seller is third-party 'Topec Direct', ships from Amazon.",
-    "bolt-extractor-set/ARES 70016 Damaged Bolt Extractor (B01GKEBG9I): VERIFIED $21.56 (jina buybox_json, asin_confirmed TRUE via lp_asin=B01GKEBG9I, title matches 'ARES 70016 Damaged Bolt and Stud Extractor Tool - Grips 1/4 to 1/2-In', 4.4 stars / 3,032 ratings) vs stored $21.56 = 0.00% -> NO EDIT. Parser 'not in stock' warning is a FALSE NEGATIVE: page reads 'left in stock (more on the way)'.",
-    "bolt-extractor-set/GEARWRENCH 84784 Bolt Biter 28-Pc Impact (B07PNS5ZYQ): VERIFIED live $161.13 (firecrawl buybox_json, In Stock, asin_confirmed TRUE) vs stored $147.62 = +9.15% -> NO EDIT (below the 10% rule). Closest call of the batch; recheck next cycle, a further small rise crosses the threshold.",
-    "bolt-extractor-set/35-Pc Bolt Extractor Kit 1/4+3/8 drive (B0D9S4DT1T): VERIFIED $46.97 (firecrawl buybox_json, In Stock, asin_confirmed TRUE) vs stored $46.97 = 0.00% -> NO EDIT."
+    "screwdriver-set/Vessel Megadora JAWSFIT 8-Piece Set (B07ZJ1KMW2): VERIFIED $69.90 (firecrawl buybox_json, asin_confirmed TRUE) vs stored $71.40 = -2.10% -> NO EDIT. Parser in_stock=False is a FALSE NEGATIVE (same known pattern: page reads 'left in stock', parser only matches exact 'In Stock').",
+    "screwdriver-set/CRAFTSMAN CMHT65075N 8-Piece Set (B0B39PHCVZ): VERIFIED $24.98 (firecrawl buybox_json, In Stock, asin_confirmed TRUE) vs stored $24.98 = 0.00% -> NO EDIT.",
+    "screwdriver-set/Klein Tools 85078 8-Piece Set (B000ABADXI): VERIFIED $64.99 (firecrawl buybox_json, In Stock, asin_confirmed TRUE) vs stored $64.99 = 0.00% -> NO EDIT.",
+    "screwdriver-set/Wera Kraftform Lasertip 14-Piece Set (B007BZ2AQY): VERIFIED live $85.50 (firecrawl buybox_json, In Stock, asin_confirmed TRUE) vs stored $80.51 = +6.20% -> NO EDIT (below the 10% rule). Closest call of the batch; recheck next cycle, a further small rise crosses the threshold.",
+    "screwdriver-set/Wiha 53398 MicroFinish 8-Piece Set (B001ATOSNK): VERIFIED $138.98 (firecrawl buybox_json, In Stock, asin_confirmed TRUE) vs stored $138.98 = 0.00% -> NO EDIT."
   ],
   "issues": {
-    "FLOTOOL_MAX_11912_STILL_UNVERIFIED": "B0117EESNC (car-ramps carry-over, stored $79.99) failed BOTH routes again (firecrawl POST /v1/scrape + r.jina.ai on the mobile PDP), second cycle in a row. No price carried forward. Strengthens the delisting hypothesis -> recommend a re-ASIN decision rather than a third blind retry.",
-    "ASIN_GUARD_FALSE_NEGATIVE_AGAIN": "B0002NYBH8 repeats last cycle's MaxxHaul pattern: valid live buybox, title+URL Source confirm the exact ASIN, but lp_asin is absent so asin_confirmed=False. No edit was needed today (price unchanged), but the guard WILL block a legitimate edit on that listing in future. Decision still pending from cycle 17 (B0BP5C3749 MaxxHaul 50709 $104.99 -> $138.15): relax the guard to accept title+URL Source match, or keep strict and skip unbranded listings.",
-    "PARSER_FALSE_WARNINGS": "Two parser flags were wrong this batch: in_stock=False on a page reading 'left in stock (more on the way)' (B01GKEBG9I) and ship_block=True from the degraded firecrawl page where jina had a clean buybox (B0002NYBH8). Neither changed the outcome (both prices unchanged). in_stock should also match 'left in stock' and 'more on the way'. Script NOT modified yet - flagging for approval.",
-    "SELF_CONTINUITY_OPEN_ITEMS": "Still open and NOT covered by today's batch: jack-stand dead ASINs (B000I6W2A0, B000C4CHPE x2 duplicate, B09LGK5J7W) + Torin duplicate-ASIN bug; ESCO B0019JVIPM candidate needs jina price; multimeter Klein B018EXZO8M no-buybox; multimeter KAIWEETS B07J83SMVZ + Fluke B0006Z64Q0 ASIN 404; air-compressor Porter-Cable B000O5RO1Y + Makita B0001Q2VPU no-buybox; Stealth SAQ-11215 >$400 editorial call; work-light ROVER B08YS6CXG6 + DEWALT B077ZCTBFY no-buybox; car-ramps OOS pair B0117EETEK + B01N308YYO."
+    "PARSER_FALSE_WARNING_REPEAT": "in_stock=False on B07ZJ1KMW2 is a FALSE NEGATIVE, third cycle in a row for this same class of listing (page shows 'left in stock (more on the way)' / 'Only N left in stock'). No effect on outcome (price unchanged). Suggested one-line fix still NOT applied (awaiting approval): change the in_stock test in price_fetch.py parse() to also match 'left in stock' and 'more on the way'.",
+    "ASIN_GUARD_FALSE_NEGATIVE_STILL_OPEN": "Today all 5 screwdriver-set listings carried lp_asin, so asin_confirmed=TRUE for every one; the guard did not bite. Carry-over decision from cycle 17/18 remains OPEN (B0BP5C3749 MaxxHaul 50709 $104.99 -> $138.15): relax the guard to accept title+URL Source match, or keep strict and skip unbranded listings.",
+    "SELF_CONTINUITY_OPEN_ITEMS": "Unchanged and NOT covered by today's batch: FLOTOOL MAX 11912 B0117EESNC third-cycle unverified (ready for a re-ASIN decision); jack-stand dead ASINs (B000I6W2A0, B000C4CHPE x2 duplicate, B09LGK5J7W) + Torin duplicate-ASIN bug; ESCO B0019JVIPM candidate needs jina price; multimeter Klein B018EXZO8M no-buybox; multimeter KAIWEETS B07J83SMVZ + Fluke B0006Z64Q0 ASIN 404; air-compressor Porter-Cable B000O5RO1Y + Makita B0001Q2VPU no-buybox; Stealth SAQ-11215 >$400 editorial call; work-light ROVER B08YS6CXG6 + DEWALT B077ZCTBFY no-buybox; car-ramps OOS pair B0117EETEK + B01N308YYO."
   },
   "edits": {
-    "data.mjs": "NONE. All 5 bolt-extractor-set stored prices still match live within 10% (four at exactly 0.00%, one at +9.15%). No cosmetic edits, no rounding.",
+    "data.mjs": "NONE. All 5 screwdriver-set stored prices still match live within 10% (three at exactly 0.00%, one at -2.10%, one at +6.20%). No cosmetic edits, no rounding.",
     "post": "NONE.",
     "script": "price_fetch.py NOT modified today.",
     "build": "SKIPPED as required - no edits to data.mjs, so no astro build and no systemctl restart. dist/ untouched."
   },
   "schedule": {
-    "next_category_recommend": "screwdriver-set (5 ASINs: B07ZJ1KMW2 $71.40, B0B39PHCVZ $24.98, B000ABADXI $64.99, B007BZ2AQY $80.51, B001ATOSNK $138.98) - next unverified category in rotation.",
-    "remaining_categories_unverified_or_due": "screwdriver-set (5), impact-socket-set (5), plus all flagged follow-ups above.",
-    "verified_this_cycle": "bolt-extractor-set: 5 asked, 5 verified live, 0 edits, 0 unverified (plus 1 failed carry-over retry on B0117EESNC)."
+    "next_category_recommend": "impact-socket-set (5 ASINs: B002MW9UW8 $116.99, B091KXVFVC $19.97, B093BJGT13 $135.97, B002MW2CGO $179.72, B08JTS9RRJ $39.97) - next unverified category in rotation.",
+    "remaining_categories_unverified_or_due": "impact-socket-set (5), then wrench-set (5) and tire-inflator (5) as the next unverified in file order, plus all flagged follow-ups above.",
+    "verified_this_cycle": "screwdriver-set: 5 asked, 5 verified live, 0 edits, 0 unverified."
   },
   "cycle_complete": true
 }
