@@ -1,29 +1,30 @@
 {
-  "cycle": 19,
-  "date": "2026-10-21",
-  "category_done": "screwdriver-set (5/5 verified on route 1 firecrawl, ZERO edits - no price moved 10% or more)",
+  "cycle": 20,
+  "date": "2026-10-22",
+  "category_done": "impact-socket-set (5/5 verified on route 1 firecrawl, ZERO edits - no price moved 10% or more)",
   "products_checked": [
-    "screwdriver-set/Vessel Megadora JAWSFIT 8-Piece Set (B07ZJ1KMW2): VERIFIED $69.90 (firecrawl buybox_json, asin_confirmed TRUE) vs stored $71.40 = -2.10% -> NO EDIT. Parser in_stock=False is a FALSE NEGATIVE (same known pattern: page reads 'left in stock', parser only matches exact 'In Stock').",
-    "screwdriver-set/CRAFTSMAN CMHT65075N 8-Piece Set (B0B39PHCVZ): VERIFIED $24.98 (firecrawl buybox_json, In Stock, asin_confirmed TRUE) vs stored $24.98 = 0.00% -> NO EDIT.",
-    "screwdriver-set/Klein Tools 85078 8-Piece Set (B000ABADXI): VERIFIED $64.99 (firecrawl buybox_json, In Stock, asin_confirmed TRUE) vs stored $64.99 = 0.00% -> NO EDIT.",
-    "screwdriver-set/Wera Kraftform Lasertip 14-Piece Set (B007BZ2AQY): VERIFIED live $85.50 (firecrawl buybox_json, In Stock, asin_confirmed TRUE) vs stored $80.51 = +6.20% -> NO EDIT (below the 10% rule). Closest call of the batch; recheck next cycle, a further small rise crosses the threshold.",
-    "screwdriver-set/Wiha 53398 MicroFinish 8-Piece Set (B001ATOSNK): VERIFIED $138.98 (firecrawl buybox_json, In Stock, asin_confirmed TRUE) vs stored $138.98 = 0.00% -> NO EDIT."
+    "impact-socket-set/Sunex 2645 26-Piece Metric Set (B002MW9UW8): VERIFIED $116.99 (firecrawl buybox_json, In Stock, asin_confirmed TRUE) vs stored $116.99 = +0.00% -> NO EDIT.",
+    "impact-socket-set/CASOMAN 14-Piece 1/2 In Shallow Set (B091KXVFVC): VERIFIED $19.97 (firecrawl buybox_json, In Stock, asin_confirmed TRUE) vs stored $19.97 = +0.00% -> NO EDIT.",
+    "impact-socket-set/CASOMAN 70-Piece Master Set (B093BJGT13): VERIFIED $135.97 (firecrawl buybox_json, In Stock, asin_confirmed TRUE) vs stored $135.97 = +0.00% -> NO EDIT.",
+    "impact-socket-set/Sunex 2646 26-Piece Deep Set (B002MW2CGO): VERIFIED $182.14 (firecrawl buybox_json, In Stock, asin_confirmed TRUE) vs stored $179.72 = +1.35% -> NO EDIT (below the 10% rule). Drifting up; recheck next cycle.",
+    "impact-socket-set/MIXPOWER 49-Piece 3/8 In Deep Set (B08JTS9RRJ): VERIFIED $39.97 (firecrawl buybox_json, In Stock, asin_confirmed TRUE) vs stored $39.97 = +0.00% -> NO EDIT."
   ],
   "issues": {
-    "PARSER_FALSE_WARNING_REPEAT": "in_stock=False on B07ZJ1KMW2 is a FALSE NEGATIVE, third cycle in a row for this same class of listing (page shows 'left in stock (more on the way)' / 'Only N left in stock'). No effect on outcome (price unchanged). Suggested one-line fix still NOT applied (awaiting approval): change the in_stock test in price_fetch.py parse() to also match 'left in stock' and 'more on the way'.",
-    "ASIN_GUARD_FALSE_NEGATIVE_STILL_OPEN": "Today all 5 screwdriver-set listings carried lp_asin, so asin_confirmed=TRUE for every one; the guard did not bite. Carry-over decision from cycle 17/18 remains OPEN (B0BP5C3749 MaxxHaul 50709 $104.99 -> $138.15): relax the guard to accept title+URL Source match, or keep strict and skip unbranded listings.",
+    "CLEAN_BATCH": "No parser false negatives today: all 5 listings parsed In Stock, no ship_block, asin_confirmed TRUE for every ASIN (lp_asin present on all). First fully clean batch since cycle 17.",
+    "PARSER_FALSE_WARNING_FIX_STILL_NOT_APPLIED": "The suggested one-line fix in price_fetch.py parse() (match 'left in stock' / 'more on the way' in the in_stock test) remains unapproved and unapplied. It did not bite today.",
+    "ASIN_GUARD_FALSE_NEGATIVE_STILL_OPEN": "Carry-over decision from cycle 17/18 remains OPEN (B0BP5C3749 MaxxHaul 50709 $104.99 -> $138.15): relax the guard to accept title+URL Source match, or keep strict and skip unbranded listings.",
     "SELF_CONTINUITY_OPEN_ITEMS": "Unchanged and NOT covered by today's batch: FLOTOOL MAX 11912 B0117EESNC third-cycle unverified (ready for a re-ASIN decision); jack-stand dead ASINs (B000I6W2A0, B000C4CHPE x2 duplicate, B09LGK5J7W) + Torin duplicate-ASIN bug; ESCO B0019JVIPM candidate needs jina price; multimeter Klein B018EXZO8M no-buybox; multimeter KAIWEETS B07J83SMVZ + Fluke B0006Z64Q0 ASIN 404; air-compressor Porter-Cable B000O5RO1Y + Makita B0001Q2VPU no-buybox; Stealth SAQ-11215 >$400 editorial call; work-light ROVER B08YS6CXG6 + DEWALT B077ZCTBFY no-buybox; car-ramps OOS pair B0117EETEK + B01N308YYO."
   },
   "edits": {
-    "data.mjs": "NONE. All 5 screwdriver-set stored prices still match live within 10% (three at exactly 0.00%, one at -2.10%, one at +6.20%). No cosmetic edits, no rounding.",
+    "data.mjs": "NONE. All 5 impact-socket-set stored prices still match live within 10% (four at exactly 0.00%, one at +1.35%). No cosmetic edits, no rounding. git status clean after the run.",
     "post": "NONE.",
     "script": "price_fetch.py NOT modified today.",
     "build": "SKIPPED as required - no edits to data.mjs, so no astro build and no systemctl restart. dist/ untouched."
   },
   "schedule": {
-    "next_category_recommend": "impact-socket-set (5 ASINs: B002MW9UW8 $116.99, B091KXVFVC $19.97, B093BJGT13 $135.97, B002MW2CGO $179.72, B08JTS9RRJ $39.97) - next unverified category in rotation.",
-    "remaining_categories_unverified_or_due": "impact-socket-set (5), then wrench-set (5) and tire-inflator (5) as the next unverified in file order, plus all flagged follow-ups above.",
-    "verified_this_cycle": "screwdriver-set: 5 asked, 5 verified live, 0 edits, 0 unverified."
+    "next_category_recommend": "wrench-set (5 ASINs: B0CL13TWCC $200.00, B0002NYD1W $120.99, B07KH6F8WL $99.00, B00PQXNG0M $33.72, B000PGTCDU $30.09) - next unverified category in rotation.",
+    "remaining_categories_unverified_or_due": "wrench-set (5), then tire-inflator (5) as the next unverified in file order, plus all flagged follow-ups above.",
+    "verified_this_cycle": "impact-socket-set: 5 asked, 5 verified live, 0 edits, 0 unverified."
   },
   "cycle_complete": true
 }
