@@ -1,30 +1,30 @@
 {
-  "cycle": 20,
-  "date": "2026-10-22",
-  "category_done": "impact-socket-set (5/5 verified on route 1 firecrawl, ZERO edits - no price moved 10% or more)",
+  "cycle": 21,
+  "date": "2026-10-23",
+  "category_done": "wrench-set (5/5 verified on route 1 firecrawl, ZERO edits - every listing matched stored price exactly at +0.00%)",
   "products_checked": [
-    "impact-socket-set/Sunex 2645 26-Piece Metric Set (B002MW9UW8): VERIFIED $116.99 (firecrawl buybox_json, In Stock, asin_confirmed TRUE) vs stored $116.99 = +0.00% -> NO EDIT.",
-    "impact-socket-set/CASOMAN 14-Piece 1/2 In Shallow Set (B091KXVFVC): VERIFIED $19.97 (firecrawl buybox_json, In Stock, asin_confirmed TRUE) vs stored $19.97 = +0.00% -> NO EDIT.",
-    "impact-socket-set/CASOMAN 70-Piece Master Set (B093BJGT13): VERIFIED $135.97 (firecrawl buybox_json, In Stock, asin_confirmed TRUE) vs stored $135.97 = +0.00% -> NO EDIT.",
-    "impact-socket-set/Sunex 2646 26-Piece Deep Set (B002MW2CGO): VERIFIED $182.14 (firecrawl buybox_json, In Stock, asin_confirmed TRUE) vs stored $179.72 = +1.35% -> NO EDIT (below the 10% rule). Drifting up; recheck next cycle.",
-    "impact-socket-set/MIXPOWER 49-Piece 3/8 In Deep Set (B08JTS9RRJ): VERIFIED $39.97 (firecrawl buybox_json, In Stock, asin_confirmed TRUE) vs stored $39.97 = +0.00% -> NO EDIT."
+    "wrench-set/TEKTON WCB95302 34-Piece Combination Set (B0CL13TWCC): VERIFIED $200.00 (firecrawl buybox_json, In Stock, asin_confirmed TRUE) vs stored $200.00 = +0.00% -> NO EDIT.",
+    "wrench-set/GEARWRENCH 9416 16-Piece Ratcheting Metric (B0002NYD1W): VERIFIED $120.99 (firecrawl buybox_json, In Stock, asin_confirmed TRUE) vs stored $120.99 = +0.00% -> NO EDIT.",
+    "wrench-set/CRAFTSMAN CMMT12080 32-Piece (B07KH6F8WL): VERIFIED $99.00 (firecrawl buybox_json, In Stock, asin_confirmed TRUE) vs stored $99.00 = +0.00% -> NO EDIT.",
+    "wrench-set/DEWALT DWMT73810 8-Piece Metric (B00PQXNG0M): VERIFIED $33.72 (firecrawl buybox_json, In Stock, asin_confirmed TRUE) vs stored $33.72 = +0.00% -> NO EDIT.",
+    "wrench-set/Sunex 9930M 10-Piece Metric Stubby (B000PGTCDU): VERIFIED $30.09 (firecrawl buybox_json, In Stock, asin_confirmed TRUE) vs stored $30.09 = +0.00% -> NO EDIT."
   ],
   "issues": {
-    "CLEAN_BATCH": "No parser false negatives today: all 5 listings parsed In Stock, no ship_block, asin_confirmed TRUE for every ASIN (lp_asin present on all). First fully clean batch since cycle 17.",
-    "PARSER_FALSE_WARNING_FIX_STILL_NOT_APPLIED": "The suggested one-line fix in price_fetch.py parse() (match 'left in stock' / 'more on the way' in the in_stock test) remains unapproved and unapplied. It did not bite today.",
+    "CLEAN_BATCH": "Second consecutive clean batch. All 5 listings parsed In Stock via firecrawl route 1 on first attempt, no ship_block, asin_confirmed TRUE for every ASIN, no jina fallback needed. All five stored prices matched live to the cent, so there was nothing to edit and no interpretation call to make.",
+    "PARSER_FALSE_WARNING_FIX_STILL_NOT_APPLIED": "The suggested one-line fix in price_fetch.py parse() (match 'left in stock' / 'more on the way' in the in_stock test) remains unapproved and unapplied. It did not bite today (the test string 'In Stock' matched all five).",
     "ASIN_GUARD_FALSE_NEGATIVE_STILL_OPEN": "Carry-over decision from cycle 17/18 remains OPEN (B0BP5C3749 MaxxHaul 50709 $104.99 -> $138.15): relax the guard to accept title+URL Source match, or keep strict and skip unbranded listings.",
-    "SELF_CONTINUITY_OPEN_ITEMS": "Unchanged and NOT covered by today's batch: FLOTOOL MAX 11912 B0117EESNC third-cycle unverified (ready for a re-ASIN decision); jack-stand dead ASINs (B000I6W2A0, B000C4CHPE x2 duplicate, B09LGK5J7W) + Torin duplicate-ASIN bug; ESCO B0019JVIPM candidate needs jina price; multimeter Klein B018EXZO8M no-buybox; multimeter KAIWEETS B07J83SMVZ + Fluke B0006Z64Q0 ASIN 404; air-compressor Porter-Cable B000O5RO1Y + Makita B0001Q2VPU no-buybox; Stealth SAQ-11215 >$400 editorial call; work-light ROVER B08YS6CXG6 + DEWALT B077ZCTBFY no-buybox; car-ramps OOS pair B0117EETEK + B01N308YYO."
+    "SELF_CONTINUITY_OPEN_ITEMS": "Unchanged and NOT covered by today's batch: FLOTOOL MAX 11912 B0117EESNC third-cycle unverified (ready for a re-ASIN decision); jack-stand dead ASINs (B000I6W2A0, B000C4CHPE x2 duplicate, B09LGK5J7W) + Torin duplicate-ASIN bug; ESCO B0019JVIPM candidate needs jina price; multimeter Klein B018EXZO8M no-buybox; multimeter KAIWEETS B07J83SMVZ + Fluke B0006Z64Q0 ASIN 404; air-compressor Porter-Cable B000O5RO1Y + Makita B0001Q2VPU no-buybox; Stealth SAQ-11215 >$400 editorial call; work-light ROVER B08YS6CXG6 + DEWALT B077ZCTBFY no-buybox; car-ramps OOS pair B0117EETEK + B01N308YYO; impact-socket-set Sunex 2646 B002MW2CGO drifting up (+1.35% last cycle) - recheck."
   },
   "edits": {
-    "data.mjs": "NONE. All 5 impact-socket-set stored prices still match live within 10% (four at exactly 0.00%, one at +1.35%). No cosmetic edits, no rounding. git status clean after the run.",
+    "data.mjs": "NONE. All 5 wrench-set stored prices matched live exactly (0.00% on every one). No cosmetic edits, no rounding. git status clean after the run.",
     "post": "NONE.",
     "script": "price_fetch.py NOT modified today.",
     "build": "SKIPPED as required - no edits to data.mjs, so no astro build and no systemctl restart. dist/ untouched."
   },
   "schedule": {
-    "next_category_recommend": "wrench-set (5 ASINs: B0CL13TWCC $200.00, B0002NYD1W $120.99, B07KH6F8WL $99.00, B00PQXNG0M $33.72, B000PGTCDU $30.09) - next unverified category in rotation.",
-    "remaining_categories_unverified_or_due": "wrench-set (5), then tire-inflator (5) as the next unverified in file order, plus all flagged follow-ups above.",
-    "verified_this_cycle": "impact-socket-set: 5 asked, 5 verified live, 0 edits, 0 unverified."
+    "next_category_recommend": "tire-inflator (5 ASINs: B0D92XCJC2 $117.91, B0D2PM6R1R $99.95, B07H39S9JQ $143.66, B0G13YS92Q $53.99, B07QR4Q42L $31.99) - next unverified category in file order.",
+    "remaining_categories_unverified_or_due": "tire-inflator (5) next, then brake-bleeder / battery-charger / oil-filter-wrench / etc. per file order, plus all flagged follow-ups above.",
+    "verified_this_cycle": "wrench-set: 5 asked, 5 verified live, 0 edits, 0 unverified."
   },
   "cycle_complete": true
 }
