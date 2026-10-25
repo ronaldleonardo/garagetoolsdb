@@ -1,30 +1,30 @@
 {
-  "cycle": 21,
-  "date": "2026-10-23",
-  "category_done": "wrench-set (5/5 verified on route 1 firecrawl, ZERO edits - every listing matched stored price exactly at +0.00%)",
+  "cycle": 22,
+  "date": "2026-10-24",
+  "category_done": "tire-inflator (5/5 verified live on route 1 firecrawl, ZERO edits - largest live delta was +4.13%, all below the 10 percent edit threshold)",
   "products_checked": [
-    "wrench-set/TEKTON WCB95302 34-Piece Combination Set (B0CL13TWCC): VERIFIED $200.00 (firecrawl buybox_json, In Stock, asin_confirmed TRUE) vs stored $200.00 = +0.00% -> NO EDIT.",
-    "wrench-set/GEARWRENCH 9416 16-Piece Ratcheting Metric (B0002NYD1W): VERIFIED $120.99 (firecrawl buybox_json, In Stock, asin_confirmed TRUE) vs stored $120.99 = +0.00% -> NO EDIT.",
-    "wrench-set/CRAFTSMAN CMMT12080 32-Piece (B07KH6F8WL): VERIFIED $99.00 (firecrawl buybox_json, In Stock, asin_confirmed TRUE) vs stored $99.00 = +0.00% -> NO EDIT.",
-    "wrench-set/DEWALT DWMT73810 8-Piece Metric (B00PQXNG0M): VERIFIED $33.72 (firecrawl buybox_json, In Stock, asin_confirmed TRUE) vs stored $33.72 = +0.00% -> NO EDIT.",
-    "wrench-set/Sunex 9930M 10-Piece Metric Stubby (B000PGTCDU): VERIFIED $30.09 (firecrawl buybox_json, In Stock, asin_confirmed TRUE) vs stored $30.09 = +0.00% -> NO EDIT."
+    "tire-inflator/VIAIR EVC88P Digital Portable Compressor (B0D92XCJC2): VERIFIED $122.78 (firecrawl buybox_json, In Stock, asin_confirmed TRUE) vs stored $117.91 = +4.13% -> NO EDIT (below 10%).",
+    "tire-inflator/NOCO AIR10 (B0D2PM6R1R): VERIFIED $99.95 (firecrawl buybox_json, In Stock, asin_confirmed TRUE) vs stored $99.95 = +0.00% -> NO EDIT.",
+    "tire-inflator/DEWALT DCC020IB 20V MAX Inflator (B07H39S9JQ): VERIFIED $143.00 (firecrawl buybox_json, asin_confirmed TRUE) vs stored $143.66 = -0.46% -> NO EDIT. Parser in_stock flag came back false (string is 'Only 7 left in stock - order soon', not the literal 'In Stock'), so I re-probed the PDP directly: the item IS in stock with 7 units left and a live buybox price. Known parser false-negative, not an OOS product.",
+    "tire-inflator/Fanttik X10 Pro (B0G13YS92Q): VERIFIED $53.99 (firecrawl buybox_json, In Stock, asin_confirmed TRUE) vs stored $53.99 = +0.00% -> NO EDIT.",
+    "tire-inflator/AstroAI AIRUN H (B07QR4Q42L): VERIFIED $30.39 (firecrawl buybox_json, In Stock, asin_confirmed TRUE) vs stored $31.99 = -5.00% -> NO EDIT (below 10%)."
   ],
   "issues": {
-    "CLEAN_BATCH": "Second consecutive clean batch. All 5 listings parsed In Stock via firecrawl route 1 on first attempt, no ship_block, asin_confirmed TRUE for every ASIN, no jina fallback needed. All five stored prices matched live to the cent, so there was nothing to edit and no interpretation call to make.",
-    "PARSER_FALSE_WARNING_FIX_STILL_NOT_APPLIED": "The suggested one-line fix in price_fetch.py parse() (match 'left in stock' / 'more on the way' in the in_stock test) remains unapproved and unapplied. It did not bite today (the test string 'In Stock' matched all five).",
-    "ASIN_GUARD_FALSE_NEGATIVE_STILL_OPEN": "Carry-over decision from cycle 17/18 remains OPEN (B0BP5C3749 MaxxHaul 50709 $104.99 -> $138.15): relax the guard to accept title+URL Source match, or keep strict and skip unbranded listings.",
-    "SELF_CONTINUITY_OPEN_ITEMS": "Unchanged and NOT covered by today's batch: FLOTOOL MAX 11912 B0117EESNC third-cycle unverified (ready for a re-ASIN decision); jack-stand dead ASINs (B000I6W2A0, B000C4CHPE x2 duplicate, B09LGK5J7W) + Torin duplicate-ASIN bug; ESCO B0019JVIPM candidate needs jina price; multimeter Klein B018EXZO8M no-buybox; multimeter KAIWEETS B07J83SMVZ + Fluke B0006Z64Q0 ASIN 404; air-compressor Porter-Cable B000O5RO1Y + Makita B0001Q2VPU no-buybox; Stealth SAQ-11215 >$400 editorial call; work-light ROVER B08YS6CXG6 + DEWALT B077ZCTBFY no-buybox; car-ramps OOS pair B0117EETEK + B01N308YYO; impact-socket-set Sunex 2646 B002MW2CGO drifting up (+1.35% last cycle) - recheck."
+    "CLEAN_BATCH": "All 5 tire-inflator ASINs parsed on route 1 (firecrawl /gp/aw/d mobile PDP) on the first attempt, no jina fallback needed, no ship_block, asin_confirmed TRUE for every ASIN. Five live prices, zero edits: the category has drifted less than 5 percent on every listing. Worth noting VIAIR EVC88P is +4.13% and AstroAI is -5.00%, i.e. both are sitting just under the edit threshold and will flip to EDIT on a small further move - watch these two next cycle.",
+    "PARSER_FALSE_WARNING_FIX_STILL_NOT_APPLIED": "The one-line fix suggested in price_fetch.py parse() (also match 'left in stock' / 'more on the way' in the in_stock test) is still unapproved and unapplied. It produced a false alarm on DEWALT DCC020IB today; verified manually that the listing is in stock. Fix would remove a manual re-probe every cycle.",
+    "ASIN_GUARD_FALSE_NEGATIVE_STILL_OPEN": "Carry-over decision from cycle 17/18 remains OPEN (B0BP5C3749 MaxxHaul 50709 $104.99 -> $138.15): relax the guard to accept a title+URL source match, or keep strict and skip unbranded listings.",
+    "SELF_CONTINUITY_OPEN_ITEMS": "Unchanged and NOT covered by today's batch: FLOTOOL MAX 11912 B0117EESNC third-cycle unverified (ready for a re-ASIN decision); jack-stand dead ASINs (B000I6W2A0, B000C4CHPE x2 duplicate, B09LGK5J7W) + Torin duplicate-ASIN bug; ESCO B0019JVIPM candidate needs jina price; multimeter Klein B018EXZO8M no-buybox; multimeter KAIWEETS B07J83SMVZ + Fluke B0006Z64Q0 ASIN 404; air-compressor Porter-Cable B000O5RO1Y + Makita B0001Q2VPU no-buybox; Stealth SAQ-11215 >$400 editorial call; work-light ROVER B08YS6CXG6 + DEWALT B077ZCTBFY no-buybox; car-ramps OOS pair B0117EETEK + B01N308YYO; impact-socket-set Sunex 2646 B002MW2CGO drifting up."
   },
   "edits": {
-    "data.mjs": "NONE. All 5 wrench-set stored prices matched live exactly (0.00% on every one). No cosmetic edits, no rounding. git status clean after the run.",
+    "data.mjs": "NONE. Highest live change was +4.13% (VIAIR), lowest was 0.00%. All five under the 10 percent threshold, so no price was touched and no cosmetic edits were made. git status clean after the run.",
     "post": "NONE.",
     "script": "price_fetch.py NOT modified today.",
     "build": "SKIPPED as required - no edits to data.mjs, so no astro build and no systemctl restart. dist/ untouched."
   },
   "schedule": {
-    "next_category_recommend": "tire-inflator (5 ASINs: B0D92XCJC2 $117.91, B0D2PM6R1R $99.95, B07H39S9JQ $143.66, B0G13YS92Q $53.99, B07QR4Q42L $31.99) - next unverified category in file order.",
-    "remaining_categories_unverified_or_due": "tire-inflator (5) next, then brake-bleeder / battery-charger / oil-filter-wrench / etc. per file order, plus all flagged follow-ups above.",
-    "verified_this_cycle": "wrench-set: 5 asked, 5 verified live, 0 edits, 0 unverified."
+    "next_category_recommend": "brake-bleeder (5 ASINs: B00265M9SS $64.35, B000TK9FE8 $72.05, B0GGQH744M $22.89, B08H4N69BR $21.99, B005MVBFM4 $389.13) - next unverified category in file order after tire-inflator.",
+    "remaining_categories_unverified_or_due": "brake-bleeder (5) next, then bolt-extractor-set / screwdriver-set / impact-socket-set / torque-wrench / jump-starter / socket-set / floor-jack / obd2-scanner / oil-filter-wrench / battery-charger / brake-caliper-tool, plus all flagged follow-ups above.",
+    "verified_this_cycle": "tire-inflator: 5 asked, 5 verified live, 0 edits, 0 unverified."
   },
   "cycle_complete": true
 }
