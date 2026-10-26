@@ -1,30 +1,32 @@
 {
-  "cycle": 22,
-  "date": "2026-10-24",
-  "category_done": "tire-inflator (5/5 verified live on route 1 firecrawl, ZERO edits - largest live delta was +4.13%, all below the 10 percent edit threshold)",
+  "cycle": 23,
+  "date": "2026-10-25",
+  "category_done": "brake-bleeder (5/5 resolved a live price, ZERO edits - largest live delta was +9.10% on OMT B08H4N69BR, just under the 10 percent threshold)",
   "products_checked": [
-    "tire-inflator/VIAIR EVC88P Digital Portable Compressor (B0D92XCJC2): VERIFIED $122.78 (firecrawl buybox_json, In Stock, asin_confirmed TRUE) vs stored $117.91 = +4.13% -> NO EDIT (below 10%).",
-    "tire-inflator/NOCO AIR10 (B0D2PM6R1R): VERIFIED $99.95 (firecrawl buybox_json, In Stock, asin_confirmed TRUE) vs stored $99.95 = +0.00% -> NO EDIT.",
-    "tire-inflator/DEWALT DCC020IB 20V MAX Inflator (B07H39S9JQ): VERIFIED $143.00 (firecrawl buybox_json, asin_confirmed TRUE) vs stored $143.66 = -0.46% -> NO EDIT. Parser in_stock flag came back false (string is 'Only 7 left in stock - order soon', not the literal 'In Stock'), so I re-probed the PDP directly: the item IS in stock with 7 units left and a live buybox price. Known parser false-negative, not an OOS product.",
-    "tire-inflator/Fanttik X10 Pro (B0G13YS92Q): VERIFIED $53.99 (firecrawl buybox_json, In Stock, asin_confirmed TRUE) vs stored $53.99 = +0.00% -> NO EDIT.",
-    "tire-inflator/AstroAI AIRUN H (B07QR4Q42L): VERIFIED $30.39 (firecrawl buybox_json, In Stock, asin_confirmed TRUE) vs stored $31.99 = -5.00% -> NO EDIT (below 10%)."
+    "brake-bleeder/Mityvac MV8000 (B00265M9SS): VERIFIED $64.45 (buybox_json, jina route, In Stock, asin_confirmed TRUE) vs stored $64.35 = +0.16% -> NO EDIT.",
+    "brake-bleeder/Motive Products 0108 Power Bleeder (B000TK9FE8): VERIFIED $72.05 (buybox_json) vs stored $72.05 = +0.00% -> NO EDIT. Firecrawl served a degraded page (egress resolved to Indonesia: ship_block TRUE, 'cannot be shipped to your selected delivery location'); re-probed on jina, which resolved to The Dalles 97058 and rendered the real buybox at the same $72.05 with asin_confirmed TRUE and title 'Motive Products 0108 Late Model GM Compatible Power Bleeder 2-Quart Tank'. Price confirmed, but no literal 'In Stock' string on either route, so in_stock stayed FALSE (parser note, not an OOS finding).",
+    "brake-bleeder/OMT One-Man Brake Bleeding Kit (B08H4N69BR): VERIFIED $23.99 (buybox_json, firecrawl, In Stock, asin_confirmed TRUE) vs stored $21.99 = +9.10% -> NO EDIT (below 10%, but now the closest listing on the site to flipping).",
+    "brake-bleeder/Cal-Spec Tools Brake Bleeder Kit (B0GGQH744M): VERIFIED $22.89 (buybox_json, In Stock, Prime, 'Delivering to The Dalles 97058') vs stored $22.89 = +0.00% -> NO EDIT. asin_confirmed came back FALSE on both routes because this listing carries no brand-store link (zero lp_asin matches), so the guard cannot match; the PDP title is 'Cal-Spec Tools Brake Bleeder Kit - One-Way Check Valve, Magnet Mount, 16oz Catch Bottle, 16\" Hose', i.e. the right product. Price identical to stored so nothing depended on the guard this cycle.",
+    "brake-bleeder/Mityvac MV6840 Pressure Bleed System (B005MVBFM4): VERIFIED $389.14 (buybox_json, jina route, In Stock, asin_confirmed TRUE) vs stored $389.13 = +0.00% -> NO EDIT. Firecrawl gave no buybox for this bulky item, jina fallback worked as designed."
   ],
-  "issues": {
-    "CLEAN_BATCH": "All 5 tire-inflator ASINs parsed on route 1 (firecrawl /gp/aw/d mobile PDP) on the first attempt, no jina fallback needed, no ship_block, asin_confirmed TRUE for every ASIN. Five live prices, zero edits: the category has drifted less than 5 percent on every listing. Worth noting VIAIR EVC88P is +4.13% and AstroAI is -5.00%, i.e. both are sitting just under the edit threshold and will flip to EDIT on a small further move - watch these two next cycle.",
-    "PARSER_FALSE_WARNING_FIX_STILL_NOT_APPLIED": "The one-line fix suggested in price_fetch.py parse() (also match 'left in stock' / 'more on the way' in the in_stock test) is still unapproved and unapplied. It produced a false alarm on DEWALT DCC020IB today; verified manually that the listing is in stock. Fix would remove a manual re-probe every cycle.",
-    "ASIN_GUARD_FALSE_NEGATIVE_STILL_OPEN": "Carry-over decision from cycle 17/18 remains OPEN (B0BP5C3749 MaxxHaul 50709 $104.99 -> $138.15): relax the guard to accept a title+URL source match, or keep strict and skip unbranded listings.",
-    "SELF_CONTINUITY_OPEN_ITEMS": "Unchanged and NOT covered by today's batch: FLOTOOL MAX 11912 B0117EESNC third-cycle unverified (ready for a re-ASIN decision); jack-stand dead ASINs (B000I6W2A0, B000C4CHPE x2 duplicate, B09LGK5J7W) + Torin duplicate-ASIN bug; ESCO B0019JVIPM candidate needs jina price; multimeter Klein B018EXZO8M no-buybox; multimeter KAIWEETS B07J83SMVZ + Fluke B0006Z64Q0 ASIN 404; air-compressor Porter-Cable B000O5RO1Y + Makita B0001Q2VPU no-buybox; Stealth SAQ-11215 >$400 editorial call; work-light ROVER B08YS6CXG6 + DEWALT B077ZCTBFY no-buybox; car-ramps OOS pair B0117EETEK + B01N308YYO; impact-socket-set Sunex 2646 B002MW2CGO drifting up."
-  },
   "edits": {
-    "data.mjs": "NONE. Highest live change was +4.13% (VIAIR), lowest was 0.00%. All five under the 10 percent threshold, so no price was touched and no cosmetic edits were made. git status clean after the run.",
-    "post": "NONE.",
-    "script": "price_fetch.py NOT modified today.",
+    "data.mjs": "NONE. Highest live change was +9.10% (OMT B08H4N69BR), next was +0.16% (Mityvac MV8000); the other three were exactly 0.00%. All under the 10 percent threshold, so no price was touched and no cosmetic edits were made. git status clean after the run.",
+    "post": "NONE. Brake-bleeder has no published post yet (category page only), so no numbers to sync.",
+    "script": "price_fetch.py NOT modified today. The parse() in_stock fix and the ASIN-guard relaxation are still unapproved and unapplied.",
     "build": "SKIPPED as required - no edits to data.mjs, so no astro build and no systemctl restart. dist/ untouched."
   },
+  "issues": {
+    "CLEAN_BATCH": "All 5 brake-bleeder listings produced a live buybox price. Three parsed on route 1 alone; B00265M9SS and B005MVBFM4 needed the jina fallback (firecrawl returned no buybox / a ship-blocked page). No ASIN 404, no dead listing, no out-of-stock flag on this category.",
+    "WATCH_LIST_NEAR_THRESHOLD": "OMT B08H4N69BR is +9.10% and will cross into EDIT on any further move upward - check it first next time brake-bleeder comes up. Mityvac MV8000 at +0.16% is stable.",
+    "FIRECRAWL_EGRESS_GEO_FLAP": "New this cycle: firecrawl (192.168.18.4:3002) delivered the *mobile* PDP for B000TK9FE8 with 'Deliver to Indonesia' and the 'cannot be shipped to your selected delivery location' banner, even though this is a light 2-quart plastic tank, not a bulky item. The script's jina fallback only triggers when NO price is parsed, so a ship_blocked-but-priced page slips through as a 'valid' firecrawl result. Worth extending the fallback condition to also fire when ship_block is TRUE (unapproved change, flagged only).",
+    "PARSER_FALSE_WARNING_FIX_STILL_NOT_APPLIED": "Unchanged carry-over: parse() tests the literal 'In Stock', so listings that render 'Only N left in stock' / 'more on the way' get in_stock FALSE. Hit B000TK9FE8 today; verified by hand that the price and title are live and correct, so no action was needed. One-line fix still awaiting approval.",
+    "ASIN_GUARD_FALSE_NEGATIVE_STILL_OPEN": "Carry-over, now with a second example: the guard requires 'lp_asin=<ASIN>' in the markdown, which fails on listings with no brand-store link (today B0GGQH744M; earlier MaxxHaul B0BP5C3749). Open decision: relax the guard to accept a title match, or keep strict and accept the false WARN on unbranded listings. No edit depended on it this cycle.",
+    "SELF_CONTINUITY_OPEN_ITEMS": "Unchanged and NOT covered by today's batch: FLOTOOL MAX 11912 B0117EESNC third-cycle unverified (ready for a re-ASIN decision); jack-stand dead ASINs (B000I6W2A0, B000C4CHPE x2 duplicate, B09LGK5J7W) + Torin duplicate-ASIN bug; ESCO B0019JVIPM candidate needs jina price; multimeter Klein B018EXZO8M no-buybox; multimeter KAIWEETS B07J83SMVZ + Fluke B0006Z64Q0 ASIN 404; air-compressor Porter-Cable B000O5RO1Y + Makita B0001Q2VPU no-buybox; Stealth SAQ-11215 >$400 editorial call; work-light ROVER B08YS6CXG6 + DEWALT B077ZCTBFY no-buybox; car-ramps OOS pair B0117EETEK + B01N308YYO; impact-socket-set Sunex 2646 B002MW2CGO drifting up."
+  },
   "schedule": {
-    "next_category_recommend": "brake-bleeder (5 ASINs: B00265M9SS $64.35, B000TK9FE8 $72.05, B0GGQH744M $22.89, B08H4N69BR $21.99, B005MVBFM4 $389.13) - next unverified category in file order after tire-inflator.",
-    "remaining_categories_unverified_or_due": "brake-bleeder (5) next, then bolt-extractor-set / screwdriver-set / impact-socket-set / torque-wrench / jump-starter / socket-set / floor-jack / obd2-scanner / oil-filter-wrench / battery-charger / brake-caliper-tool, plus all flagged follow-ups above.",
-    "verified_this_cycle": "tire-inflator: 5 asked, 5 verified live, 0 edits, 0 unverified."
+    "next_category_recommend": "bolt-extractor-set (5 ASINs: B01KN9YVWA $36.99, B0002NYBH8 $67.19, B01GKEBG9I $21.56, B07PNS5ZYQ $147.62, B0D9S4DT1T $46.97) - ready-to-paste --json for the next run.",
+    "remaining_categories_unverified_or_due": "bolt-extractor-set (5) next, then screwdriver-set / impact-socket-set / torque-wrench / jump-starter / socket-set / floor-jack / obd2-scanner / oil-filter-wrench / battery-charger / brake-caliper-tool, plus all flagged follow-ups above.",
+    "verified_this_cycle": "brake-bleeder: 5 asked, 5 live prices resolved, 5 usable (0 edits), 0 unverified."
   },
   "cycle_complete": true
 }
