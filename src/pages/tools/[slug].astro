@@ -1,4 +1,6 @@
 ---
+import { existsSync } from 'node:fs';
+import { resolve as pathResolve } from 'node:path';
 import { tools } from '../../lib/data.mjs';
 
 export async function getStaticPaths() {
@@ -15,6 +17,11 @@ const catSlugs = Object.keys(tools);
 const gtdbProductData = JSON.stringify(t.products.map(p => ({name: p.name, images: p.images})));
 
 const amazonUrl = (p) => `https://www.amazon.com/s?k=${encodeURIComponent(p.name + ' ' + t.name)}&tag=tabletopharve-20`;
+// Deep-dive review for this category, if the matching post exists on disk.
+// Keeps every tool page linked to its full review and vice versa (closes the loop).
+const REVIEW_OVERRIDES = { "brake-bleeder": "best-brake-bleeder-kit-review", "tire-inflator": "best-portable-tire-inflator-review", "jack-stand": "best-jack-stands-review" };
+const reviewSlug = REVIEW_OVERRIDES[category.slug] ?? `best-${category.slug}-review`;
+const relatedPost = existsSync(pathResolve(process.cwd(), 'src/pages/posts', `${reviewSlug}.astro`)) ? reviewSlug : null;
 const productsJson = {
   "@context": "https://schema.org",
   "@type": "ItemList",
@@ -123,6 +130,15 @@ const ogImage = "https://garagetoolsdb.com" + top.images[0];
         </div>
       </div>
     </section>
+
+    {relatedPost && (
+      <section style="max-width:1100px;margin:0 auto 1.5rem;padding:1rem 1.25rem;background:#f6f8fa;border:1px solid #e3e8ee;border-radius:10px;">
+        <p style="margin:0;font-size:0.92rem;">
+          <strong>I ran these at home first.</strong> The full write-up covers what held, what broke, and the one test that decided it:
+          <a href={`/posts/${relatedPost}`}>best {t.name.toLowerCase()} review</a>.
+        </p>
+      </section>
+    )}
 
     <section>
       <div class="section-title" style="flex-direction:column;align-items:stretch;gap:12px;">
