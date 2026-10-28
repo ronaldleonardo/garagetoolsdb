@@ -19,7 +19,7 @@ const gtdbProductData = JSON.stringify(t.products.map(p => ({name: p.name, image
 const amazonUrl = (p) => `https://www.amazon.com/s?k=${encodeURIComponent(p.name + ' ' + t.name)}&tag=tabletopharve-20`;
 // Deep-dive review for this category, if the matching post exists on disk.
 // Keeps every tool page linked to its full review and vice versa (closes the loop).
-const REVIEW_OVERRIDES = { "brake-bleeder": "best-brake-bleeder-kit-review", "tire-inflator": "best-portable-tire-inflator-review", "jack-stand": "best-jack-stands-review" };
+const REVIEW_OVERRIDES = { "brake-bleeder": "best-brake-bleeder-kit-review", "tire-inflator": "best-portable-tire-inflator-review", "jack-stand": "best-jack-stands-review", "flare-nut-wrench": "best-flare-nut-wrench-set-review" };
 const reviewSlug = REVIEW_OVERRIDES[category.slug] ?? `best-${category.slug}-review`;
 const relatedPost = existsSync(pathResolve(process.cwd(), 'src/pages/posts', `${reviewSlug}.astro`)) ? reviewSlug : null;
 const productsJson = {
