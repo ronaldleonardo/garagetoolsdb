@@ -1,32 +1,34 @@
 {
-  "cycle": 26,
-  "date": "2026-10-28",
-  "category_done": "impact-socket-set (5/5 resolved a live US price, ZERO edits - every delta was under the 10 percent threshold. Four products were dead flat at +0.00 percent; the only mover, Sunex 2646 deep set B002MW2CGO, came back -1.79 percent on firecrawl, and a jina US cross-check put it at +1.37 percent. Both under threshold, so data.mjs is untouched.)",
+  "cycle": 27,
+  "date": "2026-10-29",
+  "category_done": "torque-wrench (5/5 attempted: 3 live US prices resolved with ZERO edits, 2 unverified. Every resolved delta was under the 10 percent threshold - two dead flats and one -0.73 percent.)",
   "products_checked": [
-    "impact-socket-set/Sunex 2645 26-Piece Metric (B002MW9UW8): VERIFIED $116.99 (firecrawl, buybox_json, In Stock, asin_confirmed TRUE) vs stored $116.99 = +0.00% -> NO EDIT.",
-    "impact-socket-set/CASOMAN 14-Piece Shallow (B091KXVFVC): VERIFIED $19.97 (firecrawl, buybox_json, In Stock, asin_confirmed TRUE) vs stored $19.97 = +0.00% -> NO EDIT.",
-    "impact-socket-set/CASOMAN 70-Piece Master (B093BJGT13): VERIFIED $135.97 (firecrawl, buybox_json, In Stock, asin_confirmed TRUE) vs stored $135.97 = +0.00% -> NO EDIT.",
-    "impact-socket-set/Sunex 2646 26-Piece Deep (B002MW2CGO): firecrawl live $176.51 (buybox_json, In Stock, asin_confirmed TRUE) vs stored $179.72 = -1.79%. WATCH ITEM (previously flagged as drifting up). Cross-checked on the US route anyway: jina, The Dalles 97058, no Indonesia/import markers, buybox $182.18 = +1.37%. Both sides sit under the 10 percent threshold, so NO EDIT.",
-    "impact-socket-set/MIXPOWER 49-Piece 3/8 In Deep (B08JTS9RRJ): VERIFIED $39.97 (firecrawl, buybox_json, In Stock, asin_confirmed TRUE) vs stored $39.97 = +0.00% -> NO EDIT."
+    "torque-wrench/TEKTON 1/2' Drive (B00C5ZL0RU): UNVERIFIED twice. firecrawl /gp/aw/d returned NO PRICE PARSED, asin_confirmed FALSE on both passes; the rendered page has no productTitle and no mobile_buybox_group_1 blob - only 'Delivering to Newark 19711' plus stray recommendation prices ($39.95 / $23.50 / $44.97) that are NOT the buybox. A jina /gp/aw/d cross-check returned a page with only 'others' prices ($350 / $140 / $110) and no add-to-cart buybox either. Stored $54.99 left untouched.",
+    "torque-wrench/CDI 1503MFRPH (B00461ATL4): VERIFIED $156.12 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock) vs stored $156.12 = +0.00% -> NO EDIT.",
+    "torque-wrench/Pittsburgh 1/2' (B0002NYWQ2): UNVERIFIED. firecrawl failed, jina fallback FETCH FAILED on both passes; retried after a 150s backoff with the same result. A direct firecrawl probe returned a 439-byte stub with no title, no price, no buybox -> ASIN appears dead on Amazon (Pittsburgh = Harbor Freight house brand). Stored $19.99 left untouched; flagged for re-ASIN decision.",
+    "torque-wrench/ACDelco ARM601 (B004VYUQI2): VERIFIED $90.99 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock, is_prime TRUE) vs stored $90.99 = +0.00% -> NO EDIT.",
+    "torque-wrench/Precision Instruments PREC3FR250F (B002XMSFIM): firecrawl parsed $249.85 (buybox_json, In Stock) vs stored $251.68 = -0.73%, BUT asin_confirmed FALSE on both passes -> per rules the price is treated as INVALID and no edit is made. Even if confirmed, -0.73% is far under the 10 percent bar. Stored $251.68 left untouched."
   ],
   "edits": {
-    "data.mjs": "NONE. Verified deltas: 0.00 / 0.00 / 0.00 / -1.79 firecrawl (+1.37 jina US) / 0.00 percent. No price reached the 10 percent bar. No cosmetic edits, no rounding.",
-    "post": "NONE. impact-socket-set is a category page with five inline product entries; no published standalone post to sync.",
+    "data.mjs": "NONE. Resolved deltas: 0.00 / 0.00 / -0.73 percent (the -0.73 also failed asin confirmation). No price reached the 10 percent bar. No cosmetic edits, no rounding.",
+    "post": "NONE. torque-wrench is a category page with five inline product entries; no published standalone post to sync.",
     "script": "price_fetch.py NOT modified.",
     "build": "SKIPPED as required - no edits to data.mjs, so no npx astro build and no systemctl restart. dist/ untouched."
   },
   "issues": {
-    "NO_EDIT_BATCH_GOOD_RUN": "Cleanest run in a while: all five ASINs resolved on the firecrawl mobile route on the first pass (no jina fallback forced by the script), all five asin_confirmed TRUE and In Stock, no ship_block, no fetch failures. Zero edits.",
-    "INDONESIA_EGRESS_CHECK_THIS_CYCLE": "The previously reported Indonesia-export-price false-edit risk did NOT recur here. Four of five firecrawl prices matched stored exactly, and a jina US cross-check on the one mover (B002MW2CGO) returned a normal The Dalles buybox with no 'Deliver to Indonesia' / 'Shipping & Import Charges to' markers. Still recommend applying the detection fix (treat those strings as ship_block, force jina fallback) plus always cross-checking any prospective EDIT - both still unapproved and unapplied.",
-    "PARSER_FALSE_WARNING_FIX_STILL_NOT_APPLIED": "Unchanged carry-over. parse() tests the literal 'In Stock', so 'Only N left in stock' and lowercase 'In stock' both yield in_stock FALSE. Did not bite today - all five rendered an exact 'In Stock'.",
-    "WATCH_LIST_NEAR_THRESHOLD": "Wera B007BZ2AQY (screwdriver-set) at +8.41% US ($80.51 -> $87.28) remains the closest listing to the 10 percent bar; its buybox is held by third-party seller Deff Audio, so re-check first on the next screwdriver-set pass.",
+    "TEKTON_TORQUE_ASIN_NEEDS_REASIN": "NEW. B00C5ZL0RU is the category's 'Best Overall' entry ($54.99) and its mobile PDP no longer exposes a buybox at all - two firecrawl passes with NO PRICE PARSED and a jina cross-check that only rendered other-seller listings. Either the listing lost its buybox / went third-party-only, or the ASIN now resolves to a variant cluster. Recommend a re-ASIN decision (the TEKTON 1/2-inch 10-150 ft-lb click wrench has a stable canonical ASIN) before the next torque pass.",
+    "PITTSBURGH_ASIN_LIKELY_DEAD": "NEW. B0002NYWQ2 (Pittsburgh 1/2' torque wrench, $19.99) returns a 439-byte stub on firecrawl and fails the jina fallback. Pittsburgh is a Harbor Freight house brand and was never reliably on Amazon - this looks like a stale placeholder ASIN in data.mjs. Flag for re-ASIN or removal (Harbor Freight is a store-only link candidate, consistent with the 'price estimated, not verifiable on Amazon' note used elsewhere in this file).",
+    "ASIN_CONFIRM_FALSE_WITH_PRICE_PARSED": "NEW pattern. B002XMSFIM produced a clean-looking $249.85 buybox_json price yet asin_confirmed FALSE. The rules correctly force a no-edit here, but it means a genuine large move on this ASIN could be silently dropped. Worth a look at why confirmation fails when a buybox JSON is present.",
+    "INDONESIA_EGRESS_CHECK_THIS_CYCLE": "Did not recur - no 'Deliver to Indonesia' / 'Shipping & Import Charges to' markers appeared (the one page that rendered showed 'Delivering to Newark 19711'). Detection fix (treat those strings as ship_block, force jina fallback) plus mandatory cross-check on any prospective EDIT remain unapproved and unapplied.",
+    "PARSER_FALSE_WARNING_FIX_STILL_NOT_APPLIED": "Unchanged carry-over. parse() tests the literal 'In Stock', so 'Only N left in stock' and lowercase 'In stock' both yield in_stock FALSE.",
+    "WATCH_LIST_NEAR_THRESHOLD": "Wera B007BZ2AQY (screwdriver-set) at +8.41% US ($80.51 -> $87.28) remains the closest listing to the 10 percent bar; its buybox is held by third-party seller Deff Audio.",
     "LOW_STOCK_WATCH_CARRYOVER": "IRWIN B0002NYBH8 (bolt-extractor-set) was 'Only 1 left in stock' on cycle 24 - still worth a stock-state check before any price edit when that category comes up.",
     "SELF_CONTINUITY_OPEN_ITEMS": "Unchanged and NOT covered by today's batch: FLOTOOL MAX 11912 B0117EESNC third-cycle unverified (ready for a re-ASIN decision); jack-stand dead ASINs (B000I6W2A0, B000C4CHPE x2 duplicate, B09LGK5J7W) + Torin duplicate-ASIN bug; ESCO B0019JVIPM candidate needs jina price; multimeter Klein B018EXZO8M no-buybox; multimeter KAIWEETS B07J83SMVZ + Fluke B0006Z64Q0 ASIN 404; air-compressor Porter-Cable B000O5RO1Y + Makita B0001Q2VPU no-buybox; Stealth SAQ-11215 >$400 editorial call; work-light ROVER B08YS6CXG6 + DEWALT B077ZCTBFY no-buybox; car-ramps OOS pair B0117EETEK + B01N308YYO."
   },
   "schedule": {
-    "next_category_recommend": "torque-wrench - pull its ASINs and current stored prices from src/lib/data.mjs and pass them as --json. None of the torque-wrench ASINs have a fresh live price in recent cycles.",
-    "remaining_categories_unverified_or_due": "torque-wrench next, then jump-starter / socket-set / floor-jack / obd2-scanner / oil-filter-wrench / battery-charger / brake-caliper-tool, plus all flagged follow-ups above.",
-    "verified_this_cycle": "impact-socket-set: 5 asked, 5 live prices resolved, 5 usable (0 edits), 0 unverified."
+    "next_category_recommend": "jump-starter - pull its ASINs and current stored prices from src/lib/data.mjs and pass them as --json. None of the jump-starter ASINs have a fresh live price in recent cycles.",
+    "remaining_categories_unverified_or_due": "jump-starter next, then socket-set / floor-jack / obd2-scanner / oil-filter-wrench / battery-charger / brake-caliper-tool, plus all flagged follow-ups above.",
+    "verified_this_cycle": "torque-wrench: 5 asked, 3 live prices resolved, 3 usable (0 edits), 2 unverified (1 no-buybox Best Overall entry, 1 likely-dead house-brand ASIN)."
   },
   "cycle_complete": true
 }
