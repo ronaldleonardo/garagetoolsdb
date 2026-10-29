@@ -1,32 +1,32 @@
 {
-  "cycle": 25,
-  "date": "2026-10-27",
-  "category_done": "screwdriver-set (5/5 resolved a live US price, ZERO edits - the one apparent EDIT, Wera B007BZ2AQY at +31.90% via the firecrawl mobile route, was an Indonesia-egress pricing artifact; the true US buybox is $87.28 = +8.41%, under the 10 percent threshold. Other four were flat or -2 percent.)",
+  "cycle": 26,
+  "date": "2026-10-28",
+  "category_done": "impact-socket-set (5/5 resolved a live US price, ZERO edits - every delta was under the 10 percent threshold. Four products were dead flat at +0.00 percent; the only mover, Sunex 2646 deep set B002MW2CGO, came back -1.79 percent on firecrawl, and a jina US cross-check put it at +1.37 percent. Both under threshold, so data.mjs is untouched.)",
   "products_checked": [
-    "screwdriver-set/Vessel Megadora JAWSFIT 8-Piece (B07ZJ1KMW2): firecrawl live $69.80 vs stored $71.40 = -2.24% -> NO EDIT. Firecrawl rendered 'In Stock' lowercase so the parser's literal-'In Stock' test flagged it [WARN not in stock]; hand-verified via jina (US, The Dalles 97058, lp_asin TRUE): buybox $69.92, In Stock, 'ships from / sold by' resolved, FREE delivery Oct 31. Genuinely in stock, price 69.80-69.92, well under threshold either way.",
-    "screwdriver-set/CRAFTSMAN CMHT65075N 8-Piece (B0B39PHCVZ): VERIFIED $24.98 (firecrawl, buybox_json, In Stock, asin_confirmed TRUE) vs stored $24.98 = +0.00% -> NO EDIT.",
-    "screwdriver-set/Klein Tools 85078 8-Piece (B000ABADXI): VERIFIED $64.99 (firecrawl, buybox_json, In Stock, asin_confirmed TRUE) vs stored $64.99 = +0.00% -> NO EDIT.",
-    "screwdriver-set/Wera Kraftform Lasertip 14-Piece (B007BZ2AQY): firecrawl reported live $106.19 (+31.90% -> EDIT) BUT this was REJECTED after verification. The firecrawl mobile page was the Indonesia-egress view: 'Deliver to Indonesia', a 'Shipping & Import Charges to Indonesia' table (item $106.19 + $40.05 import), and an AmazonGlobal total of $146.24. The US buybox, re-fetched via r.jina.ai at The Dalles 97058, is $87.28 (desktop_buybox_group_1 first offer, sold by Deff Audio; second offer $99.99) = +8.41% vs stored $80.51 -> NO EDIT (under 10 percent). NOT edited.",
-    "screwdriver-set/Wiha 53398 MicroFinish 8-Piece (B001ATOSNK): VERIFIED $138.98 (firecrawl, buybox_json, In Stock, asin_confirmed TRUE) vs stored $138.98 = +0.00% -> NO EDIT."
+    "impact-socket-set/Sunex 2645 26-Piece Metric (B002MW9UW8): VERIFIED $116.99 (firecrawl, buybox_json, In Stock, asin_confirmed TRUE) vs stored $116.99 = +0.00% -> NO EDIT.",
+    "impact-socket-set/CASOMAN 14-Piece Shallow (B091KXVFVC): VERIFIED $19.97 (firecrawl, buybox_json, In Stock, asin_confirmed TRUE) vs stored $19.97 = +0.00% -> NO EDIT.",
+    "impact-socket-set/CASOMAN 70-Piece Master (B093BJGT13): VERIFIED $135.97 (firecrawl, buybox_json, In Stock, asin_confirmed TRUE) vs stored $135.97 = +0.00% -> NO EDIT.",
+    "impact-socket-set/Sunex 2646 26-Piece Deep (B002MW2CGO): firecrawl live $176.51 (buybox_json, In Stock, asin_confirmed TRUE) vs stored $179.72 = -1.79%. WATCH ITEM (previously flagged as drifting up). Cross-checked on the US route anyway: jina, The Dalles 97058, no Indonesia/import markers, buybox $182.18 = +1.37%. Both sides sit under the 10 percent threshold, so NO EDIT.",
+    "impact-socket-set/MIXPOWER 49-Piece 3/8 In Deep (B08JTS9RRJ): VERIFIED $39.97 (firecrawl, buybox_json, In Stock, asin_confirmed TRUE) vs stored $39.97 = +0.00% -> NO EDIT."
   ],
   "edits": {
-    "data.mjs": "NONE. Verified deltas: 0.00 / 0.00 / 0.00 / +8.41 (Wera, US) / 0.00 percent. The single firecrawl-signalled EDIT (+31.90% Wera) did not survive verification and was correctly rejected. No cosmetic edits, no rounding.",
-    "post": "NONE. screwdriver-set has a category page only, no published post, so no numbers to sync.",
-    "script": "price_fetch.py NOT modified. Recommendation below (Indonesia-egress price detection) still unapproved and unapplied.",
+    "data.mjs": "NONE. Verified deltas: 0.00 / 0.00 / 0.00 / -1.79 firecrawl (+1.37 jina US) / 0.00 percent. No price reached the 10 percent bar. No cosmetic edits, no rounding.",
+    "post": "NONE. impact-socket-set is a category page with five inline product entries; no published standalone post to sync.",
+    "script": "price_fetch.py NOT modified.",
     "build": "SKIPPED as required - no edits to data.mjs, so no npx astro build and no systemctl restart. dist/ untouched."
   },
   "issues": {
-    "FIRECRAWL_INDONESIA_EXPORT_PRICE_FALSE_EDIT": "NEW AND WORST CASE SO FAR, caught by manual verification. The firecrawl LAN egress serves the Indonesia storefront; for AmazonGlobal-Store items it returns the export price (here $106.19) with NO 'cannot be shipped' banner and NO ship_block flag, so the script reported a clean, asin_confirmed, in_stock $106.19 and recommended EDIT (+31.90%). The real US buybox is $87.28 (+8.41%). Had this been applied blindly, data.mjs would now show a price that no US buyer sees. The script's current fallback only triggers when NO price parses, so an export-priced page passes straight through. Fix candidates: (a) treat presence of 'Shipping & Import Charges to' or 'Deliver to Indonesia' as ship_block and force the jina fallback; (b) always cross-check any prospective EDIT (>=10 percent) against jina before applying. Recommend (a) plus (b). Unapproved.",
-    "PARSER_FALSE_WARNING_FIX_STILL_NOT_APPLIED": "Unchanged carry-over. parse() tests the literal 'In Stock', so 'Only N left in stock' and lowercase 'In stock' both yield in_stock FALSE. Hit B07ZJ1KMW2 today (Vessel, lowercase 'In Stock'); hand-verified live and in stock, nothing depended on it. One-line fix still awaiting approval.",
-    "ASIN_GUARD_NOTE": "All five screwdriver-set ASINs carry a Wera/CRAFTSMAN/Klein/Vessel store link with lp_asin, so the strict guard returned asin_confirmed TRUE for every one today - no false-negative this cycle.",
-    "LOW_STOCK_WATCH_CARRYOVER": "IRWIN B0002NYBH8 (bolt-extractor-set) was 'Only 1 left in stock' on cycle 24 - still worth a stock-state check before any price edit next time that category comes up.",
-    "WATCH_LIST_NEAR_THRESHOLD": "Wera B007BZ2AQY at +8.41% (US, $80.51 -> $87.28) is now the closest screwdriver-set listing to the threshold; re-check first on the next screwdriver-set pass. Its buybox is held by a third-party seller (Deff Audio), so the price can move on that seller alone.",
-    "SELF_CONTINUITY_OPEN_ITEMS": "Unchanged and NOT covered by today's batch: FLOTOOL MAX 11912 B0117EESNC third-cycle unverified (ready for a re-ASIN decision); jack-stand dead ASINs (B000I6W2A0, B000C4CHPE x2 duplicate, B09LGK5J7W) + Torin duplicate-ASIN bug; ESCO B0019JVIPM candidate needs jina price; multimeter Klein B018EXZO8M no-buybox; multimeter KAIWEETS B07J83SMVZ + Fluke B0006Z64Q0 ASIN 404; air-compressor Porter-Cable B000O5RO1Y + Makita B0001Q2VPU no-buybox; Stealth SAQ-11215 >$400 editorial call; work-light ROVER B08YS6CXG6 + DEWALT B077ZCTBFY no-buybox; car-ramps OOS pair B0117EETEK + B01N308YYO; impact-socket-set Sunex 2646 B002MW2CGO drifting up."
+    "NO_EDIT_BATCH_GOOD_RUN": "Cleanest run in a while: all five ASINs resolved on the firecrawl mobile route on the first pass (no jina fallback forced by the script), all five asin_confirmed TRUE and In Stock, no ship_block, no fetch failures. Zero edits.",
+    "INDONESIA_EGRESS_CHECK_THIS_CYCLE": "The previously reported Indonesia-export-price false-edit risk did NOT recur here. Four of five firecrawl prices matched stored exactly, and a jina US cross-check on the one mover (B002MW2CGO) returned a normal The Dalles buybox with no 'Deliver to Indonesia' / 'Shipping & Import Charges to' markers. Still recommend applying the detection fix (treat those strings as ship_block, force jina fallback) plus always cross-checking any prospective EDIT - both still unapproved and unapplied.",
+    "PARSER_FALSE_WARNING_FIX_STILL_NOT_APPLIED": "Unchanged carry-over. parse() tests the literal 'In Stock', so 'Only N left in stock' and lowercase 'In stock' both yield in_stock FALSE. Did not bite today - all five rendered an exact 'In Stock'.",
+    "WATCH_LIST_NEAR_THRESHOLD": "Wera B007BZ2AQY (screwdriver-set) at +8.41% US ($80.51 -> $87.28) remains the closest listing to the 10 percent bar; its buybox is held by third-party seller Deff Audio, so re-check first on the next screwdriver-set pass.",
+    "LOW_STOCK_WATCH_CARRYOVER": "IRWIN B0002NYBH8 (bolt-extractor-set) was 'Only 1 left in stock' on cycle 24 - still worth a stock-state check before any price edit when that category comes up.",
+    "SELF_CONTINUITY_OPEN_ITEMS": "Unchanged and NOT covered by today's batch: FLOTOOL MAX 11912 B0117EESNC third-cycle unverified (ready for a re-ASIN decision); jack-stand dead ASINs (B000I6W2A0, B000C4CHPE x2 duplicate, B09LGK5J7W) + Torin duplicate-ASIN bug; ESCO B0019JVIPM candidate needs jina price; multimeter Klein B018EXZO8M no-buybox; multimeter KAIWEETS B07J83SMVZ + Fluke B0006Z64Q0 ASIN 404; air-compressor Porter-Cable B000O5RO1Y + Makita B0001Q2VPU no-buybox; Stealth SAQ-11215 >$400 editorial call; work-light ROVER B08YS6CXG6 + DEWALT B077ZCTBFY no-buybox; car-ramps OOS pair B0117EETEK + B01N308YYO."
   },
   "schedule": {
-    "next_category_recommend": "impact-socket-set (5 ASINs: B002MW9UW8 $116.99, B091KXVFVC $19.97, B093BJGT13 $135.97, B002MW2CGO $179.72, B08JTS9RRJ $39.97) - ready-to-paste --json for the next run. Watch B002MW2CGO, previously flagged as drifting up.",
-    "remaining_categories_unverified_or_due": "impact-socket-set (5) next, then torque-wrench / jump-starter / socket-set / floor-jack / obd2-scanner / oil-filter-wrench / battery-charger / brake-caliper-tool, plus all flagged follow-ups above.",
-    "verified_this_cycle": "screwdriver-set: 5 asked, 5 live prices resolved, 5 usable (0 edits), 0 unverified."
+    "next_category_recommend": "torque-wrench - pull its ASINs and current stored prices from src/lib/data.mjs and pass them as --json. None of the torque-wrench ASINs have a fresh live price in recent cycles.",
+    "remaining_categories_unverified_or_due": "torque-wrench next, then jump-starter / socket-set / floor-jack / obd2-scanner / oil-filter-wrench / battery-charger / brake-caliper-tool, plus all flagged follow-ups above.",
+    "verified_this_cycle": "impact-socket-set: 5 asked, 5 live prices resolved, 5 usable (0 edits), 0 unverified."
   },
   "cycle_complete": true
 }
