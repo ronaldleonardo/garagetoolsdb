@@ -1,36 +1,39 @@
 {
-  "cycle": 28,
-  "date": "2026-10-30",
-  "category_done": "jump-starter (5/5 attempted: 3 live US prices VERIFIED with ZERO edits, 1 unverified no-price, 1 has no ASIN at all). Every resolved delta was +0.00 percent, so the 10 percent bar was never approached.",
+  "cycle": 29,
+  "date": "2026-10-31",
+  "category_done": "socket-set (5/5 attempted: 3 live US prices resolved with ZERO edits, 1 EDITED, 1 with no ASIN). The one material move was DEWALT 192PC down 15.14 percent, which cleared the 10 percent bar and was written to data.mjs and its post.",
   "products_checked": [
-    "jump-starter/NOCO Boost Plus GB40 (B015TKUPIC): VERIFIED $99.95 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock, is_prime TRUE) vs stored $99.95 = +0.00% -> NO EDIT.",
-    "jump-starter/NOCO Boost X GBX45 (B0924V8SPC): VERIFIED $124.95 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock, is_prime TRUE) vs stored $124.95 = +0.00% -> NO EDIT.",
-    "jump-starter/GOOLOO GP4000 (B09HJH1S41): VERIFIED $79.96 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock, is_prime TRUE) vs stored $79.96 = +0.00% -> NO EDIT.",
-    "jump-starter/NEXPOW 2000A (B07T9S3Q5N): UNVERIFIED on two passes. firecrawl parsed NO PRICE; the script auto-ran its jina /gp/aw/d fallback and that also returned no price. The PDP did resolve (asin_confirmed TRUE, In Stock TRUE, rating 4.4) but no buybox price was present, so per rules the stored $35.99 is left untouched and the price is NOT confirmed. is_prime FALSE.",
-    "jump-starter/TACKLIFE T8 Pro: NO ASIN IN data.mjs (asin: \"\"). Nothing to fetch, so the stored $67.99 is unverifiable by definition. Flagged for a re-ASIN decision (see issues)."
+    "socket-set/GEARWRENCH 110PC (B07H5H1J3X): VERIFIED $115.58 (firecrawl, buybox_json, asin_confirmed TRUE, is_prime TRUE) vs stored $115.58 = +0.00% -> NO EDIT. WARN in_stock FALSE: parser only matches the literal 'In Stock', so a low-stock display ('Only N left in stock') reports false. Price matches stored exactly, so no edit either way. Flag: GEARWRENCH may be running low; recheck stock next socket pass.",
+    "socket-set/DEWALT 192PC Set (B01BHJE0J4): VERIFIED $152.99 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, is_prime TRUE, list $289.99, 47 percent savings) vs stored $180.29 = -15.14% -> EDIT. Written to src/lib/data.mjs and synced in src/pages/posts/best-socket-set-review.astro ('At $152.99 (47% off a $289.99 list)' replacing '$180.29 (38% off...').",
+    "socket-set/TEKTON 1/2 Drive (B07QSCTG8Y): VERIFIED $54.00 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, is_prime TRUE) vs stored $54.00 = +0.00% -> NO EDIT.",
+    "socket-set/Sunex 2569 Master (B00MPQ88RY): VERIFIED $144.79 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, is_prime TRUE) vs stored $144.79 = +0.00% -> NO EDIT.",
+    "socket-set/QUINN 132PC Kit: NO ASIN IN data.mjs (asin: \"\"). Harbor Freight only listing, unverifiable on Amazon by definition. Stored $99.99 left untouched, flagged for a re-ASIN-or-replace decision."
   ],
   "edits": {
-    "data.mjs": "NONE. Resolved deltas: 0.00 / 0.00 / 0.00 percent. No price came close to the 10 percent bar. No cosmetic edits, no rounding, no carried-forward numbers written.",
-    "post": "NONE. jump-starter is a category page with five inline product entries; no published standalone post to sync.",
+    "data.mjs": "ONE edit: socket-set DEWALT 192PC Set B01BHJE0J4 price $180.29 -> $152.99 (live buybox, -15.14%, asin_confirmed TRUE, In Stock TRUE). No other edits, no rounding, no cosmetic changes.",
+    "post": "ONE edit: best-socket-set-review.astro DEWALT paragraph, price and discount line updated from $180.29 / 38 percent to $152.99 / 47 percent (list $289.99 confirmed live).",
     "script": "price_fetch.py NOT modified."
   },
-  "build": "SKIPPED as required - no edits to data.mjs, so no npx astro build and no systemctl restart. dist/ untouched.",
+  "build": "RUN: ./node_modules/.bin/astro build -> exit 0, 54 pages built. dist/ verified: 152.99 present in dist/tools/socket-set.html and dist/posts/best-socket-set-review.html, no 180.29 anywhere in dist.",
+  "restart": "ATTEMPTED but BLOCKED by the approval gate (systemctl restart garagetoolsdb requires interactive approval, which a cron run cannot grant). Not fatal: the service runs 'astro preview' (ExecStart=/usr/local/bin/npx astro preview --host 0.0.0.0 --port 8082), which serves dist/ straight from disk, so the new build is already live. VERIFIED: curl http://127.0.0.1:8082/tools/socket-set/ returns 200 and serves 152.99; the post page serves no 180.29. Pending action for a human or an allowed run: systemctl restart garagetoolsdb to be tidy.",
   "issues": {
-    "TACKLIFE_T8_PRO_NO_ASIN": "NEW. jump-starter/TACKLIFE T8 Pro ($67.99) ships with an empty asin field in data.mjs. It can never be price-verified in this pipeline until an ASIN is chosen. TACKLIFE as a brand has thinned out on Amazon US, so the real decision may be replacement rather than re-ASIN. Flag for a re-ASIN-or-replace decision.",
-    "NEXPOW_2000A_NO_BUYBOX_PRICE": "NEW. B07T9S3Q5N resolves (title + rating + stock) but exposes no buybox price on either firecrawl or the jina fallback, twice. Consistent with a third-party-only listing, a coupon-only/'price at checkout' display, or a suppressed buybox. Stored $35.99 left untouched. Watch next pass; if it persists, consider a re-ASIN for the NEXPOW 2000A class jumper.",
+    "GEARWRENCH_110PC_IN_STOCK_FALSE": "NEW/low. B07H5H1J3X returned in_stock FALSE while price, asin_confirmed, and is_prime were all normal. Almost certainly the known parser false-negative ('Only N left in stock' does not contain the literal 'In Stock'). Price matched stored exactly so nothing was touched, but GEARWRENCH may be nearing OOS. Recheck stock next socket pass.",
+    "QUINN_132PC_NO_ASIN": "NEW. socket-set/QUINN 132PC Kit ($99.99) ships with an empty asin field (Harbor Freight only, no Amazon listing). Cannot be price-verified in this pipeline. Flag for a re-ASIN-or-replace decision.",
+    "NEXPOW_2000A_NO_BUYBOX_PRICE": "CARRY-OVER from cycle 28, untouched. B07T9S3Q5N (jump-starter) resolves but exposes no buybox price on firecrawl or the jina fallback, twice. Stored $35.99 left untouched. Watch; if it persists, consider a re-ASIN.",
+    "TACKLIFE_T8_PRO_NO_ASIN": "CARRY-OVER from cycle 28, untouched. jump-starter/TACKLIFE T8 Pro ($67.99) has an empty asin field. Flag for a re-ASIN-or-replace decision.",
     "TEKTON_TORQUE_ASIN_NEEDS_REASIN": "CARRY-OVER from cycle 27, untouched. B00C5ZL0RU (torque-wrench Best Overall, $54.99) mobile PDP exposes no buybox - two firecrawl NO PRICE passes plus a jina cross-check showing only other-seller listings. Recommend re-ASIN before the next torque pass.",
-    "PITTSBURGH_TORQUE_ASIN_LIKELY_DEAD": "CARRY-OVER from cycle 27, untouched. B0002NYWQ2 returns a 439-byte firecrawl stub and fails jina; Harbor Freight house brand, likely a stale placeholder ASIN. Note: the SAME ASIN B0002NYWQ2 is still used in breaker-bar as 'SK Hand Tool 3/4-inch' ($89.99) - one ASIN now appears in two categories, worth resolving together.",
-    "ASIN_CONFIRM_FALSE_WITH_PRICE_PARSED": "Carry-over pattern (B002XMSFIM, cycle 27): a clean buybox_json price can still come back asin_confirmed FALSE, which the rules force to a no-edit. Not triggered today - all three resolved jump-starter prices confirmed TRUE.",
-    "PARSER_FALSE_WARNING_FIX_STILL_NOT_APPLIED": "Unchanged carry-over. parse() tests the literal 'In Stock', so 'Only N left in stock' and lowercase 'In stock' both yield in_stock FALSE.",
-    "INDONESIA_EGRESS_CHECK_NOT_TRIGGERED": "Did not recur today (all pages rendered normally). Detection fix (treat 'Deliver to Indonesia' / 'Shipping & Import Charges to' as ship_block, force jina fallback) plus mandatory cross-check on any prospective EDIT remain unapproved and unapplied.",
+    "PITTSBURGH_TORQUE_ASIN_LIKELY_DEAD": "CARRY-OVER from cycle 27, untouched. B0002NYWQ2 returns a 439-byte firecrawl stub and fails jina; Harbor Freight house brand, likely stale. The SAME ASIN B0002NYWQ2 is still used in breaker-bar as 'SK Hand Tool 3/4-inch' ($89.99) - one ASIN in two categories, resolve together.",
+    "ASIN_CONFIRM_FALSE_WITH_PRICE_PARSED": "Carry-over pattern: a clean buybox_json price can still come back asin_confirmed FALSE, which the rules force to a no-edit. Not triggered today - all four resolved socket-set prices confirmed TRUE.",
+    "PARSER_FALSE_WARNING_FIX_STILL_NOT_APPLIED": "Unchanged carry-over. parse() tests the literal 'In Stock', so 'Only N left in stock' and lowercase 'In stock' both yield in_stock FALSE. Triggered again today on GEARWRENCH (see above).",
+    "INDONESIA_EGRESS_CHECK_NOT_TRIGGERED": "Did not recur today. Detection fix (treat 'Deliver to Indonesia' / 'Shipping & Import Charges to' as ship_block, force jina fallback) plus mandatory cross-check on any prospective EDIT remain unapproved and unapplied.",
     "WATCH_LIST_NEAR_THRESHOLD": "Wera B007BZ2AQY (screwdriver-set) at +8.41% US ($80.51 -> $87.28) remains the closest listing to the 10 percent bar; buybox held by third-party seller Deff Audio.",
     "LOW_STOCK_WATCH_CARRYOVER": "IRWIN B0002NYBH8 (bolt-extractor-set) was 'Only 1 left in stock' on cycle 24 - worth a stock-state check before any price edit in that category.",
     "SELF_CONTINUITY_OPEN_ITEMS": "Unchanged and NOT covered by today's batch: FLOTOOL MAX 11912 B0117EESNC third-cycle unverified; jack-stand dead ASINs (B000I6W2A0, B000C4CHPE x2 duplicate, B09LGK5J7W) + Torin duplicate-ASIN bug; ESCO B0019JVIPM candidate needs jina price; multimeter Klein B018EXZO8M no-buybox; multimeter KAIWEETS B07J83SMVZ + Fluke B0006Z64Q0 ASIN 404; air-compressor Porter-Cable B000O5RO1Y + Makita B0001Q2VPU no-buybox; Stealth SAQ-11215 >$400 editorial call; work-light ROVER B08YS6CXG6 + DEWALT B077ZCTBFY no-buybox; car-ramps OOS pair B0117EETEK + B01N308YYO."
   },
   "schedule": {
-    "next_category_recommend": "socket-set - pull its ASINs and current stored prices from src/lib/data.mjs and pass them as --json. socket-set has not had a fresh live price in recent cycles.",
-    "remaining_categories_unverified_or_due": "socket-set next, then floor-jack / obd2-scanner / oil-filter-wrench / battery-charger / brake-caliper-tool, plus all flagged follow-ups above.",
-    "verified_this_cycle": "jump-starter: 5 asked, 3 live US prices resolved and confirmed (0 edits), 1 resolved-but-priceless (unverified), 1 with no ASIN at all."
+    "next_category_recommend": "floor-jack - pull its ASINs and current stored prices from src/lib/data.mjs and pass them as --json. floor-jack has not had a fresh live price in recent cycles.",
+    "remaining_categories_unverified_or_due": "floor-jack next, then obd2-scanner / oil-filter-wrench / battery-charger / brake-caliper-tool, plus all flagged follow-ups above.",
+    "verified_this_cycle": "socket-set: 5 asked, 4 live US prices resolved and confirmed (1 edit), 1 with no ASIN at all."
   },
   "cycle_complete": true
 }

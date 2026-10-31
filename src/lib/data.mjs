@@ -155,7 +155,7 @@ export const tools = {
       },
       {
         name: "DEWALT 192PC Set",
-        price: "$180.29",
+        price: "$152.99",
         rating: "4.8",
         reviews: "8,000",
         images: ["/images/dewalt-set.jpg"],
