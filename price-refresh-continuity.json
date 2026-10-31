@@ -1,34 +1,36 @@
 {
-  "cycle": 27,
-  "date": "2026-10-29",
-  "category_done": "torque-wrench (5/5 attempted: 3 live US prices resolved with ZERO edits, 2 unverified. Every resolved delta was under the 10 percent threshold - two dead flats and one -0.73 percent.)",
+  "cycle": 28,
+  "date": "2026-10-30",
+  "category_done": "jump-starter (5/5 attempted: 3 live US prices VERIFIED with ZERO edits, 1 unverified no-price, 1 has no ASIN at all). Every resolved delta was +0.00 percent, so the 10 percent bar was never approached.",
   "products_checked": [
-    "torque-wrench/TEKTON 1/2' Drive (B00C5ZL0RU): UNVERIFIED twice. firecrawl /gp/aw/d returned NO PRICE PARSED, asin_confirmed FALSE on both passes; the rendered page has no productTitle and no mobile_buybox_group_1 blob - only 'Delivering to Newark 19711' plus stray recommendation prices ($39.95 / $23.50 / $44.97) that are NOT the buybox. A jina /gp/aw/d cross-check returned a page with only 'others' prices ($350 / $140 / $110) and no add-to-cart buybox either. Stored $54.99 left untouched.",
-    "torque-wrench/CDI 1503MFRPH (B00461ATL4): VERIFIED $156.12 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock) vs stored $156.12 = +0.00% -> NO EDIT.",
-    "torque-wrench/Pittsburgh 1/2' (B0002NYWQ2): UNVERIFIED. firecrawl failed, jina fallback FETCH FAILED on both passes; retried after a 150s backoff with the same result. A direct firecrawl probe returned a 439-byte stub with no title, no price, no buybox -> ASIN appears dead on Amazon (Pittsburgh = Harbor Freight house brand). Stored $19.99 left untouched; flagged for re-ASIN decision.",
-    "torque-wrench/ACDelco ARM601 (B004VYUQI2): VERIFIED $90.99 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock, is_prime TRUE) vs stored $90.99 = +0.00% -> NO EDIT.",
-    "torque-wrench/Precision Instruments PREC3FR250F (B002XMSFIM): firecrawl parsed $249.85 (buybox_json, In Stock) vs stored $251.68 = -0.73%, BUT asin_confirmed FALSE on both passes -> per rules the price is treated as INVALID and no edit is made. Even if confirmed, -0.73% is far under the 10 percent bar. Stored $251.68 left untouched."
+    "jump-starter/NOCO Boost Plus GB40 (B015TKUPIC): VERIFIED $99.95 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock, is_prime TRUE) vs stored $99.95 = +0.00% -> NO EDIT.",
+    "jump-starter/NOCO Boost X GBX45 (B0924V8SPC): VERIFIED $124.95 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock, is_prime TRUE) vs stored $124.95 = +0.00% -> NO EDIT.",
+    "jump-starter/GOOLOO GP4000 (B09HJH1S41): VERIFIED $79.96 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock, is_prime TRUE) vs stored $79.96 = +0.00% -> NO EDIT.",
+    "jump-starter/NEXPOW 2000A (B07T9S3Q5N): UNVERIFIED on two passes. firecrawl parsed NO PRICE; the script auto-ran its jina /gp/aw/d fallback and that also returned no price. The PDP did resolve (asin_confirmed TRUE, In Stock TRUE, rating 4.4) but no buybox price was present, so per rules the stored $35.99 is left untouched and the price is NOT confirmed. is_prime FALSE.",
+    "jump-starter/TACKLIFE T8 Pro: NO ASIN IN data.mjs (asin: \"\"). Nothing to fetch, so the stored $67.99 is unverifiable by definition. Flagged for a re-ASIN decision (see issues)."
   ],
   "edits": {
-    "data.mjs": "NONE. Resolved deltas: 0.00 / 0.00 / -0.73 percent (the -0.73 also failed asin confirmation). No price reached the 10 percent bar. No cosmetic edits, no rounding.",
-    "post": "NONE. torque-wrench is a category page with five inline product entries; no published standalone post to sync.",
-    "script": "price_fetch.py NOT modified.",
-    "build": "SKIPPED as required - no edits to data.mjs, so no npx astro build and no systemctl restart. dist/ untouched."
+    "data.mjs": "NONE. Resolved deltas: 0.00 / 0.00 / 0.00 percent. No price came close to the 10 percent bar. No cosmetic edits, no rounding, no carried-forward numbers written.",
+    "post": "NONE. jump-starter is a category page with five inline product entries; no published standalone post to sync.",
+    "script": "price_fetch.py NOT modified."
   },
+  "build": "SKIPPED as required - no edits to data.mjs, so no npx astro build and no systemctl restart. dist/ untouched.",
   "issues": {
-    "TEKTON_TORQUE_ASIN_NEEDS_REASIN": "NEW. B00C5ZL0RU is the category's 'Best Overall' entry ($54.99) and its mobile PDP no longer exposes a buybox at all - two firecrawl passes with NO PRICE PARSED and a jina cross-check that only rendered other-seller listings. Either the listing lost its buybox / went third-party-only, or the ASIN now resolves to a variant cluster. Recommend a re-ASIN decision (the TEKTON 1/2-inch 10-150 ft-lb click wrench has a stable canonical ASIN) before the next torque pass.",
-    "PITTSBURGH_ASIN_LIKELY_DEAD": "NEW. B0002NYWQ2 (Pittsburgh 1/2' torque wrench, $19.99) returns a 439-byte stub on firecrawl and fails the jina fallback. Pittsburgh is a Harbor Freight house brand and was never reliably on Amazon - this looks like a stale placeholder ASIN in data.mjs. Flag for re-ASIN or removal (Harbor Freight is a store-only link candidate, consistent with the 'price estimated, not verifiable on Amazon' note used elsewhere in this file).",
-    "ASIN_CONFIRM_FALSE_WITH_PRICE_PARSED": "NEW pattern. B002XMSFIM produced a clean-looking $249.85 buybox_json price yet asin_confirmed FALSE. The rules correctly force a no-edit here, but it means a genuine large move on this ASIN could be silently dropped. Worth a look at why confirmation fails when a buybox JSON is present.",
-    "INDONESIA_EGRESS_CHECK_THIS_CYCLE": "Did not recur - no 'Deliver to Indonesia' / 'Shipping & Import Charges to' markers appeared (the one page that rendered showed 'Delivering to Newark 19711'). Detection fix (treat those strings as ship_block, force jina fallback) plus mandatory cross-check on any prospective EDIT remain unapproved and unapplied.",
+    "TACKLIFE_T8_PRO_NO_ASIN": "NEW. jump-starter/TACKLIFE T8 Pro ($67.99) ships with an empty asin field in data.mjs. It can never be price-verified in this pipeline until an ASIN is chosen. TACKLIFE as a brand has thinned out on Amazon US, so the real decision may be replacement rather than re-ASIN. Flag for a re-ASIN-or-replace decision.",
+    "NEXPOW_2000A_NO_BUYBOX_PRICE": "NEW. B07T9S3Q5N resolves (title + rating + stock) but exposes no buybox price on either firecrawl or the jina fallback, twice. Consistent with a third-party-only listing, a coupon-only/'price at checkout' display, or a suppressed buybox. Stored $35.99 left untouched. Watch next pass; if it persists, consider a re-ASIN for the NEXPOW 2000A class jumper.",
+    "TEKTON_TORQUE_ASIN_NEEDS_REASIN": "CARRY-OVER from cycle 27, untouched. B00C5ZL0RU (torque-wrench Best Overall, $54.99) mobile PDP exposes no buybox - two firecrawl NO PRICE passes plus a jina cross-check showing only other-seller listings. Recommend re-ASIN before the next torque pass.",
+    "PITTSBURGH_TORQUE_ASIN_LIKELY_DEAD": "CARRY-OVER from cycle 27, untouched. B0002NYWQ2 returns a 439-byte firecrawl stub and fails jina; Harbor Freight house brand, likely a stale placeholder ASIN. Note: the SAME ASIN B0002NYWQ2 is still used in breaker-bar as 'SK Hand Tool 3/4-inch' ($89.99) - one ASIN now appears in two categories, worth resolving together.",
+    "ASIN_CONFIRM_FALSE_WITH_PRICE_PARSED": "Carry-over pattern (B002XMSFIM, cycle 27): a clean buybox_json price can still come back asin_confirmed FALSE, which the rules force to a no-edit. Not triggered today - all three resolved jump-starter prices confirmed TRUE.",
     "PARSER_FALSE_WARNING_FIX_STILL_NOT_APPLIED": "Unchanged carry-over. parse() tests the literal 'In Stock', so 'Only N left in stock' and lowercase 'In stock' both yield in_stock FALSE.",
-    "WATCH_LIST_NEAR_THRESHOLD": "Wera B007BZ2AQY (screwdriver-set) at +8.41% US ($80.51 -> $87.28) remains the closest listing to the 10 percent bar; its buybox is held by third-party seller Deff Audio.",
-    "LOW_STOCK_WATCH_CARRYOVER": "IRWIN B0002NYBH8 (bolt-extractor-set) was 'Only 1 left in stock' on cycle 24 - still worth a stock-state check before any price edit when that category comes up.",
-    "SELF_CONTINUITY_OPEN_ITEMS": "Unchanged and NOT covered by today's batch: FLOTOOL MAX 11912 B0117EESNC third-cycle unverified (ready for a re-ASIN decision); jack-stand dead ASINs (B000I6W2A0, B000C4CHPE x2 duplicate, B09LGK5J7W) + Torin duplicate-ASIN bug; ESCO B0019JVIPM candidate needs jina price; multimeter Klein B018EXZO8M no-buybox; multimeter KAIWEETS B07J83SMVZ + Fluke B0006Z64Q0 ASIN 404; air-compressor Porter-Cable B000O5RO1Y + Makita B0001Q2VPU no-buybox; Stealth SAQ-11215 >$400 editorial call; work-light ROVER B08YS6CXG6 + DEWALT B077ZCTBFY no-buybox; car-ramps OOS pair B0117EETEK + B01N308YYO."
+    "INDONESIA_EGRESS_CHECK_NOT_TRIGGERED": "Did not recur today (all pages rendered normally). Detection fix (treat 'Deliver to Indonesia' / 'Shipping & Import Charges to' as ship_block, force jina fallback) plus mandatory cross-check on any prospective EDIT remain unapproved and unapplied.",
+    "WATCH_LIST_NEAR_THRESHOLD": "Wera B007BZ2AQY (screwdriver-set) at +8.41% US ($80.51 -> $87.28) remains the closest listing to the 10 percent bar; buybox held by third-party seller Deff Audio.",
+    "LOW_STOCK_WATCH_CARRYOVER": "IRWIN B0002NYBH8 (bolt-extractor-set) was 'Only 1 left in stock' on cycle 24 - worth a stock-state check before any price edit in that category.",
+    "SELF_CONTINUITY_OPEN_ITEMS": "Unchanged and NOT covered by today's batch: FLOTOOL MAX 11912 B0117EESNC third-cycle unverified; jack-stand dead ASINs (B000I6W2A0, B000C4CHPE x2 duplicate, B09LGK5J7W) + Torin duplicate-ASIN bug; ESCO B0019JVIPM candidate needs jina price; multimeter Klein B018EXZO8M no-buybox; multimeter KAIWEETS B07J83SMVZ + Fluke B0006Z64Q0 ASIN 404; air-compressor Porter-Cable B000O5RO1Y + Makita B0001Q2VPU no-buybox; Stealth SAQ-11215 >$400 editorial call; work-light ROVER B08YS6CXG6 + DEWALT B077ZCTBFY no-buybox; car-ramps OOS pair B0117EETEK + B01N308YYO."
   },
   "schedule": {
-    "next_category_recommend": "jump-starter - pull its ASINs and current stored prices from src/lib/data.mjs and pass them as --json. None of the jump-starter ASINs have a fresh live price in recent cycles.",
-    "remaining_categories_unverified_or_due": "jump-starter next, then socket-set / floor-jack / obd2-scanner / oil-filter-wrench / battery-charger / brake-caliper-tool, plus all flagged follow-ups above.",
-    "verified_this_cycle": "torque-wrench: 5 asked, 3 live prices resolved, 3 usable (0 edits), 2 unverified (1 no-buybox Best Overall entry, 1 likely-dead house-brand ASIN)."
+    "next_category_recommend": "socket-set - pull its ASINs and current stored prices from src/lib/data.mjs and pass them as --json. socket-set has not had a fresh live price in recent cycles.",
+    "remaining_categories_unverified_or_due": "socket-set next, then floor-jack / obd2-scanner / oil-filter-wrench / battery-charger / brake-caliper-tool, plus all flagged follow-ups above.",
+    "verified_this_cycle": "jump-starter: 5 asked, 3 live US prices resolved and confirmed (0 edits), 1 resolved-but-priceless (unverified), 1 with no ASIN at all."
   },
   "cycle_complete": true
 }
