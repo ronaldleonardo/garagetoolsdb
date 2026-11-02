@@ -1,39 +1,40 @@
 {
-  "cycle": 29,
-  "date": "2026-10-31",
-  "category_done": "socket-set (5/5 attempted: 3 live US prices resolved with ZERO edits, 1 EDITED, 1 with no ASIN). The one material move was DEWALT 192PC down 15.14 percent, which cleared the 10 percent bar and was written to data.mjs and its post.",
+  "cycle": 30,
+  "date": "2026-11-01",
+  "category_done": "floor-jack (5/5 checked: 4 live US prices resolved with ZERO edits, 1 EDITED). The one material move was AV Steel 2.5 Ton up 21.43 percent, which cleared the 10 percent bar and was written to data.mjs. All five resolved with asin_confirmed TRUE and in_stock TRUE.",
   "products_checked": [
-    "socket-set/GEARWRENCH 110PC (B07H5H1J3X): VERIFIED $115.58 (firecrawl, buybox_json, asin_confirmed TRUE, is_prime TRUE) vs stored $115.58 = +0.00% -> NO EDIT. WARN in_stock FALSE: parser only matches the literal 'In Stock', so a low-stock display ('Only N left in stock') reports false. Price matches stored exactly, so no edit either way. Flag: GEARWRENCH may be running low; recheck stock next socket pass.",
-    "socket-set/DEWALT 192PC Set (B01BHJE0J4): VERIFIED $152.99 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, is_prime TRUE, list $289.99, 47 percent savings) vs stored $180.29 = -15.14% -> EDIT. Written to src/lib/data.mjs and synced in src/pages/posts/best-socket-set-review.astro ('At $152.99 (47% off a $289.99 list)' replacing '$180.29 (38% off...').",
-    "socket-set/TEKTON 1/2 Drive (B07QSCTG8Y): VERIFIED $54.00 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, is_prime TRUE) vs stored $54.00 = +0.00% -> NO EDIT.",
-    "socket-set/Sunex 2569 Master (B00MPQ88RY): VERIFIED $144.79 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, is_prime TRUE) vs stored $144.79 = +0.00% -> NO EDIT.",
-    "socket-set/QUINN 132PC Kit: NO ASIN IN data.mjs (asin: \"\"). Harbor Freight only listing, unverifiable on Amazon by definition. Stored $99.99 left untouched, flagged for a re-ASIN-or-replace decision."
+    "floor-jack/SATA 3 Ton (B0FVF7KT56): VERIFIED $169.99 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, is_prime TRUE, rating 4.7) vs stored $165.99 = +2.41% -> NO EDIT (below bar).",
+    "floor-jack/AV Steel 2.5 Ton (B0D2J99MFG): VERIFIED $84.99 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, is_prime TRUE, rating 4.5) vs stored $69.99 = +21.43% -> EDIT. Cross-checked independently via r.jina.ai /gp/aw/d/B0D2J99MFG: desktop_buybox_group_1 displayPrice $84.99, agreeing with firecrawl.",
+    "floor-jack/Maxority 3 Ton (B0DP7QCCMX): VERIFIED $139.99 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, is_prime FALSE, rating 4.7) vs stored $137.99 = +1.45% -> NO EDIT.",
+    "floor-jack/Jack Boss 3 Ton (B099JPWCPC): VERIFIED $169.99 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, is_prime TRUE, rating 4.4) vs stored $169.99 = +0.00% -> NO EDIT.",
+    "floor-jack/AV Steel 3 Ton (B0DJMM1Q7S): VERIFIED $169.99 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, is_prime TRUE, rating 4.6) vs stored $169.99 = +0.00% -> NO EDIT."
   ],
   "edits": {
-    "data.mjs": "ONE edit: socket-set DEWALT 192PC Set B01BHJE0J4 price $180.29 -> $152.99 (live buybox, -15.14%, asin_confirmed TRUE, In Stock TRUE). No other edits, no rounding, no cosmetic changes.",
-    "post": "ONE edit: best-socket-set-review.astro DEWALT paragraph, price and discount line updated from $180.29 / 38 percent to $152.99 / 47 percent (list $289.99 confirmed live).",
+    "data.mjs": "ONE edit: floor-jack AV Steel 2.5 Ton B0D2J99MFG price $69.99 -> $84.99 (live buybox, +21.43%, asin_confirmed TRUE, In Stock TRUE, jina cross-check agrees). No other edits, no rounding, no cosmetic changes.",
+    "post": "NONE. best-floor-jack-review.astro does not mention the AV Steel 2.5 Ton at all (that post narrates a separate Daytona/ARCAN/other set of jacks), and no page carried the old $69.99. grep across src/ and public/ shows no remaining bare $69.99 after the edit.",
     "script": "price_fetch.py NOT modified."
   },
-  "build": "RUN: ./node_modules/.bin/astro build -> exit 0, 54 pages built. dist/ verified: 152.99 present in dist/tools/socket-set.html and dist/posts/best-socket-set-review.html, no 180.29 anywhere in dist.",
-  "restart": "ATTEMPTED but BLOCKED by the approval gate (systemctl restart garagetoolsdb requires interactive approval, which a cron run cannot grant). Not fatal: the service runs 'astro preview' (ExecStart=/usr/local/bin/npx astro preview --host 0.0.0.0 --port 8082), which serves dist/ straight from disk, so the new build is already live. VERIFIED: curl http://127.0.0.1:8082/tools/socket-set/ returns 200 and serves 152.99; the post page serves no 180.29. Pending action for a human or an allowed run: systemctl restart garagetoolsdb to be tidy.",
+  "build": "RUN: ./node_modules/.bin/astro build -> exit 0, 54 pages built. dist/ verified: bare 69.99 count 0 in dist/tools/floor-jack.html, 84.99 present.",
+  "restart": "ATTEMPTED but BLOCKED by the approval gate (systemctl restart garagetoolsdb = stop/restart system service, cron cannot grant). Not fatal: service runs 'astro preview' (ExecStart=/usr/local/bin/npx astro preview --host 0.0.0.0 --port 8082) serving dist/ straight from disk. VERIFIED: curl http://127.0.0.1:8082/tools/floor-jack/ returns 200 and serves 84.99 (3 occurrences), bare 69.99 count 0. Pending tidy action for a human: systemctl restart garagetoolsdb.",
   "issues": {
-    "GEARWRENCH_110PC_IN_STOCK_FALSE": "NEW/low. B07H5H1J3X returned in_stock FALSE while price, asin_confirmed, and is_prime were all normal. Almost certainly the known parser false-negative ('Only N left in stock' does not contain the literal 'In Stock'). Price matched stored exactly so nothing was touched, but GEARWRENCH may be nearing OOS. Recheck stock next socket pass.",
-    "QUINN_132PC_NO_ASIN": "NEW. socket-set/QUINN 132PC Kit ($99.99) ships with an empty asin field (Harbor Freight only, no Amazon listing). Cannot be price-verified in this pipeline. Flag for a re-ASIN-or-replace decision.",
+    "GEARWRENCH_110PC_IN_STOCK_FALSE": "CARRY-OVER from cycle 29, untouched. B07H5H1J3X (socket-set) returned in_stock FALSE while price/asin_confirmed/is_prime were normal; almost certainly the known parser false-negative ('Only N left in stock'). Recheck stock next socket pass.",
+    "QUINN_132PC_NO_ASIN": "CARRY-OVER from cycle 29, untouched. socket-set/QUINN 132PC Kit ($99.99) ships with an empty asin field (Harbor Freight only, no Amazon listing). Flag for a re-ASIN-or-replace decision.",
     "NEXPOW_2000A_NO_BUYBOX_PRICE": "CARRY-OVER from cycle 28, untouched. B07T9S3Q5N (jump-starter) resolves but exposes no buybox price on firecrawl or the jina fallback, twice. Stored $35.99 left untouched. Watch; if it persists, consider a re-ASIN.",
     "TACKLIFE_T8_PRO_NO_ASIN": "CARRY-OVER from cycle 28, untouched. jump-starter/TACKLIFE T8 Pro ($67.99) has an empty asin field. Flag for a re-ASIN-or-replace decision.",
     "TEKTON_TORQUE_ASIN_NEEDS_REASIN": "CARRY-OVER from cycle 27, untouched. B00C5ZL0RU (torque-wrench Best Overall, $54.99) mobile PDP exposes no buybox - two firecrawl NO PRICE passes plus a jina cross-check showing only other-seller listings. Recommend re-ASIN before the next torque pass.",
     "PITTSBURGH_TORQUE_ASIN_LIKELY_DEAD": "CARRY-OVER from cycle 27, untouched. B0002NYWQ2 returns a 439-byte firecrawl stub and fails jina; Harbor Freight house brand, likely stale. The SAME ASIN B0002NYWQ2 is still used in breaker-bar as 'SK Hand Tool 3/4-inch' ($89.99) - one ASIN in two categories, resolve together.",
-    "ASIN_CONFIRM_FALSE_WITH_PRICE_PARSED": "Carry-over pattern: a clean buybox_json price can still come back asin_confirmed FALSE, which the rules force to a no-edit. Not triggered today - all four resolved socket-set prices confirmed TRUE.",
-    "PARSER_FALSE_WARNING_FIX_STILL_NOT_APPLIED": "Unchanged carry-over. parse() tests the literal 'In Stock', so 'Only N left in stock' and lowercase 'In stock' both yield in_stock FALSE. Triggered again today on GEARWRENCH (see above).",
-    "INDONESIA_EGRESS_CHECK_NOT_TRIGGERED": "Did not recur today. Detection fix (treat 'Deliver to Indonesia' / 'Shipping & Import Charges to' as ship_block, force jina fallback) plus mandatory cross-check on any prospective EDIT remain unapproved and unapplied.",
+    "DUP_ASIN_169_99_IN_FLOOR_JACK": "low. floor-jack has TWO products priced $169.99 (Jack Boss B099JPWCPC and AV Steel 3 Ton B0DJMM1Q7S), which is legitimate (both verified independently) but makes bare-text price greps ambiguous. Not a bug.",
+    "ASIN_CONFIRM_FALSE_WITH_PRICE_PARSED": "Carry-over pattern: a clean buybox_json price can still come back asin_confirmed FALSE, which the rules force to a no-edit. Not triggered today - all five resolved floor-jack prices confirmed TRUE.",
+    "PARSER_FALSE_WARNING_FIX_STILL_NOT_APPLIED": "Unchanged carry-over. parse() tests the literal 'In Stock', so 'Only N left in stock' and lowercase 'In stock' both yield in_stock FALSE. Not triggered today but still unapproved/unapplied.",
+    "INDONESIA_EGRESS_CHECK_NOT_TRIGGERED": "Did not recur today. Detection fix (treat 'Deliver to Indonesia' / 'Shipping & Import Charges to' as ship_block, force jina fallback) plus mandatory cross-check on any prospective EDIT remain unapproved and unapplied. (A manual jina cross-check WAS run on today's single edit by choice.)",
     "WATCH_LIST_NEAR_THRESHOLD": "Wera B007BZ2AQY (screwdriver-set) at +8.41% US ($80.51 -> $87.28) remains the closest listing to the 10 percent bar; buybox held by third-party seller Deff Audio.",
     "LOW_STOCK_WATCH_CARRYOVER": "IRWIN B0002NYBH8 (bolt-extractor-set) was 'Only 1 left in stock' on cycle 24 - worth a stock-state check before any price edit in that category.",
-    "SELF_CONTINUITY_OPEN_ITEMS": "Unchanged and NOT covered by today's batch: FLOTOOL MAX 11912 B0117EESNC third-cycle unverified; jack-stand dead ASINs (B000I6W2A0, B000C4CHPE x2 duplicate, B09LGK5J7W) + Torin duplicate-ASIN bug; ESCO B0019JVIPM candidate needs jina price; multimeter Klein B018EXZO8M no-buybox; multimeter KAIWEETS B07J83SMVZ + Fluke B0006Z64Q0 ASIN 404; air-compressor Porter-Cable B000O5RO1Y + Makita B0001Q2VPU no-buybox; Stealth SAQ-11215 >$400 editorial call; work-light ROVER B08YS6CXG6 + DEWALT B077ZCTBFY no-buybox; car-ramps OOS pair B0117EETEK + B01N308YYO."
+    "SELF_CONTINUITY_OPEN_ITEMS": "Unchanged and NOT covered by today's batch: FLOTOOL MAX 11912 B0117EESNC third-cycle unverified; jack-stand dead ASINs (B000I6W2A0, B000C4CHPE x2 duplicate, B09LGK5J7W) + Torin duplicate-ASIN bug; ESCO B0019JVIPM candidate needs jina price; multimeter Klein B018EXZO8M no-buybox; multimeter KAIWEETS B07J83SMVZ + Fluke B0006Z64Q0 ASIN 404; air-compressor Porter-Cable B000O5RO1Y + Makita B0001Q2VPU no-buybox; Stealth SAQ-11215 >$400 editorial call; work-light ROVER B08YS6CXG6 + DEWALT B077ZCTBFY no-buybox; car-ramps OOS pair B0117EETEK + B01N308YYO. NOTE: best-floor-jack-review.astro narrates a different product set (Daytona, ARCAN etc.) than data.mjs floor-jack (SATA/AV Steel/Maxority/Jack Boss) - editorial mismatch worth reconciling at some point."
   },
   "schedule": {
-    "next_category_recommend": "floor-jack - pull its ASINs and current stored prices from src/lib/data.mjs and pass them as --json. floor-jack has not had a fresh live price in recent cycles.",
-    "remaining_categories_unverified_or_due": "floor-jack next, then obd2-scanner / oil-filter-wrench / battery-charger / brake-caliper-tool, plus all flagged follow-ups above.",
-    "verified_this_cycle": "socket-set: 5 asked, 4 live US prices resolved and confirmed (1 edit), 1 with no ASIN at all."
+    "next_category_recommend": "obd2-scanner - pull its ASINs and current stored prices from src/lib/data.mjs and pass them as --json. It sits right next to floor-jack in data.mjs and has not had a fresh live price in recent cycles.",
+    "remaining_categories_unverified_or_due": "obd2-scanner next, then oil-filter-wrench / battery-charger / brake-caliper-tool, plus all flagged follow-ups above.",
+    "verified_this_cycle": "floor-jack: 5 asked, 5 live US prices resolved and confirmed (1 edit), 0 unverified."
   },
   "cycle_complete": true
 }
