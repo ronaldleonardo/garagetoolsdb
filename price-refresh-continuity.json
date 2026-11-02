@@ -1,40 +1,41 @@
 {
-  "cycle": 30,
-  "date": "2026-11-01",
-  "category_done": "floor-jack (5/5 checked: 4 live US prices resolved with ZERO edits, 1 EDITED). The one material move was AV Steel 2.5 Ton up 21.43 percent, which cleared the 10 percent bar and was written to data.mjs. All five resolved with asin_confirmed TRUE and in_stock TRUE.",
+  "cycle": 31,
+  "date": "2026-11-02",
+  "category_done": "obd2-scanner (5/5 checked: 3 live US prices unchanged or below the bar, 2 EDITED). All five resolved with asin_confirmed TRUE, in_stock TRUE, ship_block FALSE via Firecrawl route 1 (mobile PDP) and both edits were independently cross-checked on r.jina.ai (route 2) against the desktop buybox.",
   "products_checked": [
-    "floor-jack/SATA 3 Ton (B0FVF7KT56): VERIFIED $169.99 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, is_prime TRUE, rating 4.7) vs stored $165.99 = +2.41% -> NO EDIT (below bar).",
-    "floor-jack/AV Steel 2.5 Ton (B0D2J99MFG): VERIFIED $84.99 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, is_prime TRUE, rating 4.5) vs stored $69.99 = +21.43% -> EDIT. Cross-checked independently via r.jina.ai /gp/aw/d/B0D2J99MFG: desktop_buybox_group_1 displayPrice $84.99, agreeing with firecrawl.",
-    "floor-jack/Maxority 3 Ton (B0DP7QCCMX): VERIFIED $139.99 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, is_prime FALSE, rating 4.7) vs stored $137.99 = +1.45% -> NO EDIT.",
-    "floor-jack/Jack Boss 3 Ton (B099JPWCPC): VERIFIED $169.99 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, is_prime TRUE, rating 4.4) vs stored $169.99 = +0.00% -> NO EDIT.",
-    "floor-jack/AV Steel 3 Ton (B0DJMM1Q7S): VERIFIED $169.99 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, is_prime TRUE, rating 4.6) vs stored $169.99 = +0.00% -> NO EDIT."
+    "obd2-scanner/BlueDriver Pro (B0GL9RL3XS): VERIFIED $94.95 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, is_prime TRUE, rating 4.5) vs stored $94.95 = +0.00% -> NO EDIT.",
+    "obd2-scanner/ANCEL AD310 (B01G5EA74I): VERIFIED $29.99 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, is_prime TRUE, rating 4.6, 67,455 ratings) vs stored $23.99 = +25.01% -> EDIT. Cross-checked via r.jina.ai /gp/aw/d/B01G5EA74I: desktop buybox $29.99, agreeing.",
+    "obd2-scanner/Innova 5610 (B07Z481NJM): VERIFIED $349.99 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, is_prime TRUE, rating 4.4) vs stored $349.99 = +0.00% -> NO EDIT.",
+    "obd2-scanner/LAUNCH CRP123 (B073GW5MTS): VERIFIED $127.00 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, is_prime TRUE, rating 4.3, 4,121 ratings) vs stored $106.98 = +18.71% -> EDIT. Cross-checked via r.jina.ai /gp/aw/d/B073GW5MTS: desktop buybox $127.00, agreeing.",
+    "obd2-scanner/FOXWELL NT301 (B00UJV3E12): VERIFIED $59.59 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, is_prime TRUE, rating 4.5) vs stored $55.95 = +6.51% -> NO EDIT (below bar, left alone)."
   ],
   "edits": {
-    "data.mjs": "ONE edit: floor-jack AV Steel 2.5 Ton B0D2J99MFG price $69.99 -> $84.99 (live buybox, +21.43%, asin_confirmed TRUE, In Stock TRUE, jina cross-check agrees). No other edits, no rounding, no cosmetic changes.",
-    "post": "NONE. best-floor-jack-review.astro does not mention the AV Steel 2.5 Ton at all (that post narrates a separate Daytona/ARCAN/other set of jacks), and no page carried the old $69.99. grep across src/ and public/ shows no remaining bare $69.99 after the edit.",
+    "data.mjs": "TWO edits: obd2-scanner ANCEL AD310 B01G5EA74I $23.99 -> $29.99 (+25.01%), LAUNCH CRP123 B073GW5MTS $106.98 -> $127.00 (+18.71%). Both live US buybox, asin_confirmed TRUE, In Stock TRUE, jina cross-check agrees. No rounding, no cosmetic changes, no other products touched.",
+    "post": "ONE edit: src/pages/posts/best-obd2-scanner-review.astro line 97 carried a stale $22.99 for the ANCEL AD310 (stale even before this cycle) -> aligned to the verified $29.99. BlueDriver mentioned at $94.95 on line 89 still matches. No page carries $106.98 or $23.99 for these products after the edit.",
     "script": "price_fetch.py NOT modified."
   },
-  "build": "RUN: ./node_modules/.bin/astro build -> exit 0, 54 pages built. dist/ verified: bare 69.99 count 0 in dist/tools/floor-jack.html, 84.99 present.",
-  "restart": "ATTEMPTED but BLOCKED by the approval gate (systemctl restart garagetoolsdb = stop/restart system service, cron cannot grant). Not fatal: service runs 'astro preview' (ExecStart=/usr/local/bin/npx astro preview --host 0.0.0.0 --port 8082) serving dist/ straight from disk. VERIFIED: curl http://127.0.0.1:8082/tools/floor-jack/ returns 200 and serves 84.99 (3 occurrences), bare 69.99 count 0. Pending tidy action for a human: systemctl restart garagetoolsdb.",
+  "build": "RUN: ./node_modules/.bin/astro build -> exit 0, 54 pages built. dist/ verified: dist/tools/obd2-scanner.html has 29.99 x2 and 127.00 x2, bare 23.99 count 0; dist/posts/best-obd2-scanner-review.html has 29.99 present and 22.99 count 0.",
+  "restart": "ATTEMPTED but BLOCKED by the approval gate again (systemctl restart garagetoolsdb = stop/restart system service). Not fatal: the service runs 'astro preview' (ExecStart=npx astro preview --host 0.0.0.0 --port 8082) serving dist/ straight from disk. VERIFIED live: curl http://127.0.0.1:8082/tools/obd2-scanner/ returns 200 and serves 127.00 (2 occurrences); curl .../posts/best-obd2-scanner-review/ serves 0 occurrences of 22.99. Pending tidy action for a human: systemctl restart garagetoolsdb.",
   "issues": {
+    "SIBLING_WRITE_WARNING_ON_DATA_MJS": "NEW. The patch tool warned that src/lib/data.mjs and src/pages/posts/best-obd2-scanner-review.astro had been modified by a sibling subagent that this agent never read. gtdb git diff after the edits shows ONLY the two intended price lines changed in data.mjs and one line in the post, so nothing appears clobbered. Worth knowing that another process may be writing the same files concurrently - if a future cycle sees unexpected reverts, check for a competing cron.",
     "GEARWRENCH_110PC_IN_STOCK_FALSE": "CARRY-OVER from cycle 29, untouched. B07H5H1J3X (socket-set) returned in_stock FALSE while price/asin_confirmed/is_prime were normal; almost certainly the known parser false-negative ('Only N left in stock'). Recheck stock next socket pass.",
     "QUINN_132PC_NO_ASIN": "CARRY-OVER from cycle 29, untouched. socket-set/QUINN 132PC Kit ($99.99) ships with an empty asin field (Harbor Freight only, no Amazon listing). Flag for a re-ASIN-or-replace decision.",
     "NEXPOW_2000A_NO_BUYBOX_PRICE": "CARRY-OVER from cycle 28, untouched. B07T9S3Q5N (jump-starter) resolves but exposes no buybox price on firecrawl or the jina fallback, twice. Stored $35.99 left untouched. Watch; if it persists, consider a re-ASIN.",
     "TACKLIFE_T8_PRO_NO_ASIN": "CARRY-OVER from cycle 28, untouched. jump-starter/TACKLIFE T8 Pro ($67.99) has an empty asin field. Flag for a re-ASIN-or-replace decision.",
     "TEKTON_TORQUE_ASIN_NEEDS_REASIN": "CARRY-OVER from cycle 27, untouched. B00C5ZL0RU (torque-wrench Best Overall, $54.99) mobile PDP exposes no buybox - two firecrawl NO PRICE passes plus a jina cross-check showing only other-seller listings. Recommend re-ASIN before the next torque pass.",
     "PITTSBURGH_TORQUE_ASIN_LIKELY_DEAD": "CARRY-OVER from cycle 27, untouched. B0002NYWQ2 returns a 439-byte firecrawl stub and fails jina; Harbor Freight house brand, likely stale. The SAME ASIN B0002NYWQ2 is still used in breaker-bar as 'SK Hand Tool 3/4-inch' ($89.99) - one ASIN in two categories, resolve together.",
-    "DUP_ASIN_169_99_IN_FLOOR_JACK": "low. floor-jack has TWO products priced $169.99 (Jack Boss B099JPWCPC and AV Steel 3 Ton B0DJMM1Q7S), which is legitimate (both verified independently) but makes bare-text price greps ambiguous. Not a bug.",
-    "ASIN_CONFIRM_FALSE_WITH_PRICE_PARSED": "Carry-over pattern: a clean buybox_json price can still come back asin_confirmed FALSE, which the rules force to a no-edit. Not triggered today - all five resolved floor-jack prices confirmed TRUE.",
+    "BLUEDRIVER_RATING_DRIFT": "low, no action taken. BlueDriver Pro B0GL9RL3XS stored rating 4.6 / 12,400 reviews vs live 4.5 / (count not parsed this pass). Ratings are not prices and the rules forbid cosmetic edits; noting the drift only.",
+    "ASIN_CONFIRM_FALSE_WITH_PRICE_PARSED": "Carry-over pattern: a clean buybox_json price can still come back asin_confirmed FALSE, which the rules force to a no-edit. Not triggered today - all five obd2 scanners confirmed TRUE.",
     "PARSER_FALSE_WARNING_FIX_STILL_NOT_APPLIED": "Unchanged carry-over. parse() tests the literal 'In Stock', so 'Only N left in stock' and lowercase 'In stock' both yield in_stock FALSE. Not triggered today but still unapproved/unapplied.",
-    "INDONESIA_EGRESS_CHECK_NOT_TRIGGERED": "Did not recur today. Detection fix (treat 'Deliver to Indonesia' / 'Shipping & Import Charges to' as ship_block, force jina fallback) plus mandatory cross-check on any prospective EDIT remain unapproved and unapplied. (A manual jina cross-check WAS run on today's single edit by choice.)",
+    "INDONESIA_EGRESS_CHECK_NOT_TRIGGERED": "Did not recur today. Detection fix (treat 'Deliver to Indonesia' / 'Shipping & Import Charges to' as ship_block, force jina fallback) plus mandatory cross-check on any prospective EDIT remain unapproved and unapplied. (A manual jina cross-check WAS run on both of today's edits by choice.)",
     "WATCH_LIST_NEAR_THRESHOLD": "Wera B007BZ2AQY (screwdriver-set) at +8.41% US ($80.51 -> $87.28) remains the closest listing to the 10 percent bar; buybox held by third-party seller Deff Audio.",
     "LOW_STOCK_WATCH_CARRYOVER": "IRWIN B0002NYBH8 (bolt-extractor-set) was 'Only 1 left in stock' on cycle 24 - worth a stock-state check before any price edit in that category.",
     "SELF_CONTINUITY_OPEN_ITEMS": "Unchanged and NOT covered by today's batch: FLOTOOL MAX 11912 B0117EESNC third-cycle unverified; jack-stand dead ASINs (B000I6W2A0, B000C4CHPE x2 duplicate, B09LGK5J7W) + Torin duplicate-ASIN bug; ESCO B0019JVIPM candidate needs jina price; multimeter Klein B018EXZO8M no-buybox; multimeter KAIWEETS B07J83SMVZ + Fluke B0006Z64Q0 ASIN 404; air-compressor Porter-Cable B000O5RO1Y + Makita B0001Q2VPU no-buybox; Stealth SAQ-11215 >$400 editorial call; work-light ROVER B08YS6CXG6 + DEWALT B077ZCTBFY no-buybox; car-ramps OOS pair B0117EETEK + B01N308YYO. NOTE: best-floor-jack-review.astro narrates a different product set (Daytona, ARCAN etc.) than data.mjs floor-jack (SATA/AV Steel/Maxority/Jack Boss) - editorial mismatch worth reconciling at some point."
   },
   "schedule": {
-    "next_category_recommend": "obd2-scanner - pull its ASINs and current stored prices from src/lib/data.mjs and pass them as --json. It sits right next to floor-jack in data.mjs and has not had a fresh live price in recent cycles.",
-    "remaining_categories_unverified_or_due": "obd2-scanner next, then oil-filter-wrench / battery-charger / brake-caliper-tool, plus all flagged follow-ups above.",
-    "verified_this_cycle": "floor-jack: 5 asked, 5 live US prices resolved and confirmed (1 edit), 0 unverified."
+    "next_category_recommend": "oil-filter-wrench - pull its ASINs and current stored prices from src/lib/data.mjs and pass them as --json. It has not had a fresh live price in recent cycles.",
+    "remaining_categories_unverified_or_due": "oil-filter-wrench next, then battery-charger / brake-caliper-tool / socket-set (socket-set carries two open flags), plus all flagged follow-ups above.",
+    "verified_this_cycle": "obd2-scanner: 5 asked, 5 live US prices resolved and confirmed (2 edits), 0 unverified."
   },
   "cycle_complete": true
 }
