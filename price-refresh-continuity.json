@@ -1,41 +1,40 @@
 {
-  "cycle": 31,
-  "date": "2026-11-02",
-  "category_done": "obd2-scanner (5/5 checked: 3 live US prices unchanged or below the bar, 2 EDITED). All five resolved with asin_confirmed TRUE, in_stock TRUE, ship_block FALSE via Firecrawl route 1 (mobile PDP) and both edits were independently cross-checked on r.jina.ai (route 2) against the desktop buybox.",
+  "cycle": 32,
+  "date": "2026-11-03",
+  "category_done": "oil-filter-wrench (5/5 checked: all five resolved live US buybox via Firecrawl route 1, asin_confirmed TRUE, In Stock TRUE, ship_block FALSE). Zero edits: four held flat at their stored price, one drifted +5.88% which is below the 10 percent bar. No build, no restart.",
   "products_checked": [
-    "obd2-scanner/BlueDriver Pro (B0GL9RL3XS): VERIFIED $94.95 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, is_prime TRUE, rating 4.5) vs stored $94.95 = +0.00% -> NO EDIT.",
-    "obd2-scanner/ANCEL AD310 (B01G5EA74I): VERIFIED $29.99 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, is_prime TRUE, rating 4.6, 67,455 ratings) vs stored $23.99 = +25.01% -> EDIT. Cross-checked via r.jina.ai /gp/aw/d/B01G5EA74I: desktop buybox $29.99, agreeing.",
-    "obd2-scanner/Innova 5610 (B07Z481NJM): VERIFIED $349.99 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, is_prime TRUE, rating 4.4) vs stored $349.99 = +0.00% -> NO EDIT.",
-    "obd2-scanner/LAUNCH CRP123 (B073GW5MTS): VERIFIED $127.00 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, is_prime TRUE, rating 4.3, 4,121 ratings) vs stored $106.98 = +18.71% -> EDIT. Cross-checked via r.jina.ai /gp/aw/d/B073GW5MTS: desktop buybox $127.00, agreeing.",
-    "obd2-scanner/FOXWELL NT301 (B00UJV3E12): VERIFIED $59.59 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, is_prime TRUE, rating 4.5) vs stored $55.95 = +6.51% -> NO EDIT (below bar, left alone)."
+    "oil-filter-wrench/OMT 10-Piece Oil Filter Socket Set (B0BJK5FSNR): VERIFIED $26.99 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, is_prime TRUE, rating 4.4) vs stored $25.49 = +5.88% -> NO EDIT (below bar).",
+    "oil-filter-wrench/Lisle 50750 Oil Filter Pliers (B0002SR562): VERIFIED $29.20 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, is_prime TRUE, rating 4.8) vs stored $29.20 = +0.00% -> NO EDIT.",
+    "oil-filter-wrench/Lisle 63600 3/8 Drive (B0002SR4Q8): VERIFIED $12.99 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, is_prime TRUE, rating 4.5) vs stored $12.99 = +0.00% -> NO EDIT.",
+    "oil-filter-wrench/GEARWRENCH 3288D 3-Jaw (B0002SR53A): VERIFIED $13.49 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, is_prime TRUE, rating 4.6) vs stored $13.49 = +0.00% -> NO EDIT.",
+    "oil-filter-wrench/GEARWRENCH 3149 Strap Wrench (B0002SR4MM): VERIFIED $10.68 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, is_prime TRUE, rating 4.6) vs stored $10.68 = +0.00% -> NO EDIT."
   ],
   "edits": {
-    "data.mjs": "TWO edits: obd2-scanner ANCEL AD310 B01G5EA74I $23.99 -> $29.99 (+25.01%), LAUNCH CRP123 B073GW5MTS $106.98 -> $127.00 (+18.71%). Both live US buybox, asin_confirmed TRUE, In Stock TRUE, jina cross-check agrees. No rounding, no cosmetic changes, no other products touched.",
-    "post": "ONE edit: src/pages/posts/best-obd2-scanner-review.astro line 97 carried a stale $22.99 for the ANCEL AD310 (stale even before this cycle) -> aligned to the verified $29.99. BlueDriver mentioned at $94.95 on line 89 still matches. No page carries $106.98 or $23.99 for these products after the edit.",
+    "data.mjs": "NONE. All five live prices are within the 10 percent bar (max drift +5.88%). data.mjs NOT modified.",
+    "post": "NONE.",
     "script": "price_fetch.py NOT modified."
   },
-  "build": "RUN: ./node_modules/.bin/astro build -> exit 0, 54 pages built. dist/ verified: dist/tools/obd2-scanner.html has 29.99 x2 and 127.00 x2, bare 23.99 count 0; dist/posts/best-obd2-scanner-review.html has 29.99 present and 22.99 count 0.",
-  "restart": "ATTEMPTED but BLOCKED by the approval gate again (systemctl restart garagetoolsdb = stop/restart system service). Not fatal: the service runs 'astro preview' (ExecStart=npx astro preview --host 0.0.0.0 --port 8082) serving dist/ straight from disk. VERIFIED live: curl http://127.0.0.1:8082/tools/obd2-scanner/ returns 200 and serves 127.00 (2 occurrences); curl .../posts/best-obd2-scanner-review/ serves 0 occurrences of 22.99. Pending tidy action for a human: systemctl restart garagetoolsdb.",
+  "build": "SKIPPED, as required: zero edits to data.mjs. No astro build, no service restart attempted.",
+  "restart": "NOT ATTEMPTED (no edits). NOTE: the previous cycle's pending tidy action still stands for a human - systemctl restart garagetoolsdb (blocked by the approval gate); the service runs 'astro preview' serving dist/ from disk, so cycle 31's price edits were already live.",
   "issues": {
-    "SIBLING_WRITE_WARNING_ON_DATA_MJS": "NEW. The patch tool warned that src/lib/data.mjs and src/pages/posts/best-obd2-scanner-review.astro had been modified by a sibling subagent that this agent never read. gtdb git diff after the edits shows ONLY the two intended price lines changed in data.mjs and one line in the post, so nothing appears clobbered. Worth knowing that another process may be writing the same files concurrently - if a future cycle sees unexpected reverts, check for a competing cron.",
-    "GEARWRENCH_110PC_IN_STOCK_FALSE": "CARRY-OVER from cycle 29, untouched. B07H5H1J3X (socket-set) returned in_stock FALSE while price/asin_confirmed/is_prime were normal; almost certainly the known parser false-negative ('Only N left in stock'). Recheck stock next socket pass.",
-    "QUINN_132PC_NO_ASIN": "CARRY-OVER from cycle 29, untouched. socket-set/QUINN 132PC Kit ($99.99) ships with an empty asin field (Harbor Freight only, no Amazon listing). Flag for a re-ASIN-or-replace decision.",
-    "NEXPOW_2000A_NO_BUYBOX_PRICE": "CARRY-OVER from cycle 28, untouched. B07T9S3Q5N (jump-starter) resolves but exposes no buybox price on firecrawl or the jina fallback, twice. Stored $35.99 left untouched. Watch; if it persists, consider a re-ASIN.",
-    "TACKLIFE_T8_PRO_NO_ASIN": "CARRY-OVER from cycle 28, untouched. jump-starter/TACKLIFE T8 Pro ($67.99) has an empty asin field. Flag for a re-ASIN-or-replace decision.",
-    "TEKTON_TORQUE_ASIN_NEEDS_REASIN": "CARRY-OVER from cycle 27, untouched. B00C5ZL0RU (torque-wrench Best Overall, $54.99) mobile PDP exposes no buybox - two firecrawl NO PRICE passes plus a jina cross-check showing only other-seller listings. Recommend re-ASIN before the next torque pass.",
-    "PITTSBURGH_TORQUE_ASIN_LIKELY_DEAD": "CARRY-OVER from cycle 27, untouched. B0002NYWQ2 returns a 439-byte firecrawl stub and fails jina; Harbor Freight house brand, likely stale. The SAME ASIN B0002NYWQ2 is still used in breaker-bar as 'SK Hand Tool 3/4-inch' ($89.99) - one ASIN in two categories, resolve together.",
-    "BLUEDRIVER_RATING_DRIFT": "low, no action taken. BlueDriver Pro B0GL9RL3XS stored rating 4.6 / 12,400 reviews vs live 4.5 / (count not parsed this pass). Ratings are not prices and the rules forbid cosmetic edits; noting the drift only.",
-    "ASIN_CONFIRM_FALSE_WITH_PRICE_PARSED": "Carry-over pattern: a clean buybox_json price can still come back asin_confirmed FALSE, which the rules force to a no-edit. Not triggered today - all five obd2 scanners confirmed TRUE.",
-    "PARSER_FALSE_WARNING_FIX_STILL_NOT_APPLIED": "Unchanged carry-over. parse() tests the literal 'In Stock', so 'Only N left in stock' and lowercase 'In stock' both yield in_stock FALSE. Not triggered today but still unapproved/unapplied.",
-    "INDONESIA_EGRESS_CHECK_NOT_TRIGGERED": "Did not recur today. Detection fix (treat 'Deliver to Indonesia' / 'Shipping & Import Charges to' as ship_block, force jina fallback) plus mandatory cross-check on any prospective EDIT remain unapproved and unapplied. (A manual jina cross-check WAS run on both of today's edits by choice.)",
-    "WATCH_LIST_NEAR_THRESHOLD": "Wera B007BZ2AQY (screwdriver-set) at +8.41% US ($80.51 -> $87.28) remains the closest listing to the 10 percent bar; buybox held by third-party seller Deff Audio.",
-    "LOW_STOCK_WATCH_CARRYOVER": "IRWIN B0002NYBH8 (bolt-extractor-set) was 'Only 1 left in stock' on cycle 24 - worth a stock-state check before any price edit in that category.",
+    "OMT_OIL_FILTER_SOCKET_NEAR_THRESHOLD": "+5.88% US ($25.49 -> $26.99) is now the closest listing in this category to the 10 percent bar. No edit; watch next pass.",
+    "SIBLING_WRITE_WARNING_ON_DATA_MJS": "Carry-over watch item from cycle 31. No edits made this cycle so nothing to clobber. If a future cycle sees unexpected reverts, check for a competing cron.",
+    "GEARWRENCH_110PC_IN_STOCK_FALSE": "CARRY-OVER, untouched. B07H5H1J3X (socket-set) returned in_stock FALSE while price/asin_confirmed/is_prime were normal; almost certainly the known parser false-negative ('Only N left in stock'). Recheck stock next socket pass.",
+    "QUINN_132PC_NO_ASIN": "CARRY-OVER, untouched. socket-set/QUINN 132PC Kit ($99.99) ships with an empty asin field (Harbor Freight only, no Amazon listing). Flag for a re-ASIN-or-replace decision.",
+    "NEXPOW_2000A_NO_BUYBOX_PRICE": "CARRY-OVER, untouched. B07T9S3Q5N (jump-starter) resolves but exposes no buybox price on firecrawl or the jina fallback, twice. Stored $35.99 left untouched.",
+    "TACKLIFE_T8_PRO_NO_ASIN": "CARRY-OVER, untouched. jump-starter/TACKLIFE T8 Pro ($67.99) has an empty asin field. Flag for a re-ASIN-or-replace decision.",
+    "TEKTON_TORQUE_ASIN_NEEDS_REASIN": "CARRY-OVER, untouched. B00C5ZL0RU (torque-wrench Best Overall, $54.99) mobile PDP exposes no buybox. Recommend re-ASIN before the next torque pass.",
+    "PITTSBURGH_TORQUE_ASIN_LIKELY_DEAD": "CARRY-OVER, untouched. B0002NYWQ2 returns a 439-byte firecrawl stub and fails jina; same ASIN also used in breaker-bar as 'SK Hand Tool 3/4-inch' ($89.99). Resolve together.",
+    "WERA_SCREWDRIVER_WATCH": "CARRY-OVER. Wera B007BZ2AQY (screwdriver-set) at +8.41% US remains near the bar (buybox held by third-party seller Deff Audio).",
+    "IRWIN_LOW_STOCK_WATCH": "CARRY-OVER. IRWIN B0002NYBH8 (bolt-extractor-set) was 'Only 1 left in stock' on cycle 24 - check stock state before any price edit in that category.",
+    "PARSER_FALSE_WARNING_FIX_STILL_NOT_APPLIED": "Unchanged carry-over. parse() tests the literal 'In Stock', so 'Only N left in stock' and lowercase 'In stock' both yield in_stock FALSE. Not triggered today.",
+    "INDONESIA_EGRESS_CHECK_NOT_TRIGGERED": "Did not recur today (no ship_block on any of the five). Detection fix remains unapproved/unapplied.",
     "SELF_CONTINUITY_OPEN_ITEMS": "Unchanged and NOT covered by today's batch: FLOTOOL MAX 11912 B0117EESNC third-cycle unverified; jack-stand dead ASINs (B000I6W2A0, B000C4CHPE x2 duplicate, B09LGK5J7W) + Torin duplicate-ASIN bug; ESCO B0019JVIPM candidate needs jina price; multimeter Klein B018EXZO8M no-buybox; multimeter KAIWEETS B07J83SMVZ + Fluke B0006Z64Q0 ASIN 404; air-compressor Porter-Cable B000O5RO1Y + Makita B0001Q2VPU no-buybox; Stealth SAQ-11215 >$400 editorial call; work-light ROVER B08YS6CXG6 + DEWALT B077ZCTBFY no-buybox; car-ramps OOS pair B0117EETEK + B01N308YYO. NOTE: best-floor-jack-review.astro narrates a different product set (Daytona, ARCAN etc.) than data.mjs floor-jack (SATA/AV Steel/Maxority/Jack Boss) - editorial mismatch worth reconciling at some point."
   },
   "schedule": {
-    "next_category_recommend": "oil-filter-wrench - pull its ASINs and current stored prices from src/lib/data.mjs and pass them as --json. It has not had a fresh live price in recent cycles.",
-    "remaining_categories_unverified_or_due": "oil-filter-wrench next, then battery-charger / brake-caliper-tool / socket-set (socket-set carries two open flags), plus all flagged follow-ups above.",
-    "verified_this_cycle": "obd2-scanner: 5 asked, 5 live US prices resolved and confirmed (2 edits), 0 unverified."
+    "next_category_recommend": "battery-charger - pull its ASINs (B07W8KJH44, B07BLLRM8R, B00068XCQU, B00CD44RQO, B07W6B987F) and current stored prices from src/lib/data.mjs and pass them as --json. It has not had a fresh live price in recent cycles.",
+    "remaining_categories_unverified_or_due": "battery-charger next, then brake-caliper-tool / socket-set (carries two open flags), plus all flagged follow-ups above.",
+    "verified_this_cycle": "oil-filter-wrench: 5 asked, 5 live US prices resolved and confirmed (0 edits), 0 unverified."
   },
   "cycle_complete": true
 }

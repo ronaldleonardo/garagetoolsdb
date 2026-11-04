@@ -599,6 +599,19 @@ export const tools = {
       { name: "GEARWRENCH 41880D Combined Double/Bubble Flaring Tool", price: "$129.11", rating: "4.1", reviews: "29", images: ["/images/gearwrench-41880d.svg"], asin: "B0015SBV5E", specs: ["Double and bubble flare", "SAE and ISO dies", "One combined kit", "Steel body", "For import brake lines", "Blow mold case"], badge: "best", label: "Best for Imports", pros: "The only hand tool here that makes an ISO bubble flare as well as a 45 degree double flare. If your driveway has a Toyota, Honda, VW, or BMW in it, that second die set is not an option, it is the job." },
       { name: "Mastercool 71475 Universal Hydraulic Flaring Tool Set", price: "$174.99", rating: "4.4", reviews: "96", images: ["/images/mastercool-71475.svg"], asin: "B00063YR2I", specs: ["Hydraulic pump", "No lever or clamp", "Universal dies", "Double, bubble, single", "One hand operation", "Case included"], badge: "best", label: "Best Pro", pros: "A hand pump instead of a lever, so the tube clamp never gets pushed sideways and the flare comes out round every time. This is the set a shop buys when it makes flares every week." }
     ]
+  },
+  "hex-key-set": {
+    name: "Hex Keys",
+    short: "Hex Keys",
+    desc: "A hex key fails for one of two reasons: the ball end was used to break a tight bolt loose, or the key was one size off. Break with the square end, spin with the ball. From a $12 metric and SAE starter set to a $50 hex bit socket set for a ratchet, here is what actually holds a recess.",
+    slug: "hex-key-set",
+    products: [
+      { name: "Bondhus 20199 Balldriver L-Wrench Double Pack", price: "$22.99", rating: "4.9", reviews: "4,891", images: ["/images/bondhus-20199.svg"], asin: "B00012Y38W", specs: ["Metric 1.5 to 10mm", "SAE 0.050 to 3/8 in", "Ball end long arm", "Plain end short arm", "Protanium steel", "Made in USA"], badge: "top", label: "Best Overall", pros: "Metric and SAE in one purchase, both with the ball on the long arm and a plain end on the short arm. Made in the USA and the set I keep going back to." },
+      { name: "Bondhus 69600 ColorGuard Double Pack, 13 Piece", price: "$42.17", rating: "4.8", reviews: "953", images: ["/images/bondhus-69600.svg"], asin: "B00FBFI6T6", specs: ["13 piece", "Long arm", "ColorGuard color coded", "Metric + SAE", "Ball end tip", "Includes holders"], badge: "best", label: "Best Long Arm", pros: "Long arm on every key with a color coded finish you can read across the garage. The reach set for recessed fasteners behind a bracket." },
+      { name: "Amazon Basics 26-Piece Long Arm Hex Key Set", price: "$12.32", rating: "4.7", reviews: "29,185", images: ["/images/amazon-basics-hex.svg"], asin: "B0776C2D6H", specs: ["26 pieces", "Metric + SAE", "Long arm ball end", "Chrome vanadium steel", "Chamfered tips", "Folding case"], badge: "budget", label: "Best Budget", pros: "Twelve dollars for metric and SAE in a folding case, with the largest crowd of owners of anything on this page." },
+      { name: "Klein Tools 70542 Folding Hex Key Set, 17 Key", price: "$23.68", rating: "4.7", reviews: "112", images: ["/images/klein-70542.svg"], asin: "B0CV9JD3FM", specs: ["17 keys", "Metric + SAE", "2 piece folding", "Long blades", "Size stamped on blade", "5/64 to 1/4 in and 1.5 to 8mm"], badge: "value", label: "Best Folding", pros: "Compact folding frames that fold out one blade at a time, so you cannot grab the wrong size by accident. Lives in the glovebox." },
+      { name: "NEIKO 10079A Extra Long Hex Bit Socket Set", price: "$50.39", rating: "4.5", reviews: "99", images: ["/images/neiko-10079a-hex.svg"], asin: "B0BFBXS31P", specs: ["18 pieces", "3/8 inch drive", "6 inch long shafts", "S2 steel bits", "SAE 1/8 to 3/8 in", "Metric 3 to 10mm"], badge: "best", label: "Best for a Ratchet", pros: "Hex bit sockets on a ratchet handle, with the long shafts that reach recessed fasteners no L-key can touch." }
+    ]
   }
 };
 
