@@ -1,24 +1,25 @@
 {
-  "cycle": 32,
-  "date": "2026-11-03",
-  "category_done": "oil-filter-wrench (5/5 checked: all five resolved live US buybox via Firecrawl route 1, asin_confirmed TRUE, In Stock TRUE, ship_block FALSE). Zero edits: four held flat at their stored price, one drifted +5.88% which is below the 10 percent bar. No build, no restart.",
+  "cycle": 33,
+  "date": "2026-11-04",
+  "category_done": "battery-charger (5/5 checked: all five resolved live US buybox via Firecrawl route 1, asin_confirmed TRUE, In Stock TRUE, ship_block FALSE, is_prime TRUE). Zero edits: three held flat at their stored price, two drifted up but below the 10 percent bar (NOCO GENIUS5 +0.11%, CTEK MXS 5.0 +4.17%). No build, no restart.",
   "products_checked": [
-    "oil-filter-wrench/OMT 10-Piece Oil Filter Socket Set (B0BJK5FSNR): VERIFIED $26.99 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, is_prime TRUE, rating 4.4) vs stored $25.49 = +5.88% -> NO EDIT (below bar).",
-    "oil-filter-wrench/Lisle 50750 Oil Filter Pliers (B0002SR562): VERIFIED $29.20 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, is_prime TRUE, rating 4.8) vs stored $29.20 = +0.00% -> NO EDIT.",
-    "oil-filter-wrench/Lisle 63600 3/8 Drive (B0002SR4Q8): VERIFIED $12.99 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, is_prime TRUE, rating 4.5) vs stored $12.99 = +0.00% -> NO EDIT.",
-    "oil-filter-wrench/GEARWRENCH 3288D 3-Jaw (B0002SR53A): VERIFIED $13.49 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, is_prime TRUE, rating 4.6) vs stored $13.49 = +0.00% -> NO EDIT.",
-    "oil-filter-wrench/GEARWRENCH 3149 Strap Wrench (B0002SR4MM): VERIFIED $10.68 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, is_prime TRUE, rating 4.6) vs stored $10.68 = +0.00% -> NO EDIT."
+    "battery-charger/NOCO GENIUS5 (B07W8KJH44): VERIFIED $69.95 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, is_prime TRUE, rating 4.6) vs stored $69.87 = +0.11% -> NO EDIT (below bar).",
+    "battery-charger/Schumacher SC1281 (B07BLLRM8R): VERIFIED $89.99 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, is_prime TRUE, rating 4.5) vs stored $89.99 = +0.00% -> NO EDIT.",
+    "battery-charger/Battery Tender Plus 021-0128 (B00068XCQU): VERIFIED $58.95 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, is_prime TRUE, rating 4.7) vs stored $58.95 = +0.00% -> NO EDIT.",
+    "battery-charger/CTEK MXS 5.0 (B00CD44RQO): VERIFIED $99.99 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, is_prime TRUE, rating 4.7) vs stored $95.99 = +4.17% -> NO EDIT (below bar).",
+    "battery-charger/NOCO GENIUS2 (B07W6B987F): VERIFIED $49.95 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, is_prime TRUE, rating 4.6) vs stored $49.95 = +0.00% -> NO EDIT."
   ],
   "edits": {
-    "data.mjs": "NONE. All five live prices are within the 10 percent bar (max drift +5.88%). data.mjs NOT modified.",
+    "data.mjs": "NONE. All five live prices are within the 10 percent bar (max drift +4.17%). data.mjs NOT modified.",
     "post": "NONE.",
     "script": "price_fetch.py NOT modified."
   },
   "build": "SKIPPED, as required: zero edits to data.mjs. No astro build, no service restart attempted.",
-  "restart": "NOT ATTEMPTED (no edits). NOTE: the previous cycle's pending tidy action still stands for a human - systemctl restart garagetoolsdb (blocked by the approval gate); the service runs 'astro preview' serving dist/ from disk, so cycle 31's price edits were already live.",
+  "restart": "NOT ATTEMPTED (no edits). NOTE: the carry-over tidy action still stands for a human - systemctl restart garagetoolsdb (blocked by the approval gate); the service runs 'astro preview' serving dist/ from disk, so earlier price edits were already live.",
   "issues": {
-    "OMT_OIL_FILTER_SOCKET_NEAR_THRESHOLD": "+5.88% US ($25.49 -> $26.99) is now the closest listing in this category to the 10 percent bar. No edit; watch next pass.",
-    "SIBLING_WRITE_WARNING_ON_DATA_MJS": "Carry-over watch item from cycle 31. No edits made this cycle so nothing to clobber. If a future cycle sees unexpected reverts, check for a competing cron.",
+    "CTEK_MXS5_NEAR_THRESHOLD": "NEW watch item. CTEK MXS 5.0 B00CD44RQO +4.17% US ($95.99 -> $99.99, crossed the $100 mark) is now the closest listing in this category to the 10 percent bar. No edit; watch next pass. If it edges past $105.59 it trips the bar.",
+    "NOCO_GENIUS5_COSMETIC_DRIFT": "NOCO GENIUS5 B07W8KJH44 +0.11% ($69.87 -> $69.95). Cosmetically nonzero but far below the bar; no edit.",
+    "SIBLING_WRITE_WARNING_ON_DATA_MJS": "Carry-over watch item. No edits made this cycle so nothing to clobber. If a future cycle sees unexpected reverts, check for a competing cron.",
     "GEARWRENCH_110PC_IN_STOCK_FALSE": "CARRY-OVER, untouched. B07H5H1J3X (socket-set) returned in_stock FALSE while price/asin_confirmed/is_prime were normal; almost certainly the known parser false-negative ('Only N left in stock'). Recheck stock next socket pass.",
     "QUINN_132PC_NO_ASIN": "CARRY-OVER, untouched. socket-set/QUINN 132PC Kit ($99.99) ships with an empty asin field (Harbor Freight only, no Amazon listing). Flag for a re-ASIN-or-replace decision.",
     "NEXPOW_2000A_NO_BUYBOX_PRICE": "CARRY-OVER, untouched. B07T9S3Q5N (jump-starter) resolves but exposes no buybox price on firecrawl or the jina fallback, twice. Stored $35.99 left untouched.",
@@ -27,14 +28,15 @@
     "PITTSBURGH_TORQUE_ASIN_LIKELY_DEAD": "CARRY-OVER, untouched. B0002NYWQ2 returns a 439-byte firecrawl stub and fails jina; same ASIN also used in breaker-bar as 'SK Hand Tool 3/4-inch' ($89.99). Resolve together.",
     "WERA_SCREWDRIVER_WATCH": "CARRY-OVER. Wera B007BZ2AQY (screwdriver-set) at +8.41% US remains near the bar (buybox held by third-party seller Deff Audio).",
     "IRWIN_LOW_STOCK_WATCH": "CARRY-OVER. IRWIN B0002NYBH8 (bolt-extractor-set) was 'Only 1 left in stock' on cycle 24 - check stock state before any price edit in that category.",
+    "OMT_OIL_FILTER_SOCKET_NEAR_THRESHOLD": "CARRY-OVER from cycle 32. OMT B0BJK5FSNR (oil-filter-wrench) +5.88% US ($25.49 -> $26.99) remains near the bar. No edit; watch next oil-filter pass.",
     "PARSER_FALSE_WARNING_FIX_STILL_NOT_APPLIED": "Unchanged carry-over. parse() tests the literal 'In Stock', so 'Only N left in stock' and lowercase 'In stock' both yield in_stock FALSE. Not triggered today.",
     "INDONESIA_EGRESS_CHECK_NOT_TRIGGERED": "Did not recur today (no ship_block on any of the five). Detection fix remains unapproved/unapplied.",
     "SELF_CONTINUITY_OPEN_ITEMS": "Unchanged and NOT covered by today's batch: FLOTOOL MAX 11912 B0117EESNC third-cycle unverified; jack-stand dead ASINs (B000I6W2A0, B000C4CHPE x2 duplicate, B09LGK5J7W) + Torin duplicate-ASIN bug; ESCO B0019JVIPM candidate needs jina price; multimeter Klein B018EXZO8M no-buybox; multimeter KAIWEETS B07J83SMVZ + Fluke B0006Z64Q0 ASIN 404; air-compressor Porter-Cable B000O5RO1Y + Makita B0001Q2VPU no-buybox; Stealth SAQ-11215 >$400 editorial call; work-light ROVER B08YS6CXG6 + DEWALT B077ZCTBFY no-buybox; car-ramps OOS pair B0117EETEK + B01N308YYO. NOTE: best-floor-jack-review.astro narrates a different product set (Daytona, ARCAN etc.) than data.mjs floor-jack (SATA/AV Steel/Maxority/Jack Boss) - editorial mismatch worth reconciling at some point."
   },
   "schedule": {
-    "next_category_recommend": "battery-charger - pull its ASINs (B07W8KJH44, B07BLLRM8R, B00068XCQU, B00CD44RQO, B07W6B987F) and current stored prices from src/lib/data.mjs and pass them as --json. It has not had a fresh live price in recent cycles.",
-    "remaining_categories_unverified_or_due": "battery-charger next, then brake-caliper-tool / socket-set (carries two open flags), plus all flagged follow-ups above.",
-    "verified_this_cycle": "oil-filter-wrench: 5 asked, 5 live US prices resolved and confirmed (0 edits), 0 unverified."
+    "next_category_recommend": "brake-caliper-tool - pull its ASINs and current stored prices from src/lib/data.mjs and pass them as --json. It has not had a fresh live price in recent cycles.",
+    "remaining_categories_unverified_or_due": "brake-caliper-tool next, then socket-set (carries two open flags), plus all flagged follow-ups above.",
+    "verified_this_cycle": "battery-charger: 5 asked, 5 live US prices resolved and confirmed (0 edits), 0 unverified."
   },
   "cycle_complete": true
 }
