@@ -1,26 +1,26 @@
 {
-  "cycle": 33,
-  "date": "2026-11-04",
-  "category_done": "battery-charger (5/5 checked: all five resolved live US buybox via Firecrawl route 1, asin_confirmed TRUE, In Stock TRUE, ship_block FALSE, is_prime TRUE). Zero edits: three held flat at their stored price, two drifted up but below the 10 percent bar (NOCO GENIUS5 +0.11%, CTEK MXS 5.0 +4.17%). No build, no restart.",
+  "cycle": 34,
+  "date": "2026-11-05",
+  "category_done": "brake-caliper-tool (5/5 checked: all five resolved live US buybox via Firecrawl route 1, asin_confirmed TRUE). Zero edits: three held flat at their stored price, two drifted but stayed below the 10 percent bar (Orion 24pc +6.89%, Lisle 28600 -7.64%). No build, no restart.",
   "products_checked": [
-    "battery-charger/NOCO GENIUS5 (B07W8KJH44): VERIFIED $69.95 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, is_prime TRUE, rating 4.6) vs stored $69.87 = +0.11% -> NO EDIT (below bar).",
-    "battery-charger/Schumacher SC1281 (B07BLLRM8R): VERIFIED $89.99 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, is_prime TRUE, rating 4.5) vs stored $89.99 = +0.00% -> NO EDIT.",
-    "battery-charger/Battery Tender Plus 021-0128 (B00068XCQU): VERIFIED $58.95 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, is_prime TRUE, rating 4.7) vs stored $58.95 = +0.00% -> NO EDIT.",
-    "battery-charger/CTEK MXS 5.0 (B00CD44RQO): VERIFIED $99.99 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, is_prime TRUE, rating 4.7) vs stored $95.99 = +4.17% -> NO EDIT (below bar).",
-    "battery-charger/NOCO GENIUS2 (B07W6B987F): VERIFIED $49.95 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, is_prime TRUE, rating 4.6) vs stored $49.95 = +0.00% -> NO EDIT."
+    "brake-caliper-tool/Orion Motor Tech 24pc Caliper Tool Set (B01FW3U26G): VERIFIED $24.67 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, is_prime TRUE, rating 4.7) vs stored $23.08 = +6.89% -> NO EDIT (below bar). Now the closest listing in this category to the bar.",
+    "brake-caliper-tool/Lisle 29100 Quick Quad Pad Spreader (B005GLQCKA): VERIFIED $58.78 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, is_prime TRUE, rating 4.5) vs stored $58.78 = +0.00% -> NO EDIT.",
+    "brake-caliper-tool/8MILELAKE 24pc Wind Back Kit (B0122Q83T4): VERIFIED $22.79 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, is_prime TRUE, rating 4.7) vs stored $22.79 = +0.00% -> NO EDIT.",
+    "brake-caliper-tool/Lisle 25750 Dual Piston Spreader (B0002SQUTU): VERIFIED $46.78 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, is_prime TRUE, rating 4.7) vs stored $46.78 = +0.00% -> NO EDIT.",
+    "brake-caliper-tool/Lisle 28600 Disc Brake Piston Tool (B0002SQUFY): VERIFIED price $16.21 (firecrawl, buybox_json, asin_confirmed TRUE, rating 4.5) vs stored $17.55 = -7.64% -> NO EDIT. BUT in_stock FALSE and is_prime FALSE flagged (see issues)."
   ],
   "edits": {
-    "data.mjs": "NONE. All five live prices are within the 10 percent bar (max drift +4.17%). data.mjs NOT modified.",
+    "data.mjs": "NONE. All five live prices are within the 10 percent bar (max drift -7.64%). data.mjs NOT modified.",
     "post": "NONE.",
     "script": "price_fetch.py NOT modified."
   },
   "build": "SKIPPED, as required: zero edits to data.mjs. No astro build, no service restart attempted.",
-  "restart": "NOT ATTEMPTED (no edits). NOTE: the carry-over tidy action still stands for a human - systemctl restart garagetoolsdb (blocked by the approval gate); the service runs 'astro preview' serving dist/ from disk, so earlier price edits were already live.",
+  "restart": "NOT ATTEMPTED (no edits). Carry-over tidy action still stands for a human - systemctl restart garagetoolsdb (blocked by the approval gate); the service runs 'astro preview' serving dist/ from disk.",
   "issues": {
-    "CTEK_MXS5_NEAR_THRESHOLD": "NEW watch item. CTEK MXS 5.0 B00CD44RQO +4.17% US ($95.99 -> $99.99, crossed the $100 mark) is now the closest listing in this category to the 10 percent bar. No edit; watch next pass. If it edges past $105.59 it trips the bar.",
-    "NOCO_GENIUS5_COSMETIC_DRIFT": "NOCO GENIUS5 B07W8KJH44 +0.11% ($69.87 -> $69.95). Cosmetically nonzero but far below the bar; no edit.",
+    "LISLE_28600_IN_STOCK_FALSE": "NEW watch item. B0002SQUFY (Lisle 28600 Disc Brake Piston Tool, Best Budget $17.55) returned in_stock FALSE and is_prime FALSE while price $16.21 and asin_confirmed TRUE were normal. Likely the known parser false-negative ('Only N left in stock' / lowercase 'In stock'), but could be genuinely low stock or a dropped Prime offer. Below the 10 percent bar so no price edit; recheck stock and Prime state next brake-caliper pass before any edit.",
+    "ORION_24PC_NEAR_THRESHOLD": "NEW watch item. Orion Motor Tech B01FW3U26G +6.89% US ($23.08 -> $24.67) is the closest listing in this category to the 10 percent bar. No edit; watch next brake-caliper pass.",
     "SIBLING_WRITE_WARNING_ON_DATA_MJS": "Carry-over watch item. No edits made this cycle so nothing to clobber. If a future cycle sees unexpected reverts, check for a competing cron.",
-    "GEARWRENCH_110PC_IN_STOCK_FALSE": "CARRY-OVER, untouched. B07H5H1J3X (socket-set) returned in_stock FALSE while price/asin_confirmed/is_prime were normal; almost certainly the known parser false-negative ('Only N left in stock'). Recheck stock next socket pass.",
+    "GEARWRENCH_110PC_IN_STOCK_FALSE": "CARRY-OVER, untouched. B07H5H1J3X (socket-set) returned in_stock FALSE while price/asin_confirmed/is_prime were normal; almost certainly the known parser false-negative. Recheck stock next socket pass.",
     "QUINN_132PC_NO_ASIN": "CARRY-OVER, untouched. socket-set/QUINN 132PC Kit ($99.99) ships with an empty asin field (Harbor Freight only, no Amazon listing). Flag for a re-ASIN-or-replace decision.",
     "NEXPOW_2000A_NO_BUYBOX_PRICE": "CARRY-OVER, untouched. B07T9S3Q5N (jump-starter) resolves but exposes no buybox price on firecrawl or the jina fallback, twice. Stored $35.99 left untouched.",
     "TACKLIFE_T8_PRO_NO_ASIN": "CARRY-OVER, untouched. jump-starter/TACKLIFE T8 Pro ($67.99) has an empty asin field. Flag for a re-ASIN-or-replace decision.",
@@ -29,14 +29,15 @@
     "WERA_SCREWDRIVER_WATCH": "CARRY-OVER. Wera B007BZ2AQY (screwdriver-set) at +8.41% US remains near the bar (buybox held by third-party seller Deff Audio).",
     "IRWIN_LOW_STOCK_WATCH": "CARRY-OVER. IRWIN B0002NYBH8 (bolt-extractor-set) was 'Only 1 left in stock' on cycle 24 - check stock state before any price edit in that category.",
     "OMT_OIL_FILTER_SOCKET_NEAR_THRESHOLD": "CARRY-OVER from cycle 32. OMT B0BJK5FSNR (oil-filter-wrench) +5.88% US ($25.49 -> $26.99) remains near the bar. No edit; watch next oil-filter pass.",
-    "PARSER_FALSE_WARNING_FIX_STILL_NOT_APPLIED": "Unchanged carry-over. parse() tests the literal 'In Stock', so 'Only N left in stock' and lowercase 'In stock' both yield in_stock FALSE. Not triggered today.",
+    "CTEK_MXS5_NEAR_THRESHOLD": "CARRY-OVER from cycle 33. CTEK MXS 5.0 B00CD44RQO (battery-charger) +4.17% US ($95.99 -> $99.99). No edit; watch.",
+    "PARSER_FALSE_WARNING_FIX_STILL_NOT_APPLIED": "Unchanged carry-over. parse() tests the literal 'In Stock', so 'Only N left in stock' and lowercase 'In stock' both yield in_stock FALSE. Triggered today on Lisle 28600.",
     "INDONESIA_EGRESS_CHECK_NOT_TRIGGERED": "Did not recur today (no ship_block on any of the five). Detection fix remains unapproved/unapplied.",
     "SELF_CONTINUITY_OPEN_ITEMS": "Unchanged and NOT covered by today's batch: FLOTOOL MAX 11912 B0117EESNC third-cycle unverified; jack-stand dead ASINs (B000I6W2A0, B000C4CHPE x2 duplicate, B09LGK5J7W) + Torin duplicate-ASIN bug; ESCO B0019JVIPM candidate needs jina price; multimeter Klein B018EXZO8M no-buybox; multimeter KAIWEETS B07J83SMVZ + Fluke B0006Z64Q0 ASIN 404; air-compressor Porter-Cable B000O5RO1Y + Makita B0001Q2VPU no-buybox; Stealth SAQ-11215 >$400 editorial call; work-light ROVER B08YS6CXG6 + DEWALT B077ZCTBFY no-buybox; car-ramps OOS pair B0117EETEK + B01N308YYO. NOTE: best-floor-jack-review.astro narrates a different product set (Daytona, ARCAN etc.) than data.mjs floor-jack (SATA/AV Steel/Maxority/Jack Boss) - editorial mismatch worth reconciling at some point."
   },
   "schedule": {
-    "next_category_recommend": "brake-caliper-tool - pull its ASINs and current stored prices from src/lib/data.mjs and pass them as --json. It has not had a fresh live price in recent cycles.",
-    "remaining_categories_unverified_or_due": "brake-caliper-tool next, then socket-set (carries two open flags), plus all flagged follow-ups above.",
-    "verified_this_cycle": "battery-charger: 5 asked, 5 live US prices resolved and confirmed (0 edits), 0 unverified."
+    "next_category_recommend": "socket-set - pull its ASINs and current stored prices from src/lib/data.mjs and pass them as --json. It carries two open flags (GEARWRENCH in_stock FALSE, QUINN no ASIN) and has not had a fresh live price in recent cycles.",
+    "remaining_categories_unverified_or_due": "socket-set next, then all flagged follow-ups above.",
+    "verified_this_cycle": "brake-caliper-tool: 5 asked, 5 live US prices resolved and confirmed (0 edits), 0 unverified."
   },
   "cycle_complete": true
 }
