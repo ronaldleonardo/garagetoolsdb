@@ -1,43 +1,44 @@
 {
-  "cycle": 34,
-  "date": "2026-11-05",
-  "category_done": "brake-caliper-tool (5/5 checked: all five resolved live US buybox via Firecrawl route 1, asin_confirmed TRUE). Zero edits: three held flat at their stored price, two drifted but stayed below the 10 percent bar (Orion 24pc +6.89%, Lisle 28600 -7.64%). No build, no restart.",
+  "cycle": 35,
+  "date": "2026-11-06",
+  "category_done": "socket-set (5/5 accounted: 4 ASINs fetched via Firecrawl route 1, 3 live US buybox prices confirmed, 1 no-buybox-price; 1 product has no ASIN). Zero edits: DEWALT drifted +4.57% (below bar), TEKTON and Sunex flat, GEARWRENCH exposes no main buybox price at all. No build, no restart.",
   "products_checked": [
-    "brake-caliper-tool/Orion Motor Tech 24pc Caliper Tool Set (B01FW3U26G): VERIFIED $24.67 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, is_prime TRUE, rating 4.7) vs stored $23.08 = +6.89% -> NO EDIT (below bar). Now the closest listing in this category to the bar.",
-    "brake-caliper-tool/Lisle 29100 Quick Quad Pad Spreader (B005GLQCKA): VERIFIED $58.78 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, is_prime TRUE, rating 4.5) vs stored $58.78 = +0.00% -> NO EDIT.",
-    "brake-caliper-tool/8MILELAKE 24pc Wind Back Kit (B0122Q83T4): VERIFIED $22.79 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, is_prime TRUE, rating 4.7) vs stored $22.79 = +0.00% -> NO EDIT.",
-    "brake-caliper-tool/Lisle 25750 Dual Piston Spreader (B0002SQUTU): VERIFIED $46.78 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, is_prime TRUE, rating 4.7) vs stored $46.78 = +0.00% -> NO EDIT.",
-    "brake-caliper-tool/Lisle 28600 Disc Brake Piston Tool (B0002SQUFY): VERIFIED price $16.21 (firecrawl, buybox_json, asin_confirmed TRUE, rating 4.5) vs stored $17.55 = -7.64% -> NO EDIT. BUT in_stock FALSE and is_prime FALSE flagged (see issues)."
+    "socket-set/GEARWRENCH 110PC (B07H5H1J3X): UNVERIFIED - NO BUYBOX PRICE. asin_confirmed TRUE on both routes, but neither Firecrawl (22667 b) nor the jina fallback (25324 b) renders any buybox price; no displayPrice blob and no 'In stock' / 'Currently unavailable' marker. The PDP now shows a third-party-only offer ('Buy New' from Vera Tools, Ships from Amazon, 'Only 1 left in stock - order soon.') with no rendered price, plus a 'Used - Like New $88.94' offer. Stored $115.58 left untouched. See issues.",
+    "socket-set/DEWALT 192PC Set (B01BHJE0J4): VERIFIED $159.98 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, is_prime TRUE, rating 4.8) vs stored $152.99 = +4.57% -> NO EDIT (below bar). Now the closest socket-set listing to the 10 percent bar.",
+    "socket-set/TEKTON 1/2 Drive (B07QSCTG8Y): VERIFIED $54.00 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, is_prime TRUE, rating 4.8) vs stored $54.00 = +0.00% -> NO EDIT.",
+    "socket-set/Sunex 2569 Master (B00MPQ88RY): VERIFIED $144.79 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, is_prime TRUE, rating 4.8) vs stored $144.79 = +0.00% -> NO EDIT.",
+    "socket-set/QUINN 132PC Kit ($99.99): NOT FETCHABLE - asin field is empty (Harbor Freight only, no Amazon listing). Carry-over flag, no edit possible."
   ],
   "edits": {
-    "data.mjs": "NONE. All five live prices are within the 10 percent bar (max drift -7.64%). data.mjs NOT modified.",
+    "data.mjs": "NONE. Three live prices resolved and all within the 10 percent bar (max drift +4.57%); one product has no buybox price; one has no ASIN. data.mjs NOT modified.",
     "post": "NONE.",
     "script": "price_fetch.py NOT modified."
   },
   "build": "SKIPPED, as required: zero edits to data.mjs. No astro build, no service restart attempted.",
   "restart": "NOT ATTEMPTED (no edits). Carry-over tidy action still stands for a human - systemctl restart garagetoolsdb (blocked by the approval gate); the service runs 'astro preview' serving dist/ from disk.",
   "issues": {
-    "LISLE_28600_IN_STOCK_FALSE": "NEW watch item. B0002SQUFY (Lisle 28600 Disc Brake Piston Tool, Best Budget $17.55) returned in_stock FALSE and is_prime FALSE while price $16.21 and asin_confirmed TRUE were normal. Likely the known parser false-negative ('Only N left in stock' / lowercase 'In stock'), but could be genuinely low stock or a dropped Prime offer. Below the 10 percent bar so no price edit; recheck stock and Prime state next brake-caliper pass before any edit.",
-    "ORION_24PC_NEAR_THRESHOLD": "NEW watch item. Orion Motor Tech B01FW3U26G +6.89% US ($23.08 -> $24.67) is the closest listing in this category to the 10 percent bar. No edit; watch next brake-caliper pass.",
+    "GEARWRENCH_110PC_NO_BUYBOX_PRICE_CORRECTED": "CORRECTED/ESCALATED, was 'GEARWRENCH_110PC_IN_STOCK_FALSE' (carry-over, and earlier written off as a parser false-negative). It is NOT a parser artefact: today both routes returned a genuine PDP with no buybox and no price at all. The listing now appears to be third-party-only (Vera Tools, 1 left, no Prime marker) with an $88.94 used offer. The parser's 'In Stock' literal test is irrelevant here - there is simply no new price to read. Because Amazon-direct/the original buybox offer is gone, stored $115.58 (Best Overall) can no longer be confirmed. Recommend a re-ASIN-or-replace decision for socket-set Best Overall before the next socket pass. Do NOT edit the price.",
+    "DEWALT_192PC_NEAR_THRESHOLD": "NEW watch item. DEWALT B01BHJE0J4 +4.57% US ($152.99 -> $159.98) is the closest socket-set listing to the 10 percent bar. No edit; watch next socket pass.",
+    "QUINN_132PC_NO_ASIN": "CARRY-OVER, unchanged. socket-set/QUINN 132PC Kit ($99.99) ships with an empty asin field (Harbor Freight only, no Amazon listing). Flag for a re-ASIN-or-replace decision - it is one of the five socket-set cards and its price is displayed as an estimate.",
     "SIBLING_WRITE_WARNING_ON_DATA_MJS": "Carry-over watch item. No edits made this cycle so nothing to clobber. If a future cycle sees unexpected reverts, check for a competing cron.",
-    "GEARWRENCH_110PC_IN_STOCK_FALSE": "CARRY-OVER, untouched. B07H5H1J3X (socket-set) returned in_stock FALSE while price/asin_confirmed/is_prime were normal; almost certainly the known parser false-negative. Recheck stock next socket pass.",
-    "QUINN_132PC_NO_ASIN": "CARRY-OVER, untouched. socket-set/QUINN 132PC Kit ($99.99) ships with an empty asin field (Harbor Freight only, no Amazon listing). Flag for a re-ASIN-or-replace decision.",
     "NEXPOW_2000A_NO_BUYBOX_PRICE": "CARRY-OVER, untouched. B07T9S3Q5N (jump-starter) resolves but exposes no buybox price on firecrawl or the jina fallback, twice. Stored $35.99 left untouched.",
     "TACKLIFE_T8_PRO_NO_ASIN": "CARRY-OVER, untouched. jump-starter/TACKLIFE T8 Pro ($67.99) has an empty asin field. Flag for a re-ASIN-or-replace decision.",
-    "TEKTON_TORQUE_ASIN_NEEDS_REASIN": "CARRY-OVER, untouched. B00C5ZL0RU (torque-wrench Best Overall, $54.99) mobile PDP exposes no buybox. Recommend re-ASIN before the next torque pass.",
+    "TEKTON_TORQUE_ASIN_NEEDS_REASIN": "CARRY-OVER, untouched. B00C5ZL0RU (torque-wrench Best Overall, $54.99) mobile PDP exposes no buybox price. Recommend re-ASIN before the next torque pass.",
     "PITTSBURGH_TORQUE_ASIN_LIKELY_DEAD": "CARRY-OVER, untouched. B0002NYWQ2 returns a 439-byte firecrawl stub and fails jina; same ASIN also used in breaker-bar as 'SK Hand Tool 3/4-inch' ($89.99). Resolve together.",
     "WERA_SCREWDRIVER_WATCH": "CARRY-OVER. Wera B007BZ2AQY (screwdriver-set) at +8.41% US remains near the bar (buybox held by third-party seller Deff Audio).",
     "IRWIN_LOW_STOCK_WATCH": "CARRY-OVER. IRWIN B0002NYBH8 (bolt-extractor-set) was 'Only 1 left in stock' on cycle 24 - check stock state before any price edit in that category.",
     "OMT_OIL_FILTER_SOCKET_NEAR_THRESHOLD": "CARRY-OVER from cycle 32. OMT B0BJK5FSNR (oil-filter-wrench) +5.88% US ($25.49 -> $26.99) remains near the bar. No edit; watch next oil-filter pass.",
     "CTEK_MXS5_NEAR_THRESHOLD": "CARRY-OVER from cycle 33. CTEK MXS 5.0 B00CD44RQO (battery-charger) +4.17% US ($95.99 -> $99.99). No edit; watch.",
-    "PARSER_FALSE_WARNING_FIX_STILL_NOT_APPLIED": "Unchanged carry-over. parse() tests the literal 'In Stock', so 'Only N left in stock' and lowercase 'In stock' both yield in_stock FALSE. Triggered today on Lisle 28600.",
-    "INDONESIA_EGRESS_CHECK_NOT_TRIGGERED": "Did not recur today (no ship_block on any of the five). Detection fix remains unapproved/unapplied.",
+    "ORION_24PC_NEAR_THRESHOLD": "CARRY-OVER from cycle 34. Orion Motor Tech B01FW3U26G (brake-caliper-tool) +6.89% US ($23.08 -> $24.67). No edit; watch.",
+    "LISLE_28600_IN_STOCK_FALSE": "CARRY-OVER from cycle 34. B0002SQUFY (brake-caliper-tool) returned in_stock FALSE while price $16.21 and asin_confirmed TRUE were normal - likely the known parser false-negative. Recheck stock/Prime next brake-caliper pass.",
+    "PARSER_FALSE_WARNING_FIX_STILL_NOT_APPLIED": "Unchanged carry-over. parse() tests the literal 'In Stock', so 'Only N left in stock' (which GEARWRENCH shows today) and lowercase 'In stock' both yield in_stock FALSE. Note: it did NOT mask anything today - GEARWRENCH has no price, and the other three returned normal stock flags. The 'In stock' literal test also proves brittle: GEARWRENCH's PDP contains 'Only 1 left in stock' yet reports in_stock FALSE.",
+    "INDONESIA_EGRESS_CHECK_NOT_TRIGGERED": "Did not recur today (no ship_block on any of the four fetched). Detection fix remains unapproved/unapplied.",
     "SELF_CONTINUITY_OPEN_ITEMS": "Unchanged and NOT covered by today's batch: FLOTOOL MAX 11912 B0117EESNC third-cycle unverified; jack-stand dead ASINs (B000I6W2A0, B000C4CHPE x2 duplicate, B09LGK5J7W) + Torin duplicate-ASIN bug; ESCO B0019JVIPM candidate needs jina price; multimeter Klein B018EXZO8M no-buybox; multimeter KAIWEETS B07J83SMVZ + Fluke B0006Z64Q0 ASIN 404; air-compressor Porter-Cable B000O5RO1Y + Makita B0001Q2VPU no-buybox; Stealth SAQ-11215 >$400 editorial call; work-light ROVER B08YS6CXG6 + DEWALT B077ZCTBFY no-buybox; car-ramps OOS pair B0117EETEK + B01N308YYO. NOTE: best-floor-jack-review.astro narrates a different product set (Daytona, ARCAN etc.) than data.mjs floor-jack (SATA/AV Steel/Maxority/Jack Boss) - editorial mismatch worth reconciling at some point."
   },
   "schedule": {
-    "next_category_recommend": "socket-set - pull its ASINs and current stored prices from src/lib/data.mjs and pass them as --json. It carries two open flags (GEARWRENCH in_stock FALSE, QUINN no ASIN) and has not had a fresh live price in recent cycles.",
-    "remaining_categories_unverified_or_due": "socket-set next, then all flagged follow-ups above.",
-    "verified_this_cycle": "brake-caliper-tool: 5 asked, 5 live US prices resolved and confirmed (0 edits), 0 unverified."
+    "next_category_recommend": "torque-wrench - pull its ASINs and stored prices from src/lib/data.mjs and pass them as --json. It carries two unresolved ASIN problems (TEKTON B00C5ZL0RU no buybox -> needs re-ASIN, PITTSBURGH B0002NYWQ2 likely dead) that make it the most in need of a decision, and it has not had a fresh live price in recent cycles. If a clean price pass is preferred instead, impact-socket-set is untouched and has no open flags.",
+    "remaining_categories_unverified_or_due": "torque-wrench next, then all flagged follow-ups above.",
+    "verified_this_cycle": "socket-set: 5 products accounted, 3 live US prices resolved and confirmed, 1 no-buybox-price (GEARWRENCH), 1 no-ASIN (QUINN), 0 edits."
   },
   "cycle_complete": true
 }
