@@ -1,23 +1,25 @@
 {
-  "cycle": 37,
-  "date": "2026-11-08",
-  "category_done": "impact-socket-set (5/5 products fetched clean on firecrawl route 1, all asin_confirmed TRUE, all In Stock, all Prime. One EDIT: MIXPOWER 49-Piece -10.01% crossed the bar. Four others under the bar (two exactly flat, two small dips). Build ran, price verified live on :8082 with no restart needed.)",
+  "cycle": 38,
+  "date": "2026-11-09",
+  "category_done": "obd2-scanner (5/5 products fetched clean on firecrawl route 1, all asin_confirmed TRUE, all In Stock, all Prime. NO EDITS: every change stayed under the 10 percent bar - largest was +6.51%. No build, no restart.)",
   "products_checked": [
-    "impact-socket-set/Sunex 2645 26-Piece (B002MW9UW8): VERIFIED $113.48 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, Prime TRUE, rating 4.8) vs stored $116.99 = -3.00% -> NO EDIT (under bar). Clean.",
-    "impact-socket-set/CASOMAN 14-Piece 1/2 In Shallow (B091KXVFVC): VERIFIED $19.97 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, Prime TRUE, rating 4.7) vs stored $19.97 = +0.00% -> NO EDIT. Clean.",
-    "impact-socket-set/CASOMAN 70-Piece Master (B093BJGT13): VERIFIED $135.97 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, Prime TRUE, rating 4.7) vs stored $135.97 = +0.00% -> NO EDIT. Clean.",
-    "impact-socket-set/Sunex 2646 26-Piece Deep (B002MW2CGO): VERIFIED $176.51 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, Prime TRUE, rating 4.6) vs stored $179.72 = -1.79% -> NO EDIT (under bar). Clean.",
-    "impact-socket-set/MIXPOWER 49-Piece 3/8 In Deep (B08JTS9RRJ): VERIFIED $35.97 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, Prime TRUE, rating 4.7) vs stored $39.97 = -10.01% -> EDIT APPLIED. data.mjs updated $39.97 -> $35.97. Build + live verify done."
+    "obd2-scanner/BlueDriver Pro OBD2 (B0GL9RL3XS): VERIFIED $89.99 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, Prime TRUE, rating 4.5) vs stored $94.95 = -5.22% -> NO EDIT (under bar). Clean.",
+    "obd2-scanner/ANCEL AD310 (B01G5EA74I): VERIFIED $29.99 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, Prime TRUE, rating 4.6) vs stored $29.99 = +0.00% -> NO EDIT. Clean.",
+    "obd2-scanner/Innova 5610 (B07Z481NJM): VERIFIED $349.99 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, Prime TRUE, rating 4.4) vs stored $349.99 = +0.00% -> NO EDIT. Clean.",
+    "obd2-scanner/LAUNCH CRP123 (B073GW5MTS): VERIFIED $127.00 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, Prime TRUE, rating 4.3) vs stored $127.00 = +0.00% -> NO EDIT. Clean.",
+    "obd2-scanner/FOXWELL NT301 (B00UJV3E12): VERIFIED $59.59 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, Prime TRUE, rating 4.5) vs stored $55.95 = +6.51% -> NO EDIT (under bar). Closest to the bar this cycle; watch next obd2 pass."
   ],
   "edits": {
-    "data.mjs": "ONE edit: impact-socket-set MIXPOWER 49-Piece (B08JTS9RRJ) price $39.97 -> $35.97 (-10.01%, above the 10 percent bar, asin_confirmed TRUE). No other lines touched.",
-    "post": "NONE needed (price-only).",
+    "data.mjs": "NONE. No price crossed the 10 percent bar (range -5.22% to +6.51%). data.mjs untouched.",
+    "post": "NONE needed.",
     "script": "price_fetch.py NOT modified."
   },
-  "build": "RAN: ./node_modules/.bin/astro build -> 56 pages built, Complete. dist/tools/impact-socket-set.html now contains 35.97 (x2) and no 39.97.",
-  "restart": "NOT NEEDED / NOT RUN. systemctl restart garagetoolsdb sits behind the cron approval gate (blocked, as expected). Astro preview serves dist/ from disk, so the rebuilt page is already live: curl http://127.0.0.1:8082/tools/impact-socket-set returns 200 and serves 35.97 without a restart. GTDB preview is on port 8082 (not 8086).",
+  "build": "NOT RUN (no edits to data.mjs). Explicitly skipped per the rules.",
+  "restart": "NOT RUN (no edits).",
   "issues": {
-    "ALL_CLEAN_THIS_CYCLE": "No new failures, no ship blocks, no dead ASINs, no asin_confirmed FALSE, no out-of-stock. All five impact-socket-set ASINs resolved on firecrawl route 1 on the first pass.",
+    "ALL_CLEAN_THIS_CYCLE": "No new failures, no ship blocks, no dead ASINs, no asin_confirmed FALSE, no out-of-stock. All five obd2-scanner ASINs resolved on firecrawl route 1 on the first pass.",
+    "FOXWELL_NT301_NEAR_THRESHOLD": "NEW WATCH. B00UJV3E12 (obd2-scanner/Budget Pick) +6.51% US ($55.95 -> $59.59). Closest to the bar in this category - recheck next obd2 pass.",
+    "BLUEDRIVER_NEAR_THRESHOLD": "NEW WATCH. B0GL9RL3XS (obd2-scanner/Best Overall) -5.22% US ($94.95 -> $89.99). Not a bar cross, but a real drop worth confirming next pass.",
     "TEKTON_TORQUE_ASIN_NEEDS_REASIN": "CARRY-OVER, unchanged. B00C5ZL0RU (torque-wrench Best Overall, $54.99) exposes no buybox price and does not confirm the ASIN. Recommend re-ASIN before any further torque pass. Do NOT edit the price.",
     "PRECISION_INSTRUMENTS_TORQUE_ASIN_UNCONFIRMED": "CARRY-OVER. B002XMSFIM (torque-wrench Best Split Beam, $251.68) parsed a price but asin_confirmed FALSE last cycle. Recheck lp_asin marker next torque pass.",
     "PITTSBURGH_TORQUE_ASIN_LIKELY_DEAD": "CARRY-OVER. B0002NYWQ2 returns a stub and fails jina; same ASIN also used in breaker-bar as 'SK Hand Tool 3/4-inch' ($89.99). Resolve together.",
@@ -33,12 +35,12 @@
     "ORION_24PC_NEAR_THRESHOLD": "CARRY-OVER. Orion Motor Tech B01FW3U26G (brake-caliper-tool) +6.89% US. Watch.",
     "LISLE_28600_IN_STOCK_FALSE": "CARRY-OVER. B0002SQUFY (brake-caliper-tool) returned in_stock FALSE while price + asin_confirmed were normal - likely the known parser false-negative. Recheck stock/Prime next brake-caliper pass.",
     "SELF_CONTINUITY_OPEN_ITEMS": "Unchanged and NOT covered by today's batch: FLOTOOL MAX 11912 B0117EESNC third-cycle unverified; jack-stand dead ASINs (B000I6W2A0, B000C4CHPE x2 duplicate, B09LGK5J7W) + Torin duplicate-ASIN bug; ESCO B0019JVIPM candidate needs jina price; multimeter Klein B018EXZO8M no-buybox; multimeter KAIWEETS B07J83SMVZ + Fluke B0006Z64Q0 ASIN 404; air-compressor Porter-Cable B000O5RO1Y + Makita B0001Q2VPU no-buybox; Stealth SAQ-11215 >$400 editorial call; work-light ROVER B08YS6CXG6 + DEWALT B077ZCTBFY no-buybox; car-ramps OOS pair B0117EETEK + B01N308YYO. NOTE: best-floor-jack-review.astro narrates a different product set (Daytona, ARCAN etc.) than data.mjs floor-jack (SATA/AV Steel/Maxority/Jack Boss) - editorial mismatch worth reconciling at some point.",
-    "PARSER_FALSE_WARNING_FIX_STILL_NOT_APPLIED": "Unchanged. parse() tests the literal 'In Stock' and matches 'lp_asin=' only. Did not mask anything today (all five impact ASINs confirmed)."
+    "PARSER_FALSE_WARNING_FIX_STILL_NOT_APPLIED": "Unchanged. parse() tests the literal 'In Stock' and matches 'lp_asin=' only. Did not mask anything today (all five obd2 ASINs confirmed)."
   },
   "schedule": {
-    "next_category_recommend": "obd2-scanner - top of data.mjs, no open ASIN flags in the carry-over list, so it makes a clean fresh live-price pass. Pull its ASINs and stored prices from src/lib/data.mjs and pass them as --json. If the flagged follow-ups are preferred instead, socket-set GEARWRENCH (re-ASIN) and torque-wrench TEKTON/PITTSBURGH remain the highest-need human decisions.",
-    "remaining_categories_unverified_or_due": "obd2-scanner next (clean pass), then the flagged follow-ups above.",
-    "verified_this_cycle": "impact-socket-set: 5 products, all 5 fetched clean on firecrawl route 1, asin_confirmed TRUE, In Stock, Prime. 1 EDIT applied (MIXPOWER -10.01%), 4 no-edit. Build ran, live verify on :8082 returned the new price."
+    "next_category_recommend": "floor-jack - next in data.mjs after obd2-scanner (SATA B0FVF7KT56, AV Steel B0D2J99MFG, Maxority B0DP7QCCMX, Jack Boss B099JPWCPC). No open ASIN flags for these four, so it makes a clean fresh live-price pass. Pull its ASINs and stored prices from src/lib/data.mjs and pass them as --json.",
+    "remaining_categories_unverified_or_due": "floor-jack next (clean pass), then continue down data.mjs and clear the flagged follow-ups above.",
+    "verified_this_cycle": "obd2-scanner: 5 products, all 5 fetched clean on firecrawl route 1, asin_confirmed TRUE, In Stock, Prime. 0 edits. Build skipped (no edits), nothing rebuilt."
   },
   "cycle_complete": true
 }

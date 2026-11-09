@@ -421,7 +421,7 @@ export const tools = {
   "air-compressor": {
     name: "Air Compressors",
     short: "Compress",
-    desc: "Air for pneumatic tools, tire top-offs, and the occasional die grinder. Quiet 10-gallon units for the garage to oil-lubed Big Bore tanks for constant-flow tools.",
+    desc: "Air for pneumatic tools, tire top-offs, and the occasional die grinder. Quiet 10-gallon garage units up to oil-lubed Big Bore tanks for constant flow.",
     slug: "air-compressor",
     products: [
       { name: "California Air Tools 10020C", price: "$412.50", rating: "4.4", reviews: "1,500", images: ["/images/california-air-10020c.svg"], asin: "B0188XBTLY", specs: ["2.0 HP rated", "10 gal tank", "5.30 CFM @ 90 psi", "70 dB quiet", "125 psi max", "Fills tank in 120s"], badge: "top", label: "Best Overall", pros: "The quiet garage compressor. Real 2.0 HP with 5.3 CFM, a 10-gallon tank, and a noise level you can talk over." },
@@ -447,7 +447,7 @@ export const tools = {
   "battery-charger": {
     name: "Battery Chargers",
     short: "Chargers",
-    desc: "Charge a dead battery and keep a car alive through the winter. From $30 smart maintainers that float a battery for months to 100A engine-start units that crank a dead truck.",
+    desc: "Charge a dead battery and keep a car alive through winter. From $30 smart maintainers that float a battery for months to 100A engine-start units.",
     slug: "battery-charger",
     products: [
       { name: "NOCO GENIUS5", price: "$69.87", rating: "4.7", reviews: "13,500", images: ["/images/noco-genius5.svg"], asin: "B07W8KJH44", specs: ["5A charge", "6V & 12V", "Auto maintain", "Desulfation", "Temperature comp", "LiFePO4 support"], badge: "top", label: "Best Overall", pros: "The smart charger I plug in and forget. 5A, auto voltage, handles lead-acid and lithium." },
@@ -460,7 +460,7 @@ export const tools = {
   "oil-filter-wrench": {
     name: "Oil Filter Wrenches",
     short: "Filters",
-    desc: "Get a stuck or rounded oil filter off without shredding the can or cussing at your car. Cap wrenches that grab the filter's flutes, pliers for tight bays, and the universal tools that fit everything but grip nothing.",
+    desc: "Get a stuck or rounded oil filter off without shredding the can. Cap wrenches that grab the flutes, pliers for tight bays, and the tools that fit anything.",
     slug: "oil-filter-wrench",
     products: [
       { name: "OMT 10-Piece Oil Filter Socket Set", price: "$25.49", rating: "4.4", reviews: "1,119", images: ["/images/ares-oilcap-set.svg"], asin: "B0BJK5FSNR", specs: ["10-piece set", "3/8 inch drive", "9 cap sockets 24-64.5mm", "Low profile 6-point", "Fit your filter exactly"], badge: "top", label: "Best Overall", pros: "The cap socket that grabs your filter's exact flutes does not slip on an oily can. Nine low-profile sockets plus a ratchet cover the sizes you will actually meet; pick the one your car needs and it locks on." },
@@ -473,7 +473,7 @@ export const tools = {
   "brake-caliper-tool": {
     name: "Brake Caliper Tools",
     short: "Calipers",
-    desc: "Get a brake caliper piston back so new pads fit. Floating front calipers push straight in, rear calipers with the parking brake inside have to be rotated. Push tools, wind-back kits, and the single-purpose spreaders for fixed multi-piston calipers.",
+    desc: "Get a brake caliper piston back so new pads fit. Floating front calipers push straight in, rear calipers with a parking brake inside need to rotate.",
     slug: "brake-caliper-tool",
     products: [
       { name: "Orion Motor Tech 24pc Caliper Tool Set", price: "$23.08", rating: "4.7", reviews: "21,137", images: ["/images/omt-caliper-24pc.svg"], asin: "B01FW3U26G", specs: ["24 pieces", "Push and wind back", "Reversible thrust bolts", "17 disc adapters", "Calipers hangers included"], badge: "top", label: "Best Overall", pros: "The cheap kit that pushes AND rotates the piston. Handles sliding front calipers and rear park-brake calipers out of one case." },
@@ -486,7 +486,7 @@ export const tools = {
   "bolt-extractor-set": {
     name: "Bolt Extractors",
     short: "Extractors",
-    desc: "Get a rounded, stuck, or broken bolt out without drilling a hole you regret. Fluted extractor sockets hammer onto a rounded head and bite harder as you turn. Spiral extractors dig into a broken stud. From a $22 single grip to a $148 impact-rated pro kit.",
+    desc: "Get a rounded or broken bolt out without drilling a hole you regret. Fluted sockets bite harder as you turn, spiral extractors dig into a broken stud.",
     slug: "bolt-extractor-set",
     products: [
       { name: "NEIKO 04204A 25-Pc Multispline Extractor Set", price: "$36.99", rating: "4.4", reviews: "1,300", images: ["/images/neiko-multispline.svg"], asin: "B01KN9YVWA", specs: ["25 pieces", "1/8 to 7/8 inch", "Hex + multispline", "Cr-Mo steel", "Tap on then turn", "Storage case"], badge: "top", label: "Best Overall", pros: "The set that covers almost every rounded head and nut you will meet. Tap it on, turn it with a ratchet, and the flutes bite deeper the harder the bolt fights." },
@@ -499,7 +499,7 @@ export const tools = {
   "screwdriver-set": {
     name: "Screwdriver Sets",
     short: "Drivers",
-    desc: "Turn a screw without rounding the head. The tip has to match the recess, and Japanese cars use a JIS recess that a standard Phillips does not sit in properly. From a $25 Craftsman set for the trunk to the $139 Wiha extra heavy duty kit for daily work.",
+    desc: "Turn a screw without rounding the head. The tip has to match the recess, and Japanese cars use a JIS recess a standard Phillips does not sit in properly.",
     slug: "screwdriver-set",
     products: [
       { name: "Vessel Megadora JAWSFIT 8-Piece Set", price: "$71.40", rating: "4.8", reviews: "245", images: ["/images/vessel-megadora.svg"], asin: "B07ZJ1KMW2", specs: ["8-piece set", "JIS B-1012 tip profile", "#1, #2, #3 Phillips + stubby", "5.5 to 8mm slotted", "Serrated JAWSFIT tip", "EVA foam tray"], badge: "top", label: "Best Overall", pros: "The JIS B-1012 tips that actually fit a Japanese car's shallow recesses, with a serrated edge that bites instead of rocking." },
@@ -512,7 +512,7 @@ export const tools = {
   "impact-socket-set": {
     name: "Impact Socket Sets",
     short: "Impact Sockets",
-    desc: "A chrome hand socket is not built to be hit. Impact sockets are tougher, thicker walled, and cut 6-point so the load lands on the flats instead of the corners. From a $20 metric starter set to the $180 deep set for axle nuts, here is what actually survives an impact wrench.",
+    desc: "A chrome hand socket is not built to be hit. Impact sockets are thicker walled and cut 6-point so the load lands on the flats, not on the corners.",
     slug: "impact-socket-set",
     products: [
       { name: "Sunex 2645 26-Piece Metric Set", price: "$116.99", rating: "4.8", reviews: "1,469", images: ["/images/sunex-2645-impact.svg"], asin: "B002MW9UW8", specs: ["1/2 inch drive", "26-piece metric", "10mm to 36mm", "Cr-Mo alloy steel", "Radius corner design", "Heavy duty case"], badge: "top", label: "Best Overall", pros: "Ten to 36mm in one case, which covers everything from a brake caliper bolt to a 36mm axle nut, in the tough Cr-Mo steel the job actually needs." },
@@ -525,7 +525,7 @@ export const tools = {
   "wrench-set": {
     name: "Wrench Sets",
     short: "Wrench Sets",
-    desc: "A combination wrench is two tools in one: an open end that slides onto a fitting, and a closed box end that surrounds the nut. Use the wrong end on a stuck bolt and you round it. From a $30 stubby metric set to a $200 SAE and metric 34-piece, here is what actually matters when you buy.",
+    desc: "A combination wrench is two tools in one: an open end that slides onto a fitting and a box end that surrounds the nut. Use the wrong end and you round it.",
     slug: "wrench-set",
     products: [
       { name: "TEKTON WCB95302 Combination Wrench Set, 34-Piece", price: "$200.00", rating: "4.7", reviews: "66", images: ["/images/tekton-wcb95302.svg"], asin: "B0CL13TWCC", specs: ["34 pieces", "SAE + metric", "1/4 to 1 in, 6 to 24mm", "12-point box end", "15-degree offset box end", "Modular organizers"], badge: "top", label: "Best Overall", pros: "Every SAE and metric size most home work touches, in one set of matched wrenches with organizers that fit a toolbox drawer. Not the cheapest, but you stop buying wrenches after this." },
@@ -538,7 +538,7 @@ export const tools = {
   "tire-inflator": {
     name: "Tire Inflators",
     short: "Inflators",
-    desc: "Stop hunting for a working air machine at a gas station. Corded 12 volt pumps, cordless packs, and the flow, duty cycle, and amp numbers that decide how long you wait. From a $32 emergency pump to a $144 cordless that runs on your drill battery.",
+    desc: "Stop hunting for a working air machine at a gas station. Corded 12 volt pumps, cordless packs, and the flow and duty cycle numbers that decide your wait.",
     slug: "tire-inflator",
     products: [
       { name: "VIAIR EVC88P Digital Portable Compressor", price: "$117.91", rating: "4.5", reviews: "230", images: ["/images/viair-evc88p.svg"], asin: "B0D92XCJC2", specs: ["12V, battery clamps", "1.97 CFM @ 0 psi", "120 psi max", "25 min duty @ 30 psi", "20 amp max draw", "Digital preset + auto shutoff"], badge: "top", label: "Best Overall", pros: "A real compressor with a published flow number, a 25 minute duty cycle, and enough motor for a truck tire. Ships with battery clamps because it draws 20 amps." },
@@ -551,7 +551,7 @@ export const tools = {
   "brake-bleeder": {
     name: "Brake Bleeders",
     short: "Bleeders",
-    desc: "Three ways to get old fluid and trapped air out of a brake line: a check valve bottle you run with the pedal, a vacuum pump that pulls fluid at the caliper, and a pressure tank that pushes it down from the reservoir. Each one puts the pressure in a different place, and that is the whole difference. From a $22 bottle to a $389 shop system.",
+    desc: "Three ways to get old fluid and trapped air out of a brake line: a check valve bottle, a vacuum pump at the caliper, or a pressure tank at the reservoir.",
     slug: "brake-bleeder",
     products: [
       { name: "Mityvac MV8000 Automotive Tune-up and Brake Bleeding Kit", price: "$64.35", rating: "4.2", reviews: "3,287", images: ["/images/mityvac-mv8000.svg"], asin: "B00265M9SS", specs: ["Selectline hand vacuum pump", "2 in (50 mm) gauge", "4.5 oz fluid bottle", "Tapered adapters 0.09 to 0.50 in", "Brake bleeding plus diagnostics", "Storage case"], badge: "top", label: "Best Overall", pros: "The pump that does two jobs: it bleeds a caliper alone with no helper, and it tests vacuum advance, EGR, and check valves afterwards. Longest track record of anything on this page." },
@@ -564,7 +564,7 @@ export const tools = {
   "tap-and-die-set": {
     name: "Tap and Die Sets",
     short: "T&D Sets",
-    desc: "A tap cuts threads inside a hole. A die cuts threads on a rod. Buy the wrong set and the tap snaps off in the hole, which is a broken bolt you cannot grab with anything. From a $6 single tap to a $145 ratcheting set, here is what decides whether the threads come out clean.",
+    desc: "A tap cuts threads inside a hole. A die cuts threads on a rod. Buy the wrong set and the tap snaps off in the hole, which is a bolt you cannot grab.",
     slug: "tap-and-die-set",
     products: [
       { name: "GEARWRENCH 3887 77-Piece Ratcheting Tap and Die Set", price: "$145.07", rating: "4.7", reviews: "2,287", images: ["/images/gearwrench-3887.svg"], asin: "B000HBDW48", specs: ["77 pieces", "SAE + metric", "Ratcheting T-handle", "Sizes to 1/2 in and M12", "Taps, dies, adapters", "Blow-molded case"], badge: "top", label: "Best Overall", pros: "The ratcheting handle is the whole reason it costs more. You thread in a quarter turn, reset the handle, and go again without taking the tap out of the hole. SAE and metric in one case, with the adapters that let the ratchet reach a bolt hole in a tight bay." },
@@ -577,7 +577,7 @@ export const tools = {
   "flare-nut-wrench": {
     name: "Flare Nut Wrenches",
     short: "Line Wrenches",
-    desc: "A flare nut wrench is a box end with a slot, so it slides over a brake, fuel, or power steering line and grips five of the six flats instead of two. Use an ordinary open-end wrench on a tube nut and the jaw spreads and rounds it. From a $20 metric set to the $137 flex head set you keep forever, here is what actually holds a rusted fitting.",
+    desc: "A flare nut wrench is a box end with a slot, so it grips five of the six flats on a brake or fuel line nut instead of two. Use an open-end and you round it.",
     slug: "flare-nut-wrench",
     products: [
       { name: "GEARWRENCH 81911D 6-Piece Flex Head Metric Set", price: "$137.24", rating: "4.6", reviews: "700", images: ["/images/gearwrench-81911d.svg"], asin: "B000XQ5MJA", specs: ["6 double-ended wrenches", "Metric 8 to 19mm", "Flex head", "Full polish chrome", "Storage tray", "Covers brake, fuel, power steering"], badge: "top", label: "Best Overall", pros: "Every metric line size a normal car has, in a jaw that closes tight. The flex head swings the handle away from a brake hose bracket so you can still pull square on the nut." },
@@ -590,7 +590,7 @@ export const tools = {
   "brake-line-flaring-tool": {
     name: "Brake Flaring Tools",
     short: "Flaring Tools",
-    desc: "A brake flare is not a bend. The tube end has to be folded back on itself in two passes, and a single flare cracks under the 1,000 to 2,000 psi a brake system holds. From a $39 clamp kit that covers 3/16 to 1/2 inch to a $175 hydraulic set that removes the lever and the clamp walk, here is what actually makes a flare that seals.",
+    desc: "A brake flare is not a bend. The tube end folds back on itself in two passes, and a single flare cracks under the 1,000 to 2,000 psi a brake system holds.",
     slug: "brake-line-flaring-tool",
     products: [
       { name: "OTC 4503 Double Flaring Tool Kit", price: "$39.48", rating: "4.3", reviews: "781", images: ["/images/otc-4503.svg"], asin: "B000L7QZ0Q", specs: ["Makes double or single flares", "5 adapters", "3/16 in to 1/2 in line", "Vise or hand body", "Steel yoke screw", "Storage case"], badge: "top", label: "Best Overall", pros: "The kit the forums point to. It covers every line size a normal car has, from the 3/16 inch brake line up to 1/2 inch, and it makes the two-stage fold that a brake flare needs. Cheap enough to keep on the shelf for the one job in five years that needs it." },
@@ -603,7 +603,7 @@ export const tools = {
   "hex-key-set": {
     name: "Hex Keys",
     short: "Hex Keys",
-    desc: "A hex key fails for one of two reasons: the ball end was used to break a tight bolt loose, or the key was one size off. Break with the square end, spin with the ball. From a $12 metric and SAE starter set to a $50 hex bit socket set for a ratchet, here is what actually holds a recess.",
+    desc: "A hex key fails for one of two reasons: the ball end was used to break a tight bolt loose, or the key was one size off. Break with the square end.",
     slug: "hex-key-set",
     products: [
       { name: "Bondhus 20199 Balldriver L-Wrench Double Pack", price: "$22.99", rating: "4.9", reviews: "4,891", images: ["/images/bondhus-20199.svg"], asin: "B00012Y38W", specs: ["Metric 1.5 to 10mm", "SAE 0.050 to 3/8 in", "Ball end long arm", "Plain end short arm", "Protanium steel", "Made in USA"], badge: "top", label: "Best Overall", pros: "Metric and SAE in one purchase, both with the ball on the long arm and a plain end on the short arm. Made in the USA and the set I keep going back to." },

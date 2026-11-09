@@ -2,6 +2,7 @@
 import { existsSync } from 'node:fs';
 import { resolve as pathResolve } from 'node:path';
 import { tools } from '../../lib/data.mjs';
+import { guides } from '../../lib/guides.mjs';
 
 export async function getStaticPaths() {
   return Object.keys(tools).map(slug => ({
@@ -21,7 +22,9 @@ const amazonUrl = (p) => `https://www.amazon.com/s?k=${encodeURIComponent(p.name
 // Keeps every tool page linked to its full review and vice versa (closes the loop).
 const REVIEW_OVERRIDES = { "brake-bleeder": "best-brake-bleeder-kit-review", "tire-inflator": "best-portable-tire-inflator-review", "jack-stand": "best-jack-stands-review", "flare-nut-wrench": "best-flare-nut-wrench-set-review" };
 const reviewSlug = REVIEW_OVERRIDES[category.slug] ?? `best-${category.slug}-review`;
-const relatedPost = existsSync(pathResolve(process.cwd(), 'src/pages/posts', `${reviewSlug}.astro`)) ? reviewSlug : null;
+const reviewExists = existsSync(pathResolve(process.cwd(), 'src/pages/posts', `${reviewSlug}.astro`));
+const relatedPost = reviewExists ? reviewSlug : null;
+const guide = guides[category.slug] ?? null;
 const productsJson = {
   "@context": "https://schema.org",
   "@type": "ItemList",
@@ -181,6 +184,10 @@ const ogImage = "https://garagetoolsdb.com" + top.images[0];
         ))}
       </div>
     </section>
+
+    {guide && (
+      <section class="tool-guide" set:html={guide} />
+    )}
   </main>
 
   <footer>
