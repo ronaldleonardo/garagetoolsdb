@@ -1,45 +1,44 @@
 {
-  "cycle": 36,
-  "date": "2026-11-07",
-  "category_done": "torque-wrench (5/5 accounted: 2 ASINs live US buybox prices confirmed, 1 price read but asin_confirmed FALSE, 1 no-price/not-confirmed, 1 fetch failed both routes). Zero edits: CDI and ACDelco exactly flat at stored, Precision Instruments -0.80% (below bar), TEKTON exposes no price and did not confirm, PITTSBURGH fetch failed. No build, no restart.",
+  "cycle": 37,
+  "date": "2026-11-08",
+  "category_done": "impact-socket-set (5/5 products fetched clean on firecrawl route 1, all asin_confirmed TRUE, all In Stock, all Prime. One EDIT: MIXPOWER 49-Piece -10.01% crossed the bar. Four others under the bar (two exactly flat, two small dips). Build ran, price verified live on :8082 with no restart needed.)",
   "products_checked": [
-    "torque-wrench/TEKTON 1/2' Drive (B00C5ZL0RU): NO PRICE PARSED, asin_confirmed FALSE (firecrawl returned a >5kb page with '$' but no buybox blob), in_stock TRUE, is_prime FALSE, rating 4.5. Stored $54.99 left untouched. Carry-over re-ASIN decision still stands (was flagged no-buybox in earlier cycles).",
-    "torque-wrench/CDI 1503MFRPH (B00461ATL4): VERIFIED $156.12 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, rating 4.7) vs stored $156.12 = +0.00% -> NO EDIT. Clean.",
-    "torque-wrench/Pittsburgh 1/2' (B0002NYWQ2): FETCH FAILED on all retries (firecrawl 4x + jina 3x) -> UNVERIFIED. Stored $19.99 left untouched, NOT carried forward as confirmed. Carry-over likely-dead ASIN (also used in breaker-bar as 'SK Hand Tool 3/4-inch' $89.99). Resolve together.",
-    "torque-wrench/ACDelco ARM601 (B004VYUQI2): VERIFIED $90.99 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, is_prime TRUE, rating 4.4) vs stored $90.99 = +0.00% -> NO EDIT. Clean.",
-    "torque-wrench/Precision Instruments PREC3FR250F (B002XMSFIM): PRICE READ $249.67 (firecrawl, buybox_json, In Stock TRUE, rating 4.8) BUT asin_confirmed FALSE -> price treated as INVALID, no edit; change would be -0.80% anyway (below bar). Stored $251.68 left untouched. New watch item: seen asin_confirmed TRUE in a prior cycle, now FALSE - recheck lp_asin marker next torque pass."
+    "impact-socket-set/Sunex 2645 26-Piece (B002MW9UW8): VERIFIED $113.48 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, Prime TRUE, rating 4.8) vs stored $116.99 = -3.00% -> NO EDIT (under bar). Clean.",
+    "impact-socket-set/CASOMAN 14-Piece 1/2 In Shallow (B091KXVFVC): VERIFIED $19.97 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, Prime TRUE, rating 4.7) vs stored $19.97 = +0.00% -> NO EDIT. Clean.",
+    "impact-socket-set/CASOMAN 70-Piece Master (B093BJGT13): VERIFIED $135.97 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, Prime TRUE, rating 4.7) vs stored $135.97 = +0.00% -> NO EDIT. Clean.",
+    "impact-socket-set/Sunex 2646 26-Piece Deep (B002MW2CGO): VERIFIED $176.51 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, Prime TRUE, rating 4.6) vs stored $179.72 = -1.79% -> NO EDIT (under bar). Clean.",
+    "impact-socket-set/MIXPOWER 49-Piece 3/8 In Deep (B08JTS9RRJ): VERIFIED $35.97 (firecrawl, buybox_json, asin_confirmed TRUE, In Stock TRUE, Prime TRUE, rating 4.7) vs stored $39.97 = -10.01% -> EDIT APPLIED. data.mjs updated $39.97 -> $35.97. Build + live verify done."
   ],
   "edits": {
-    "data.mjs": "NONE. Two live torque-wrench prices resolved and both exactly flat; one price read with asin_confirmed FALSE (invalid, and under bar anyway); one no-price; one fetch failure. data.mjs NOT modified.",
-    "post": "NONE.",
+    "data.mjs": "ONE edit: impact-socket-set MIXPOWER 49-Piece (B08JTS9RRJ) price $39.97 -> $35.97 (-10.01%, above the 10 percent bar, asin_confirmed TRUE). No other lines touched.",
+    "post": "NONE needed (price-only).",
     "script": "price_fetch.py NOT modified."
   },
-  "build": "SKIPPED, as required: zero edits to data.mjs. No astro build, no service restart attempted.",
-  "restart": "NOT ATTEMPTED (no edits). Carry-over tidy action still stands for a human - systemctl restart garagetoolsdb (blocked by the approval gate); the service runs 'astro preview' serving dist/ from disk.",
+  "build": "RAN: ./node_modules/.bin/astro build -> 56 pages built, Complete. dist/tools/impact-socket-set.html now contains 35.97 (x2) and no 39.97.",
+  "restart": "NOT NEEDED / NOT RUN. systemctl restart garagetoolsdb sits behind the cron approval gate (blocked, as expected). Astro preview serves dist/ from disk, so the rebuilt page is already live: curl http://127.0.0.1:8082/tools/impact-socket-set returns 200 and serves 35.97 without a restart. GTDB preview is on port 8082 (not 8086).",
   "issues": {
-    "TEKTON_TORQUE_ASIN_NEEDS_REASIN": "ESCALATED, unchanged root cause. B00C5ZL0RU (torque-wrench Best Overall, $54.99) again exposes no buybox price and did not confirm the ASIN. Recommend re-ASIN before any further torque pass. Do NOT edit the price.",
-    "PRECISION_INSTRUMENTS_TORQUE_ASIN_UNCONFIRMED": "NEW watch item. B002XMSFIM (torque-wrench Best Split Beam, $251.68) parsed a clean buybox price $249.67 today but asin_confirmed was FALSE (no lp_asin marker in the rendered mobile PDP). Price treated as invalid per rules; -0.80% would be under the 10 percent bar regardless. Recheck the lp_asin marker next torque pass before trusting a future price on this ASIN.",
-    "PITTSBURGH_TORQUE_ASIN_LIKELY_DEAD": "CARRY-OVER, unchanged. B0002NYWQ2 returns a tiny firecrawl stub and fails jina; same ASIN also used in breaker-bar as 'SK Hand Tool 3/4-inch' ($89.99). Resolve together. Did not fetch on any route today either.",
-    "SIBLING_WRITE_WARNING_ON_DATA_MJS": "Carry-over watch item. No edits made this cycle so nothing to clobber. If a future cycle sees unexpected reverts, check for a competing cron.",
-    "PARSER_FALSE_WARNING_FIX_STILL_NOT_APPLIED": "Unchanged carry-over. parse() tests the literal 'In Stock' and matches 'lp_asin=' only; note B002XMSFIM rendered a price but no lp_asin marker, so the asin guard is strict. Did not mask a real price today (the flagged item was under the bar anyway).",
-    "INDONESIA_EGRESS_CHECK_NOT_TRIGGERED": "Did not recur today (no ship_block on any fetch). Detection fix remains unapproved/unapplied.",
-    "GEARWRENCH_110PC_NO_BUYBOX_PRICE_CORRECTED": "CARRY-OVER from cycle 35. socket-set/GEARWRENCH 110PC (B07H5H1J3X) is third-party-only with no buybox price; stored $115.58 can no longer be confirmed. Recommend re-ASIN-or-replace before the next socket pass. Do NOT edit the price.",
-    "DEWALT_192PC_NEAR_THRESHOLD": "CARRY-OVER from cycle 35. DEWALT B01BHJE0J4 is +4.57% US (closest socket listing to the 10 percent bar). Watch next socket pass.",
-    "QUINN_132PC_NO_ASIN": "CARRY-OVER, unchanged. socket-set/QUINN 132PC Kit ($99.99) ships with an empty asin field (Harbor Freight only). Flag for a re-ASIN-or-replace decision.",
-    "NEXPOW_2000A_NO_BUYBOX_PRICE": "CARRY-OVER, untouched. B07T9S3Q5N (jump-starter) resolves but exposes no buybox price on firecrawl or the jina fallback. Stored $35.99 left untouched.",
-    "TACKLIFE_T8_PRO_NO_ASIN": "CARRY-OVER, untouched. jump-starter/TACKLIFE T8 Pro ($67.99) has an empty asin field. Flag for a re-ASIN-or-replace decision.",
-    "WERA_SCREWDRIVER_WATCH": "CARRY-OVER. Wera B007BZ2AQY (screwdriver-set) at +8.41% US remains near the bar (buybox held by third-party seller Deff Audio).",
-    "IRWIN_LOW_STOCK_WATCH": "CARRY-OVER. IRWIN B0002NYBH8 (bolt-extractor-set) was 'Only 1 left in stock' on cycle 24 - check stock state before any price edit in that category.",
-    "OMT_OIL_FILTER_SOCKET_NEAR_THRESHOLD": "CARRY-OVER from cycle 32. OMT B0BJK5FSNR (oil-filter-wrench) +5.88% US ($25.49 -> $26.99) remains near the bar. No edit; watch next oil-filter pass.",
-    "CTEK_MXS5_NEAR_THRESHOLD": "CARRY-OVER from cycle 33. CTEK MXS 5.0 B00CD44RQO (battery-charger) +4.17% US ($95.99 -> $99.99). No edit; watch.",
-    "ORION_24PC_NEAR_THRESHOLD": "CARRY-OVER from cycle 34. Orion Motor Tech B01FW3U26G (brake-caliper-tool) +6.89% US ($23.08 -> $24.67). No edit; watch.",
-    "LISLE_28600_IN_STOCK_FALSE": "CARRY-OVER from cycle 34. B0002SQUFY (brake-caliper-tool) returned in_stock FALSE while price $16.21 and asin_confirmed TRUE were normal - likely the known parser false-negative. Recheck stock/Prime next brake-caliper pass.",
-    "SELF_CONTINUITY_OPEN_ITEMS": "Unchanged and NOT covered by today's batch: FLOTOOL MAX 11912 B0117EESNC third-cycle unverified; jack-stand dead ASINs (B000I6W2A0, B000C4CHPE x2 duplicate, B09LGK5J7W) + Torin duplicate-ASIN bug; ESCO B0019JVIPM candidate needs jina price; multimeter Klein B018EXZO8M no-buybox; multimeter KAIWEETS B07J83SMVZ + Fluke B0006Z64Q0 ASIN 404; air-compressor Porter-Cable B000O5RO1Y + Makita B0001Q2VPU no-buybox; Stealth SAQ-11215 >$400 editorial call; work-light ROVER B08YS6CXG6 + DEWALT B077ZCTBFY no-buybox; car-ramps OOS pair B0117EETEK + B01N308YYO. NOTE: best-floor-jack-review.astro narrates a different product set (Daytona, ARCAN etc.) than data.mjs floor-jack (SATA/AV Steel/Maxority/Jack Boss) - editorial mismatch worth reconciling at some point."
+    "ALL_CLEAN_THIS_CYCLE": "No new failures, no ship blocks, no dead ASINs, no asin_confirmed FALSE, no out-of-stock. All five impact-socket-set ASINs resolved on firecrawl route 1 on the first pass.",
+    "TEKTON_TORQUE_ASIN_NEEDS_REASIN": "CARRY-OVER, unchanged. B00C5ZL0RU (torque-wrench Best Overall, $54.99) exposes no buybox price and does not confirm the ASIN. Recommend re-ASIN before any further torque pass. Do NOT edit the price.",
+    "PRECISION_INSTRUMENTS_TORQUE_ASIN_UNCONFIRMED": "CARRY-OVER. B002XMSFIM (torque-wrench Best Split Beam, $251.68) parsed a price but asin_confirmed FALSE last cycle. Recheck lp_asin marker next torque pass.",
+    "PITTSBURGH_TORQUE_ASIN_LIKELY_DEAD": "CARRY-OVER. B0002NYWQ2 returns a stub and fails jina; same ASIN also used in breaker-bar as 'SK Hand Tool 3/4-inch' ($89.99). Resolve together.",
+    "GEARWRENCH_110PC_NO_BUYBOX_PRICE_CORRECTED": "CARRY-OVER. socket-set/GEARWRENCH 110PC (B07H5H1J3X) is third-party-only with no buybox price; stored $115.58 unconfirmable. Recommend re-ASIN-or-replace before the next socket pass. Do NOT edit.",
+    "DEWALT_192PC_NEAR_THRESHOLD": "CARRY-OVER. DEWALT B01BHJE0J4 is +4.57% US (closest socket listing to the bar). Watch next socket pass.",
+    "QUINN_132PC_NO_ASIN": "CARRY-OVER. socket-set/QUINN 132PC Kit ($99.99) ships with an empty asin field (Harbor Freight only). Flag for re-ASIN-or-replace.",
+    "NEXPOW_2000A_NO_BUYBOX_PRICE": "CARRY-OVER. B07T9S3Q5N (jump-starter) resolves but exposes no buybox price on either route. Stored $35.99 untouched.",
+    "TACKLIFE_T8_PRO_NO_ASIN": "CARRY-OVER. jump-starter/TACKLIFE T8 Pro ($67.99) has an empty asin field. Flag for re-ASIN-or-replace.",
+    "WERA_SCREWDRIVER_WATCH": "CARRY-OVER. Wera B007BZ2AQY (screwdriver-set) +8.41% US near the bar (buybox held by third party Deff Audio).",
+    "IRWIN_LOW_STOCK_WATCH": "CARRY-OVER. IRWIN B0002NYBH8 (bolt-extractor-set) was 'Only 1 left in stock' on cycle 24 - check stock before any edit in that category.",
+    "OMT_OIL_FILTER_SOCKET_NEAR_THRESHOLD": "CARRY-OVER. OMT B0BJK5FSNR (oil-filter-wrench) +5.88% US. Watch next oil-filter pass.",
+    "CTEK_MXS5_NEAR_THRESHOLD": "CARRY-OVER. CTEK MXS 5.0 B00CD44RQO (battery-charger) +4.17% US. Watch.",
+    "ORION_24PC_NEAR_THRESHOLD": "CARRY-OVER. Orion Motor Tech B01FW3U26G (brake-caliper-tool) +6.89% US. Watch.",
+    "LISLE_28600_IN_STOCK_FALSE": "CARRY-OVER. B0002SQUFY (brake-caliper-tool) returned in_stock FALSE while price + asin_confirmed were normal - likely the known parser false-negative. Recheck stock/Prime next brake-caliper pass.",
+    "SELF_CONTINUITY_OPEN_ITEMS": "Unchanged and NOT covered by today's batch: FLOTOOL MAX 11912 B0117EESNC third-cycle unverified; jack-stand dead ASINs (B000I6W2A0, B000C4CHPE x2 duplicate, B09LGK5J7W) + Torin duplicate-ASIN bug; ESCO B0019JVIPM candidate needs jina price; multimeter Klein B018EXZO8M no-buybox; multimeter KAIWEETS B07J83SMVZ + Fluke B0006Z64Q0 ASIN 404; air-compressor Porter-Cable B000O5RO1Y + Makita B0001Q2VPU no-buybox; Stealth SAQ-11215 >$400 editorial call; work-light ROVER B08YS6CXG6 + DEWALT B077ZCTBFY no-buybox; car-ramps OOS pair B0117EETEK + B01N308YYO. NOTE: best-floor-jack-review.astro narrates a different product set (Daytona, ARCAN etc.) than data.mjs floor-jack (SATA/AV Steel/Maxority/Jack Boss) - editorial mismatch worth reconciling at some point.",
+    "PARSER_FALSE_WARNING_FIX_STILL_NOT_APPLIED": "Unchanged. parse() tests the literal 'In Stock' and matches 'lp_asin=' only. Did not mask anything today (all five impact ASINs confirmed)."
   },
   "schedule": {
-    "next_category_recommend": "impact-socket-set - untouched and carries no open ASIN flags, so it makes a clean fresh live-price pass after two consecutive flag-heavy categories (socket-set, torque-wrench). Pull its ASINs and stored prices from src/lib/data.mjs and pass them as --json. If the flagged follow-ups are preferred instead, socket-set GEARWRENCH (re-ASIN) and torque-wrench TEKTON/PITTSBURGH are the highest-need decisions.",
-    "remaining_categories_unverified_or_due": "impact-socket-set next (clean pass), then the flagged follow-ups above.",
-    "verified_this_cycle": "torque-wrench: 5 products accounted, 2 live US prices resolved and exactly flat, 1 price read with asin_confirmed FALSE (invalid), 1 no-price/not-confirmed, 1 fetch failure, 0 edits."
+    "next_category_recommend": "obd2-scanner - top of data.mjs, no open ASIN flags in the carry-over list, so it makes a clean fresh live-price pass. Pull its ASINs and stored prices from src/lib/data.mjs and pass them as --json. If the flagged follow-ups are preferred instead, socket-set GEARWRENCH (re-ASIN) and torque-wrench TEKTON/PITTSBURGH remain the highest-need human decisions.",
+    "remaining_categories_unverified_or_due": "obd2-scanner next (clean pass), then the flagged follow-ups above.",
+    "verified_this_cycle": "impact-socket-set: 5 products, all 5 fetched clean on firecrawl route 1, asin_confirmed TRUE, In Stock, Prime. 1 EDIT applied (MIXPOWER -10.01%), 4 no-edit. Build ran, live verify on :8082 returned the new price."
   },
   "cycle_complete": true
 }
