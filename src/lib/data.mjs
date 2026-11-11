@@ -612,6 +612,19 @@ export const tools = {
       { name: "Klein Tools 70542 Folding Hex Key Set, 17 Key", price: "$23.68", rating: "4.7", reviews: "112", images: ["/images/klein-70542.svg"], asin: "B0CV9JD3FM", specs: ["17 keys", "Metric + SAE", "2 piece folding", "Long blades", "Size stamped on blade", "5/64 to 1/4 in and 1.5 to 8mm"], badge: "value", label: "Best Folding", pros: "Compact folding frames that fold out one blade at a time, so you cannot grab the wrong size by accident. Lives in the glovebox." },
       { name: "NEIKO 10079A Extra Long Hex Bit Socket Set", price: "$50.39", rating: "4.5", reviews: "99", images: ["/images/neiko-10079a-hex.svg"], asin: "B0BFBXS31P", specs: ["18 pieces", "3/8 inch drive", "6 inch long shafts", "S2 steel bits", "SAE 1/8 to 3/8 in", "Metric 3 to 10mm"], badge: "best", label: "Best for a Ratchet", pros: "Hex bit sockets on a ratchet handle, with the long shafts that reach recessed fasteners no L-key can touch." }
     ]
+  },
+  "tire-plug-kit": {
+    name: "Tire Plug Kits",
+    short: "Plug Kits",
+    desc: "A plug is a plug, not a patch. Ream the hole, seat the string, leave a tail, and get it patched from the inside when you can.",
+    slug: "tire-plug-kit",
+    products: [
+      { name: "Boulder Tools Heavy Duty Tire Repair Kit", price: "$29.99", rating: "4.7", reviews: "6,989", images: ["/images/boulder-tools-tire-kit.svg"], asin: "B01E635PGA", specs: ["30 rope plugs", "T-handle reamer and plugger", "Rubber cement", "Pencil tire gauge", "Hard storage case", "Cars, trucks, ATVs, RVs"], badge: "top", label: "Best Overall", pros: "Everything a roadside plug needs in one hard case, including a reamer with real teeth and strings long enough to fold inside a deep tread." },
+      { name: "Slime 1034-A T-Handle Tire Repair Kit", price: "$11.28", rating: "4.6", reviews: "6,971", images: ["/images/slime-1034a.svg"], asin: "B000ET525K", specs: ["8 piece kit", "T-handle reamer", "T-handle plugger", "Medium heavy duty strings", "1 oz rubber cement", "Storage case"], badge: "budget", label: "Best Budget", pros: "Eleven dollars for a complete kit with cement. Ream the hole and leave a tail and it holds as well as anything else here." },
+      { name: "CKAuto 36-Piece Universal Tire Repair Kit", price: "$19.99", rating: "4.7", reviews: "4,971", images: ["/images/ckauto-tire-kit.svg"], asin: "B08ZNNWNN5", specs: ["36 pieces", "30 extra 4 inch strings", "T-handle tools", "4 tools included", "Cars, SUVs, trucks, ATVs", "Storage case"], badge: "value", label: "Best Value", pros: "Thirty extra strings for twenty dollars. The kit for the person who ends up fixing everyone else's tires." },
+      { name: "Stop & Go 1020 Tubeless Rope Plug Kit", price: "$19.96", rating: "4.7", reviews: "206", images: ["/images/stop-go-1020.svg"], asin: "B0068FX3M8", specs: ["25 pieces", "20 heavy duty rope plugs", "T-handle reamer and plugger", "Cars, trucks, ATVs, tractors", "Thick rope plugs", "Storage case"], badge: "value", label: "Best Heavy Plugs", pros: "Fat rope plugs from a company that only builds tire repair tools, for the holes that are at the size limit." },
+      { name: "Stop & Go 1085 Deluxe Tire Plugger Kit", price: "$53.96", rating: "4.3", reviews: "717", images: ["/images/stop-go-1085.svg"], asin: "B00ZPITSKK", specs: ["31 pieces", "25 mushroom plugs", "Pistol grip plugger", "Hollow needle insertion", "Cars, trucks, Jeeps, tractors", "Storage case"], badge: "best", label: "Best Mushroom Plugger", pros: "One push places a mushroom head plug from outside, which is the answer when there is no room to swing a T-handle." }
+    ]
   }
 };
 

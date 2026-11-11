@@ -1,0 +1,78 @@
+B0FVF7KT56  [firecrawl]  live $168.99  (buybox_json)  stored $165.99  +1.81%  skip (<10%)
+B0D2J99MFG  [firecrawl]  live $84.99  (buybox_json)  stored $84.99  +0.00%  skip (<10%)
+B0DP7QCCMX  [firecrawl]  live $139.99  (buybox_json)  stored $137.99  +1.45%  skip (<10%)
+B099JPWCPC  [firecrawl]  live $169.99  (buybox_json)  stored $169.99  +0.00%  skip (<10%)
+B0DJMM1Q7S  [firecrawl]  live $169.99  (buybox_json)  stored $169.99  +0.00%  skip (<10%)
+
+{
+  "B0FVF7KT56": {
+    "asin": "B0FVF7KT56",
+    "price": 168.99,
+    "price_src": "buybox_json",
+    "asin_confirmed": true,
+    "in_stock": true,
+    "ship_block": false,
+    "is_prime": true,
+    "rating": "4.8",
+    "route": "firecrawl",
+    "stored": 165.99,
+    "pct_change": 1.81,
+    "action": "skip (<10%)"
+  },
+  "B0D2J99MFG": {
+    "asin": "B0D2J99MFG",
+    "price": 84.99,
+    "price_src": "buybox_json",
+    "asin_confirmed": true,
+    "in_stock": true,
+    "ship_block": false,
+    "is_prime": true,
+    "rating": "4.5",
+    "route": "firecrawl",
+    "stored": 84.99,
+    "pct_change": 0.0,
+    "action": "skip (<10%)"
+  },
+  "B0DP7QCCMX": {
+    "asin": "B0DP7QCCMX",
+    "price": 139.99,
+    "price_src": "buybox_json",
+    "asin_confirmed": true,
+    "in_stock": true,
+    "ship_block": false,
+    "is_prime": false,
+    "rating": "4.7",
+    "route": "firecrawl",
+    "stored": 137.99,
+    "pct_change": 1.45,
+    "action": "skip (<10%)"
+  },
+  "B099JPWCPC": {
+    "asin": "B099JPWCPC",
+    "price": 169.99,
+    "price_src": "buybox_json",
+    "asin_confirmed": true,
+    "in_stock": true,
+    "ship_block": false,
+    "is_prime": true,
+    "rating": "4.4",
+    "route": "firecrawl",
+    "stored": 169.99,
+    "pct_change": 0.0,
+    "action": "skip (<10%)"
+  },
+  "B0DJMM1Q7S": {
+    "asin": "B0DJMM1Q7S",
+    "price": 169.99,
+    "price_src": "buybox_json",
+    "asin_confirmed": true,
+    "in_stock": true,
+    "ship_block": false,
+    "is_prime": true,
+    "rating": "4.6",
+    "route": "firecrawl",
+    "stored": 169.99,
+    "pct_change": 0.0,
+    "action": "skip (<10%)"
+  }
+}
