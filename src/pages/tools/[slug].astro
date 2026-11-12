@@ -24,6 +24,15 @@ const REVIEW_OVERRIDES = { "brake-bleeder": "best-brake-bleeder-kit-review", "ti
 const reviewSlug = REVIEW_OVERRIDES[category.slug] ?? `best-${category.slug}-review`;
 const reviewExists = existsSync(pathResolve(process.cwd(), 'src/pages/posts', `${reviewSlug}.astro`));
 const relatedPost = reviewExists ? reviewSlug : null;
+// Head-to-head comparison pages. Linking them from the category page gives the new
+// URL a crawl path from the templates that already carry the site's impressions.
+const COMPARISONS = {
+  "torque-wrench": { slug: "tekton-vs-cdi-torque-wrench", label: "TEKTON vs CDI torque wrench" },
+  "air-compressor": { slug: "california-air-tools-vs-porter-cable-air-compressor", label: "California Air Tools vs Porter-Cable" },
+  "impact-wrench": { slug: "milwaukee-vs-dewalt-impact-wrench", label: "Milwaukee vs DEWALT impact wrench" },
+  "socket-set": { slug: "gearwrench-vs-dewalt-socket-set", label: "GEARWRENCH vs DEWALT socket set" },
+};
+const comparison = COMPARISONS[category.slug] ?? null;
 const guide = guides[category.slug] ?? null;
 const productsJson = {
   "@context": "https://schema.org",
@@ -139,6 +148,15 @@ const ogImage = "https://garagetoolsdb.com" + top.images[0];
         <p style="margin:0;font-size:0.92rem;">
           <strong>I ran these at home first.</strong> The full write-up covers what held, what broke, and the one test that decided it:
           <a href={`/posts/${relatedPost}`}>best {t.name.toLowerCase()} review</a>.
+        </p>
+      </section>
+    )}
+
+    {comparison && (
+      <section style="max-width:1100px;margin:0 auto 1.5rem;padding:1rem 1.25rem;background:#fff8ee;border:1px solid #f0e0c0;border-radius:10px;">
+        <p style="margin:0;font-size:0.92rem;">
+          <strong>Two of these side by side:</strong> the head-to-head numbers, the spec that separates them, and which one to buy:
+          <a href={`/posts/${comparison.slug}`}>{comparison.label}</a>.
         </p>
       </section>
     )}
