@@ -303,7 +303,7 @@ export const tools = {
       },
       {
         name: "GOOLOO GP4000",
-        price: "$79.96",
+        price: "$119.99",
         rating: "4.6",
         reviews: "8,900",
         images: ["/images/gooloo-gp4000.jpg"],
