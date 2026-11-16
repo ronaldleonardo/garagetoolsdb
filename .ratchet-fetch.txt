@@ -1,0 +1,61 @@
+B07J2NHZLH  firecrawl failed, trying jina...
+B07J2NHZLH  [jina]  live $41.27  (buybox_json)  stored $41.27  +0.00%  skip (<10%)
+B005FI6542  firecrawl failed, trying jina...
+B005FI6542  [jina]  NO PRICE PARSED  [WARN asin not confirmed]  [WARN not in stock]
+B0CYMQ5XGC  firecrawl failed, trying jina...
+B0CYMQ5XGC  [jina]  live $40.97  (buybox_json)  stored $40.43  +1.34%  skip (<10%)
+B000COC6R4  firecrawl failed, trying jina...
+B000COC6R4  FETCH FAILED
+B002IY936S  firecrawl failed, trying jina...
+B002IY936S  FETCH FAILED
+
+{
+  "B07J2NHZLH": {
+    "asin": "B07J2NHZLH",
+    "price": 41.27,
+    "price_src": "buybox_json",
+    "asin_confirmed": true,
+    "in_stock": true,
+    "ship_block": false,
+    "is_prime": true,
+    "rating": "4.7",
+    "reviews": "771",
+    "route": "jina",
+    "stored": 41.27,
+    "pct_change": 0.0,
+    "action": "skip (<10%)"
+  },
+  "B005FI6542": {
+    "asin": "B005FI6542",
+    "asin_confirmed": false,
+    "in_stock": false,
+    "ship_block": false,
+    "is_prime": false,
+    "rating": "4.8",
+    "reviews": "59",
+    "route": "jina"
+  },
+  "B0CYMQ5XGC": {
+    "asin": "B0CYMQ5XGC",
+    "price": 40.97,
+    "price_src": "buybox_json",
+    "asin_confirmed": true,
+    "in_stock": true,
+    "ship_block": false,
+    "is_prime": true,
+    "rating": "4.5",
+    "reviews": "112",
+    "route": "jina",
+    "stored": 40.43,
+    "pct_change": 1.34,
+    "action": "skip (<10%)"
+  },
+  "B000COC6R4": {
+    "asin": "B000COC6R4",
+    "error": "fetch failed on all retries"
+  },
+  "B002IY936S": {
+    "asin": "B002IY936S",
+    "error": "fetch failed on all retries"
+  }
+}
