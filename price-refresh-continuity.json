@@ -1,47 +1,51 @@
 {
-  "cycle": 45,
-  "date": "2026-11-16",
-  "category_done": "ratchet-set (COMPLETE 6/6 over two passes: Nov-15 pass checked 5 - TEKTON, Snap-on, GEARWRENCH, Pittsburgh, MAC; Nov-16 pass finished Capri and retried the failures. Result: 3 products fetched clean with asin_confirmed TRUE, all under the 10% bar; 1 resolves-but-no-buybox/unconfirmed; 2 DEAD ASINs (404). EDITS: 0.)",
+  "cycle": 46,
+  "date": "2026-11-17",
+  "category_done": "breaker-bar (COMPLETE 5/5 checked: 1 VERIFIED clean, 4 DEAD ASINs (Amazon 404 passthrough). EDITS: 0.)",
   "products_checked": [
-    "ratchet-set/TEKTON 3/8-inch Flex Head (B07J2NHZLH): VERIFIED $41.27 (jina buybox_json, asin_confirmed TRUE, in_stock TRUE, prime, 4.7/771) vs stored $41.27 = +0.00% -> NO EDIT.",
-    "ratchet-set/GEARWRENCH 120XP (B0CYMQ5XGC): VERIFIED $40.97 (jina buybox_json, asin_confirmed TRUE, in_stock TRUE, prime, 4.5/112) vs stored $40.43 = +1.34% -> NO EDIT.",
-    "ratchet-set/Capri Tools 3/8-inch Flex Head (B07Z2YWZZP): VERIFIED $31.07 (jina buybox_json, asin_confirmed TRUE, in_stock TRUE, prime, 4.5/915) vs stored $32.99 = -5.82% -> NO EDIT (under the bar; WATCH next cycle).",
-    "ratchet-set/Snap-on F80 3/8-inch (B005FI6542): resolves (rating 4.8, 59 reviews) but asin_confirmed FALSE and in_stock FALSE with NO buybox price. Stored $149.00 UNTOUCHED per the rule. FLAG: Snap-on sells direct (no Amazon buybox) - re-ASIN-or-replace with an Amazon-sold pro ratchet.",
-    "ratchet-set/Pittsburgh 1/4-inch Set (B000COC6R4): DEAD ASIN. Direct probe of https://www.amazon.com/gp/aw/d/B000COC6R4 returns HTTP 404; jina returns a 508-byte stub with no ASIN/price/in-stock tokens. Stored $12.99 UNTOUCHED. FLAG: re-ASIN required (Pittsburgh is a Harbor Freight house brand - it has no Amazon listing).",
-    "ratchet-set/MAC Tools 1/2-inch (B002IY936S): DEAD ASIN. Direct probe returns HTTP 404; jina returns a 611-byte page containing Amazon's 'Dogs of Amazon' / couldn't-find-that-page error. Stored $129.99 UNTOUCHED. FLAG: re-ASIN required (MAC Tools is pro/sold via distributors, not Amazon)."
+    "breaker-bar/TEKTON 1/2-inch Breaker Bar (B07GH97P36): VERIFIED $55.00 (jina, buybox_json, asin_confirmed TRUE, in_stock TRUE, prime, 4.7/1,829) vs stored $55.00 = +0.00% -> NO EDIT. Also re-confirmed live in the jina Amazon search results (title '1/2 Inch Drive x 24 Inch Breaker Bar | SBH00224', $55.00).",
+    "breaker-bar/GEARWRENCH 1/2-inch (B000VDXSV6): DEAD ASIN. Both routes lost the product: Firecrawl LAN is DOWN (connection refused) and jina returns Amazon's own 404 'Page Not Found / Dogs of Amazon' stub (611 bytes, no ASIN/price/in-stock tokens). Stored $39.99 UNTOUCHED. FLAG: re-ASIN. Live GEARWRENCH breaker-bar ASINs seen in jina search: B001M0O1GG 24-inch 81308D $36.56 (closest match, Cr-Mo/comfort grip) and B001M0O1G6 15-inch 81307 $28.19.",
+    "breaker-bar/Capri Tools 3/8-inch (B07D3M64K5): DEAD ASIN. jina returns the same 611-byte Amazon 404 stub. Stored $18.99 UNTOUCHED. FLAG: re-ASIN. Live Capri breaker-bar ASINs seen in jina search: B07KWJYCC2 3/8-inch 18-inch Extended Leverage $24.99 (closest match, but longer handle and 66% higher list), B07KWJCVVN 1/2-inch, B07KW9CDZF 3/4-inch $59.99.",
+    "breaker-bar/Sunex 1/2-inch Impact Rated (B00A1W3G8E): DEAD ASIN. jina returns the same 612-byte Amazon 404 stub. Stored $34.99 UNTOUCHED. FLAG: re-ASIN. Searches did NOT surface a Sunex-branded 1/2-inch breaker bar listing (Sunex's Amazon catalog is mostly impact sockets, e.g. B005V4C3VO 1/2-inch 24-inch Impact Extension); candidate generic replacement if the slot is kept: B07W78H84S 24-inch Cr-Mo Flexible Head $34.99 or B003UV7GK8 30-inch Cr-Mo $42.97.",
+    "breaker-bar/SK Hand Tool 3/4-inch (B0002NYWQ2): DEAD ASIN (CARRY-OVER). jina returns the 662-byte Amazon 404 stub; this is the known duplicate-ASIN shared with a torque-wrench entry. Stored $89.99 UNTOUCHED. FLAG: re-ASIN required for BOTH the 3/4-inch breaker bar and the torque-wrench entry that points at the same ASIN. Live SK 3/4-inch candidate: B07H3KJQ83 3/4-inch x 40-inch SBH00340 $78.00."
   ],
   "edits": {
-    "data.mjs": "NONE. No ratchet-set product moved >=10% with a confirmed ASIN. Three confirmed prices were all within +/-6%.",
+    "data.mjs": "NONE. Only the TEKTON breaker bar fetched with a confirmed ASIN and it was flat at +0.00%; the other four ASINs are dead (Amazon 404), so no price was written and no stored number was carried forward as confirmed.",
     "post": "NONE.",
-    "script": "price_fetch.py NOT modified."
+    "script": "price_fetch.py NOT modified (header comment rules unchanged). Two new read-only probe helpers were added under /root/tools: gtdb_jina_search.py (jina on an Amazon /s?k= URL -> extracts live /dp/ ASINs + titles + prices) and gtdb_jina_dump.py (dumps the raw jina body so a 404 stub can be told apart from a wall)."
   },
-  "build": "SKIPPED, as required: no edits to data.mjs, so no rebuild and no restart. Confirmed by inspecting the batch results (three sub-threshold moves, one no-buybox listing, two dead ASINs).",
+  "build": "SKIPPED, as required: no edits to data.mjs, so no astro build and no systemctl restart. Confirmed: git status in /root/garagetoolsdb shows data.mjs unchanged (only untracked temp logs, since deleted).",
   "issues": {
-    "PITTSBURGH_RATCHET_DEAD_ASIN": "NEW, action needed. B000COC6R4 (Pittsburgh 1/4-inch Set, stored $12.99, badge 'Best Budget') is a 404. Pittsburgh is a Harbor Freight house brand and does not sell on Amazon, so there is no valid ASIN. Either replace with an Amazon-sold budget 1/4-inch ratchet (e.g. TEKTON 1/4-inch or GearWrench 1/4-inch) or drop the slot. Do NOT edit the price.",
-    "MAC_TOOLS_RATCHET_DEAD_ASIN": "NEW, action needed. B002IY936S (MAC Tools 1/2-inch, stored $129.99, badge 'Pro Flex Head') returns Amazon's 'Dogs of Amazon' 404. MAC Tools does not sell on Amazon. Replace with an Amazon-sold 1/2-inch long-handle ratchet or drop the slot.",
-    "SNAPON_F80_NO_BUYBOX": "NEW. B005FI6542 (Snap-on F80, stored $149.00, badge 'Pro Choice') resolves but has no buybox price and an unconfirmed ASIN. Snap-on sells direct; listing is effectively not purchasable via the buybox. Recommend re-ASIN-or-replace. Price left at $149.00 and NOT carried forward as confirmed.",
-    "CAPRI_RATCHET_NEAR_THRESHOLD": "NEW WATCH. B07Z2YWZZP moved -5.82% ($32.99 -> $31.07). Under the bar, no edit; another small drop crosses 10%.",
-    "FIRECRAWL_ROUTE_DOWN_THIS_PASS": "The Firecrawl LAN route (192.168.18.4:3002) failed on every ASIN both today and in the Nov-15 pass; all successes came via the r.jina.ai fallback. Watch whether Firecrawl recovers - jina alone cannot parse some bulky/no-buybox listings.",
-    "MILWAUKEE_M18_DEAD_ASIN": "CARRY-OVER (impact-wrench). B08P4NX77N 404/dead; stored $277.89 untouched. Top-billed 'Best Overall' - needs an editorial re-ASIN.",
-    "RYOBI_P262_DEAD_ASIN": "CARRY-OVER (impact-wrench). B07Q3B6Q1F 404/dead; stored $99.00 untouched. Re-ASIN.",
-    "DEWALT_DCF899B_OUT_OF_STOCK": "CARRY-OVER (impact-wrench). B00WJA1J68 resolves+confirms but OOS with no buybox; likely superseded by DCF900B. Re-ASIN.",
-    "INGERSOLL_RAND_NEAR_THRESHOLD": "CARRY-OVER (impact-wrench). B00LV9Y1FE was -8.93%; recheck next impact pass.",
+    "GEARWRENCH_BREAKER_DEAD_ASIN": "NEW, action needed. B000VDXSV6 (stored $39.99, badge 'Best Value') is an Amazon 404. Note the editorial line 'USA made' needs re-checking against whatever replacement ASIN is chosen. Do NOT edit the price.",
+    "CAPRI_BREAKER_DEAD_ASIN": "NEW, action needed. B07D3M64K5 (stored $18.99, badge 'Best Budget') is an Amazon 404. Replacement B07KWJYCC2 is $24.99, so the 'budget' badge and the $18.99 figure both need review.",
+    "SUNEX_BREAKER_DEAD_ASIN": "NEW, action needed. B00A1W3G8E (stored $34.99, badge 'Tough Pick', 'Impact rated Cr-Mo') is an Amazon 404 and no Sunex-branded breaker bar surfaced on Amazon. Decide: replace with a generic Cr-Mo 24-inch bar or drop the slot.",
+    "SK_BREAKER_NEEDS_REASIN": "CONFIRMED THIS PASS (was carry-over). B0002NYWQ2 is dead on Amazon and is ALSO the ASIN on the torque-wrench entry, so one re-ASIN decision fixes both slots. Candidate B07H3KJQ83.",
+    "FIRECRAWL_LAN_DOWN": "Escalated: 192.168.18.4:3002 now refuses connections (Errno 111), not just a degraded page. Every ASIN had to go through jina. If the container is not restarted, the only working Amazon route is jina (~6s spacing), which cannot parse bulky/no-buybox listings. Check the Firecrawl host.",
+    "NEW_ROUTE_FOUND_JINA_SEARCH": "Positive: https://r.jina.ai/https://www.amazon.com/s?k=<query> returned a full 185-280KB results page (with titles and prices) on several queries, so it CAN be used to find live ASINs when a product 404s. It is flaky though: brand queries for Capri and Sunex returned 14KB/542-byte stubs twice. Retry with a simpler query; treat an empty asins list as 'walled', not 'no such product'.",
+    "PITTSBURGH_RATCHET_DEAD_ASIN": "CARRY-OVER (ratchet-set). B000COC6R4 404; stored $12.99 untouched.",
+    "MAC_TOOLS_RATCHET_DEAD_ASIN": "CARRY-OVER (ratchet-set). B002IY936S 404; stored $129.99 untouched.",
+    "SNAPON_F80_NO_BUYBOX": "CARRY-OVER (ratchet-set). B005FI6542 resolves, no buybox, ASIN unconfirmed; stored $149.00 untouched.",
+    "CAPRI_RATCHET_NEAR_THRESHOLD": "CARRY-OVER (ratchet-set). B07Z2YWZZP was -5.82% ($32.99 -> $31.07); recheck on the next ratchet pass.",
+    "MILWAUKEE_M18_DEAD_ASIN": "CARRY-OVER (impact-wrench). B08P4NX77N 404; stored $277.89 untouched.",
+    "RYOBI_P262_DEAD_ASIN": "CARRY-OVER (impact-wrench). B07Q3B6Q1F 404; stored $99.00 untouched.",
+    "DEWALT_DCF899B_OUT_OF_STOCK": "CARRY-OVER (impact-wrench). B00WJA1J68 OOS/no buybox; likely superseded by DCF900B.",
+    "INGERSOLL_RAND_NEAR_THRESHOLD": "CARRY-OVER (impact-wrench). B00LV9Y1FE was -8.93%.",
     "GOOLOO_PRICE_JUMP_EDITORIAL": "CARRY-OVER (data.mjs). GP4000 $119.99 just under GBX45 $124.95 while labelled 'Best Budget'. Editorial badge review, not a price action.",
-    "NEXPOW_2000A_NO_BUYBOX_PRICE": "CARRY-OVER (jump-starter). B07T9S3Q5N confirms ASIN, no buybox price. Re-ASIN.",
-    "TACKLIFE_T8_PRO_NO_ASIN": "CARRY-OVER (jump-starter). TACKLIFE T8 Pro ($67.99) empty asin field. Re-ASIN-or-replace.",
-    "TEKTON_TORQUE_ASIN_NEEDS_REASIN": "CARRY-OVER (torque-wrench). B00C5ZL0RU no buybox, ASIN unconfirmed. Re-ASIN.",
-    "PITTSBURGH_TORQUE_ASIN_LIKELY_DEAD": "CARRY-OVER (torque-wrench + breaker-bar shared ASIN B0002NYWQ2). Failing both routes; resolve the SK Hand Tool 3/4-inch duplicate-ASIN question during the breaker-bar pass.",
-    "PRECISION_INSTRUMENTS_TORQUE_ASIN_UNCONFIRMED": "CARRY-OVER. B002XMSFIM parsed a price with asin_confirmed FALSE; recheck lp_asin marker logic.",
+    "NEXPOW_2000A_NO_BUYBOX_PRICE": "CARRY-OVER (jump-starter). B07T9S3Q5N confirms ASIN, no buybox price.",
+    "TACKLIFE_T8_PRO_NO_ASIN": "CARRY-OVER (jump-starter). TACKLIFE T8 Pro ($67.99) empty asin field.",
+    "TEKTON_TORQUE_ASIN_NEEDS_REASIN": "CARRY-OVER (torque-wrench). B00C5ZL0RU no buybox, ASIN unconfirmed.",
+    "PITTSBURGH_TORQUE_ASIN_LIKELY_DEAD": "CARRY-OVER (torque-wrench). Shared ASIN B0002NYWQ2 now CONFIRMED dead (see SK_BREAKER_NEEDS_REASIN).",
+    "PRECISION_INSTRUMENTS_TORQUE_ASIN_UNCONFIRMED": "CARRY-OVER. B002XMSFIM parsed a price with asin_confirmed FALSE.",
     "SOCKET_SET_WATCHES": "CARRY-OVER. GEARWRENCH 110PC B07H5H1J3X in_stock FALSE; DEWALT 192PC B01BHJE0J4 +4.57%; QUINN 132PC empty asin.",
     "OBD2_WATCHES": "CARRY-OVER. FOXWELL NT301 B00UJV3E12 +6.51%; BLUEDRIVER B0GL9RL3XS -5.22%.",
     "OTHER_NEAR_THRESHOLD_WATCHES": "CARRY-OVER. Wera B007BZ2AQY +8.41%; OMT B0BJK5FSNR +5.88%; CTEK MXS 5.0 B00CD44RQO +4.17%; Orion Motor Tech B01FW3U26G +6.89%; IRWIN B0002NYBH8 low stock; Lisle 28600 B0002SQUFY in_stock FALSE.",
     "SELF_CONTINUITY_OPEN_ITEMS": "Unchanged: FLOTOOL MAX 11912 B0117EESNC third-cycle unverified; jack-stand dead ASINs (B000I6W2A0, B000C4CHPE x2 duplicate, B09LGK5J7W) plus Torin duplicate-ASIN bug; ESCO B0019JVIPM needs a jina price; multimeter Klein B018EXZO8M no-buybox; KAIWEETS B07J83SMVZ and Fluke B0006Z64Q0 ASIN 404; air-compressor Porter-Cable B000O5RO1Y and Makita B0001Q2VPU no-buybox; Stealth SAQ-11215 over $400 editorial call; work-light ROVER B08YS6CXG6 and DEWALT B077ZCTBFY no-buybox; car-ramps OOS pair B0117EETEK and B01N308YYO; best-floor-jack-review.astro narrates a different product set than data.mjs floor-jack - editorial mismatch.",
-    "APPROVAL_GATE_NOTE": "Raw-IP curl and bash -c one-liners are blocked in cron context. Probes were run via written scripts under /root/tools (gtdb_ratchet_probe.py, gtdb_ratchet_probe2.py)."
+    "APPROVAL_GATE_NOTE": "Raw-IP curl, bash -c one-liners, and grouped { ...; } compound shell bodies are blocked in cron context. All probes were run via written scripts under /root/tools."
   },
   "schedule": {
-    "next_category_recommend": "breaker-bar - next block in data.mjs (line 369). 5 products: TEKTON 1/2-inch B07GH97P36 $55.00; GEARWRENCH 1/2-inch B000VDXSV6 $39.99; Capri Tools 3/8-inch B07D3M64K5 $18.99; Sunex 1/2-inch Impact Rated B00A1W3G8E $34.99; SK Hand Tool 3/4-inch B0002NYWQ2 $89.99 (note: B0002NYWQ2 is a CARRY-OVER duplicate/failing ASIN shared with a torque-wrench entry - expect a dead/unconfirmed result).",
-    "remaining_categories_unverified_or_due": "breaker-bar next, then jack-stand, then continue down data.mjs and clear the flagged follow-ups above.",
-    "verified_this_cycle": "ratchet-set: 3 of 6 fetched clean (all under 10%, no edit), 1 resolves-but-no-buybox (no edit), 2 dead ASINs (404). 0 edits, build skipped."
+    "next_category_recommend": "jack-stand - next block in data.mjs. 5 products: Daytona 3 Ton Pair (empty ASIN, price estimated) $59.99; ESCO 10498 3 Ton B000I6W2A0 $94.99; Torin Big Red 3 Ton T43002 B000C4CHPE $39.99; Daytona 6 Ton Pair B09LGK5J7W $109.99; Torin Big Red 6 Ton B000C4CHPE $64.99 (note: B000C4CHPE is used by BOTH Torin entries - the known duplicate-ASIN bug - and is a carry-over dead ASIN; expect two failures).",
+    "remaining_categories_unverified_or_due": "jack-stand next, then continue down data.mjs and clear the flagged follow-ups above (ratchet-set, impact-wrench, jump-starter, torque-wrench, socket-set, obd2 watches).",
+    "verified_this_cycle": "breaker-bar: 1 of 5 fetched clean (flat, no edit), 4 dead ASINs (404). 0 edits, build skipped."
   },
   "cycle_complete": true
 }
