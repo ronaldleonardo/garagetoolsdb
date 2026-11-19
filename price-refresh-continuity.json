@@ -1,51 +1,55 @@
 {
-  "cycle": 46,
-  "date": "2026-11-17",
-  "category_done": "breaker-bar (COMPLETE 5/5 checked: 1 VERIFIED clean, 4 DEAD ASINs (Amazon 404 passthrough). EDITS: 0.)",
+  "cycle": 47,
+  "date": "2026-11-18",
+  "category_done": "jack-stand (COMPLETE 5/5 checked: 1 no-ASIN, 4 DEAD ASINs (Amazon 404 confirmed via control). EDITS: 0.)",
   "products_checked": [
-    "breaker-bar/TEKTON 1/2-inch Breaker Bar (B07GH97P36): VERIFIED $55.00 (jina, buybox_json, asin_confirmed TRUE, in_stock TRUE, prime, 4.7/1,829) vs stored $55.00 = +0.00% -> NO EDIT. Also re-confirmed live in the jina Amazon search results (title '1/2 Inch Drive x 24 Inch Breaker Bar | SBH00224', $55.00).",
-    "breaker-bar/GEARWRENCH 1/2-inch (B000VDXSV6): DEAD ASIN. Both routes lost the product: Firecrawl LAN is DOWN (connection refused) and jina returns Amazon's own 404 'Page Not Found / Dogs of Amazon' stub (611 bytes, no ASIN/price/in-stock tokens). Stored $39.99 UNTOUCHED. FLAG: re-ASIN. Live GEARWRENCH breaker-bar ASINs seen in jina search: B001M0O1GG 24-inch 81308D $36.56 (closest match, Cr-Mo/comfort grip) and B001M0O1G6 15-inch 81307 $28.19.",
-    "breaker-bar/Capri Tools 3/8-inch (B07D3M64K5): DEAD ASIN. jina returns the same 611-byte Amazon 404 stub. Stored $18.99 UNTOUCHED. FLAG: re-ASIN. Live Capri breaker-bar ASINs seen in jina search: B07KWJYCC2 3/8-inch 18-inch Extended Leverage $24.99 (closest match, but longer handle and 66% higher list), B07KWJCVVN 1/2-inch, B07KW9CDZF 3/4-inch $59.99.",
-    "breaker-bar/Sunex 1/2-inch Impact Rated (B00A1W3G8E): DEAD ASIN. jina returns the same 612-byte Amazon 404 stub. Stored $34.99 UNTOUCHED. FLAG: re-ASIN. Searches did NOT surface a Sunex-branded 1/2-inch breaker bar listing (Sunex's Amazon catalog is mostly impact sockets, e.g. B005V4C3VO 1/2-inch 24-inch Impact Extension); candidate generic replacement if the slot is kept: B07W78H84S 24-inch Cr-Mo Flexible Head $34.99 or B003UV7GK8 30-inch Cr-Mo $42.97.",
-    "breaker-bar/SK Hand Tool 3/4-inch (B0002NYWQ2): DEAD ASIN (CARRY-OVER). jina returns the 662-byte Amazon 404 stub; this is the known duplicate-ASIN shared with a torque-wrench entry. Stored $89.99 UNTOUCHED. FLAG: re-ASIN required for BOTH the 3/4-inch breaker bar and the torque-wrench entry that points at the same ASIN. Live SK 3/4-inch candidate: B07H3KJQ83 3/4-inch x 40-inch SBH00340 $78.00."
+    "jack-stand/Daytona 3 Ton Pair (asin EMPTY, stored $59.99): CANNOT VERIFY - no ASIN in data.mjs (Harbor Freight brand, price explicitly marked 'estimated' in the pros copy). Stored $59.99 UNTOUCHED. FLAG: keep as editorial-estimate or drop Amazon framing.",
+    "jack-stand/ESCO 10498 3 Ton (B000I6W2A0): DEAD ASIN. jina (x-no-cache) returns Amazon's own 404 'We couldn't find that page / Dogs of Amazon' stub (612 bytes, no ASIN/price/in-stock tokens). Stored $94.99 UNTOUCHED. FLAG: re-ASIN.",
+    "jack-stand/Torin Big Red 3 Ton T43002 (B000C4CHPE): DEAD ASIN. jina returns Amazon 404 stub (698 bytes). Stored $39.99 UNTOUCHED. FLAG: re-ASIN.",
+    "jack-stand/Daytona 6 Ton Pair (B09LGK5J7W): DEAD ASIN. jina returns Amazon 404 stub (612 bytes). Stored $109.99 UNTOUCHED. FLAG: re-ASIN (Daytona is Harbor Freight, never had an Amazon listing; slot needs an Amazon-native 6-ton or drop).",
+    "jack-stand/Torin Big Red 6 Ton (B000C4CHPE, DUPLICATE of the 3 Ton slot): DEAD ASIN, same 404 as the 3 Ton entry. Stored $64.99 UNTOUCHED. FLAG: fix the duplicate-ASIN bug AND re-ASIN."
   ],
   "edits": {
-    "data.mjs": "NONE. Only the TEKTON breaker bar fetched with a confirmed ASIN and it was flat at +0.00%; the other four ASINs are dead (Amazon 404), so no price was written and no stored number was carried forward as confirmed.",
+    "data.mjs": "NONE. No live price was obtained for any jack-stand product: one slot has an empty ASIN and the other four ASINs are dead (Amazon 404). No price written, and no stored number carried forward as confirmed.",
     "post": "NONE.",
-    "script": "price_fetch.py NOT modified (header comment rules unchanged). Two new read-only probe helpers were added under /root/tools: gtdb_jina_search.py (jina on an Amazon /s?k= URL -> extracts live /dp/ ASINs + titles + prices) and gtdb_jina_dump.py (dumps the raw jina body so a 404 stub can be told apart from a wall)."
+    "script": "price_fetch.py NOT modified. Control test added under /root/tools/gtdb_jackstand.py plus route probes (gtdb_route_probe.py, gtdb_jina_variants.py)."
   },
-  "build": "SKIPPED, as required: no edits to data.mjs, so no astro build and no systemctl restart. Confirmed: git status in /root/garagetoolsdb shows data.mjs unchanged (only untracked temp logs, since deleted).",
+  "build": "SKIPPED, as required: no edits to data.mjs, so no astro build and no systemctl restart.",
   "issues": {
-    "GEARWRENCH_BREAKER_DEAD_ASIN": "NEW, action needed. B000VDXSV6 (stored $39.99, badge 'Best Value') is an Amazon 404. Note the editorial line 'USA made' needs re-checking against whatever replacement ASIN is chosen. Do NOT edit the price.",
-    "CAPRI_BREAKER_DEAD_ASIN": "NEW, action needed. B07D3M64K5 (stored $18.99, badge 'Best Budget') is an Amazon 404. Replacement B07KWJYCC2 is $24.99, so the 'budget' badge and the $18.99 figure both need review.",
-    "SUNEX_BREAKER_DEAD_ASIN": "NEW, action needed. B00A1W3G8E (stored $34.99, badge 'Tough Pick', 'Impact rated Cr-Mo') is an Amazon 404 and no Sunex-branded breaker bar surfaced on Amazon. Decide: replace with a generic Cr-Mo 24-inch bar or drop the slot.",
-    "SK_BREAKER_NEEDS_REASIN": "CONFIRMED THIS PASS (was carry-over). B0002NYWQ2 is dead on Amazon and is ALSO the ASIN on the torque-wrench entry, so one re-ASIN decision fixes both slots. Candidate B07H3KJQ83.",
-    "FIRECRAWL_LAN_DOWN": "Escalated: 192.168.18.4:3002 now refuses connections (Errno 111), not just a degraded page. Every ASIN had to go through jina. If the container is not restarted, the only working Amazon route is jina (~6s spacing), which cannot parse bulky/no-buybox listings. Check the Firecrawl host.",
-    "NEW_ROUTE_FOUND_JINA_SEARCH": "Positive: https://r.jina.ai/https://www.amazon.com/s?k=<query> returned a full 185-280KB results page (with titles and prices) on several queries, so it CAN be used to find live ASINs when a product 404s. It is flaky though: brand queries for Capri and Sunex returned 14KB/542-byte stubs twice. Retry with a simpler query; treat an empty asins list as 'walled', not 'no such product'.",
+    "JACKSTAND_ALL_ASINS_DEAD_OR_EMPTY": "NEW, action needed. All 5 jack-stand slots are unverifiable: Daytona 3 Ton has an empty asin field, and ESCO 10498 (B000I6W2A0), Torin 3 Ton (B000C4CHPE), Daytona 6 Ton (B09LGK5J7W), and Torin 6 Ton (same B000C4CHPE) are Amazon 404s. Decision needed for each slot: source a live Amazon ASIN or drop the Amazon linkage.",
+    "TORIN_DUPLICATE_ASIN_BUG": "CONFIRMED AGAIN. B000C4CHPE is assigned to BOTH the Torin Big Red 3 Ton ($39.99) and Torin Big Red 6 Ton ($64.99) entries, and it is now a 404. One re-ASIN decision per slot, and the shared field must be split.",
+    "DAYTONA_NO_AMAZON_ASIN": "Daytona is a Harbor Freight brand with no Amazon listing; the 3 Ton entry has an empty asin and the 6 Ton points at a dead ASIN. Both are non-Amazon in practice - consider removing the Amazon buy path or replacing the SKUs with Amazon-native stands.",
+    "ROUTE_STATUS_TODAY": "Firecrawl LAN (192.168.18.4:3002) STILL DOWN (TCP connection refused, Errno 111). jina https://r.jina.ai/https://www.amazon.com/gp/aw/d/<ASIN> with header x-no-cache:true DOES return the full ~185KB US PDP for live ASINs (verified: B07GH97P36 breaker bar = $55.00, B0D2J99MFG = $79.99), and returns a clean Amazon 404 stub for dead ones. So jina+nocache was the ONLY working route this pass. jina search (/s?k=) is now CAPTCHA-walled (returns a media-amazon gif / 'a record that is halfway blue' alt text), so no replacement ASINs could be discovered this pass. NOTE: r.jina.ai with caching LEFT ON intermittently served a stale 'Continue shopping' wall instead of the real page - always send x-no-cache:true.",
+    "WEBBACKEND_DOWN": "web_search tool failed all calls this pass: 'Firecrawl search failed: ... keyless rescue 403 Forbidden' (api.firecrawl.dev/v2/search). The Hermes web backend is down too, so no fallback search for candidate ASINs.",
+    "GEARWRENCH_BREAKER_DEAD_ASIN": "CARRY-OVER. B000VDXSV6 (stored $39.99, badge 'Best Value') is an Amazon 404. Candidate replacement B001M0O1GG (24-inch 81308D, ~$36.56). Editorial line 'USA made' needs re-check on whichever replacement is chosen.",
+    "CAPRI_BREAKER_DEAD_ASIN": "CARRY-OVER. B07D3M64K5 (stored $18.99, badge 'Best Budget') is an Amazon 404. Candidate B07KWJYCC2 ($24.99) - budget badge and price both need review.",
+    "SUNEX_BREAKER_DEAD_ASIN": "CARRY-OVER. B00A1W3G8E (stored $34.99, 'Tough Pick') is a 404 and no Sunex-branded breaker bar surfaced. Decide: generic Cr-Mo 24-inch or drop the slot.",
+    "SK_BREAKER_NEEDS_REASIN": "CARRY-OVER. B0002NYWQ2 dead and shared with a torque-wrench entry. Candidate B07H3KJQ83.",
+    "FIRECRAWL_LAN_DOWN": "CARRY-OVER, STILL DOWN. 192.168.18.4:3002 refuses connections. Restart the Firecrawl container; jina alone cannot parse bulky/no-buybox listings.",
     "PITTSBURGH_RATCHET_DEAD_ASIN": "CARRY-OVER (ratchet-set). B000COC6R4 404; stored $12.99 untouched.",
     "MAC_TOOLS_RATCHET_DEAD_ASIN": "CARRY-OVER (ratchet-set). B002IY936S 404; stored $129.99 untouched.",
     "SNAPON_F80_NO_BUYBOX": "CARRY-OVER (ratchet-set). B005FI6542 resolves, no buybox, ASIN unconfirmed; stored $149.00 untouched.",
-    "CAPRI_RATCHET_NEAR_THRESHOLD": "CARRY-OVER (ratchet-set). B07Z2YWZZP was -5.82% ($32.99 -> $31.07); recheck on the next ratchet pass.",
+    "CAPRI_RATCHET_NEAR_THRESHOLD": "CARRY-OVER (ratchet-set). B07Z2YWZZP was -5.82% ($32.99 -> $31.07); recheck next ratchet pass.",
     "MILWAUKEE_M18_DEAD_ASIN": "CARRY-OVER (impact-wrench). B08P4NX77N 404; stored $277.89 untouched.",
     "RYOBI_P262_DEAD_ASIN": "CARRY-OVER (impact-wrench). B07Q3B6Q1F 404; stored $99.00 untouched.",
     "DEWALT_DCF899B_OUT_OF_STOCK": "CARRY-OVER (impact-wrench). B00WJA1J68 OOS/no buybox; likely superseded by DCF900B.",
     "INGERSOLL_RAND_NEAR_THRESHOLD": "CARRY-OVER (impact-wrench). B00LV9Y1FE was -8.93%.",
-    "GOOLOO_PRICE_JUMP_EDITORIAL": "CARRY-OVER (data.mjs). GP4000 $119.99 just under GBX45 $124.95 while labelled 'Best Budget'. Editorial badge review, not a price action.",
+    "GOOLOO_PRICE_JUMP_EDITORIAL": "CARRY-OVER (data.mjs). GP4000 $119.99 just under GBX45 $124.95 while labelled 'Best Budget'. Editorial badge review.",
     "NEXPOW_2000A_NO_BUYBOX_PRICE": "CARRY-OVER (jump-starter). B07T9S3Q5N confirms ASIN, no buybox price.",
     "TACKLIFE_T8_PRO_NO_ASIN": "CARRY-OVER (jump-starter). TACKLIFE T8 Pro ($67.99) empty asin field.",
     "TEKTON_TORQUE_ASIN_NEEDS_REASIN": "CARRY-OVER (torque-wrench). B00C5ZL0RU no buybox, ASIN unconfirmed.",
-    "PITTSBURGH_TORQUE_ASIN_LIKELY_DEAD": "CARRY-OVER (torque-wrench). Shared ASIN B0002NYWQ2 now CONFIRMED dead (see SK_BREAKER_NEEDS_REASIN).",
+    "PITTSBURGH_TORQUE_ASIN_LIKELY_DEAD": "CARRY-OVER (torque-wrench). Shared ASIN B0002NYWQ2 confirmed dead.",
     "PRECISION_INSTRUMENTS_TORQUE_ASIN_UNCONFIRMED": "CARRY-OVER. B002XMSFIM parsed a price with asin_confirmed FALSE.",
     "SOCKET_SET_WATCHES": "CARRY-OVER. GEARWRENCH 110PC B07H5H1J3X in_stock FALSE; DEWALT 192PC B01BHJE0J4 +4.57%; QUINN 132PC empty asin.",
     "OBD2_WATCHES": "CARRY-OVER. FOXWELL NT301 B00UJV3E12 +6.51%; BLUEDRIVER B0GL9RL3XS -5.22%.",
     "OTHER_NEAR_THRESHOLD_WATCHES": "CARRY-OVER. Wera B007BZ2AQY +8.41%; OMT B0BJK5FSNR +5.88%; CTEK MXS 5.0 B00CD44RQO +4.17%; Orion Motor Tech B01FW3U26G +6.89%; IRWIN B0002NYBH8 low stock; Lisle 28600 B0002SQUFY in_stock FALSE.",
-    "SELF_CONTINUITY_OPEN_ITEMS": "Unchanged: FLOTOOL MAX 11912 B0117EESNC third-cycle unverified; jack-stand dead ASINs (B000I6W2A0, B000C4CHPE x2 duplicate, B09LGK5J7W) plus Torin duplicate-ASIN bug; ESCO B0019JVIPM needs a jina price; multimeter Klein B018EXZO8M no-buybox; KAIWEETS B07J83SMVZ and Fluke B0006Z64Q0 ASIN 404; air-compressor Porter-Cable B000O5RO1Y and Makita B0001Q2VPU no-buybox; Stealth SAQ-11215 over $400 editorial call; work-light ROVER B08YS6CXG6 and DEWALT B077ZCTBFY no-buybox; car-ramps OOS pair B0117EETEK and B01N308YYO; best-floor-jack-review.astro narrates a different product set than data.mjs floor-jack - editorial mismatch.",
-    "APPROVAL_GATE_NOTE": "Raw-IP curl, bash -c one-liners, and grouped { ...; } compound shell bodies are blocked in cron context. All probes were run via written scripts under /root/tools."
+    "SELF_CONTINUITY_OPEN_ITEMS": "Unchanged: FLOTOOL MAX 11912 B0117EESNC third-cycle unverified; car-ramps OOS pair B0117EETEK and B01N308YYO; ESCO B0019JVIPM needs a jina price; multimeter Klein B018EXZO8M no-buybox; KAIWEETS B07J83SMVZ and Fluke B0006Z64Q0 ASIN 404; air-compressor Porter-Cable B000O5RO1Y and Makita B0001Q2VPU no-buybox; Stealth SAQ-11215 over $400 editorial call; work-light ROVER B08YS6CXG6 and DEWALT B077ZCTBFY no-buybox; best-floor-jack-review.astro narrates a different product set than data.mjs floor-jack - editorial mismatch.",
+    "APPROVAL_GATE_NOTE": "Raw-IP curl, bash -c one-liners, and grouped { ...; } compound bodies are blocked in cron context. All probes ran via written scripts under /root/tools."
   },
   "schedule": {
-    "next_category_recommend": "jack-stand - next block in data.mjs. 5 products: Daytona 3 Ton Pair (empty ASIN, price estimated) $59.99; ESCO 10498 3 Ton B000I6W2A0 $94.99; Torin Big Red 3 Ton T43002 B000C4CHPE $39.99; Daytona 6 Ton Pair B09LGK5J7W $109.99; Torin Big Red 6 Ton B000C4CHPE $64.99 (note: B000C4CHPE is used by BOTH Torin entries - the known duplicate-ASIN bug - and is a carry-over dead ASIN; expect two failures).",
-    "remaining_categories_unverified_or_due": "jack-stand next, then continue down data.mjs and clear the flagged follow-ups above (ratchet-set, impact-wrench, jump-starter, torque-wrench, socket-set, obd2 watches).",
-    "verified_this_cycle": "breaker-bar: 1 of 5 fetched clean (flat, no edit), 4 dead ASINs (404). 0 edits, build skipped."
+    "next_category_recommend": "car-ramps - next block in data.mjs. 5 products: RhinoGear RhinoRamps 11909 B0117EETEK $64.99 (carry-over OOS); FloTool RhinoRamps MAX 11912 B0117EESNC $79.99 (carry-over third-cycle unverified); Black Widow PSR295 B01N308YYO $109.99 (carry-over OOS); MaxxHaul 50709 B0BP5C3749 $104.99; Race Ramps RR-56 B003WSZH9G $335.54.",
+    "remaining_categories_unverified_or_due": "car-ramps next, then work-lights, then clear the flagged follow-ups (breaker-bar re-ASINs, ratchet-set, impact-wrench, jump-starter, torque-wrench, socket-set, obd2, jack-stand).",
+    "verified_this_cycle": "jack-stand: 0 of 5 fetched a price (1 empty ASIN, 4 dead 404) - 0 edits, build skipped."
   },
   "cycle_complete": true
 }
