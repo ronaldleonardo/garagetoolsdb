@@ -1,0 +1,20 @@
+B0117EESNC  firecrawl failed, trying jina...
+B0117EESNC  FETCH FAILED
+B0117EETEK  firecrawl failed, trying jina...
+B0117EETEK  [jina]  NO PRICE PARSED  [WARN asin not confirmed]  [WARN not in stock]
+
+{
+  "B0117EESNC": {
+    "asin": "B0117EESNC",
+    "error": "fetch failed on all retries"
+  },
+  "B0117EETEK": {
+    "asin": "B0117EETEK",
+    "asin_confirmed": false,
+    "in_stock": false,
+    "ship_block": false,
+    "is_prime": false,
+    "rating": "4.6",
+    "route": "jina"
+  }
+}
