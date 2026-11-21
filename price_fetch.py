@@ -108,7 +108,8 @@ def parse(md, asin):
     # ASIN guard: the brand store link carries lp_asin, confirms the right PDP
     out["asin_confirmed"] = f"lp_asin={asin}" in md
 
-    out["in_stock"] = "In Stock" in md
+    # Mobile PDP often says "Only 6 left in stock - order soon." instead of "In Stock".
+    out["in_stock"] = ("In Stock" in md) or ("left in stock" in md)
     out["ship_block"] = "cannot be shipped to your selected delivery location" in md
     out["is_prime"] = "Or Prime members get FREE delivery" in md
 

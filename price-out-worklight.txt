@@ -1,0 +1,78 @@
+B08YS6CXG6  firecrawl failed, trying jina...
+B08YS6CXG6  [jina]  NO PRICE PARSED  [WARN asin not confirmed]  [WARN not in stock]
+B0CJ4P4J3T  firecrawl failed, trying jina...
+B0CJ4P4J3T  [jina]  live $28.99  (buybox_json)  stored $30.58  -5.20%  skip (<10%)
+B013LDN6BC  firecrawl failed, trying jina...
+B013LDN6BC  [jina]  live $54.97  (buybox_json)  stored $34.97  +57.19%  EDIT  [WARN asin not confirmed]
+B0837J2MNT  firecrawl failed, trying jina...
+B0837J2MNT  [jina]  live $339.00  (buybox_json)  stored $339.00  +0.00%  skip (<10%)  [WARN not in stock]
+B077ZCTBFY  firecrawl failed, trying jina...
+B077ZCTBFY  [jina]  live $179.00  (buybox_json)  stored $249.00  -28.11%  EDIT  [WARN not in stock]
+
+{
+  "B08YS6CXG6": {
+    "asin": "B08YS6CXG6",
+    "asin_confirmed": false,
+    "in_stock": false,
+    "ship_block": false,
+    "is_prime": false,
+    "rating": "4.8",
+    "route": "jina"
+  },
+  "B0CJ4P4J3T": {
+    "asin": "B0CJ4P4J3T",
+    "price": 28.99,
+    "price_src": "buybox_json",
+    "asin_confirmed": true,
+    "in_stock": true,
+    "ship_block": false,
+    "is_prime": false,
+    "rating": "4.4",
+    "route": "jina",
+    "stored": 30.58,
+    "pct_change": -5.2,
+    "action": "skip (<10%)"
+  },
+  "B013LDN6BC": {
+    "asin": "B013LDN6BC",
+    "price": 54.97,
+    "price_src": "buybox_json",
+    "asin_confirmed": false,
+    "in_stock": true,
+    "ship_block": false,
+    "is_prime": false,
+    "rating": "4.4",
+    "route": "jina",
+    "stored": 34.97,
+    "pct_change": 57.19,
+    "action": "EDIT"
+  },
+  "B0837J2MNT": {
+    "asin": "B0837J2MNT",
+    "price": 339.0,
+    "price_src": "buybox_json",
+    "asin_confirmed": true,
+    "in_stock": false,
+    "ship_block": false,
+    "is_prime": false,
+    "rating": "4.7",
+    "route": "jina",
+    "stored": 339.0,
+    "pct_change": 0.0,
+    "action": "skip (<10%)"
+  },
+  "B077ZCTBFY": {
+    "asin": "B077ZCTBFY",
+    "price": 179.0,
+    "price_src": "buybox_json",
+    "asin_confirmed": true,
+    "in_stock": false,
+    "ship_block": false,
+    "is_prime": false,
+    "rating": "4.8",
+    "route": "jina",
+    "stored": 249.0,
+    "pct_change": -28.11,
+    "action": "EDIT"
+  }
+}

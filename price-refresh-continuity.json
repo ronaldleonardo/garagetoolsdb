@@ -1,35 +1,32 @@
 {
-  "cycle": 48,
-  "date": "2026-11-19",
-  "category_done": "car-ramps (5/5 checked: 1 EDIT, 1 skip, 1 OOS asin-unconfirmed, 1 OOS asin-confirmed, 1 fetch-failed/unverified).",
+  "cycle": 49,
+  "date": "2026-11-20",
+  "category_done": "work-light (5/5 checked: 1 EDIT, 2 skip-under-threshold/unchanged, 1 skip but stored price likely stale, 1 no-buybox unverified).",
   "products_checked": [
-    "car-ramps/RhinoGear RhinoRamps 11909 (B0117EETEK, stored $64.99): UNVERIFIED / OOS. jina: no price, asin_confirmed FALSE, in_stock false (2 passes, same result). Stored $64.99 UNTOUCHED. FLAG: carry-over OOS - recheck or re-ASIN.",
-    "car-ramps/FloTool RhinoRamps MAX 11912 (B0117EESNC, stored $79.99): UNVERIFIED. FETCH FAILED on all retries on both passes (firecrawl down, jina returned nothing). No price obtained. Stored $79.99 UNTOUCHED. FLAG: recheck next pass.",
-    "car-ramps/Black Widow PSR295 Plastic (B01N308YYO, stored $109.99): OOS. jina: asin_confirmed TRUE, in_stock FALSE, no buybox price. Stored $109.99 UNTOUCHED. FLAG: carry-over OOS.",
-    "car-ramps/MaxxHaul 50709 (B0BP5C3749): EDITED $104.99 -> $132.99. jina buybox_json live $132.99, asin_confirmed TRUE, in_stock TRUE, prime TRUE, rating 4.6 / 313 reviews, +26.67%. EDIT applied.",
-    "car-ramps/Race Ramps RR-56 (B003WSZH9G, stored $335.54): live $316.21 (-5.76%). Below 10% threshold, stored price UNTOUCHED. FLAG: recheck next cycle."
+    "work-light/Milwaukee M18 ROVER Compact Flood (B08YS6CXG6, stored $144.97): UNVERIFIED / no featured offer. jina PDP resolved (title 'M18 GEN-2 ... 4000 Lumens Rover LED AC/DC Flood Light (Tool-Only)'), but only 'See All Buying Options' - no buybox price, no lp_asin. Stored $144.97 UNTOUCHED. FLAG: no featured seller; re-ASIN candidate.",
+    "work-light/SYLSTAR 2400LM Rechargeable (B0CJ4P4J3T, stored $30.58): live $28.99 (-5.20%), asin_confirmed TRUE, in stock. Below 10% threshold, stored price UNTOUCHED.",
+    "work-light/Milwaukee M18 LED Work Light 2735 (B013LDN6BC, stored $34.97): live $54.97 (+57.19%) from third-party seller 'Find it at the Bay', in stock, PDP title 'Milwaukee 2735-20 M18 LED Work Light'. BUT asin_confirmed FALSE (no lp_asin brand link on this page, even on re-fetch with x-no-cache). Per the asin_confirmed rule the price was treated as INVALID and NOT applied. FLAG: stored $34.97 looks stale / possibly a bad original record - needs a manual decision.",
+    "work-light/Makita DML809 Cordless/Corded (B0837J2MNT, stored $339.00): live $339.00 (0.00%), asin_confirmed TRUE, 'Only 9 left in stock'. No edit (unchanged).",
+    "work-light/DEWALT 20V MAX LED Tower (B077ZCTBFY, stored $249.00): EDITED $249.00 -> $179.00 (-28.11%). jina buybox_json $179.00, asin_confirmed TRUE, 'Only 6 left in stock - order soon', sold by Amazon.com, PDP title 'DEWALT 20V MAX LED Work Light with Stand, Tripod Light, 3000 Lumens (DCL079B)'. EDIT applied."
   ],
   "edits": {
-    "data.mjs": "ONE EDIT: car-ramps / MaxxHaul 50709 price $104.99 -> $132.99 (line 404). Verified live in dist/tools/car-ramps.html and via https://garagetoolsdb.com/tools/car-ramps (200, price present).",
+    "data.mjs": "ONE EDIT: work-light / DEWALT 20V MAX LED Tower price $249.00 -> $179.00 (line 418). Verified in dist/tools/work-light.html and live at https://garagetoolsdb.com/tools/work-light (HTTP 200, $179.00 present).",
     "post": "NONE.",
-    "script": "price_fetch.py NOT modified. Raw outputs saved: price-out-carramps.txt, price-out-carramps-retry.txt."
+    "script": "price_fetch.py: one small fix in parse() - in_stock now also matches 'left in stock' (mobile PDP says 'Only N left in stock - order soon' instead of 'In Stock', which made 2 in-stock items look OOS this pass). No route changes. Raw outputs: price-out-worklight.txt, price-out-worklight-verify.txt, price-out-worklight-dump.txt, price-out-worklight-makita.txt, price-raw/*.md."
   },
-  "build": "RAN: ./node_modules/.bin/astro build (62 pages, complete). systemctl restart garagetoolsdb BLOCKED by cron approval gate (stop/restart system service); serve.mjs serves dist live so the new price is already live - restart is optional and was skipped.",
+  "build": "RAN: ./node_modules/.bin/astro build (62 pages, complete, 1.61s). systemctl restart garagetoolsdb BLOCKED by cron approval gate (stop/restart system service) - serve.mjs serves dist live, so the new price is already live; restart not needed.",
   "issues": {
-    "FIRECRAWL_LAN_DOWN": "CARRY-OVER, STILL DOWN. 192.168.18.4:3002 refuses connections (firecrawl failed on every ASIN this pass). jina + x-no-cache:true remains the only working route.",
-    "WEBBACKEND_STATUS": "Not re-tested this pass; last pass web_search failed (Firecrawl search 403).",
-    "MAXHAUL_PRICE_JUMP": "NEW this pass: MaxxHaul 50709 jumped +26.67% ($104.99 -> $132.99) and now sits ABOVE the Black Widow PSR295 ($109.99) and near the FloTool MAX ($79.99). It carries badge 'best' / label 'Best for Low Cars'; review whether the price still fits that framing versus cheaper options.",
-    "RHINORAMPS_11909_OOS": "RhinoGear 11909 (B0117EETEK) still OOS/unconfirmed - third carry-over. Consider re-ASIN or marking availability editorial note.",
-    "RHINORAMPS_MAX_FETCH_FAIL": "FloTool RhinoRamps MAX 11912 (B0117EESNC) failed to fetch on two separate passes. If it fails a third time, treat as a route/ASIN problem and probe directly.",
-    "BLACKWIDOW_PSR295_OOS": "Black Widow PSR295 (B01N308YYO) ASIN confirms but no buybox - carry-over OOS.",
-    "RACE_RAMPS_NEAR_THRESHOLD": "Race Ramps RR-56 (B003WSZH9G) -5.76% ($335.54 -> $316.21); under threshold, recheck next car-ramps cycle.",
-    "CARRY_OVER_OPEN_ITEMS": "Unchanged from cycle 47: breaker-bar re-ASINs (GEARWRENCH B000VDXSV6, CAPRI B07D3M64K5, SUNEX B00A1W3G8E, SK B0002NYWQ2); ratchet-set (Pittsburgh B000COC6R4, Mac B002IY936S, Snap-on no-buybox, Capri near threshold); impact-wrench (Milwaukee B08P4NX77N, Ryobi B07Q3B6Q1F dead; DeWalt DCF899B OOS; Ingersoll Rand near threshold); jump-starter (NEXPOW no buybox, TACKLIFE no ASIN, GOOLOO editorial); torque-wrench (TEKTON, Pittsburgh dead, Precision unconfirmed); socket-set watches; OBD2 watches; jack-stand ALL ASINs dead/empty (B000I6W2A0, B000C4CHPE x2 dup, B09LGK5J7W, Daytona empty); other near-threshold watches.",
-    "APPROVAL_GATE_NOTE": "systemctl restart blocked (approval gate) in cron context as noted; build done via ./node_modules/.bin/astro build."
+    "FIRECRAWL_LAN_DOWN": "CARRY-OVER, STILL DOWN. 192.168.18.4:3002 refused every ASIN this pass; jina + x-no-cache:true was the only route used.",
+    "MILWAUKEE_ROVER_NO_BUYBOX": "NEW: B08YS6CXG6 (M18 ROVER 4000lm flood) has no featured offer - only 'See All Buying Options' - but rating 4.8 still renders. Stored $144.97 cannot be confirmed. Consider re-ASIN to the current Rover listing or marking availability in the copy.",
+    "MILWAUKEE_2735_PRICE_CONFLICT": "NEW: B013LDN6BC live buybox $54.97 vs stored $34.97 (+57%). PDP identity is correct (Milwaukee 2735-20) but lp_asin guard fails, so no edit was made. Third-party seller only. Needs a human call: either the stored $34.97 was always wrong, or the item has moved to marketplace-only pricing. Do not auto-apply.",
+    "IN_STOCK_PARSER": "FIXED this pass: 'Only N left in stock' was being read as out-of-stock. Two items (Makita DML809, DEWALT DCL079B) were actually in stock.",
+    "CARRY_OVER_OPEN_ITEMS": "Unchanged: car-ramps (RhinoGear 11909 B0117EETEK OOS x4, FloTool MAX B0117EESNC fetch-failed x2, Black Widow PSR295 B01N308YYO OOS, Race Ramps RR-56 -5.76% near threshold); breaker-bar re-ASINs (GEARWRENCH B000VDXSV6, CAPRI B07D3M64K5, SUNEX B00A1W3G8E, SK B0002NYWQ2); ratchet-set (Pittsburgh B000COC6R4, Mac B002IY936S, Snap-on no-buybox); impact-wrench (Milwaukee B08P4NX77N, Ryobi B07Q3B6Q1F dead, DeWalt DCF899B OOS); jump-starter (NEXPOW no buybox, TACKLIFE no ASIN); torque-wrench (Pittsburgh dead, Precision unconfirmed); jack-stand (B000I6W2A0, B000C4CHPE x2 dup, B09LGK5J7W, Daytona empty); socket-set/OBD2 watches.",
+    "APPROVAL_GATE_NOTE": "systemctl restart still blocked in cron context; build done via ./node_modules/.bin/astro build."
   },
   "schedule": {
-    "next_category_recommend": "work-lights - next unverified block. Then clear flagged follow-ups (breaker-bar re-ASINs, ratchet-set, impact-wrench, jump-starter, torque-wrench, socket-set, obd2, jack-stand).",
-    "remaining_categories_unverified_or_due": "work-lights next, then the flagged follow-ups above. Also recheck car-ramps near/OOS items (RhinoGear 11909, FloTool MAX, Black Widow PSR295, Race Ramps RR-56).",
-    "verified_this_cycle": "car-ramps: 2 of 5 fetched a live price (MaxxHaul EDIT, Race Ramps skip); 2 OOS, 1 fetch-failed. 1 edit applied."
+    "next_category_recommend": "breaker-bar (5 products, all with standing re-ASIN flags) - clears the follow-up backlog before moving to fresh categories.",
+    "remaining_categories_unverified_or_due": "breaker-bar next; then ratchet-set, impact-wrench, jump-starter, torque-wrench, socket-set, obd2-scanner, jack-stand, then fresh blocks (air-compressor, multimeter, battery-charger, oil-filter-wrench, brake-caliper-tool, bolt-extractor-set, screwdriver-set, impact-socket-set, wrench-set, tire-inflator, brake-bleeder, tap-and-die-set, flare-nut-wrench, brake-line-flaring-tool, hex-key-set, tire-plug-kit, floor-jack).",
+    "verified_this_cycle": "work-light: 4 of 5 fetched a live buybox price (DEWALT EDIT, SYLSTAR skip, Makita skip, Milwaukee 2735 blocked by asin guard); 1 no featured offer. 1 edit applied."
   },
   "cycle_complete": true
 }
