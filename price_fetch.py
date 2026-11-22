@@ -70,7 +70,8 @@ def jina_fetch(asin, tries=3, gap=10, timeout=150):
     for _ in range(tries):
         try:
             req = urllib.request.Request(
-                JINA + asin, headers={"User-Agent": UA})
+                JINA + asin,
+                headers={"User-Agent": UA, "x-no-cache": "true"})
             md = urllib.request.urlopen(req, timeout=timeout).read().decode("utf-8", "ignore")
             if len(md) > 5000:
                 return md

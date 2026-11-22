@@ -1,0 +1,42 @@
+B07GH97P36  [firecrawl]  live $55.00  (buybox_json)  stored $55.00  +0.00%  skip (<10%)
+B000VDXSV6  firecrawl failed, trying jina...
+B000VDXSV6  FETCH FAILED
+B07D3M64K5  firecrawl failed, trying jina...
+B07D3M64K5  FETCH FAILED
+B00A1W3G8E  firecrawl failed, trying jina...
+B00A1W3G8E  FETCH FAILED
+B0002NYWQ2  firecrawl failed, trying jina...
+B0002NYWQ2  FETCH FAILED
+
+{
+  "B07GH97P36": {
+    "asin": "B07GH97P36",
+    "price": 55.0,
+    "price_src": "buybox_json",
+    "asin_confirmed": true,
+    "in_stock": true,
+    "ship_block": false,
+    "is_prime": false,
+    "rating": "4.7",
+    "route": "firecrawl",
+    "stored": 55.0,
+    "pct_change": 0.0,
+    "action": "skip (<10%)"
+  },
+  "B000VDXSV6": {
+    "asin": "B000VDXSV6",
+    "error": "fetch failed on all retries"
+  },
+  "B07D3M64K5": {
+    "asin": "B07D3M64K5",
+    "error": "fetch failed on all retries"
+  },
+  "B00A1W3G8E": {
+    "asin": "B00A1W3G8E",
+    "error": "fetch failed on all retries"
+  },
+  "B0002NYWQ2": {
+    "asin": "B0002NYWQ2",
+    "error": "fetch failed on all retries"
+  }
+}

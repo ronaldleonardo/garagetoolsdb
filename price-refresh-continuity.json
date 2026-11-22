@@ -1,32 +1,31 @@
 {
-  "cycle": 49,
-  "date": "2026-11-20",
-  "category_done": "work-light (5/5 checked: 1 EDIT, 2 skip-under-threshold/unchanged, 1 skip but stored price likely stale, 1 no-buybox unverified).",
+  "cycle": 50,
+  "date": "2026-11-21",
+  "category_done": "breaker-bar (5/5 checked: 1 verified unchanged, 4 DEAD ASINs / 404, 0 edits)",
   "products_checked": [
-    "work-light/Milwaukee M18 ROVER Compact Flood (B08YS6CXG6, stored $144.97): UNVERIFIED / no featured offer. jina PDP resolved (title 'M18 GEN-2 ... 4000 Lumens Rover LED AC/DC Flood Light (Tool-Only)'), but only 'See All Buying Options' - no buybox price, no lp_asin. Stored $144.97 UNTOUCHED. FLAG: no featured seller; re-ASIN candidate.",
-    "work-light/SYLSTAR 2400LM Rechargeable (B0CJ4P4J3T, stored $30.58): live $28.99 (-5.20%), asin_confirmed TRUE, in stock. Below 10% threshold, stored price UNTOUCHED.",
-    "work-light/Milwaukee M18 LED Work Light 2735 (B013LDN6BC, stored $34.97): live $54.97 (+57.19%) from third-party seller 'Find it at the Bay', in stock, PDP title 'Milwaukee 2735-20 M18 LED Work Light'. BUT asin_confirmed FALSE (no lp_asin brand link on this page, even on re-fetch with x-no-cache). Per the asin_confirmed rule the price was treated as INVALID and NOT applied. FLAG: stored $34.97 looks stale / possibly a bad original record - needs a manual decision.",
-    "work-light/Makita DML809 Cordless/Corded (B0837J2MNT, stored $339.00): live $339.00 (0.00%), asin_confirmed TRUE, 'Only 9 left in stock'. No edit (unchanged).",
-    "work-light/DEWALT 20V MAX LED Tower (B077ZCTBFY, stored $249.00): EDITED $249.00 -> $179.00 (-28.11%). jina buybox_json $179.00, asin_confirmed TRUE, 'Only 6 left in stock - order soon', sold by Amazon.com, PDP title 'DEWALT 20V MAX LED Work Light with Stand, Tripod Light, 3000 Lumens (DCL079B)'. EDIT applied."
+    "breaker-bar/TEKTON 1/2-inch Breaker Bar (B07GH97P36, stored $55.00): live $55.00 (+0.00%), asin_confirmed TRUE, buybox_json via Firecrawl LAN, in stock. Below 10% threshold, no edit. VERIFIED.",
+    "breaker-bar/GEARWRENCH 1/2-inch (B000VDXSV6, stored $39.99): DEAD. Amazon returns 404 'Sorry! We couldn't find that page' on BOTH routes independently (Firecrawl LAN /gp/aw/d 439-byte error page; r.jina.ai x-no-cache 610-byte 'Page Not Found'). Not a rate limit: a known-good ASIN resolved the same minute on the same route. Price NOT checked, stored value UNTOUCHED. FLAG: re-ASIN.",
+    "breaker-bar/Capri Tools 3/8-inch (B07D3M64K5, stored $18.99): DEAD, 404 on both routes (Firecrawl 440-byte error page, jina 'Page Not Found'). UNTOUCHED. FLAG: re-ASIN.",
+    "breaker-bar/Sunex 1/2-inch Impact Rated (B00A1W3G8E, stored $34.99): DEAD, 404 on both routes. UNTOUCHED. FLAG: re-ASIN.",
+    "breaker-bar/SK Hand Tool 3/4-inch (B0002NYWQ2, stored $89.99): DEAD, 404 on both routes. Also the SAME dead ASIN is used by the torque-wrench card 'SK 3/4-inch' at line 242 ($19.99) - the dead ASIN spans two categories. UNTOUCHED. FLAG: re-ASIN x2."
   ],
   "edits": {
-    "data.mjs": "ONE EDIT: work-light / DEWALT 20V MAX LED Tower price $249.00 -> $179.00 (line 418). Verified in dist/tools/work-light.html and live at https://garagetoolsdb.com/tools/work-light (HTTP 200, $179.00 present).",
+    "data.mjs": "NONE. One product verified with no price movement (TEKTON $55.00), four products had dead ASINs so no price could be read. No cosmetic or rounding edits made.",
     "post": "NONE.",
-    "script": "price_fetch.py: one small fix in parse() - in_stock now also matches 'left in stock' (mobile PDP says 'Only N left in stock - order soon' instead of 'In Stock', which made 2 in-stock items look OOS this pass). No route changes. Raw outputs: price-out-worklight.txt, price-out-worklight-verify.txt, price-out-worklight-dump.txt, price-out-worklight-makita.txt, price-raw/*.md."
+    "script": "price_fetch.py: added header x-no-cache:true to jina_fetch (project convention; jina serves cached/blocked copies without it). No route or parser changes. New helper scripts for re-ASIN research: /root/tools/asin_candidates.py (DDG html search -> ASIN candidates via jina) and /root/tools/pdp_title.py (PDP title/rating check). Raw run log: price-out-breakerbar.txt."
   },
-  "build": "RAN: ./node_modules/.bin/astro build (62 pages, complete, 1.61s). systemctl restart garagetoolsdb BLOCKED by cron approval gate (stop/restart system service) - serve.mjs serves dist live, so the new price is already live; restart not needed.",
+  "build": "SKIPPED (no edits to data.mjs). No astro build, no service restart.",
   "issues": {
-    "FIRECRAWL_LAN_DOWN": "CARRY-OVER, STILL DOWN. 192.168.18.4:3002 refused every ASIN this pass; jina + x-no-cache:true was the only route used.",
-    "MILWAUKEE_ROVER_NO_BUYBOX": "NEW: B08YS6CXG6 (M18 ROVER 4000lm flood) has no featured offer - only 'See All Buying Options' - but rating 4.8 still renders. Stored $144.97 cannot be confirmed. Consider re-ASIN to the current Rover listing or marking availability in the copy.",
-    "MILWAUKEE_2735_PRICE_CONFLICT": "NEW: B013LDN6BC live buybox $54.97 vs stored $34.97 (+57%). PDP identity is correct (Milwaukee 2735-20) but lp_asin guard fails, so no edit was made. Third-party seller only. Needs a human call: either the stored $34.97 was always wrong, or the item has moved to marketplace-only pricing. Do not auto-apply.",
-    "IN_STOCK_PARSER": "FIXED this pass: 'Only N left in stock' was being read as out-of-stock. Two items (Makita DML809, DEWALT DCL079B) were actually in stock.",
-    "CARRY_OVER_OPEN_ITEMS": "Unchanged: car-ramps (RhinoGear 11909 B0117EETEK OOS x4, FloTool MAX B0117EESNC fetch-failed x2, Black Widow PSR295 B01N308YYO OOS, Race Ramps RR-56 -5.76% near threshold); breaker-bar re-ASINs (GEARWRENCH B000VDXSV6, CAPRI B07D3M64K5, SUNEX B00A1W3G8E, SK B0002NYWQ2); ratchet-set (Pittsburgh B000COC6R4, Mac B002IY936S, Snap-on no-buybox); impact-wrench (Milwaukee B08P4NX77N, Ryobi B07Q3B6Q1F dead, DeWalt DCF899B OOS); jump-starter (NEXPOW no buybox, TACKLIFE no ASIN); torque-wrench (Pittsburgh dead, Precision unconfirmed); jack-stand (B000I6W2A0, B000C4CHPE x2 dup, B09LGK5J7W, Daytona empty); socket-set/OBD2 watches.",
-    "APPROVAL_GATE_NOTE": "systemctl restart still blocked in cron context; build done via ./node_modules/.bin/astro build."
+    "DEAD_ASIN_BLOCK": "4 of 5 breaker-bar ASINs are 404 on Amazon (B000VDXSV6, B07D3M64K5, B00A1W3G8E, B0002NYWQ2). This is the standing re-ASIN backlog, now confirmed 404 rather than 'no buybox'. Nothing can be priced until the ASINs are replaced.",
+    "REASIN_CANDIDATES_VERIFIED_LIVE": "Searched DDG-via-jina (Amazon /s?k= returns 503 through Firecrawl egress, so SERP discovery stays dead) and verified titles/prices on the US PDP. GEARWRENCH: B001M0O1G6 = 'GEARWRENCH 1/2\" Drive Flex Handle/Breaker Bar, 15\" - 81307', live $28.19, in stock, 4.7 - closest live GearWrench breaker bar, but 15 inch vs the card's stated 18 inch. B078Z3DL64 = GearWrench 87852 extendable 18-24\", $54.75, NOT in stock. Capri: B07KWJYCC2 = 'Capri Tools 3/8 in. Drive 18 in. Extended Leverage Breaker Bar', live $24.99, in stock, 4.3 - 18 inch vs card's 12 inch. Sunex: no live 24-inch Sunex breaker bar found; B000MCW0JK is an impact EXTENSION, not a bar. SK: B00063K8X0 = SK 41652 1/2\" 16\" flex handle, $69.60 - wrong drive size for the 3/4-inch card. Only the two GEARWRENCH/Capri candidates are usable, and both carry a length-spec mismatch, so the swap needs a human call (spec line vs price).",
+    "FIRECRAWL_LAN_BACK": "RECOVERED: 192.168.18.4:3002 answered 200 and served mobile_buybox_group_1 for 5 ASINs this pass (it was refusing every request 2026-11-15..20). jina + x-no-cache still verified working as fallback.",
+    "AMAZON_SEARCH_WALLED": "Amazon search is unusable from this box: Firecrawl on /s?k= and /gp/aw/s?k= returns the 503 'Something went wrong' page. Re-ASIN discovery must go through DDG html via jina.",
+    "PARSER_NOTE": "An Amazon 404 page is <5000 chars, so price_fetch.py reports these as 'FETCH FAILED' after retries. That is the correct behavior (no invented price) but the message hides the cause; the 404 was confirmed manually, which is why these are logged as DEAD rather than merely unverified."
   },
   "schedule": {
-    "next_category_recommend": "breaker-bar (5 products, all with standing re-ASIN flags) - clears the follow-up backlog before moving to fresh categories.",
-    "remaining_categories_unverified_or_due": "breaker-bar next; then ratchet-set, impact-wrench, jump-starter, torque-wrench, socket-set, obd2-scanner, jack-stand, then fresh blocks (air-compressor, multimeter, battery-charger, oil-filter-wrench, brake-caliper-tool, bolt-extractor-set, screwdriver-set, impact-socket-set, wrench-set, tire-inflator, brake-bleeder, tap-and-die-set, flare-nut-wrench, brake-line-flaring-tool, hex-key-set, tire-plug-kit, floor-jack).",
-    "verified_this_cycle": "work-light: 4 of 5 fetched a live buybox price (DEWALT EDIT, SYLSTAR skip, Makita skip, Milwaukee 2735 blocked by asin guard); 1 no featured offer. 1 edit applied."
+    "next_category_recommend": "ratchet-set (6 products): TEKTON 3/8 Flex Head B07J2NHZLH $41.27, Snap-on F80 B005FI6542 $149.00, GEARWRENCH 120XP B0CYMQ5XGC $40.43, Pittsburgh 1/4 B000COC6R4 $12.99, Mac 1/2 B002IY936S $129.99, Capri 3/8 Flex Head B07Z2YWZZP $32.99. Carry-over flags on this block: Pittsburgh B000COC6R4, Mac B002IY936S, Snap-on no-buybox.",
+    "remaining_categories_unverified_or_due": "ratchet-set next; then impact-wrench, jump-starter, torque-wrench, socket-set, obd2-scanner, jack-stand, then fresh blocks (air-compressor, multimeter, battery-charger, oil-filter-wrench, brake-caliper-tool, bolt-extractor-set, screwdriver-set, impact-socket-set, wrench-set, tire-inflator, brake-bleeder, tap-and-die-set, flare-nut-wrench, brake-line-flaring-tool, hex-key-set, tire-plug-kit, floor-jack).",
+    "verified_this_cycle": "breaker-bar: 1 of 5 fetched a live buybox price (TEKTON, unchanged); 4 ASINs are 404-dead. 0 edits applied."
   },
   "cycle_complete": true
 }
