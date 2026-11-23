@@ -1,31 +1,32 @@
 {
-  "cycle": 50,
-  "date": "2026-11-21",
-  "category_done": "breaker-bar (5/5 checked: 1 verified unchanged, 4 DEAD ASINs / 404, 0 edits)",
+  "cycle": 51,
+  "date": "2026-11-22",
+  "category_done": "ratchet-set (6/6 checked: 3 verified with live prices, all <10% so no edits; 1 live PDP with no new-offer buybox; 2 DEAD ASINs / 404, 0 edits)",
   "products_checked": [
-    "breaker-bar/TEKTON 1/2-inch Breaker Bar (B07GH97P36, stored $55.00): live $55.00 (+0.00%), asin_confirmed TRUE, buybox_json via Firecrawl LAN, in stock. Below 10% threshold, no edit. VERIFIED.",
-    "breaker-bar/GEARWRENCH 1/2-inch (B000VDXSV6, stored $39.99): DEAD. Amazon returns 404 'Sorry! We couldn't find that page' on BOTH routes independently (Firecrawl LAN /gp/aw/d 439-byte error page; r.jina.ai x-no-cache 610-byte 'Page Not Found'). Not a rate limit: a known-good ASIN resolved the same minute on the same route. Price NOT checked, stored value UNTOUCHED. FLAG: re-ASIN.",
-    "breaker-bar/Capri Tools 3/8-inch (B07D3M64K5, stored $18.99): DEAD, 404 on both routes (Firecrawl 440-byte error page, jina 'Page Not Found'). UNTOUCHED. FLAG: re-ASIN.",
-    "breaker-bar/Sunex 1/2-inch Impact Rated (B00A1W3G8E, stored $34.99): DEAD, 404 on both routes. UNTOUCHED. FLAG: re-ASIN.",
-    "breaker-bar/SK Hand Tool 3/4-inch (B0002NYWQ2, stored $89.99): DEAD, 404 on both routes. Also the SAME dead ASIN is used by the torque-wrench card 'SK 3/4-inch' at line 242 ($19.99) - the dead ASIN spans two categories. UNTOUCHED. FLAG: re-ASIN x2."
+    "ratchet-set/TEKTON 3/8 Flex Head (B07J2NHZLH, stored $41.27): live $41.27 (+0.00%), buybox_json via Firecrawl LAN, asin_confirmed TRUE, in stock, rating 4.7. Below 10%. VERIFIED, no edit.",
+    "ratchet-set/GEARWRENCH 120XP (B0CYMQ5XGC, stored $40.43): live $40.97 (+1.34%), buybox_json via Firecrawl LAN, asin_confirmed TRUE, in stock, rating 4.5. Below 10%. VERIFIED, no edit.",
+    "ratchet-set/Capri Tools 3/8 Flex Head (B07Z2YWZZP, stored $32.99): live $31.07 (-5.82%), buybox_json via Firecrawl LAN, asin_confirmed TRUE, in stock, rating 4.5. Below 10%. VERIFIED, no edit.",
+    "ratchet-set/Snap-on F80 3/8 (B005FI6542, stored $149.00): PDP resolves (jina title 'Snap-on 3/8\" Ratchet, Sealed Head, Dual 80 Technology', rating 4.8, 59 ratings), but Amazon shows NO new-offer buybox: only 'Buy Used: $179.99' / 'Used (2) from $179.99'. asin_confirmed FALSE, no new price exists to read. Stored value UNTOUCHED. FLAG: no new buybox (second pass in a row).",
+    "ratchet-set/Pittsburgh 1/4 Set (B000COC6R4, stored $12.99): DEAD. r.jina.ai returns 200 with Amazon 404 'Sorry! we couldn't find that page' (611 bytes) on retry after the rate-limit pause. Price NOT checked. UNTOUCHED. FLAG: re-ASIN.",
+    "ratchet-set/MAC Tools 1/2 (B002IY936S, stored $129.99): DEAD. Same Amazon 404 page via jina (611 bytes), confirmed on a separate diagnostic fetch. UNTOUCHED. FLAG: re-ASIN."
   ],
   "edits": {
-    "data.mjs": "NONE. One product verified with no price movement (TEKTON $55.00), four products had dead ASINs so no price could be read. No cosmetic or rounding edits made.",
+    "data.mjs": "NONE. Three products priced with movements of 0.00%, +1.34% and -5.82% - all under the 10% threshold. Two ASINs are 404-dead and one has no new-offer buybox. No cosmetic or rounding edits.",
     "post": "NONE.",
-    "script": "price_fetch.py: added header x-no-cache:true to jina_fetch (project convention; jina serves cached/blocked copies without it). No route or parser changes. New helper scripts for re-ASIN research: /root/tools/asin_candidates.py (DDG html search -> ASIN candidates via jina) and /root/tools/pdp_title.py (PDP title/rating check). Raw run log: price-out-breakerbar.txt."
+    "script": "No changes to price_fetch.py. Added /root/tools/pdp_diag.py (jina status/length + price-line dump, used to distinguish 404 from rate-limit and to find used-only offers)."
   },
   "build": "SKIPPED (no edits to data.mjs). No astro build, no service restart.",
   "issues": {
-    "DEAD_ASIN_BLOCK": "4 of 5 breaker-bar ASINs are 404 on Amazon (B000VDXSV6, B07D3M64K5, B00A1W3G8E, B0002NYWQ2). This is the standing re-ASIN backlog, now confirmed 404 rather than 'no buybox'. Nothing can be priced until the ASINs are replaced.",
-    "REASIN_CANDIDATES_VERIFIED_LIVE": "Searched DDG-via-jina (Amazon /s?k= returns 503 through Firecrawl egress, so SERP discovery stays dead) and verified titles/prices on the US PDP. GEARWRENCH: B001M0O1G6 = 'GEARWRENCH 1/2\" Drive Flex Handle/Breaker Bar, 15\" - 81307', live $28.19, in stock, 4.7 - closest live GearWrench breaker bar, but 15 inch vs the card's stated 18 inch. B078Z3DL64 = GearWrench 87852 extendable 18-24\", $54.75, NOT in stock. Capri: B07KWJYCC2 = 'Capri Tools 3/8 in. Drive 18 in. Extended Leverage Breaker Bar', live $24.99, in stock, 4.3 - 18 inch vs card's 12 inch. Sunex: no live 24-inch Sunex breaker bar found; B000MCW0JK is an impact EXTENSION, not a bar. SK: B00063K8X0 = SK 41652 1/2\" 16\" flex handle, $69.60 - wrong drive size for the 3/4-inch card. Only the two GEARWRENCH/Capri candidates are usable, and both carry a length-spec mismatch, so the swap needs a human call (spec line vs price).",
-    "FIRECRAWL_LAN_BACK": "RECOVERED: 192.168.18.4:3002 answered 200 and served mobile_buybox_group_1 for 5 ASINs this pass (it was refusing every request 2026-11-15..20). jina + x-no-cache still verified working as fallback.",
-    "AMAZON_SEARCH_WALLED": "Amazon search is unusable from this box: Firecrawl on /s?k= and /gp/aw/s?k= returns the 503 'Something went wrong' page. Re-ASIN discovery must go through DDG html via jina.",
-    "PARSER_NOTE": "An Amazon 404 page is <5000 chars, so price_fetch.py reports these as 'FETCH FAILED' after retries. That is the correct behavior (no invented price) but the message hides the cause; the 404 was confirmed manually, which is why these are logged as DEAD rather than merely unverified."
+    "DEAD_ASIN_BLOCK": "2 more dead ASINs this pass: B000COC6R4 (Pittsburgh 1/4 Set) and B002IY936S (MAC Tools 1/2). Both return Amazon's 404 page, not a rate limit - a known-good ASIN resolved on the same route minutes earlier. Standing re-ASIN backlog is now 7 cards: breaker-bar x4 (B000VDXSV6, B07D3M64K5, B00A1W3G8E, B0002NYWQ2), torque-wrench 'SK 3/4-inch' (B0002NYWQ2, same dead ASIN), ratchet-set Pittsburgh (B000COC6R4), ratchet-set MAC (B002IY936S).",
+    "REASIN_CANDIDATES_RATCHETSET": "DDG-html-via-jina lookup run for both dead cards. Pittsburgh 1/4: five /dp/ hits (B006ZB91I0, B000ZK6L8U, B00PYVUTLK, B082XJ4STB, B082XJ8V1F) - none is a Pittsburgh-branded 1/4-inch ratchet with a live new buybox. B006ZB91I0 is a dual-head 1/4-3/8 ratchet at $15.29 (wrong product); B00PYVUTLK is a '1/4 Inch Drive Professional Flex Head Ratchet with TRP Comfort Grip' (likely the Pittsburgh Pro shape) but the PDP renders no price/brand block and no buybox. MAC 1/2: only B0GRQMXDRN and B0FDQGSSKN came back and both resolve to bot-stub pages ('# Added to Cart', 'Sorry, there was a problem'), so no usable candidate. Conclusion: no swap proposed, both need a human re-ASIN pick.",
+    "SNAPON_NO_NEW_BUYBOX": "B005FI6542 is a live listing but Amazon has no new-offer buybox - only two used offers at $179.99. The card's $149.00 cannot be confirmed or refreshed; a used-only price is not a valid card price. Needs a decision: keep with a 'check price' caveat, re-ASIN to a currently stocked Snap-on 3/8, or drop the card.",
+    "FIRECRAWL_LAN": "192.168.18.4:3002 answered normally this pass (buybox_json on 4 of 6 first-pass fetches). Two ASINs needed a jina retry after a 150s pause; one came back 404, the other failed to render, and both were re-diagnosed individually via jina before being called dead.",
+    "PARSER_NOTE": "Unchanged: an Amazon 404 page is <5000 chars so price_fetch.py reports 'FETCH FAILED' after retries. Correct behavior (no invented price) but the cause is hidden; /root/tools/pdp_diag.py is how the 404-vs-ratelimit call was made this pass."
   },
   "schedule": {
-    "next_category_recommend": "ratchet-set (6 products): TEKTON 3/8 Flex Head B07J2NHZLH $41.27, Snap-on F80 B005FI6542 $149.00, GEARWRENCH 120XP B0CYMQ5XGC $40.43, Pittsburgh 1/4 B000COC6R4 $12.99, Mac 1/2 B002IY936S $129.99, Capri 3/8 Flex Head B07Z2YWZZP $32.99. Carry-over flags on this block: Pittsburgh B000COC6R4, Mac B002IY936S, Snap-on no-buybox.",
-    "remaining_categories_unverified_or_due": "ratchet-set next; then impact-wrench, jump-starter, torque-wrench, socket-set, obd2-scanner, jack-stand, then fresh blocks (air-compressor, multimeter, battery-charger, oil-filter-wrench, brake-caliper-tool, bolt-extractor-set, screwdriver-set, impact-socket-set, wrench-set, tire-inflator, brake-bleeder, tap-and-die-set, flare-nut-wrench, brake-line-flaring-tool, hex-key-set, tire-plug-kit, floor-jack).",
-    "verified_this_cycle": "breaker-bar: 1 of 5 fetched a live buybox price (TEKTON, unchanged); 4 ASINs are 404-dead. 0 edits applied."
+    "next_category_recommend": "impact-wrench (5 products): Milwaukee M18 1/2 B08P4NX77N $277.89, DEWALT DCF899B B00WJA1J68 $239.99, Astro Nano 1/2 B00VTQIURE $119.99, Ryobi P262 1/2 B07Q3B6Q1F $99.00, Ingersoll Rand 2235TiMAX B00LV9Y1FE $279.99. No carry-over flags on this block.",
+    "remaining_categories_unverified_or_due": "impact-wrench next; then jump-starter, torque-wrench, socket-set, obd2-scanner, jack-stand, then fresh blocks (air-compressor, multimeter, battery-charger, oil-filter-wrench, brake-caliper-tool, bolt-extractor-set, screwdriver-set, impact-socket-set, wrench-set, tire-inflator, brake-bleeder, tap-and-die-set, flare-nut-wrench, brake-line-flaring-tool, hex-key-set, tire-plug-kit, floor-jack).",
+    "verified_this_cycle": "ratchet-set: 3 of 6 fetched a live confirmed buybox price (all <10% movement); 1 live listing with used-only offers; 2 ASINs 404-dead. 0 edits applied."
   },
   "cycle_complete": true
 }

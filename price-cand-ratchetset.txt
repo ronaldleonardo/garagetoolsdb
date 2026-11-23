@@ -1,0 +1,2 @@
+amazon.com Pittsburgh 1/4 inch drive ratchet -> []
+amazon.com Mac Tools 1/2 inch drive ratchet -> ['B0GRQMXDRN', 'B0FDQGSSKN']

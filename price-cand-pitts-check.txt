@@ -1,0 +1,52 @@
+B006ZB91I0  [firecrawl]  NO PRICE PARSED  [WARN asin not confirmed]  [WARN not in stock]
+B000ZK6L8U  [firecrawl]  NO PRICE PARSED  [WARN asin not confirmed]  [WARN not in stock]
+B00PYVUTLK  [firecrawl]  NO PRICE PARSED  [WARN asin not confirmed]  [WARN not in stock]
+B082XJ4STB  [firecrawl]  NO PRICE PARSED  [WARN asin not confirmed]  [WARN not in stock]
+B082XJ8V1F  [firecrawl]  NO PRICE PARSED  [WARN asin not confirmed]  [WARN not in stock]
+
+{
+  "B006ZB91I0": {
+    "asin": "B006ZB91I0",
+    "asin_confirmed": false,
+    "in_stock": false,
+    "ship_block": false,
+    "is_prime": false,
+    "rating": "4.7",
+    "route": "firecrawl"
+  },
+  "B000ZK6L8U": {
+    "asin": "B000ZK6L8U",
+    "asin_confirmed": false,
+    "in_stock": false,
+    "ship_block": false,
+    "is_prime": false,
+    "rating": "4.4",
+    "route": "firecrawl"
+  },
+  "B00PYVUTLK": {
+    "asin": "B00PYVUTLK",
+    "asin_confirmed": false,
+    "in_stock": false,
+    "ship_block": false,
+    "is_prime": false,
+    "rating": "4.7",
+    "route": "firecrawl"
+  },
+  "B082XJ4STB": {
+    "asin": "B082XJ4STB",
+    "asin_confirmed": false,
+    "in_stock": false,
+    "ship_block": false,
+    "is_prime": false,
+    "route": "firecrawl"
+  },
+  "B082XJ8V1F": {
+    "asin": "B082XJ8V1F",
+    "asin_confirmed": false,
+    "in_stock": false,
+    "ship_block": false,
+    "is_prime": false,
+    "rating": "4.6",
+    "route": "firecrawl"
+  }
+}
