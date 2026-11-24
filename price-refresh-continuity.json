@@ -1,32 +1,31 @@
 {
-  "cycle": 51,
-  "date": "2026-11-22",
-  "category_done": "ratchet-set (6/6 checked: 3 verified with live prices, all <10% so no edits; 1 live PDP with no new-offer buybox; 2 DEAD ASINs / 404, 0 edits)",
+  "cycle": 52,
+  "date": "2026-11-23",
+  "category_done": "impact-wrench (5/5 checked: 3 verified with live prices, 2 of them >=10% -> EDITED; 2 ASINs DEAD / 404)",
   "products_checked": [
-    "ratchet-set/TEKTON 3/8 Flex Head (B07J2NHZLH, stored $41.27): live $41.27 (+0.00%), buybox_json via Firecrawl LAN, asin_confirmed TRUE, in stock, rating 4.7. Below 10%. VERIFIED, no edit.",
-    "ratchet-set/GEARWRENCH 120XP (B0CYMQ5XGC, stored $40.43): live $40.97 (+1.34%), buybox_json via Firecrawl LAN, asin_confirmed TRUE, in stock, rating 4.5. Below 10%. VERIFIED, no edit.",
-    "ratchet-set/Capri Tools 3/8 Flex Head (B07Z2YWZZP, stored $32.99): live $31.07 (-5.82%), buybox_json via Firecrawl LAN, asin_confirmed TRUE, in stock, rating 4.5. Below 10%. VERIFIED, no edit.",
-    "ratchet-set/Snap-on F80 3/8 (B005FI6542, stored $149.00): PDP resolves (jina title 'Snap-on 3/8\" Ratchet, Sealed Head, Dual 80 Technology', rating 4.8, 59 ratings), but Amazon shows NO new-offer buybox: only 'Buy Used: $179.99' / 'Used (2) from $179.99'. asin_confirmed FALSE, no new price exists to read. Stored value UNTOUCHED. FLAG: no new buybox (second pass in a row).",
-    "ratchet-set/Pittsburgh 1/4 Set (B000COC6R4, stored $12.99): DEAD. r.jina.ai returns 200 with Amazon 404 'Sorry! we couldn't find that page' (611 bytes) on retry after the rate-limit pause. Price NOT checked. UNTOUCHED. FLAG: re-ASIN.",
-    "ratchet-set/MAC Tools 1/2 (B002IY936S, stored $129.99): DEAD. Same Amazon 404 page via jina (611 bytes), confirmed on a separate diagnostic fetch. UNTOUCHED. FLAG: re-ASIN."
+    "impact-wrench/Milwaukee M18 1/2-inch (B08P4NX77N, stored $277.89): DEAD. Firecrawl failed, jina returned 200 with Amazon 'Page Not Found' (611 bytes, 'Title: Page Not Found') on two separate passes. Price NOT checked. UNTOUCHED. FLAG: re-ASIN.",
+    "impact-wrench/DEWALT DCF899B (B00WJA1J68, stored $239.99): live $233.95 (-2.52%), jina route (Firecrawl returned the heavy/bulky ship-block with no parseable price). asin_confirmed TRUE via lp_asin=B00WJA1J68 in body; PDP title 'DEWALT 20V MAX XR Brushless High Torque 1/2\" Impact Wrench ... (DCF899B)'; price from canonical PDP '$233.95 , 4.8 out of 5 stars, 2,711 ratings' line. Below 10%. VERIFIED, no edit.",
+    "impact-wrench/Astro Nano 1/2-inch (B00VTQIURE, stored $119.99): live $132.48 (+10.41%), buybox_json via Firecrawl LAN, asin_confirmed TRUE, in stock. >=10% -> EDITED to $132.48.",
+    "impact-wrench/Ryobi P262 1/2-inch (B07Q3B6Q1F, stored $99.00): DEAD. First jina attempt 503 upstream, retry after pause returned 612-byte 'Title: Page Not Found'. Firecrawl failed too. Price NOT checked. UNTOUCHED. FLAG: re-ASIN.",
+    "impact-wrench/Ingersoll Rand 2235TiMAX (B00LV9Y1FE, stored $279.99): live $229.48 (-18.04%), buybox_json via Firecrawl LAN, asin_confirmed TRUE, in stock, rating 4.7. >=10% -> EDITED to $229.48."
   ],
   "edits": {
-    "data.mjs": "NONE. Three products priced with movements of 0.00%, +1.34% and -5.82% - all under the 10% threshold. Two ASINs are 404-dead and one has no new-offer buybox. No cosmetic or rounding edits.",
-    "post": "NONE.",
-    "script": "No changes to price_fetch.py. Added /root/tools/pdp_diag.py (jina status/length + price-line dump, used to distinguish 404 from rate-limit and to find used-only offers)."
+    "data.mjs": "2 lines in the impact-wrench block: Astro Nano 1/2-inch $119.99 -> $132.48; Ingersoll Rand 2235TiMAX $279.99 -> $229.48. git diff confirmed exactly 2 insertions / 2 deletions, no other hunks. (Note: $119.99 also exists for GOOLOO GP4000 in jump-starter - correctly left untouched.)",
+    "post": "NONE. FLAG: src/pages/posts/best-impact-wrench-review.astro line ~141 still says '$279.99 for the tool only' for the Ingersoll Rand - now stale by 18%. Needs a manual prose edit (not done, outside data.mjs scope).",
+    "script": "No changes to price_fetch.py. Added /root/tools/pdp_lpasin.py (jina route: lp_asin set, buybox blob presence, title, canonical price+rating line) to confirm ASIN identity when Firecrawl only returns a ship-block."
   },
-  "build": "SKIPPED (no edits to data.mjs). No astro build, no service restart.",
+  "build": "RUN: ./node_modules/.bin/astro build -> 62 pages, Complete in 1.67s. systemctl restart garagetoolsdb -> active. Verified dist/tools/impact-wrench.html contains $132.48 and $229.48 and neither old price.",
   "issues": {
-    "DEAD_ASIN_BLOCK": "2 more dead ASINs this pass: B000COC6R4 (Pittsburgh 1/4 Set) and B002IY936S (MAC Tools 1/2). Both return Amazon's 404 page, not a rate limit - a known-good ASIN resolved on the same route minutes earlier. Standing re-ASIN backlog is now 7 cards: breaker-bar x4 (B000VDXSV6, B07D3M64K5, B00A1W3G8E, B0002NYWQ2), torque-wrench 'SK 3/4-inch' (B0002NYWQ2, same dead ASIN), ratchet-set Pittsburgh (B000COC6R4), ratchet-set MAC (B002IY936S).",
-    "REASIN_CANDIDATES_RATCHETSET": "DDG-html-via-jina lookup run for both dead cards. Pittsburgh 1/4: five /dp/ hits (B006ZB91I0, B000ZK6L8U, B00PYVUTLK, B082XJ4STB, B082XJ8V1F) - none is a Pittsburgh-branded 1/4-inch ratchet with a live new buybox. B006ZB91I0 is a dual-head 1/4-3/8 ratchet at $15.29 (wrong product); B00PYVUTLK is a '1/4 Inch Drive Professional Flex Head Ratchet with TRP Comfort Grip' (likely the Pittsburgh Pro shape) but the PDP renders no price/brand block and no buybox. MAC 1/2: only B0GRQMXDRN and B0FDQGSSKN came back and both resolve to bot-stub pages ('# Added to Cart', 'Sorry, there was a problem'), so no usable candidate. Conclusion: no swap proposed, both need a human re-ASIN pick.",
-    "SNAPON_NO_NEW_BUYBOX": "B005FI6542 is a live listing but Amazon has no new-offer buybox - only two used offers at $179.99. The card's $149.00 cannot be confirmed or refreshed; a used-only price is not a valid card price. Needs a decision: keep with a 'check price' caveat, re-ASIN to a currently stocked Snap-on 3/8, or drop the card.",
-    "FIRECRAWL_LAN": "192.168.18.4:3002 answered normally this pass (buybox_json on 4 of 6 first-pass fetches). Two ASINs needed a jina retry after a 150s pause; one came back 404, the other failed to render, and both were re-diagnosed individually via jina before being called dead.",
-    "PARSER_NOTE": "Unchanged: an Amazon 404 page is <5000 chars so price_fetch.py reports 'FETCH FAILED' after retries. Correct behavior (no invented price) but the cause is hidden; /root/tools/pdp_diag.py is how the 404-vs-ratelimit call was made this pass."
+    "DEAD_ASIN_BLOCK": "2 more dead ASINs this pass: B08P4NX77N (Milwaukee M18 1/2) and B07Q3B6Q1F (Ryobi P262). Both 404, not rate limits - a known-good ASIN (B00WJA1J68) rendered a full 170KB PDP on the same route seconds earlier. Standing re-ASIN backlog is now 9 cards: breaker-bar x4 (B000VDXSV6, B07D3M64K5, B00A1W3G8E, B0002NYWQ2), torque-wrench SK 3/4-inch (B0002NYWQ2), ratchet-set Pittsburgh (B000COC6R4), ratchet-set MAC (B002IY936S), impact-wrench Milwaukee (B08P4NX77N), impact-wrench Ryobi (B07Q3B6Q1F).",
+    "REASIN_CANDIDATES_IMPACT": "DDG-html-via-jina lookup run 3x for both cards ('Milwaukee 2767-20 M18 FUEL 1/2 high torque impact wrench bare tool', 'Ryobi P262 18V ONE+ 1/2 inch impact wrench bare tool', and short forms). All returned zero /dp/ hits. Control query ('Milwaukee M18 impact wrench amazon.com') returned one ASIN (B0CLF1DHHW, identity unverified), so the route is alive but these model-specific queries surface nothing. No swap proposed; both need a human re-ASIN pick.",
+    "NO_ASIN_CARD_JUMPSTARTER": "jump-starter/TACKLIFE T8 Pro has asin: \"\" in data.mjs - the card has no Amazon ASIN at all (broken affiliate link). Flag for the jump-starter pass: either find an ASIN or drop/replace the card.",
+    "FIRECRAWL_LAN": "192.168.18.4:3002 answered but only 2 of 5 first-pass fetches produced a buybox_json; 2 outright failed (both later shown 404 via jina) and DEWALT came back as the heavy/bulky delivery ship-block. Jina fallback is what actually diagnosed all three.",
+    "PARSER_NOTE": "Unchanged: price_fetch.py does not fall back to jina when Firecrawl returns a ship-block page (DEWALT case), so that row reports no price until a jina pass is run by hand. pdp_lpasin.py covers it for now; a 'ship_block -> force jina' branch in price_fetch.py would close the gap."
   },
   "schedule": {
-    "next_category_recommend": "impact-wrench (5 products): Milwaukee M18 1/2 B08P4NX77N $277.89, DEWALT DCF899B B00WJA1J68 $239.99, Astro Nano 1/2 B00VTQIURE $119.99, Ryobi P262 1/2 B07Q3B6Q1F $99.00, Ingersoll Rand 2235TiMAX B00LV9Y1FE $279.99. No carry-over flags on this block.",
-    "remaining_categories_unverified_or_due": "impact-wrench next; then jump-starter, torque-wrench, socket-set, obd2-scanner, jack-stand, then fresh blocks (air-compressor, multimeter, battery-charger, oil-filter-wrench, brake-caliper-tool, bolt-extractor-set, screwdriver-set, impact-socket-set, wrench-set, tire-inflator, brake-bleeder, tap-and-die-set, flare-nut-wrench, brake-line-flaring-tool, hex-key-set, tire-plug-kit, floor-jack).",
-    "verified_this_cycle": "ratchet-set: 3 of 6 fetched a live confirmed buybox price (all <10% movement); 1 live listing with used-only offers; 2 ASINs 404-dead. 0 edits applied."
+    "next_category_recommend": "jump-starter (5 products): NOCO Boost Plus GB40 B015TKUPIC $99.95, NOCO Boost X GBX45 B0924V8SPC $124.95, GOOLOO GP4000 B09HJH1S41 $119.99, NEXPOW 2000A B07T9S3Q5N $35.99, TACKLIFE T8 Pro asin EMPTY $67.99 (no ASIN to fetch - flag, do not invent one).",
+    "remaining_categories_unverified_or_due": "jump-starter next; then torque-wrench, socket-set, obd2-scanner, jack-stand, then fresh blocks (air-compressor, multimeter, battery-charger, oil-filter-wrench, brake-caliper-tool, bolt-extractor-set, screwdriver-set, impact-socket-set, wrench-set, tire-inflator, brake-bleeder, tap-and-die-set, flare-nut-wrench, brake-line-flaring-tool, hex-key-set, tire-plug-kit, floor-jack).",
+    "verified_this_cycle": "impact-wrench: 3 of 5 fetched a live confirmed price; 2 of those moved >=10% and were edited. 2 ASINs 404-dead. 2 edits applied + build + restart."
   },
   "cycle_complete": true
 }
