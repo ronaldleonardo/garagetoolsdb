@@ -1,0 +1,61 @@
+B015TKUPIC  [jina]  live $99.95  (buybox_json)  stored $99.95  +0.00%  skip (<10%)
+B0924V8SPC  [jina]  live $124.95  (buybox_json)  stored $124.95  +0.00%  skip (<10%)
+B09HJH1S41  [jina]  live $75.96  (buybox_json)  stored $119.99  -36.69%  EDIT
+B07T9S3Q5N  [firecrawl]  NO PRICE PARSED  [WARN not in stock]
+
+{
+  "B015TKUPIC": {
+    "asin": "B015TKUPIC",
+    "price": 99.95,
+    "price_src": "buybox_json",
+    "asin_confirmed": true,
+    "in_stock": true,
+    "ship_block": false,
+    "is_prime": false,
+    "rating": "4.6",
+    "reviews": "130,884",
+    "route": "jina",
+    "stored": 99.95,
+    "pct_change": 0.0,
+    "action": "skip (<10%)"
+  },
+  "B0924V8SPC": {
+    "asin": "B0924V8SPC",
+    "price": 124.95,
+    "price_src": "buybox_json",
+    "asin_confirmed": true,
+    "in_stock": true,
+    "ship_block": false,
+    "is_prime": true,
+    "rating": "4.5",
+    "reviews": "15,792",
+    "route": "jina",
+    "stored": 124.95,
+    "pct_change": 0.0,
+    "action": "skip (<10%)"
+  },
+  "B09HJH1S41": {
+    "asin": "B09HJH1S41",
+    "price": 75.96,
+    "price_src": "buybox_json",
+    "asin_confirmed": true,
+    "in_stock": true,
+    "ship_block": false,
+    "is_prime": false,
+    "rating": "4.6",
+    "reviews": "9,109",
+    "route": "jina",
+    "stored": 119.99,
+    "pct_change": -36.69,
+    "action": "EDIT"
+  },
+  "B07T9S3Q5N": {
+    "asin": "B07T9S3Q5N",
+    "asin_confirmed": true,
+    "in_stock": false,
+    "ship_block": false,
+    "is_prime": false,
+    "rating": "4.6",
+    "route": "firecrawl"
+  }
+}
