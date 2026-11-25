@@ -1,31 +1,30 @@
 {
-  "cycle": 52,
-  "date": "2026-11-23",
-  "category_done": "impact-wrench (5/5 checked: 3 verified with live prices, 2 of them >=10% -> EDITED; 2 ASINs DEAD / 404)",
+  "cycle": 53,
+  "date": "2026-11-24",
+  "category_done": "jump-starter (5 cards; 4 had ASINs -> 3 verified live, 1 out of stock, 1 card has no ASIN at all)",
   "products_checked": [
-    "impact-wrench/Milwaukee M18 1/2-inch (B08P4NX77N, stored $277.89): DEAD. Firecrawl failed, jina returned 200 with Amazon 'Page Not Found' (611 bytes, 'Title: Page Not Found') on two separate passes. Price NOT checked. UNTOUCHED. FLAG: re-ASIN.",
-    "impact-wrench/DEWALT DCF899B (B00WJA1J68, stored $239.99): live $233.95 (-2.52%), jina route (Firecrawl returned the heavy/bulky ship-block with no parseable price). asin_confirmed TRUE via lp_asin=B00WJA1J68 in body; PDP title 'DEWALT 20V MAX XR Brushless High Torque 1/2\" Impact Wrench ... (DCF899B)'; price from canonical PDP '$233.95 , 4.8 out of 5 stars, 2,711 ratings' line. Below 10%. VERIFIED, no edit.",
-    "impact-wrench/Astro Nano 1/2-inch (B00VTQIURE, stored $119.99): live $132.48 (+10.41%), buybox_json via Firecrawl LAN, asin_confirmed TRUE, in stock. >=10% -> EDITED to $132.48.",
-    "impact-wrench/Ryobi P262 1/2-inch (B07Q3B6Q1F, stored $99.00): DEAD. First jina attempt 503 upstream, retry after pause returned 612-byte 'Title: Page Not Found'. Firecrawl failed too. Price NOT checked. UNTOUCHED. FLAG: re-ASIN.",
-    "impact-wrench/Ingersoll Rand 2235TiMAX (B00LV9Y1FE, stored $279.99): live $229.48 (-18.04%), buybox_json via Firecrawl LAN, asin_confirmed TRUE, in stock, rating 4.7. >=10% -> EDITED to $229.48."
+    "jump-starter/NOCO Boost Plus GB40 (B015TKUPIC, stored $99.95): live $99.95 (buybox_json, jina route), asin_confirmed TRUE, in stock, rating 4.6 / 130,884 ratings. 0.00% -> no edit.",
+    "jump-starter/NOCO Boost X GBX45 (B0924V8SPC, stored $124.95): live $124.95 (buybox_json, jina), asin_confirmed TRUE, in stock, Prime, rating 4.5 / 15,792. 0.00% -> no edit.",
+    "jump-starter/GOOLOO GP4000 (B09HJH1S41, stored $119.99): live $75.96 (buybox_json, jina), asin_confirmed TRUE, in stock, rating 4.6 / 9,109. -36.69% -> EDITED to $75.96.",
+    "jump-starter/NEXPOW 2000A (B07T9S3Q5N, stored $35.99): OUT OF STOCK, not dead. Firecrawl returned the page but zero buybox; jina pass returned the full 205KB PDP with correct title (NEXPOW Car Jump Starter 2000A 12V) and lp_asin=B07T9S3Q5N, but the buybox reads 'Currently unavailable. We don't know when or if this item will be back in stock.' No price on page. Price NOT edited, NOT carried forward. FLAG: out of stock - recheck next cycle; if still unavailable, decide re-ASIN vs drop.",
+    "jump-starter/TACKLIFE T8 Pro (stored $67.99): asin is \"\" in data.mjs - nothing to fetch. FLAG: card has no Amazon ASIN (broken affiliate link). Needs an ASIN pick or replacement."
   ],
   "edits": {
-    "data.mjs": "2 lines in the impact-wrench block: Astro Nano 1/2-inch $119.99 -> $132.48; Ingersoll Rand 2235TiMAX $279.99 -> $229.48. git diff confirmed exactly 2 insertions / 2 deletions, no other hunks. (Note: $119.99 also exists for GOOLOO GP4000 in jump-starter - correctly left untouched.)",
-    "post": "NONE. FLAG: src/pages/posts/best-impact-wrench-review.astro line ~141 still says '$279.99 for the tool only' for the Ingersoll Rand - now stale by 18%. Needs a manual prose edit (not done, outside data.mjs scope).",
-    "script": "No changes to price_fetch.py. Added /root/tools/pdp_lpasin.py (jina route: lp_asin set, buybox blob presence, title, canonical price+rating line) to confirm ASIN identity when Firecrawl only returns a ship-block."
+    "data.mjs": "1 line, jump-starter block: GOOLOO GP4000 $119.99 -> $75.96. git diff confirmed exactly 1 insertion / 1 deletion, single hunk, no other changes.",
+    "post": "NONE. FLAG: src/pages/posts/best-jump-starter-review.astro line 138 opens with '$119.99. The GP4000 advertises 4000 peak amps...' - now stale by 36.7%. Needs a manual prose edit (outside data.mjs scope)."
   },
-  "build": "RUN: ./node_modules/.bin/astro build -> 62 pages, Complete in 1.67s. systemctl restart garagetoolsdb -> active. Verified dist/tools/impact-wrench.html contains $132.48 and $229.48 and neither old price.",
+  "build": "RUN: ./node_modules/.bin/astro build -> 62 pages, Complete in 1.72s. systemctl restart garagetoolsdb -> active. Verified dist/tools/jump-starter.html contains $75.96 (1 hit) and zero hits of $119.99.",
   "issues": {
-    "DEAD_ASIN_BLOCK": "2 more dead ASINs this pass: B08P4NX77N (Milwaukee M18 1/2) and B07Q3B6Q1F (Ryobi P262). Both 404, not rate limits - a known-good ASIN (B00WJA1J68) rendered a full 170KB PDP on the same route seconds earlier. Standing re-ASIN backlog is now 9 cards: breaker-bar x4 (B000VDXSV6, B07D3M64K5, B00A1W3G8E, B0002NYWQ2), torque-wrench SK 3/4-inch (B0002NYWQ2), ratchet-set Pittsburgh (B000COC6R4), ratchet-set MAC (B002IY936S), impact-wrench Milwaukee (B08P4NX77N), impact-wrench Ryobi (B07Q3B6Q1F).",
-    "REASIN_CANDIDATES_IMPACT": "DDG-html-via-jina lookup run 3x for both cards ('Milwaukee 2767-20 M18 FUEL 1/2 high torque impact wrench bare tool', 'Ryobi P262 18V ONE+ 1/2 inch impact wrench bare tool', and short forms). All returned zero /dp/ hits. Control query ('Milwaukee M18 impact wrench amazon.com') returned one ASIN (B0CLF1DHHW, identity unverified), so the route is alive but these model-specific queries surface nothing. No swap proposed; both need a human re-ASIN pick.",
-    "NO_ASIN_CARD_JUMPSTARTER": "jump-starter/TACKLIFE T8 Pro has asin: \"\" in data.mjs - the card has no Amazon ASIN at all (broken affiliate link). Flag for the jump-starter pass: either find an ASIN or drop/replace the card.",
-    "FIRECRAWL_LAN": "192.168.18.4:3002 answered but only 2 of 5 first-pass fetches produced a buybox_json; 2 outright failed (both later shown 404 via jina) and DEWALT came back as the heavy/bulky delivery ship-block. Jina fallback is what actually diagnosed all three.",
-    "PARSER_NOTE": "Unchanged: price_fetch.py does not fall back to jina when Firecrawl returns a ship-block page (DEWALT case), so that row reports no price until a jina pass is run by hand. pdp_lpasin.py covers it for now; a 'ship_block -> force jina' branch in price_fetch.py would close the gap."
+    "OUT_OF_STOCK": "B07T9S3Q5N (NEXPOW 2000A) is 'Currently unavailable' with no restock estimate. ASIN is alive and correct, so this is stock, not a re-ASIN yet. Recheck next cycle before deciding.",
+    "DEAD_ASIN_BLOCK": "Standing re-ASIN backlog unchanged at 9 cards: breaker-bar x4 (B000VDXSV6, B07D3M64K5, B00A1W3G8E, B0002NYWQ2), torque-wrench SK 3/4-inch (B0002NYWQ2), ratchet-set Pittsburgh (B000COC6R4), ratchet-set MAC (B002IY936S), impact-wrench Milwaukee (B08P4NX77N), impact-wrench Ryobi (B07Q3B6Q1F).",
+    "NO_ASIN_CARDS": "Two cards now have an empty asin field: jump-starter/TACKLIFE T8 Pro and socket-set/QUINN 132PC Kit (Harbor Freight only, no Amazon listing - probably should stay unlinked or be dropped). Plus previously noted gooloo $119.99 duplicate concern is resolved.",
+    "ROUTE": "Firecrawl LAN handled B015TKUPIC/B0924V8SPC poorly this pass (no price parsed -> auto jina fallback worked); 3 of 4 usable prices came from jina. NEXPOW was correctly diagnosed as out of stock only via jina.",
+    "PARSER_NOTE": "Unchanged: price_fetch.py reports 'NO PRICE PARSED / not in stock' identically for a dead ASIN and for a genuine 'Currently unavailable' PDP. Distinguishing them still needs a manual jina context read (Page Not Found vs Currently unavailable). A branch on that string would make the report self-explanatory."
   },
   "schedule": {
-    "next_category_recommend": "jump-starter (5 products): NOCO Boost Plus GB40 B015TKUPIC $99.95, NOCO Boost X GBX45 B0924V8SPC $124.95, GOOLOO GP4000 B09HJH1S41 $119.99, NEXPOW 2000A B07T9S3Q5N $35.99, TACKLIFE T8 Pro asin EMPTY $67.99 (no ASIN to fetch - flag, do not invent one).",
-    "remaining_categories_unverified_or_due": "jump-starter next; then torque-wrench, socket-set, obd2-scanner, jack-stand, then fresh blocks (air-compressor, multimeter, battery-charger, oil-filter-wrench, brake-caliper-tool, bolt-extractor-set, screwdriver-set, impact-socket-set, wrench-set, tire-inflator, brake-bleeder, tap-and-die-set, flare-nut-wrench, brake-line-flaring-tool, hex-key-set, tire-plug-kit, floor-jack).",
-    "verified_this_cycle": "impact-wrench: 3 of 5 fetched a live confirmed price; 2 of those moved >=10% and were edited. 2 ASINs 404-dead. 2 edits applied + build + restart."
+    "next_category_recommend": "torque-wrench (5 products): TEKTON 1/2in B00C5ZL0RU $54.99, CDI 1503MFRPH B00461ATL4 $156.12, Pittsburgh 1/2in B0002NYWQ2 $19.99 (already on the dead-ASIN backlog - expect 404, flag not edit), ACDelco ARM601 B004VYUQI2 $90.99, Precision Instruments PREC3FR250F B002XMSFIM $251.68.",
+    "remaining_categories_unverified_or_due": "torque-wrench next; then socket-set, obd2-scanner, jack-stand, then fresh blocks (air-compressor, multimeter, battery-charger, oil-filter-wrench, brake-caliper-tool, bolt-extractor-set, screwdriver-set, impact-socket-set, wrench-set, tire-inflator, brake-bleeder, tap-and-die-set, flare-nut-wrench, brake-line-flaring-tool, hex-key-set, tire-plug-kit, floor-jack).",
+    "verified_this_cycle": "jump-starter: 3 of 4 ASINs produced a live confirmed price; 1 moved >=10% and was edited; 1 out of stock (flagged); 1 card has no ASIN."
   },
   "cycle_complete": true
 }

@@ -303,7 +303,7 @@ export const tools = {
       },
       {
         name: "GOOLOO GP4000",
-        price: "$119.99",
+        price: "$75.96",
         rating: "4.6",
         reviews: "8,900",
         images: ["/images/gooloo-gp4000.jpg"],
@@ -598,6 +598,19 @@ export const tools = {
       { name: "Lisle 33260 Double Flaring Tool Kit", price: "$69.78", rating: "4.6", reviews: "852", images: ["/images/lisle-33260.svg"], asin: "B082P2483D", specs: ["3/16 in and 1/4 in", "Low profile body", "Flares in tight spaces", "Single or double flares", "Steel body", "Case included"], badge: "value", label: "Best for Tight Spaces", pros: "The low profile body is the whole feature. It fits against a frame rail or inside a wheel well where a normal flaring bar will not swing, and it does both 3/16 and 1/4 inch line." },
       { name: "GEARWRENCH 41880D Combined Double/Bubble Flaring Tool", price: "$129.11", rating: "4.1", reviews: "29", images: ["/images/gearwrench-41880d.svg"], asin: "B0015SBV5E", specs: ["Double and bubble flare", "SAE and ISO dies", "One combined kit", "Steel body", "For import brake lines", "Blow mold case"], badge: "best", label: "Best for Imports", pros: "The only hand tool here that makes an ISO bubble flare as well as a 45 degree double flare. If your driveway has a Toyota, Honda, VW, or BMW in it, that second die set is not an option, it is the job." },
       { name: "Mastercool 71475 Universal Hydraulic Flaring Tool Set", price: "$174.99", rating: "4.4", reviews: "96", images: ["/images/mastercool-71475.svg"], asin: "B00063YR2I", specs: ["Hydraulic pump", "No lever or clamp", "Universal dies", "Double, bubble, single", "One hand operation", "Case included"], badge: "best", label: "Best Pro", pros: "A hand pump instead of a lever, so the tube clamp never gets pushed sideways and the flare comes out round every time. This is the set a shop buys when it makes flares every week." }
+    ]
+  },
+  "angle-grinder": {
+    name: "Angle Grinders",
+    short: "Grinders",
+    desc: "A grinder is a motor. The wheel and the guard decide whether you finish the job or wear a piece of it. One wheel, one job, and never lean on the face.",
+    slug: "angle-grinder",
+    products: [
+      { name: "DEWALT DWE402 4-1/2 Inch 11 Amp", price: "$99.99", rating: "4.7", reviews: "5,503", images: ["/images/dewalt-dwe402.svg"], asin: "B00RVZ7DNO", specs: ["4-1/2 inch", "11 amp motor", "11,000 rpm", "Paddle switch", "One-Touch 360 guard", "Tool-free wheel release"], badge: "top", label: "Best Overall", pros: "Eleven amps and a One-Touch guard you can rotate a full circle with one hand, so there is no excuse to run it in the wrong place. The motor refuses to fall off pitch." },
+      { name: "Bosch GWS10-450P 4-1/2 Inch 10 Amp", price: "$89.00", rating: "4.6", reviews: "264", images: ["/images/bosch-gws10-450p.svg"], asin: "B09DZWV3MR", specs: ["4-1/2 inch", "10 amp motor", "11,000 rpm", "Multi-grip paddle", "Anti-vibration handle", "Epoxy-coated windings"], badge: "value", label: "Best Value", pros: "Ten amps for ten dollars less than the top pick, in a narrow grip zone that fits a smaller hand better than anything else here." },
+      { name: "Metabo HPT G12SR4 4-1/2 Inch", price: "$37.05", rating: "4.6", reviews: "4,995", images: ["/images/metabo-hpt-g12sr4.svg"], asin: "B07L21GNHL", specs: ["4-1/2 inch", "6.2 amp motor", "980W max output", "4.0 lb", "5 wheels + hard case", "1 year warranty"], badge: "budget", label: "Best Budget", pros: "A complete first grinder with a hard case and five wheels for the price of a tank of gas. Light enough to hold overhead without your arm shaking." },
+      { name: "SKIL 9295-01 4-1/2 Inch 6 Amp", price: "$27.99", rating: "4.6", reviews: "1,943", images: ["/images/skil-9295.svg"], asin: "B0036WBGI4", specs: ["4-1/2 inch", "6 amp motor", "11,000 rpm", "Tool-less guard", "Metal gear housing", "Wrench stored in handle"], badge: "budget", label: "Cheapest", pros: "Twenty eight dollars for trim work, cutting a bolt to length, or cleaning up a weld. It does the job and does not pretend to be more than it is." },
+      { name: "Bosch GWX10-45PE X-LOCK 4-1/2 Inch", price: "$80.76", rating: "4.3", reviews: "358", images: ["/images/bosch-gwx10-45pe.svg"], asin: "B07W9LLGHV", specs: ["4-1/2 inch", "10 amp motor", "11,000 rpm", "X-LOCK mount", "Snap-on wheel change", "Paddle switch"], badge: "best", label: "Best Wheel Change", pros: "Three second wheel changes with a lever, no spanner and no flange nut to lose. The tool for anyone who swaps between a cutoff wheel and a flap disc in one session." }
     ]
   },
   "hex-key-set": {
