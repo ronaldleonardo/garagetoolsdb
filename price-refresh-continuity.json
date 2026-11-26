@@ -1,30 +1,30 @@
 {
-  "cycle": 53,
-  "date": "2026-11-24",
-  "category_done": "jump-starter (5 cards; 4 had ASINs -> 3 verified live, 1 out of stock, 1 card has no ASIN at all)",
+  "cycle": 54,
+  "date": "2026-11-25",
+  "category_done": "torque-wrench (5 cards; 4 verified live via firecrawl+jina, 1 dead ASIN 404)",
   "products_checked": [
-    "jump-starter/NOCO Boost Plus GB40 (B015TKUPIC, stored $99.95): live $99.95 (buybox_json, jina route), asin_confirmed TRUE, in stock, rating 4.6 / 130,884 ratings. 0.00% -> no edit.",
-    "jump-starter/NOCO Boost X GBX45 (B0924V8SPC, stored $124.95): live $124.95 (buybox_json, jina), asin_confirmed TRUE, in stock, Prime, rating 4.5 / 15,792. 0.00% -> no edit.",
-    "jump-starter/GOOLOO GP4000 (B09HJH1S41, stored $119.99): live $75.96 (buybox_json, jina), asin_confirmed TRUE, in stock, rating 4.6 / 9,109. -36.69% -> EDITED to $75.96.",
-    "jump-starter/NEXPOW 2000A (B07T9S3Q5N, stored $35.99): OUT OF STOCK, not dead. Firecrawl returned the page but zero buybox; jina pass returned the full 205KB PDP with correct title (NEXPOW Car Jump Starter 2000A 12V) and lp_asin=B07T9S3Q5N, but the buybox reads 'Currently unavailable. We don't know when or if this item will be back in stock.' No price on page. Price NOT edited, NOT carried forward. FLAG: out of stock - recheck next cycle; if still unavailable, decide re-ASIN vs drop.",
-    "jump-starter/TACKLIFE T8 Pro (stored $67.99): asin is \"\" in data.mjs - nothing to fetch. FLAG: card has no Amazon ASIN (broken affiliate link). Needs an ASIN pick or replacement."
+    "torque-wrench/TEKTON 1/2in (B00C5ZL0RU, stored $54.99): live $53.75 (buybox_json; firecrawl $53.75, jina re-fetch $53.75 later same day), -2.25% -> no edit. asin_confirmed FALSE on both routes (mobile layout had no lp_asin link) but brand tokens TEKTON x50 on page and list price $99.99 corroborate identity. Change below threshold anyway.",
+    "torque-wrench/CDI 1503MFRPH (B00461ATL4, stored $156.12): firecrawl returned degraded page ('Sorry, there was a problem', no buybox, 'See All Buying Options', stray $203.38 token) -> NOT used. After jina cooldown lifted: $156.12 (buybox_json), asin_confirmed TRUE, in stock, rating 4.7, CDI x28. 0.00% -> no edit.",
+    "torque-wrench/Pittsburgh 1/2in (B0002NYWQ2, stored $19.99): firecrawl failed all retries; jina returned HTTP 404 'Page Not Found' (Warning: Target URL returned error 404). DEAD ASIN, no edit. Already on standing re-ASIN backlog.",
+    "torque-wrench/ACDelco ARM601 (B004VYUQI2, stored $90.99): live $90.99 (buybox_json, firecrawl), asin_confirmed TRUE, in stock, rating 4.4. 0.00% -> no edit.",
+    "torque-wrench/Precision Instruments PREC3FR250F (B002XMSFIM, stored $251.68): firecrawl failed all retries; jina live $255.04 (buybox_json), +1.34% -> no edit. asin_confirmed FALSE (no lp_asin) but 'Precision Instruments' x5 + rating 4.8 corroborate. Below threshold."
   ],
   "edits": {
-    "data.mjs": "1 line, jump-starter block: GOOLOO GP4000 $119.99 -> $75.96. git diff confirmed exactly 1 insertion / 1 deletion, single hunk, no other changes.",
-    "post": "NONE. FLAG: src/pages/posts/best-jump-starter-review.astro line 138 opens with '$119.99. The GP4000 advertises 4000 peak amps...' - now stale by 36.7%. Needs a manual prose edit (outside data.mjs scope)."
+    "data.mjs": "NONE. All live prices within 10% of stored (max move +1.34%). No cosmetic edits, no rounding.",
+    "post": "NONE needed."
   },
-  "build": "RUN: ./node_modules/.bin/astro build -> 62 pages, Complete in 1.72s. systemctl restart garagetoolsdb -> active. Verified dist/tools/jump-starter.html contains $75.96 (1 hit) and zero hits of $119.99.",
+  "build": "SKIPPED - no edits to data.mjs.",
   "issues": {
-    "OUT_OF_STOCK": "B07T9S3Q5N (NEXPOW 2000A) is 'Currently unavailable' with no restock estimate. ASIN is alive and correct, so this is stock, not a re-ASIN yet. Recheck next cycle before deciding.",
-    "DEAD_ASIN_BLOCK": "Standing re-ASIN backlog unchanged at 9 cards: breaker-bar x4 (B000VDXSV6, B07D3M64K5, B00A1W3G8E, B0002NYWQ2), torque-wrench SK 3/4-inch (B0002NYWQ2), ratchet-set Pittsburgh (B000COC6R4), ratchet-set MAC (B002IY936S), impact-wrench Milwaukee (B08P4NX77N), impact-wrench Ryobi (B07Q3B6Q1F).",
-    "NO_ASIN_CARDS": "Two cards now have an empty asin field: jump-starter/TACKLIFE T8 Pro and socket-set/QUINN 132PC Kit (Harbor Freight only, no Amazon listing - probably should stay unlinked or be dropped). Plus previously noted gooloo $119.99 duplicate concern is resolved.",
-    "ROUTE": "Firecrawl LAN handled B015TKUPIC/B0924V8SPC poorly this pass (no price parsed -> auto jina fallback worked); 3 of 4 usable prices came from jina. NEXPOW was correctly diagnosed as out of stock only via jina.",
-    "PARSER_NOTE": "Unchanged: price_fetch.py reports 'NO PRICE PARSED / not in stock' identically for a dead ASIN and for a genuine 'Currently unavailable' PDP. Distinguishing them still needs a manual jina context read (Page Not Found vs Currently unavailable). A branch on that string would make the report self-explanatory."
+    "JINA_COOLDOWN": "r.jina.ai put a global anonymous block on www.amazon.com from ~06:00 to 06:25:38 UTC today (HTTP 403 AbuseAlleviationError 40305, 'previous abuse found on https://www.amazon.com/adprefs; Domain resolved to non-public network: bs.serving-sys.com'). All 4 jina attempts at 06:05-06:07 failed; the same calls succeeded at 06:28. Mitigation: when jina_fetch returns '' for every ASIN at once, it is a cooldown, not a dead product - parse the unblock timestamp from the 403 body and retry after it (waited ~20 min this run).",
+    "FIRECRAWL_DEGRADED_TORQUE": "Firecrawl LAN returned no buybox for 2 of 5 torque wrenches (B00461ATL4 'Sorry, there was a problem' + 'See All Buying Options'; B002XMSFIM fetch failed outright) and lost lp_asin on the other 2. Same pattern as the bulky jump-starter pass: treat firecrawl 'See All Buying Options' as unverified, never as the price.",
+    "DEAD_ASIN_BLOCK": "Standing re-ASIN backlog now 9 cards, unchanged: breaker-bar x4 (B000VDXSV6, B07D3M64K5, B00A1W3G8E, B0002NYWQ2), torque-wrench Pittsburgh 1/2in (B0002NYWQ2 - re-confirmed 404 today), ratchet-set Pittsburgh (B000COC6R4), ratchet-set MAC (B002IY936S), impact-wrench Milwaukee (B08P4NX77N), impact-wrench Ryobi (B07Q3B6Q1F).",
+    "NO_ASIN_CARDS": "Two cards still have empty asin: jump-starter/TACKLIFE T8 Pro and socket-set/QUINN 132PC Kit (Harbor Freight only).",
+    "NEXPOW_RECHECK": "jump-starter/NEXPOW 2000A (B07T9S3Q5N) was 'Currently unavailable' last cycle - not rechecked today (different category), due on the next jump-starter pass."
   },
   "schedule": {
-    "next_category_recommend": "torque-wrench (5 products): TEKTON 1/2in B00C5ZL0RU $54.99, CDI 1503MFRPH B00461ATL4 $156.12, Pittsburgh 1/2in B0002NYWQ2 $19.99 (already on the dead-ASIN backlog - expect 404, flag not edit), ACDelco ARM601 B004VYUQI2 $90.99, Precision Instruments PREC3FR250F B002XMSFIM $251.68.",
-    "remaining_categories_unverified_or_due": "torque-wrench next; then socket-set, obd2-scanner, jack-stand, then fresh blocks (air-compressor, multimeter, battery-charger, oil-filter-wrench, brake-caliper-tool, bolt-extractor-set, screwdriver-set, impact-socket-set, wrench-set, tire-inflator, brake-bleeder, tap-and-die-set, flare-nut-wrench, brake-line-flaring-tool, hex-key-set, tire-plug-kit, floor-jack).",
-    "verified_this_cycle": "jump-starter: 3 of 4 ASINs produced a live confirmed price; 1 moved >=10% and was edited; 1 out of stock (flagged); 1 card has no ASIN."
+    "next_category_recommend": "socket-set (5 cards, 4 usable ASINs): GEARWRENCH 110PC B07H5H1J3X $115.58, DEWALT 192PC B01BHJE0J4 $152.99, TEKTON 1/2 Drive B07QSCTG8Y $54.00, Sunex 2569 B00MPQ88RY $144.79, QUINN 132PC asin empty (skip, flag).",
+    "remaining_categories_unverified_or_due": "socket-set next; then obd2-scanner, jack-stand, then fresh blocks (air-compressor, multimeter, battery-charger, oil-filter-wrench, brake-caliper-tool, bolt-extractor-set, screwdriver-set, impact-socket-set, wrench-set, tire-inflator, brake-bleeder, tap-and-die-set, flare-nut-wrench, brake-line-flaring-tool, hex-key-set, tire-plug-kit, floor-jack).",
+    "verified_this_cycle": "torque-wrench: 4 of 4 usable ASINs produced a live confirmed price; 0 moved >=10%; 0 edits; 1 dead ASIN (expected)."
   },
   "cycle_complete": true
 }
