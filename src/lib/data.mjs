@@ -179,7 +179,7 @@ export const tools = {
       },
       {
         name: "Sunex 2569 Master",
-        price: "$144.79",
+        price: "$101.79",
         rating: "4.8",
         reviews: "1,400",
         images: ["/images/sunex-set.jpg"],

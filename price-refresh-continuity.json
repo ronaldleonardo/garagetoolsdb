@@ -1,30 +1,29 @@
 {
-  "cycle": 54,
-  "date": "2026-11-25",
-  "category_done": "torque-wrench (5 cards; 4 verified live via firecrawl+jina, 1 dead ASIN 404)",
+  "cycle": 55,
+  "date": "2026-11-26",
+  "category_done": "socket-set (5 cards; 4 verified live, 1 no-ASIN skip)",
   "products_checked": [
-    "torque-wrench/TEKTON 1/2in (B00C5ZL0RU, stored $54.99): live $53.75 (buybox_json; firecrawl $53.75, jina re-fetch $53.75 later same day), -2.25% -> no edit. asin_confirmed FALSE on both routes (mobile layout had no lp_asin link) but brand tokens TEKTON x50 on page and list price $99.99 corroborate identity. Change below threshold anyway.",
-    "torque-wrench/CDI 1503MFRPH (B00461ATL4, stored $156.12): firecrawl returned degraded page ('Sorry, there was a problem', no buybox, 'See All Buying Options', stray $203.38 token) -> NOT used. After jina cooldown lifted: $156.12 (buybox_json), asin_confirmed TRUE, in stock, rating 4.7, CDI x28. 0.00% -> no edit.",
-    "torque-wrench/Pittsburgh 1/2in (B0002NYWQ2, stored $19.99): firecrawl failed all retries; jina returned HTTP 404 'Page Not Found' (Warning: Target URL returned error 404). DEAD ASIN, no edit. Already on standing re-ASIN backlog.",
-    "torque-wrench/ACDelco ARM601 (B004VYUQI2, stored $90.99): live $90.99 (buybox_json, firecrawl), asin_confirmed TRUE, in stock, rating 4.4. 0.00% -> no edit.",
-    "torque-wrench/Precision Instruments PREC3FR250F (B002XMSFIM, stored $251.68): firecrawl failed all retries; jina live $255.04 (buybox_json), +1.34% -> no edit. asin_confirmed FALSE (no lp_asin) but 'Precision Instruments' x5 + rating 4.8 corroborate. Below threshold."
+    "socket-set/GEARWRENCH 110PC (B07H5H1J3X, stored $115.58): live $115.58 (jina, buybox_json), asin_confirmed TRUE, in stock, rating 4.7. 0.00% -> no edit.",
+    "socket-set/DEWALT 192PC (B01BHJE0J4, stored $152.99): live $159.98 (jina, buybox_json), asin_confirmed TRUE, in stock, rating 4.8. +4.57% -> below threshold, no edit.",
+    "socket-set/TEKTON 1/2 Drive (B07QSCTG8Y, stored $54.00): live $54.00 (jina, buybox_json), asin_confirmed TRUE, in stock, rating 4.8, reviews 611 (stored 607; not touched). 0.00% -> no edit.",
+    "socket-set/Sunex 2569 Master (B00MPQ88RY, stored $144.79): live $101.79 (jina, desktop_buybox_group_1), asin_confirmed TRUE, in stock, rating 4.8, 43-piece Metric variant selected. -29.67% -> EDIT applied.",
+    "socket-set/QUINN 132PC Kit: asin empty (Harbor Freight only, no Amazon listing). Skipped, still flagged for a re-ASIN decision."
   ],
   "edits": {
-    "data.mjs": "NONE. All live prices within 10% of stored (max move +1.34%). No cosmetic edits, no rounding.",
-    "post": "NONE needed."
+    "data.mjs": "1 edit: socket-set/Sunex 2569 Master $144.79 -> $101.79 (line 182). All other socket-set prices left byte-identical.",
+    "post": "src/pages/posts/best-socket-set-review.astro: same product's stated price $144.79 -> $101.79 in the closing paragraph, so the article and the card agree. No other wording changed."
   },
-  "build": "SKIPPED - no edits to data.mjs.",
+  "build": "RAN: ./node_modules/.bin/astro build (64 pages) + systemctl restart garagetoolsdb. Verified live: /tools/socket-set.html serves $101.79, /posts/best-socket-set-review.html serves $101.79 and no $144.79.",
   "issues": {
-    "JINA_COOLDOWN": "r.jina.ai put a global anonymous block on www.amazon.com from ~06:00 to 06:25:38 UTC today (HTTP 403 AbuseAlleviationError 40305, 'previous abuse found on https://www.amazon.com/adprefs; Domain resolved to non-public network: bs.serving-sys.com'). All 4 jina attempts at 06:05-06:07 failed; the same calls succeeded at 06:28. Mitigation: when jina_fetch returns '' for every ASIN at once, it is a cooldown, not a dead product - parse the unblock timestamp from the 403 body and retry after it (waited ~20 min this run).",
-    "FIRECRAWL_DEGRADED_TORQUE": "Firecrawl LAN returned no buybox for 2 of 5 torque wrenches (B00461ATL4 'Sorry, there was a problem' + 'See All Buying Options'; B002XMSFIM fetch failed outright) and lost lp_asin on the other 2. Same pattern as the bulky jump-starter pass: treat firecrawl 'See All Buying Options' as unverified, never as the price.",
-    "DEAD_ASIN_BLOCK": "Standing re-ASIN backlog now 9 cards, unchanged: breaker-bar x4 (B000VDXSV6, B07D3M64K5, B00A1W3G8E, B0002NYWQ2), torque-wrench Pittsburgh 1/2in (B0002NYWQ2 - re-confirmed 404 today), ratchet-set Pittsburgh (B000COC6R4), ratchet-set MAC (B002IY936S), impact-wrench Milwaukee (B08P4NX77N), impact-wrench Ryobi (B07Q3B6Q1F).",
-    "NO_ASIN_CARDS": "Two cards still have empty asin: jump-starter/TACKLIFE T8 Pro and socket-set/QUINN 132PC Kit (Harbor Freight only).",
-    "NEXPOW_RECHECK": "jump-starter/NEXPOW 2000A (B07T9S3Q5N) was 'Currently unavailable' last cycle - not rechecked today (different category), due on the next jump-starter pass."
+    "FIRECRAWL_VARIANT_TRAP": "The first pass parsed B00MPQ88RY through firecrawl as $303.59 via the 'savings_line' regex. That number is a VARIANT ROW in the 'Options Available/Size' list (102-piece SAE/Metric), not the buybox. price_src=savings_line on this page is untrustworthy whenever the PDP has multiple sizes. jina's desktop_buybox_group_1 gave the true buybox $101.79 for the selected 43-piece Metric variant. Rule for next runs: a savings_line-only price with >10% delta must be re-fetched on the other route before editing; also the firecrawl fetch DID contain lp_asin so asin_confirmed=true does not protect against this.",
+    "PROMO_PRICE": "The $101.79 is a Black Friday Deal (page states 'Typical price: $145.42', 30 percent savings). Edit applied per the >=10% rule, but the next socket-set pass must recheck: if the buybox climbs back near $145, revert the card and the post paragraph. Badge field untouched (still 'top'/'Best Overall').",
+    "DEAD_ASIN_BLOCK": "Standing re-ASIN backlog now 9 cards, unchanged: breaker-bar x4 (B000VDXSV6, B07D3M64K5, B00A1W3G8E, B0002NYWQ2), torque-wrench Pittsburgh 1/2in (B0002NYWQ2), ratchet-set Pittsburgh (B000COC6R4), ratchet-set MAC (B002IY936S), impact-wrench Milwaukee (B08P4NX77N), impact-wrench Ryobi (B07Q3B6Q1F).",
+    "NO_ASIN_CARDS": "Two cards still have empty asin: jump-starter/TACKLIFE T8 Pro and socket-set/QUINN 132PC Kit (checked today, still no Amazon listing).",
+    "NEXPOW_RECHECK": "jump-starter/NEXPOW 2000A (B07T9S3Q5N) still pending recheck on the next jump-starter pass."
   },
   "schedule": {
-    "next_category_recommend": "socket-set (5 cards, 4 usable ASINs): GEARWRENCH 110PC B07H5H1J3X $115.58, DEWALT 192PC B01BHJE0J4 $152.99, TEKTON 1/2 Drive B07QSCTG8Y $54.00, Sunex 2569 B00MPQ88RY $144.79, QUINN 132PC asin empty (skip, flag).",
-    "remaining_categories_unverified_or_due": "socket-set next; then obd2-scanner, jack-stand, then fresh blocks (air-compressor, multimeter, battery-charger, oil-filter-wrench, brake-caliper-tool, bolt-extractor-set, screwdriver-set, impact-socket-set, wrench-set, tire-inflator, brake-bleeder, tap-and-die-set, flare-nut-wrench, brake-line-flaring-tool, hex-key-set, tire-plug-kit, floor-jack).",
-    "verified_this_cycle": "torque-wrench: 4 of 4 usable ASINs produced a live confirmed price; 0 moved >=10%; 0 edits; 1 dead ASIN (expected)."
+    "next_category_recommend": "obd2-scanner (then jack-stand, then fresh blocks: air-compressor, multimeter, battery-charger, oil-filter-wrench, brake-caliper-tool, bolt-extractor-set, screwdriver-set, impact-socket-set, wrench-set, tire-inflator, brake-bleeder, tap-and-die-set, flare-nut-wrench, brake-line-flaring-tool, hex-key-set, tire-plug-kit, floor-jack).",
+    "verified_this_cycle": "socket-set: 4 of 4 usable ASINs live-confirmed; 1 edit (Sunex, -29.67%); 1 card skipped for missing ASIN."
   },
   "cycle_complete": true
 }
