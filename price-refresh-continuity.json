@@ -1,29 +1,31 @@
 {
-  "cycle": 55,
-  "date": "2026-11-26",
-  "category_done": "socket-set (5 cards; 4 verified live, 1 no-ASIN skip)",
+  "cycle": 56,
+  "date": "2026-11-27",
+  "category_done": "obd2-scanner (5 cards; 4 verified live but promo-only, 1 unverified)",
   "products_checked": [
-    "socket-set/GEARWRENCH 110PC (B07H5H1J3X, stored $115.58): live $115.58 (jina, buybox_json), asin_confirmed TRUE, in stock, rating 4.7. 0.00% -> no edit.",
-    "socket-set/DEWALT 192PC (B01BHJE0J4, stored $152.99): live $159.98 (jina, buybox_json), asin_confirmed TRUE, in stock, rating 4.8. +4.57% -> below threshold, no edit.",
-    "socket-set/TEKTON 1/2 Drive (B07QSCTG8Y, stored $54.00): live $54.00 (jina, buybox_json), asin_confirmed TRUE, in stock, rating 4.8, reviews 611 (stored 607; not touched). 0.00% -> no edit.",
-    "socket-set/Sunex 2569 Master (B00MPQ88RY, stored $144.79): live $101.79 (jina, desktop_buybox_group_1), asin_confirmed TRUE, in stock, rating 4.8, 43-piece Metric variant selected. -29.67% -> EDIT applied.",
-    "socket-set/QUINN 132PC Kit: asin empty (Harbor Freight only, no Amazon listing). Skipped, still flagged for a re-ASIN decision."
+    "obd2-scanner/BlueDriver Pro OBD2 (B0GL9RL3XS, stored $94.95): firecrawl $67.99 asin_confirmed TRUE; jina $69.95 asin_confirmed FALSE. Both routes show 'Black Friday Deal' + countdown, and jina states 'Typical price: $94.95' (exactly the stored price). -28.39% vs stored but PROMO, not a market move -> no edit.",
+    "obd2-scanner/ANCEL AD310 (B01G5EA74I, stored $29.99): $23.99 on BOTH routes, asin_confirmed TRUE both, in stock, List Price $39.99. Black Friday Deal promo. -20.01% -> promo, no edit.",
+    "obd2-scanner/Innova 5610 (B07Z481NJM, stored $349.99): firecrawl yielded no price (degraded page), jina $255.52 buybox_json, asin_confirmed TRUE, in stock, List Price $349.99. Black Friday Deal promo. -26.99% -> promo, no edit.",
+    "obd2-scanner/LAUNCH CRP123 (B073GW5MTS, stored $127.00): $106.98 on BOTH routes, asin_confirmed TRUE, in stock, List Price $134.00. Black Friday Deal promo. -15.76% -> promo, no edit.",
+    "obd2-scanner/FOXWELL NT301 (B00UJV3E12, stored $55.95): firecrawl page ship-blocked with NO price parsed (degraded bulky-item page, asin_confirmed TRUE but unusable); jina resolved the correct PDP by title but asin_confirmed FALSE and only a savings_line price $53.15 (24 percent savings, Black Friday Deal). -5.00% and asin guard failed -> price INVALID per rules, no edit. Product NOT confirmed."
   ],
   "edits": {
-    "data.mjs": "1 edit: socket-set/Sunex 2569 Master $144.79 -> $101.79 (line 182). All other socket-set prices left byte-identical.",
-    "post": "src/pages/posts/best-socket-set-review.astro: same product's stated price $144.79 -> $101.79 in the closing paragraph, so the article and the card agree. No other wording changed."
+    "data.mjs": "NONE. All four big drops are Amazon 'Black Friday Deal' promos with countdown timers, and the stored prices equal the pages' list/typical price. Writing sale prices into a 7-day-cycle static card would leave every card wrong once the sale ends (2-4 days), so promo pricing was not applied.",
+    "build": "SKIPPED deliberately: no data.mjs edit, so no astro build and no systemctl restart."
   },
-  "build": "RAN: ./node_modules/.bin/astro build (64 pages) + systemctl restart garagetoolsdb. Verified live: /tools/socket-set.html serves $101.79, /posts/best-socket-set-review.html serves $101.79 and no $144.79.",
   "issues": {
-    "FIRECRAWL_VARIANT_TRAP": "The first pass parsed B00MPQ88RY through firecrawl as $303.59 via the 'savings_line' regex. That number is a VARIANT ROW in the 'Options Available/Size' list (102-piece SAE/Metric), not the buybox. price_src=savings_line on this page is untrustworthy whenever the PDP has multiple sizes. jina's desktop_buybox_group_1 gave the true buybox $101.79 for the selected 43-piece Metric variant. Rule for next runs: a savings_line-only price with >10% delta must be re-fetched on the other route before editing; also the firecrawl fetch DID contain lp_asin so asin_confirmed=true does not protect against this.",
-    "PROMO_PRICE": "The $101.79 is a Black Friday Deal (page states 'Typical price: $145.42', 30 percent savings). Edit applied per the >=10% rule, but the next socket-set pass must recheck: if the buybox climbs back near $145, revert the card and the post paragraph. Badge field untouched (still 'top'/'Best Overall').",
-    "DEAD_ASIN_BLOCK": "Standing re-ASIN backlog now 9 cards, unchanged: breaker-bar x4 (B000VDXSV6, B07D3M64K5, B00A1W3G8E, B0002NYWQ2), torque-wrench Pittsburgh 1/2in (B0002NYWQ2), ratchet-set Pittsburgh (B000COC6R4), ratchet-set MAC (B002IY936S), impact-wrench Milwaukee (B08P4NX77N), impact-wrench Ryobi (B07Q3B6Q1F).",
-    "NO_ASIN_CARDS": "Two cards still have empty asin: jump-starter/TACKLIFE T8 Pro and socket-set/QUINN 132PC Kit (checked today, still no Amazon listing).",
+    "PROMO_POLICY_DECIDED": "Standing rule applied from here: a >=10% delta that is labeled 'Black Friday Deal'/'Limited time deal' (countdown, typical/list price == stored) is a PROMO, not a price move -> do not edit the card. Only edit when the new price holds as the non-promo buybox. This supersedes the cycle-55 stopgap where the Sunex promo was written into the card.",
+    "SUNEX_REVERT_WATCH": "socket-set/Sunex 2569 Master (B00MPQ88RY) card + post still read $101.79, which was itself a Black Friday promo (typical $145.42). Next socket-set pass: if the buybox is back near $145 and is NOT a deal, revert card and post paragraph to the current normal price. Otherwise leave it.",
+    "FOXWELL_ASIN_GUARD": "B00UJV3E12 jina page carries no brand-store lp_asin link, so asin_confirmed is FALSE even though the title matches the NT301 exactly. Do not treat this as a dead ASIN; confirm identity by Title line on the jina page, and require a buybox_json price (not savings_line) before any edit on this one.",
+    "FIRECRAWL_BULKY_SHIPBLOCK": "firecrawl returned the 'cannot be shipped to your selected delivery location' page with zero price for the FOXWELL (and previously for air compressors). jina is the working route for those; no need to retry firecrawl more than once.",
+    "DEAD_ASIN_BLOCK": "Standing re-ASIN backlog unchanged at 9 cards: breaker-bar x4 (B000VDXSV6, B07D3M64K5, B00A1W3G8E, B0002NYWQ2), torque-wrench Pittsburgh 1/2in (B0002NYWQ2), ratchet-set Pittsburgh (B000COC6R4), ratchet-set MAC (B002IY936S), impact-wrench Milwaukee (B08P4NX77N), impact-wrench Ryobi (B07Q3B6Q1F).",
+    "NO_ASIN_CARDS": "Two cards still have empty asin: jump-starter/TACKLIFE T8 Pro and socket-set/QUINN 132PC Kit.",
     "NEXPOW_RECHECK": "jump-starter/NEXPOW 2000A (B07T9S3Q5N) still pending recheck on the next jump-starter pass."
   },
   "schedule": {
-    "next_category_recommend": "obd2-scanner (then jack-stand, then fresh blocks: air-compressor, multimeter, battery-charger, oil-filter-wrench, brake-caliper-tool, bolt-extractor-set, screwdriver-set, impact-socket-set, wrench-set, tire-inflator, brake-bleeder, tap-and-die-set, flare-nut-wrench, brake-line-flaring-tool, hex-key-set, tire-plug-kit, floor-jack).",
-    "verified_this_cycle": "socket-set: 4 of 4 usable ASINs live-confirmed; 1 edit (Sunex, -29.67%); 1 card skipped for missing ASIN."
+    "next_category_recommend": "jack-stand (5 cards, 2 share ASIN B000C4CHPE; 1 card has empty asin). Then fresh blocks: air-compressor, multimeter, battery-charger, oil-filter-wrench, brake-caliper-tool, bolt-extractor-set, screwdriver-set, impact-socket-set, wrench-set, tire-inflator, brake-bleeder, tap-and-die-set, flare-nut-wrench, brake-line-flaring-tool, hex-key-set, tire-plug-kit, floor-jack.",
+    "verified_this_cycle": "obd2-scanner: 4 of 5 live-confirmed (all promo-priced, 0 edits); 1 unverified (FOXWELL).",
+    "post_promo_audit": "After Cyber Monday (2026-12-01) do one extra obd2-scanner + socket-set pass to catch any sale price that stuck as the new normal."
   },
   "cycle_complete": true
 }
